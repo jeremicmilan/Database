@@ -9,7 +9,7 @@ namespace Database.Database
     {
         public void StartUp ()
         {
-            //while (true)
+            while (true)
             {
                 Console.WriteLine("Database starter loop initiated");
 
@@ -21,7 +21,7 @@ namespace Database.Database
                 databaseService.Process.WaitForExit();
                 Console.WriteLine("Database service exited.");
 
-                //Thread.Sleep(TimeSpan.FromSeconds(10));
+                Thread.Sleep(TimeSpan.FromSeconds(1));
             }
         }
     }
