@@ -10,11 +10,12 @@ namespace Database.Database
 {
     public abstract class Service
     {
-        public abstract void StartUp();
 
         public Process Process = null;
 
-        public void StartUpAsProcess()
+        public abstract void StartUp ();
+
+        public void StartUpAsProcess ()
         {
             Process currentProcess = Process.GetCurrentProcess();
 

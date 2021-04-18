@@ -8,7 +8,7 @@ namespace Database
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main (string[] args)
         {
             Console.WriteLine("Argument count: " + args.Count());
 
