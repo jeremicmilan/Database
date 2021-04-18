@@ -7,9 +7,23 @@ namespace Database.Database
 {
     class Database : Service
     {
-        public override void StartUp()
+        List<Table> Tables;
+
+        public Database ()
         {
-            Console.WriteLine("Database startup. Yeeey!");
+            Tables = new List<Table>();
+        }
+
+        public override void StartUp ()
+        {
+            Table testTable = new Table("testTable");
+            Tables.Add(testTable);
+
+            testTable.AddValue(1);
+            testTable.AddValue(2);
+            testTable.AddValue(3);
+
+            testTable.Print();
         }
     }
 }
