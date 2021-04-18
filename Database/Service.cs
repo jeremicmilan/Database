@@ -30,10 +30,5 @@ namespace Database.Database
 
             Console.WriteLine(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
-
-        public static explicit operator Service(ObjectHandle v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
