@@ -19,6 +19,10 @@ namespace Database
             }
             else
             {
+#if (DEBUG)
+                Debugger.Launch();
+#endif
+
                 string type = args[0];
                 Console.WriteLine("Process type: " + type);
                 Service service = (Service)Activator.CreateInstance(Type.GetType(type));
