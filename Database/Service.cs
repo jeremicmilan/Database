@@ -6,7 +6,7 @@ using System.Runtime.Remoting;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Database.Database
+namespace Database
 {
     public abstract class Service
     {
