@@ -9,7 +9,7 @@ namespace Database
     {
         public const string LogRecordParameterDelimiter = ",";
 
-        protected Database Database { get => Database.GetDatabase(); }
+        protected Database Database { get => Database.Get(); }
 
         public static LogRecord ParseLogRecord(string logRecordText)
         {

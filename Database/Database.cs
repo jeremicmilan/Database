@@ -21,7 +21,7 @@ namespace Database
         }
 
         private static Database _Database = null;
-        public static Database GetDatabase() => _Database;
+        public static Database Get() => _Database;
 
         public static Database Create()
         {

@@ -17,7 +17,7 @@ namespace Database
             Values = new HashSet<KeyValuePair<int, int>>();
         }
 
-        protected Database Database { get => Database.GetDatabase(); }
+        protected Database Database { get => Database.Get(); }
 
         public void Insert(int value, bool redo = false)
         {
