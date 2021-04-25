@@ -8,6 +8,8 @@ namespace Database
     {
         private Database _Database = null;
 
+        public const string DatabasePipeName = "DatabasePipe";
+
         public DatabaseService()
         {
             _Database = Database.Create();
@@ -16,6 +18,8 @@ namespace Database
         public override void StartUp()
         {
             _Database.StartUp();
+
+            RegisterPipeServer(DatabasePipeName, (message) => _Database.ProcessQuery(query: message));
         }
     }
 }

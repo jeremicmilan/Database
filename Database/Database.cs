@@ -75,5 +75,10 @@ namespace Database
 
             return table;
         }
+
+        public void ProcessQuery(string query)
+        {
+            Console.WriteLine("Received query: " + query);
+        }
     }
 }
