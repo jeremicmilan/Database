@@ -13,9 +13,9 @@ namespace Database
 
         public Process Process = null;
 
-        public abstract void StartUp ();
+        public abstract void StartUp();
 
-        public void StartUpAsProcess ()
+        public void StartUpAsProcess()
         {
             Process currentProcess = Process.GetCurrentProcess();
 

@@ -7,16 +7,16 @@ namespace Database
 {
     class LogManager
     {
-        public List<LogRecord> LogRecords = new List<LogRecord>();
+        List<LogRecord> LogRecords = new List<LogRecord>();
 
         string LogFilePath;
 
-        public LogManager (string logFilePath)
+        public LogManager(string logFilePath)
         {
             LogFilePath = logFilePath;
         }
 
-        public void ReadFromDisk ()
+        public void ReadFromDisk()
         {
             string[] logRecordTexts = File.ReadAllLines(LogFilePath);
 
@@ -26,12 +26,36 @@ namespace Database
             }
         }
 
-        public void WriteLogRecordToDisk (LogRecord logRecord)
+        public void RedoLog()
+        {
+            foreach (LogRecord logRecord in LogRecords)
+            {
+                logRecord.Redo();
+            }
+        }
+
+        public void WriteLogRecordToDisk(LogRecord logRecord)
         {
             using (StreamWriter streamWriter = File.AppendText(LogFilePath))
             {
                 streamWriter.WriteLine(logRecord.ToString());
             }
+        }
+
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+
+            stringBuilder.AppendLine(" ---- Log Manager start ----");
+
+            foreach (LogRecord logRecord in LogRecords)
+            {
+                stringBuilder.AppendLine(logRecord.ToString());
+            }
+
+            stringBuilder.AppendLine(" ---- Log Manager end ----");
+
+            return stringBuilder.ToString();
         }
     }
 }

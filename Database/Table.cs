@@ -11,18 +11,26 @@ namespace Database
         public HashSet<KeyValuePair<int, int>> Values { get; private set; }
         private int autoIncrement = 0;
 
-        public Table (string tableName)
+        public Table(string tableName)
         {
             TableName = tableName;
             Values = new HashSet<KeyValuePair<int, int>>();
         }
 
-        public void AddValue (int value)
+        protected Database Database { get => Database.GetDatabase(); }
+
+        public void Insert(int value, bool redo = false)
         {
             Values.Add(new KeyValuePair<int, int>(autoIncrement++, value));
+
+            if (!redo)
+            {
+                LogRecord logRecord = new LogRecordTableInsert(TableName, value);
+                Database.LogManager.WriteLogRecordToDisk(logRecord);
+            }
         }
 
-        public void Print ()
+        public void Print()
         {
             Console.WriteLine("----- Printing table: " + TableName);
 

@@ -6,9 +6,9 @@ namespace Database
 {
     abstract class LogRecordTable : LogRecord
     {
-        string TableName;
+        public string TableName;
 
-        protected LogRecordTable (string tableName)
+        protected LogRecordTable(string tableName)
         {
             TableName = tableName;
         }

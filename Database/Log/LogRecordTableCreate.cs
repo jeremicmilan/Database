@@ -17,5 +17,10 @@ namespace Database
         { }
 
         public override LogRecordType GetLogRecordType() => LogRecordType.TableCreate;
+
+        public override void Redo()
+        {
+            Database.CreateTable(TableName, redo: true);
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace Database
 {
     class Program
     {
-        static void Main (string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("Argument count: " + args.Count());
 
@@ -22,13 +22,20 @@ namespace Database
                 Debugger.Launch();
 #endif
 
-                string type = args[0];
-                Console.WriteLine("Process type: " + type);
-                Service service = (Service)Activator.CreateInstance(Type.GetType(type));
+                try
+                {
+                    string type = args[0];
+                    Console.WriteLine("Process type: " + type);
+                    Service service = (Service)Activator.CreateInstance(Type.GetType(type));
 
-                Console.WriteLine("Starting service...");
-                service.StartUp();
-                Console.WriteLine("Service ended.");
+                    Console.WriteLine("Starting service...");
+                    service.StartUp();
+                    Console.WriteLine("Service ended.");
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception.ToString());
+                }
 
                 Thread.Sleep(TimeSpan.FromSeconds(10));
             }

@@ -1,59 +1,79 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Database
 {
-    class Database : Service
+    class Database
     {
         List<Table> Tables;
-        LogManager LogManager;
 
-        public Database ()
+        private const string DefaultLogFilePath = "..\\..\\..\\DatabaseFiles\\database.log";
+        public LogManager LogManager;
+
+        private Database()
         {
             Tables = new List<Table>();
-            LogManager = new LogManager("..\\..\\..\\DatabaseFiles\\database.log");
+            LogManager = new LogManager(DefaultLogFilePath);
         }
 
-        public override void StartUp ()
+        private static Database _Database = null;
+        public static Database GetDatabase() => _Database;
+
+        public static Database Create()
         {
-            Table testTable = TableCreate("testTable");
-
-            TableInsert(testTable, 1);
-            TableInsert(testTable, 2);
-            TableInsert(testTable, 3);
-
-            testTable.Print();
-        }
-
-        void RedoLog ()
-        {
-            foreach (LogRecord logRecord in LogManager.LogRecords)
+            if (_Database != null)
             {
+                throw new Exception("There can be only one database per process.");
+            }
 
+            _Database = new Database();
+            return _Database;
+        }
+
+        public void StartUp()
+        {
+            if (File.Exists(DefaultLogFilePath))
+            {
+                LogManager.ReadFromDisk();
+                LogManager.RedoLog();
+            }
+            else
+            {
+                Table testTable = CreateTable("testTable");
+                testTable.Insert(1);
+                testTable.Insert(2);
+                testTable.Insert(3);
+            }
+
+            foreach (Table table in Tables)
+            {
+                table.Print();
             }
         }
 
-        public Table TableCreate (string tableName)
+        public Table GetTable(string tableName) => Tables.Where(table => table.TableName == tableName).FirstOrDefault();
+
+        public Table CreateTable(string tableName, bool redo = false)
         {
+            if (GetTable(tableName) != null)
+            {
+                throw new Exception(string.Format("Table with name {0} already exists.", tableName));
+            }
+
             Table table = new Table(tableName);
             Tables.Add(table);
 
-            LogRecord logRecord = new LogRecordTableCreate(tableName);
-            LogManager.WriteLogRecordToDisk(logRecord);
+            if (!redo)
+            {
+                LogRecord logRecord = new LogRecordTableCreate(tableName);
+                LogManager.WriteLogRecordToDisk(logRecord);
+            }
 
             return table;
-        }
-
-        public void TableInsert (
-            Table table,
-            int value)
-        {
-            table.AddValue(value);
-
-            LogRecord logRecord = new LogRecordTableInsert(table.TableName, value);
-            LogManager.WriteLogRecordToDisk(logRecord);
         }
     }
 }

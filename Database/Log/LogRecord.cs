@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Database
@@ -8,13 +9,14 @@ namespace Database
     {
         public const string LogRecordParameterDelimiter = ",";
 
+        protected Database Database { get => Database.GetDatabase(); }
+
         public static LogRecord ParseLogRecord(string logRecordText)
         {
-            string[] logRecordParts = logRecordText.Split(",");
+            string[] logRecordParts = logRecordText.Split(LogRecordParameterDelimiter);
 
             LogRecordType logRecordType = Enum.Parse<LogRecordType>(logRecordParts[0]);
-            string[] parameters = new string[logRecordParts.Length - 1];
-            Array.Copy(logRecordParts, parameters, 1);
+            string[] parameters = logRecordParts.Skip(1).ToArray();
 
             switch (logRecordType)
             {
@@ -30,6 +32,8 @@ namespace Database
         public override string ToString() => GetLogRecordType().ToString();
 
         public abstract LogRecordType GetLogRecordType();
+
+        public abstract void Redo();
 
         protected void CheckParameterLength(string[] parameters, int expectedParameterCount)
         {

@@ -7,14 +7,15 @@ namespace Database
 {
     class DatabaseStarter
     {
-        public void StartUp ()
+        public void StartUp()
         {
+            DatabaseService databaseService = new DatabaseService();
+
             while (true)
             {
                 Console.WriteLine("Database starter loop initiated");
 
                 Console.WriteLine("Starting up database service...");
-                Database databaseService = new Database();
                 databaseService.StartUpAsProcess();
 
                 Console.WriteLine("Waiting for database service to stop...");
