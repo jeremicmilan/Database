@@ -34,7 +34,7 @@ namespace Database
                     break;
                 }
 
-                Thread.Sleep(TimeSpan.FromSeconds(1));
+                Thread.Sleep(TimeSpan.FromMilliseconds(100));
             }
         }
 
@@ -69,8 +69,11 @@ namespace Database
 
                 switch (line.Trim())
                 {
-                    case "EXIT":
                     case "exit":
+                        return;
+
+                    case "kill":
+                        DatabaseService.Process.Kill();
                         return;
 
                     case "":
