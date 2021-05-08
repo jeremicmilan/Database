@@ -13,6 +13,7 @@ namespace Database
 
             if (args.Count() == 0)
             {
+                Console.Title = "DatabaseStarter";
                 Window.SnapLeft(Process.GetCurrentProcess());
 
                 DatabaseStarter databaseStarter = new DatabaseStarter();
@@ -28,9 +29,9 @@ namespace Database
 
                 try
                 {
-                    string type = args[0];
-                    Console.WriteLine("Process type: " + type);
-                    Service service = (Service)Activator.CreateInstance(Type.GetType(type));
+                    Type type = Type.GetType(args[0]);
+                    Console.Title = type.Name;
+                    Service service = (Service)Activator.CreateInstance(type);
 
                     Console.WriteLine("Starting service...");
                     service.StartUp();
