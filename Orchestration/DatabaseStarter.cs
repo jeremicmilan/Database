@@ -40,13 +40,13 @@ namespace Database
 
         public void StartUp()
         {
+            AppDomain.CurrentDomain.ProcessExit += (s, e) => KillStartedProcesses();
+
             StartProcesses();
 
             // Block on user input
             //
             Service.RegisterPipeClient(DatabaseService.DatabasePipeName, ProcessUserInput);
-
-            KillStartedProcesses();
         }
 
         private void StartProcesses()
