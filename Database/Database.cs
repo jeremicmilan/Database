@@ -41,18 +41,6 @@ namespace Database
                 LogManager.ReadFromDisk();
                 LogManager.RedoLog();
             }
-            else
-            {
-                Table testTable = CreateTable("testTable");
-                testTable.Insert(1);
-                testTable.Insert(2);
-                testTable.Insert(3);
-            }
-
-            foreach (Table table in Tables)
-            {
-                table.Print();
-            }
         }
 
         public Table GetTable(string tableName) => Tables.Where(table => table.TableName == tableName).FirstOrDefault();
