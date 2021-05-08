@@ -13,6 +13,8 @@ namespace Database
 
             if (args.Count() == 0)
             {
+                Window.SnapLeft(Process.GetCurrentProcess());
+
                 DatabaseStarter databaseStarter = new DatabaseStarter();
                 databaseStarter.StartUp();
             }
@@ -21,6 +23,8 @@ namespace Database
 #if (DEBUG)
                 Debugger.Launch();
 #endif
+
+                Window.SnapRight(Process.GetCurrentProcess());
 
                 try
                 {
