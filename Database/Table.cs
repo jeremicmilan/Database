@@ -8,20 +8,24 @@ namespace Database
     {
         public string TableName { get; private set; }
 
-        public HashSet<KeyValuePair<int, int>> Values { get; private set; }
-        private int autoIncrement = 0;
+        public List<int> Values { get; private set; }
 
         public Table(string tableName)
         {
             TableName = tableName;
-            Values = new HashSet<KeyValuePair<int, int>>();
+            Values = new List<int>();
         }
 
         protected Database Database { get => Database.Get(); }
 
         public void Insert(int value, bool redo = false)
         {
-            Values.Add(new KeyValuePair<int, int>(autoIncrement++, value));
+            if (Values.Contains(value))
+            {
+                throw new Exception(string.Format("Insert failed. Value {0} already exists in table {1}.", value, TableName));
+            }
+
+            Values.Add(value);
 
             if (!redo)
             {
@@ -34,9 +38,9 @@ namespace Database
         {
             Console.WriteLine("----- Printing table: " + TableName);
 
-            foreach ((int key, int value) in Values)
+            foreach (int value in Values)
             {
-                Console.WriteLine("Key: " + key + " Value: " + value);
+                Console.WriteLine("Value: " + value);
             }
 
             Console.WriteLine("---------------------");
