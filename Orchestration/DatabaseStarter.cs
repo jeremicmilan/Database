@@ -23,8 +23,6 @@ namespace Database
             {
                 Console.WriteLine("Starting up database service...");
                 DatabaseService.StartUpAsProcess();
-
-                Console.WriteLine("Waiting for database service to stop...");
                 DatabaseService.Process.WaitForExit();
                 Console.WriteLine("Database service exited.");
 
