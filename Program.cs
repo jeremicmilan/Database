@@ -9,8 +9,6 @@ namespace Database
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Argument count: " + args.Count());
-
             if (args.Count() == 0)
             {
                 Console.Title = "DatabaseStarter";
