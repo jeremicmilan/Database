@@ -13,7 +13,7 @@ namespace Database
         public static void SnapLeft(Process process)
         {
             Rect rect = GetWorkAreaRect();
-            rect.Right = rect.Right / 2;
+            rect.Right /= 2;
             MoveWindow(process, rect);
         }
 
@@ -48,7 +48,16 @@ namespace Database
 
             EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MonitorEnumCallBack, IntPtr.Zero);
 
-            return monitorInfoEx.WorkArea;
+            Rect rect = monitorInfoEx.WorkArea;
+            if (rect.Right > 3000)
+            {
+                // For ultra wide monitors work area should be only on the left side of the screen,
+                //   where right side is reserved for the Visual Studio instance.
+                //
+                rect.Right /= 2;
+            }
+
+            return rect;
         }
 
         [DllImport("user32.dll", SetLastError = true)]
