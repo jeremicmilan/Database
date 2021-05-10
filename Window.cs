@@ -31,7 +31,7 @@ namespace Database
                 rect.Width, rect.Height,
                 true))
             {
-                throw new Exception("MoveWindow failed");
+                throw new Exception("MoveWindow failed with error: " + GetLastError());
             }
         }
 
@@ -127,5 +127,8 @@ namespace Database
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = CCHDEVICENAME)]
             public string DeviceName;
         }
+
+        [DllImport("kernel32.dll")]
+        private static extern uint GetLastError();
     }
 }
