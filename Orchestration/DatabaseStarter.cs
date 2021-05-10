@@ -69,10 +69,10 @@ namespace Database
 
                 switch (line.Trim())
                 {
-                    case "exit":
+                    case "EXIT":
                         return;
 
-                    case "kill":
+                    case "KILL":
                         DatabaseService.Process.Kill();
                         return;
 
