@@ -76,7 +76,7 @@ namespace Database
                 switch (line.Trim())
                 {
                     case "KILL":
-                        DatabaseService.Process.Kill();
+                        KillDatabase();
                         break;
 
                     case "":
@@ -111,6 +111,20 @@ namespace Database
             {
                 ParseLine(line);
             }
+        }
+
+        private void KillDatabase()
+        {
+            DatabaseService.Process.Kill();
+        }
+
+        public void SetLogFilePath(string logFilePath)
+        {
+            DatabaseService.SetLogFilePath(logFilePath);
+
+            // Restart database so new log file path value is picked up.
+            //
+            KillDatabase();
         }
 
         private void KeepDatabaseServiceUp()

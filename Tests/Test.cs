@@ -31,7 +31,8 @@ namespace Database.Tests
             LogTestMessage("Running test: " + TestName);
 
             RecreateWorkingDirectory();
-            SendMessageToDatabase(DatabaseService.SetLogPathStatement + TestLogFile);
+
+            DatabaseStarter.Get().SetLogFilePath(TestLogFile);
 
             using (StreamReader streamReader = new StreamReader(TestFile))
             {
@@ -43,7 +44,7 @@ namespace Database.Tests
                 }
             }
 
-            CleanupWorkingDirectoryIfExists();
+            DatabaseStarter.Get().SetLogFilePath(null);
             LogTestMessage("Finnished test: " + TestName);
         }
 
