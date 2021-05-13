@@ -21,9 +21,7 @@ namespace Database
             }
             else
             {
-#if (DEBUG)
                 //Debugger.Launch();
-#endif
 
                 Window.SnapRight(Process.GetCurrentProcess());
 
