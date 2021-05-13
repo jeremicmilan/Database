@@ -20,7 +20,7 @@ namespace Database
             else
             {
 #if (DEBUG)
-                Debugger.Launch();
+                //Debugger.Launch();
 #endif
 
                 Window.SnapRight(Process.GetCurrentProcess());
