@@ -11,7 +11,8 @@ namespace Database
         public const string DatabasePipeName = "DatabasePipe";
         public const string SetLogPathStatement = "SET LOG PATH = ";
 
-        public DatabaseService()
+        public DatabaseService(ServiceConfiguration serviceConfiguration = null)
+            : base(serviceConfiguration)
         {
             _Database = Database.Create();
         }

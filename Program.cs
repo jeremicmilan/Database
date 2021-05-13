@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Xml.Serialization;
 
 namespace Database
 {
@@ -27,9 +29,11 @@ namespace Database
 
                 try
                 {
-                    Type type = Type.GetType(args[0]);
+                    XmlSerializer serviceConfigurationSerializer = new XmlSerializer(typeof(ServiceConfiguration));
+                    ServiceConfiguration serviceConfiguration = (ServiceConfiguration)serviceConfigurationSerializer.Deserialize(new StringReader(args[0]));
+                    Type type = Type.GetType(serviceConfiguration.ServiceType);
                     Console.Title = type.Name;
-                    Service service = (Service)Activator.CreateInstance(type);
+                    Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
                     Console.WriteLine("Starting service...");
                     service.StartUp();

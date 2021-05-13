@@ -4,10 +4,12 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
+using System.Linq;
 using System.Runtime.Remoting;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Database
 {
@@ -15,6 +17,12 @@ namespace Database
     {
 
         public Process Process = null;
+        protected ServiceConfiguration ServiceConfiguration;
+
+        protected Service(ServiceConfiguration serviceConfiguration = null)
+        {
+            ServiceConfiguration = serviceConfiguration ?? new ServiceConfiguration(this.GetType().ToString());
+        }
 
         public abstract void StartUp();
 
@@ -25,8 +33,13 @@ namespace Database
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.UseShellExecute = true;
 
+
+            XmlSerializer serviceConfigurationSerializer = new XmlSerializer(typeof(ServiceConfiguration));
+            StringWriter stringWriter = new StringWriter();
+            serviceConfigurationSerializer.Serialize(stringWriter, ServiceConfiguration);
+            string serviceConfigurationString = new string(stringWriter.ToString().Where(c => !Environment.NewLine.Contains(c)).ToArray());
+            string arguments = "\"" + serviceConfigurationString.Replace("\"", "\\\"") + "\"";
             string processName = currentProcess.ProcessName;
-            string arguments = this.GetType().ToString();
             processStartInfo.FileName = processName;
             processStartInfo.Arguments = arguments;
 
