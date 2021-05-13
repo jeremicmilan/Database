@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Database.Tests;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -61,10 +63,8 @@ namespace Database
 
         private void ProcessUserInput(Action<string> sendMessageToDatabase)
         {
-            while (true)
+            Action<string> ParseLine = (line) =>
             {
-                string line = Console.ReadLine();
-
                 switch (line.Trim())
                 {
                     case "EXIT":
@@ -72,7 +72,7 @@ namespace Database
 
                     case "KILL":
                         DatabaseService.Process.Kill();
-                        return;
+                        break;
 
                     case "":
                         break;
@@ -81,6 +81,33 @@ namespace Database
                         sendMessageToDatabase(line);
                         break;
                 }
+            };
+
+            while (true)
+            {
+                string line = Console.ReadLine();
+
+                const string RunTestStatement = "RUN ";
+                if (line.StartsWith(RunTestStatement))
+                {
+                    string testName = line.Substring(RunTestStatement.Length).Trim();
+                    if (!testName.All(char.IsLetter))
+                    {
+                        throw new Exception("Test name should contain only letters.");
+                    }
+
+                    if (testName == "ALL")
+                    {
+                        Test.RunAll(ParseLine);
+                    }
+                    else
+                    {
+                        Test test = new Test(testName, ParseLine);
+                        test.Run();
+                    }
+                }
+
+                ParseLine(line);
             }
         }
     }

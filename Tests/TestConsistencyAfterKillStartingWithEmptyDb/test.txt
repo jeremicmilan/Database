@@ -1,0 +1,4 @@
+CREATE TABLE testtable
+INSERT INTO testdb VALUES 1, 2, 3
+
+KILL
