@@ -16,7 +16,7 @@ namespace Database
                 Console.Title = "DatabaseStarter";
                 Window.SnapLeft(Process.GetCurrentProcess());
 
-                DatabaseStarter databaseStarter = new DatabaseStarter();
+                DatabaseStarter databaseStarter = DatabaseStarter.Create();
                 databaseStarter.StartUp();
             }
             else

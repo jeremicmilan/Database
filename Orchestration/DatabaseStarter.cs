@@ -11,6 +11,22 @@ namespace Database
 {
     class DatabaseStarter
     {
+
+        private DatabaseStarter() { }
+
+        private static DatabaseStarter _DatabaseStarter = null;
+        public static DatabaseStarter Get() => _DatabaseStarter;
+
+        public static DatabaseStarter Create()
+        {
+            if (_DatabaseStarter != null)
+            {
+                throw new Exception("There can be only one database starter.");
+            }
+
+            return _DatabaseStarter = new DatabaseStarter();
+        }
+
         DatabaseService DatabaseService = null;
         CancellationTokenSource KeepDatabaseServiceUpThreadCancellationTokenSource;
 
