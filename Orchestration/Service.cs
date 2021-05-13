@@ -101,6 +101,7 @@ namespace Database
                                 lastMessage = message;
                                 streamWriter.WriteLine(message);
                                 streamWriter.Flush();
+                                lastMessage = null;
                             });
                         }
                     }
