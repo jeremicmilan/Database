@@ -13,7 +13,7 @@ namespace Database
         public DatabaseService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
-            _Database = Database.Create();
+            _Database = Database.Create(serviceConfiguration?.LogFilePath);
         }
 
         public override void StartUp()

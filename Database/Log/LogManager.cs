@@ -7,9 +7,9 @@ namespace Database
 {
     class LogManager
     {
-        List<LogRecord> LogRecords = new List<LogRecord>();
+        private List<LogRecord> LogRecords = new List<LogRecord>();
 
-        string LogFilePath;
+        public string LogFilePath { get; private set; }
 
         public LogManager(string logFilePath)
         {

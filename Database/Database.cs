@@ -45,7 +45,7 @@ namespace Database
 
         public void StartUp()
         {
-            if (File.Exists(DefaultLogFilePath))
+            if (File.Exists(LogManager.LogFilePath))
             {
                 LogManager.ReadFromDisk();
                 LogManager.RedoLog();
