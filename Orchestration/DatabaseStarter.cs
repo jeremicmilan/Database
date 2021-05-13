@@ -14,30 +14,6 @@ namespace Database
         DatabaseService DatabaseService = null;
         CancellationTokenSource KeepDatabaseServiceUpThreadCancellationTokenSource;
 
-        private void KeepDatabaseServiceUp ()
-        {
-            Thread.CurrentThread.Name = MethodBase.GetCurrentMethod().Name;
-
-            DatabaseService = new DatabaseService();
-            Console.WriteLine("Database service created");
-
-            while (true)
-            {
-                Console.WriteLine("Starting up database service...");
-                DatabaseService.StartUpAsProcess();
-                DatabaseService.Process.WaitForExit();
-                Console.WriteLine("Database service exited.");
-
-                if (KeepDatabaseServiceUpThreadCancellationTokenSource != null &&
-                    KeepDatabaseServiceUpThreadCancellationTokenSource.IsCancellationRequested)
-                {
-                    break;
-                }
-
-                Thread.Sleep(TimeSpan.FromMilliseconds(100));
-            }
-        }
-
         public void StartUp()
         {
             AppDomain.CurrentDomain.ProcessExit += (s, e) => KillStartedProcesses();
@@ -118,6 +94,30 @@ namespace Database
             else
             {
                 ParseLine(line);
+            }
+        }
+
+        private void KeepDatabaseServiceUp()
+        {
+            Thread.CurrentThread.Name = MethodBase.GetCurrentMethod().Name;
+
+            DatabaseService = new DatabaseService();
+            Console.WriteLine("Database service created");
+
+            while (true)
+            {
+                Console.WriteLine("Starting up database service...");
+                DatabaseService.StartUpAsProcess();
+                DatabaseService.Process.WaitForExit();
+                Console.WriteLine("Database service exited.");
+
+                if (KeepDatabaseServiceUpThreadCancellationTokenSource != null &&
+                    KeepDatabaseServiceUpThreadCancellationTokenSource.IsCancellationRequested)
+                {
+                    break;
+                }
+
+                Thread.Sleep(TimeSpan.FromMilliseconds(100));
             }
         }
     }
