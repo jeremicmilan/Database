@@ -85,6 +85,7 @@ namespace Database
 
             while (true)
             {
+                Console.Write("> ");
                 string line = Console.ReadLine();
 
                 const string RunTestStatement = "RUN ";
