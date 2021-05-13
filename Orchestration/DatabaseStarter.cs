@@ -46,7 +46,7 @@ namespace Database
 
             // Block on user input
             //
-            Service.RegisterPipeClient(DatabaseService.DatabasePipeName, ProcessUserInput);
+            Service.RegisterPipeClient(DatabaseService.DatabasePipeName, WaitForUserInput);
         }
 
         private void StartProcesses()
@@ -61,15 +61,28 @@ namespace Database
             DatabaseService?.Process?.Kill();
         }
 
-        private void ProcessUserInput(Action<string> sendMessageToDatabase)
+        private void WaitForUserInput(Action<string> sendMessageToDatabase)
+        {
+            while (true)
+            {
+                Console.Write("> ");
+                string line = Console.ReadLine();
+
+                if (line == "EXIT")
+                {
+                    return;
+                }
+
+                ProcessUserInput(line.Trim(), sendMessageToDatabase);
+            }
+        }
+
+        private void ProcessUserInput(string line, Action<string> sendMessageToDatabase)
         {
             Action<string> ParseLine = (line) =>
             {
                 switch (line.Trim())
                 {
-                    case "EXIT":
-                        return;
-
                     case "KILL":
                         DatabaseService.Process.Kill();
                         break;
@@ -83,34 +96,28 @@ namespace Database
                 }
             };
 
-            while (true)
+            const string RunTestStatement = "RUN ";
+            if (line.StartsWith(RunTestStatement))
             {
-                Console.Write("> ");
-                string line = Console.ReadLine();
-
-                const string RunTestStatement = "RUN ";
-                if (line.StartsWith(RunTestStatement))
+                string testName = line.Substring(RunTestStatement.Length).Trim();
+                if (!testName.All(char.IsLetter))
                 {
-                    string testName = line.Substring(RunTestStatement.Length).Trim();
-                    if (!testName.All(char.IsLetter))
-                    {
-                        throw new Exception("Test name should contain only letters.");
-                    }
+                    throw new Exception("Test name should contain only letters.");
+                }
 
-                    if (testName == "ALL")
-                    {
-                        Test.RunAll(ParseLine);
-                    }
-                    else
-                    {
-                        Test test = new Test(testName, ParseLine);
-                        test.Run();
-                    }
+                if (testName == "ALL")
+                {
+                    Test.RunAll(ParseLine);
                 }
                 else
                 {
-                    ParseLine(line);
+                    Test test = new Test(testName, ParseLine);
+                    test.Run();
                 }
+            }
+            else
+            {
+                ParseLine(line);
             }
         }
     }
