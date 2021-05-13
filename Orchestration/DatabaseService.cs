@@ -9,6 +9,7 @@ namespace Database
         private Database _Database = null;
 
         public const string DatabasePipeName = "DatabasePipe";
+        public const string SetLogPathStatement = "SET LOG PATH = ";
 
         public DatabaseService()
         {
@@ -19,7 +20,22 @@ namespace Database
         {
             _Database.StartUp();
 
-            RegisterPipeServer(DatabasePipeName, (message) => _Database.ProcessQuery(query: message));
+            RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
+        }
+
+        public void ProcessQuery(string message)
+        {
+            if (message.StartsWith(SetLogPathStatement))
+            {
+                string logPath = message.Substring(SetLogPathStatement.Length).Trim();
+
+                Database.Destroy();
+                _Database = Database.Create(logPath);
+            }
+            else
+            {
+                _Database.ProcessQuery(query: message);
+            }
         }
     }
 }

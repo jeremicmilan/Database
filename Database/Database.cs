@@ -14,24 +14,33 @@ namespace Database
         private const string DefaultLogFilePath = "..\\..\\..\\DatabaseFiles\\database.log";
         public LogManager LogManager;
 
-        private Database()
+        private Database(string logPath = null)
         {
             Tables = new List<Table>();
-            LogManager = new LogManager(DefaultLogFilePath);
+            LogManager = new LogManager(logPath ?? DefaultLogFilePath);
         }
 
         private static Database _Database = null;
         public static Database Get() => _Database;
 
-        public static Database Create()
+        public static Database Create(string logPath = null)
         {
             if (_Database != null)
             {
                 throw new Exception("There can be only one database per process.");
             }
 
-            _Database = new Database();
-            return _Database;
+            return _Database = new Database(logPath);
+        }
+
+        public static void Destroy()
+        {
+            if (_Database == null)
+            {
+                throw new Exception("No database to destroy.");
+            }
+
+            _Database = null;
         }
 
         public void StartUp()
@@ -84,6 +93,7 @@ namespace Database
                     }
 
                     CreateTable(tableName);
+
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):

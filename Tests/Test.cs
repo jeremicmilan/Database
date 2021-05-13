@@ -9,7 +9,7 @@ namespace Database.Tests
     {
         public string TestName { get; private set; }
 
-        private Action<string> SendMessageToDatabase;
+        private Action<string> SendMessageToDatabase = null;
 
         public Test (string testName, Action<string> sendMessageToDatabase)
         {
@@ -28,9 +28,10 @@ namespace Database.Tests
 
         public void Run()
         {
-            RecreateWorkingDirectory();
-
             LogTestMessage("Running test: " + TestName);
+
+            RecreateWorkingDirectory();
+            SendMessageToDatabase(DatabaseService.SetLogPathStatement + TestLogFile);
 
             using (StreamReader streamReader = new StreamReader(TestFile))
             {
@@ -42,22 +43,25 @@ namespace Database.Tests
                 }
             }
 
+            CleanupWorkingDirectoryIfExists();
             LogTestMessage("Finnished test: " + TestName);
         }
 
         private void RecreateWorkingDirectory()
         {
+            CleanupWorkingDirectoryIfExists();
+            Directory.CreateDirectory(WorkingDirectory);
+        }
+
+        private void CleanupWorkingDirectoryIfExists()
+        {
             if (Directory.Exists(WorkingDirectory))
             {
                 Directory.Delete(WorkingDirectory, recursive: true);
             }
-
-            Directory.CreateDirectory(WorkingDirectory);
         }
 
         private static string RootDirectory => Path.GetFullPath("..\\..\\..");
-
-        private static string WorkingDirectory => RootDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
 
         private static string TestsDirectory => RootDirectory + Path.DirectorySeparatorChar + "Tests";
 
@@ -67,11 +71,15 @@ namespace Database.Tests
 
         private string TestFile => TestDirectory + Path.DirectorySeparatorChar + "test.txt";
 
+        private string WorkingDirectory => TestDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
+
+        private string TestLogFile => WorkingDirectory + Path.DirectorySeparatorChar + "test.log";
+
+        private const string TestExecutionPrefix = "-- ";
+
         private void LogTestMessage(string message)
         {
             Console.WriteLine(TestExecutionPrefix + message);
         }
-
-        private const string TestExecutionPrefix = "-- ";
     }
 }
