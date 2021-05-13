@@ -33,7 +33,6 @@ namespace Database
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.UseShellExecute = true;
 
-
             XmlSerializer serviceConfigurationSerializer = new XmlSerializer(typeof(ServiceConfiguration));
             StringWriter stringWriter = new StringWriter();
             serviceConfigurationSerializer.Serialize(stringWriter, ServiceConfiguration);
