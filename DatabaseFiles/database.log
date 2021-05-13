@@ -1,4 +1,0 @@
-TableCreate,testTable
-TableInsert,testTable,1
-TableInsert,testTable,2
-TableInsert,testTable,3
