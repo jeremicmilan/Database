@@ -107,8 +107,10 @@ namespace Database
                         test.Run();
                     }
                 }
-
-                ParseLine(line);
+                else
+                {
+                    ParseLine(line);
+                }
             }
         }
     }
