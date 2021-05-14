@@ -47,7 +47,7 @@ namespace Database
             Console.WriteLine(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
 
-        public static void RegisterPipeServer (string pipeName, Action<string> action)
+        public static void RegisterPipeServer(string pipeName, Action<string> action)
         {
             using (NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut))
             {
@@ -80,58 +80,35 @@ namespace Database
             }
         }
 
-        public static void RegisterPipeClient (string pipeName, Action<Action<string>> action)
+        private NamedPipeClientStream PipeClient;
+        private string PipeName;
+
+        public void RegisterPipeClient(string pipeName)
         {
-            string lastMessage = null;
+            PipeName = pipeName;
 
-            while (true)
-            {
-                try
+            PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
+            Console.Write("Attempting to connect to pipe...");
+            PipeClient.Connect();
+
+            Console.WriteLine("Connected to pipe.");
+            Console.WriteLine("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
+        }
+
+        public void SendMessageToPipe(string message)
+        {
+            Utility.ExecuteWithRetry(
+                action: () =>
                 {
-                    using (NamedPipeClientStream pipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut))
+                    using (StreamWriter streamWriter = new StreamWriter(PipeClient))
                     {
-                        Console.Write("Attempting to connect to pipe...");
-                        pipeClient.Connect();
-
-                        Console.WriteLine("Connected to pipe.");
-                        Console.WriteLine("There are currently {0} pipe server instances open.",
-                            pipeClient.NumberOfServerInstances);
-                        using (StreamWriter streamWriter = new StreamWriter(pipeClient))
-                        {
-                            if (lastMessage != null)
-                            {
-                                // If the pipe breaks we need to send the last message
-                                //     when the previous pipe was alive
-                                //
-                                streamWriter.WriteLine(lastMessage);
-                                streamWriter.Flush();
-                                lastMessage = null;
-                            }
-
-                            action((message) =>
-                            {
-                                lastMessage = message;
-                                streamWriter.WriteLine(message);
-                                streamWriter.Flush();
-                                lastMessage = null;
-                            });
-                        }
+                        streamWriter.WriteLine(message);
+                        streamWriter.Flush();
                     }
-                }
-                catch (IOException exception)
-                {
-                    if (exception.Message == "Pipe is broken.")
-                    {
-                        continue;
-                    }
-                    else
-                    {
-                        Console.WriteLine(exception.ToString());
-                    }
-                }
-
-                break;
-            }
+                },
+                correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken." || exception.Message == "Cannot access a closed pipe.",
+                correctiveAction: () => RegisterPipeClient(PipeName)
+                );
         }
     }
 }

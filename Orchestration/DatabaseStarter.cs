@@ -36,15 +36,16 @@ namespace Database
 
             StartProcesses();
 
-            // Block on user input
-            //
-            Service.RegisterPipeClient(DatabaseService.DatabasePipeName, WaitForUserInput);
+            DatabaseService.RegisterPipeClient(DatabaseService.DatabasePipeName);
+
+            WaitForUserInput();
         }
 
         private void StartProcesses()
         {
             KeepDatabaseServiceUpThreadCancellationTokenSource = new CancellationTokenSource();
             new Thread(KeepDatabaseServiceUp).Start();
+            Utility.WaitUntil(() => DatabaseService != null);
         }
 
         private void KillStartedProcesses()
@@ -53,7 +54,7 @@ namespace Database
             DatabaseService?.Process?.Kill();
         }
 
-        private void WaitForUserInput(Action<string> sendMessageToDatabase)
+        private void WaitForUserInput()
         {
             while (true)
             {
@@ -65,29 +66,29 @@ namespace Database
                     return;
                 }
 
-                ProcessUserInput(line.Trim(), sendMessageToDatabase);
+                ProcessUserInput(line.Trim());
             }
         }
 
-        private void ProcessUserInput(string line, Action<string> sendMessageToDatabase)
+        public void ProcessDatabaseCommand(string line)
         {
-            Action<string> ParseLine = (line) =>
+            switch (line.Trim())
             {
-                switch (line.Trim())
-                {
-                    case "KILL":
-                        KillDatabase();
-                        break;
+                case "KILL":
+                    KillDatabase();
+                    break;
 
-                    case "":
-                        break;
+                case "":
+                    break;
 
-                    default:
-                        sendMessageToDatabase(line);
-                        break;
-                }
-            };
+                default:
+                    DatabaseService.SendMessageToPipe(line);
+                    break;
+            }
+        }
 
+        private void ProcessUserInput(string line)
+        {
             const string RunTestStatement = "RUN ";
             if (line.StartsWith(RunTestStatement))
             {
@@ -99,17 +100,17 @@ namespace Database
 
                 if (testName == "ALL")
                 {
-                    Test.RunAll(ParseLine);
+                    Test.RunAll();
                 }
                 else
                 {
-                    Test test = new Test(testName, ParseLine);
+                    Test test = new Test(testName);
                     test.Run();
                 }
             }
             else
             {
-                ParseLine(line);
+                ProcessDatabaseCommand(line);
             }
         }
 

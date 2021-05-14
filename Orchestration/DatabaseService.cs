@@ -20,6 +20,8 @@ namespace Database
         {
             _Database.StartUp();
 
+            // Block on waiting for input from clients
+            //
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
         }
 

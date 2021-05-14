@@ -9,19 +9,16 @@ namespace Database.Tests
     {
         public string TestName { get; private set; }
 
-        private Action<string> SendMessageToDatabase = null;
-
-        public Test (string testName, Action<string> sendMessageToDatabase)
+        public Test (string testName)
         {
             TestName = testName;
-            SendMessageToDatabase = sendMessageToDatabase;
         }
 
-        public static void RunAll(Action<string> sendMessageToDatabase)
+        public static void RunAll()
         {
             foreach (DirectoryInfo directoryInfo in TestsDirectoryInfo.GetDirectories())
             {
-                Test test = new Test(directoryInfo.Name, sendMessageToDatabase);
+                Test test = new Test(directoryInfo.Name);
                 test.Run();
             }
         }
@@ -40,7 +37,7 @@ namespace Database.Tests
                 {
                     string line = streamReader.ReadLine();
                     LogTestMessage(TestExecutionPrefix + line);
-                    SendMessageToDatabase(line);
+                    DatabaseStarter.Get().ProcessDatabaseCommand(line);
                 }
             }
 
