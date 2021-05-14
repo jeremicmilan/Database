@@ -1,0 +1,4 @@
+TableCreate,testtable
+TableInsert,testtable,1
+TableInsert,testtable,2
+TableInsert,testtable,3
