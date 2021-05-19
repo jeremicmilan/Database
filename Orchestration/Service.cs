@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
 using System.Linq;
-using System.Runtime.Remoting;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace Database
@@ -81,11 +77,17 @@ namespace Database
         }
 
         private NamedPipeClientStream PipeClient;
+        private StreamWriter StreamWriter;
         private string PipeName;
 
         public void RegisterPipeClient(string pipeName)
         {
             PipeName = pipeName;
+
+            if (PipeClient != null)
+            {
+                PipeClient.Dispose();
+            }
 
             PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
             Console.Write("Attempting to connect to pipe...");
@@ -93,6 +95,8 @@ namespace Database
 
             Console.WriteLine("Connected to pipe.");
             Console.WriteLine("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
+
+            StreamWriter = new StreamWriter(PipeClient);
         }
 
         public void SendMessageToPipe(string message)
@@ -100,11 +104,10 @@ namespace Database
             Utility.ExecuteWithRetry(
                 action: () =>
                 {
-                    using (StreamWriter streamWriter = new StreamWriter(PipeClient))
-                    {
-                        streamWriter.WriteLine(message);
-                        streamWriter.Flush();
-                    }
+                    StreamWriter.WriteLine(message);
+                    StreamWriter.Flush();
+
+                    // We need to wait for reply here...
                 },
                 correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken." || exception.Message == "Cannot access a closed pipe.",
                 correctiveAction: () => RegisterPipeClient(PipeName)
