@@ -31,14 +31,21 @@ namespace Database.Tests
 
             DatabaseStarter.Get().SetLogFilePath(TestLogFile);
 
-            using (StreamReader streamReader = new StreamReader(TestFile))
+            try
             {
-                while (streamReader.Peek() >= 0)
+                using (StreamReader streamReader = new StreamReader(TestFile))
                 {
-                    string line = streamReader.ReadLine();
-                    LogTestMessage(TestExecutionPrefix + line);
-                    DatabaseStarter.Get().ProcessDatabaseCommand(line);
+                    while (streamReader.Peek() >= 0)
+                    {
+                        string line = streamReader.ReadLine();
+                        LogTestMessage(TestExecutionPrefix + line);
+                        DatabaseStarter.Get().ProcessDatabaseCommand(line);
+                    }
                 }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.ToString());
             }
 
             DatabaseStarter.Get().SetLogFilePath(null);
