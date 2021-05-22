@@ -11,7 +11,6 @@ namespace Database
 {
     public abstract class Service
     {
-
         public Process Process = null;
         protected ServiceConfiguration ServiceConfiguration;
 
@@ -43,6 +42,12 @@ namespace Database
             Console.WriteLine(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
 
+        private enum MessageStatus
+        {
+            Success,
+            Failure,
+        }
+
         public static void RegisterPipeServer(string pipeName, Action<string> action)
         {
             using (NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut))
@@ -62,22 +67,31 @@ namespace Database
                             string message = streamReader.ReadLine();
                             if (message != null)
                             {
-                                action(message);
+                                try
+                                {
+                                    action(message);
+                                    WriteMessageToPipeStream(pipeServer, MessageStatus.Success.ToString());
+                                }
+                                catch (Exception exception)
+                                {
+                                    Console.WriteLine(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
+                                    WriteMessageToPipeStream(pipeServer, MessageStatus.Failure.ToString());
+                                }
                             }
 
                             Thread.Sleep(TimeSpan.FromSeconds(0.1));
                         }
                     }
                 }
-                catch (IOException e)
+                catch (Exception exception)
                 {
-                    Console.WriteLine("ERROR: {0}", e.Message);
+                    Console.WriteLine("Pipe server main loop failed: {0}", exception.ToString());
+                    Thread.Sleep(TimeSpan.FromSeconds(10));
                 }
             }
         }
 
         private NamedPipeClientStream PipeClient;
-        private StreamWriter StreamWriter;
         private string PipeName;
 
         public void RegisterPipeClient(string pipeName)
@@ -95,8 +109,6 @@ namespace Database
 
             Console.WriteLine("Connected to pipe.");
             Console.WriteLine("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
-
-            StreamWriter = new StreamWriter(PipeClient);
         }
 
         public void SendMessageToPipe(string message)
@@ -104,14 +116,40 @@ namespace Database
             Utility.ExecuteWithRetry(
                 action: () =>
                 {
-                    StreamWriter.WriteLine(message);
-                    StreamWriter.Flush();
+                    WriteMessageToPipeStream(PipeClient, message);
+                    MessageStatus status = ReadStatusFromPipeStream(PipeClient);
 
-                    // We need to wait for reply here...
+                    if (status == MessageStatus.Failure)
+                    {
+                        throw new Exception("Received failure from pipe, while sending message: " + message);
+                    }
                 },
                 correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken." || exception.Message == "Cannot access a closed pipe.",
                 correctiveAction: () => RegisterPipeClient(PipeName)
                 );
+        }
+
+        private static void WriteMessageToPipeStream(PipeStream pipeStream, string message)
+        {
+            StreamWriter streamWriter = new StreamWriter(pipeStream);
+            streamWriter.WriteLine(message);
+            streamWriter.Flush();
+        }
+
+        private static void WriteStatusToPipeStream(PipeStream pipeStream, MessageStatus messageStatus)
+        {
+            WriteMessageToPipeStream(pipeStream, messageStatus.ToString());
+        }
+
+        private static string ReadMessageFromPipeStream(PipeStream pipeStream)
+        {
+            StreamReader streamReader = new StreamReader(pipeStream);
+            return streamReader.ReadLine();
+        }
+
+        private static MessageStatus ReadStatusFromPipeStream(PipeStream pipeStream)
+        {
+             return Enum.Parse<MessageStatus>(ReadMessageFromPipeStream(pipeStream));
         }
     }
 }
