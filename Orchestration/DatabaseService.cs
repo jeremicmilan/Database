@@ -25,9 +25,9 @@ namespace Database
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
         }
 
-        public void ProcessQuery(string message)
+        public string ProcessQuery(string message)
         {
-            _Database.ProcessQuery(query: message);
+            return _Database.ProcessQuery(query: message);
         }
 
         public void SetLogFilePath(string logFilePath)

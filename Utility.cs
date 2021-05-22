@@ -36,8 +36,28 @@ namespace Database
         {
             while (!predicate())
             {
-                Thread.Sleep(100);
+                WaitDefaultPipeTimeout();
             }
+        }
+
+        public static T WaitUntil<T>(Func<T> func, Predicate<T> predicate)
+        {
+            T result = func();
+            while (!predicate(result))
+            {
+                WaitDefaultPipeTimeout();
+                result = func();
+            }
+
+            return result;
+        }
+
+
+        public static TimeSpan DefaultPipeResultWaitTimespan = TimeSpan.FromMilliseconds(100);
+
+        public static void WaitDefaultPipeTimeout()
+        {
+            Thread.Sleep(DefaultPipeResultWaitTimespan);
         }
     }
 }

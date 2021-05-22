@@ -27,15 +27,14 @@ namespace Database
 
                 try
                 {
-                    XmlSerializer serviceConfigurationSerializer = new XmlSerializer(typeof(ServiceConfiguration));
-                    ServiceConfiguration serviceConfiguration = (ServiceConfiguration)serviceConfigurationSerializer.Deserialize(new StringReader(args[0]));
+                    ServiceConfiguration serviceConfiguration = ServiceConfiguration.Deserialize(args[0]);
                     Type type = Type.GetType(serviceConfiguration.ServiceType);
                     Console.Title = type.Name;
                     Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
-                    Console.WriteLine("Starting service...");
+                    // Console.WriteLine("Starting service...");
                     service.StartUp();
-                    Console.WriteLine("Service ended.");
+                    // Console.WriteLine("Service ended.");
                 }
                 catch (Exception exception)
                 {

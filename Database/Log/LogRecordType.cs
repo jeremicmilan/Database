@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Database
 {
-    enum LogRecordType
+    public enum LogRecordType
     {
         TableCreate,
         TableInsert,

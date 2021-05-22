@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Database
 {
-    abstract class LogRecord
+    public abstract class LogRecord
     {
         public const string LogRecordParameterDelimiter = ",";
 

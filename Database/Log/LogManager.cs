@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Database
 {
-    class LogManager
+    public class LogManager
     {
         private List<LogRecord> LogRecords = new List<LogRecord>();
 

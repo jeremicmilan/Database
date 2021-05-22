@@ -133,14 +133,14 @@ namespace Database
             Thread.CurrentThread.Name = MethodBase.GetCurrentMethod().Name;
 
             DatabaseService = new DatabaseService();
-            Console.WriteLine("Database service created");
+            // Console.WriteLine("Database service created");
 
             while (true)
             {
-                Console.WriteLine("Starting up database service...");
+                // Console.WriteLine("Starting up database service...");
                 DatabaseService.StartUpAsProcess();
                 DatabaseService.Process.WaitForExit();
-                Console.WriteLine("Database service exited.");
+                // Console.WriteLine("Database service exited.");
 
                 if (KeepDatabaseServiceUpThreadCancellationTokenSource != null &&
                     KeepDatabaseServiceUpThreadCancellationTokenSource.IsCancellationRequested)

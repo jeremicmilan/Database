@@ -28,10 +28,7 @@ namespace Database
             ProcessStartInfo processStartInfo = new ProcessStartInfo();
             processStartInfo.UseShellExecute = true;
 
-            XmlSerializer serviceConfigurationSerializer = new XmlSerializer(typeof(ServiceConfiguration));
-            StringWriter stringWriter = new StringWriter();
-            serviceConfigurationSerializer.Serialize(stringWriter, ServiceConfiguration);
-            string serviceConfigurationString = new string(stringWriter.ToString().Where(c => !Environment.NewLine.Contains(c)).ToArray());
+            string serviceConfigurationString = ServiceConfiguration.Serialize();
             string arguments = "\"" + serviceConfigurationString.Replace("\"", "\\\"") + "\"";
             string processName = currentProcess.ProcessName;
             processStartInfo.FileName = processName;
@@ -39,24 +36,25 @@ namespace Database
 
             Process = Process.Start(processStartInfo);
 
-            Console.WriteLine(string.Format("Process {0} started with arguments {1}", processName, arguments));
+            // Console.WriteLine(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
 
-        private enum MessageStatus
+        private enum Status
         {
             Success,
+            SuccessWithResult,
             Failure,
         }
 
-        public static void RegisterPipeServer(string pipeName, Action<string> action)
+        public static void RegisterPipeServer(string pipeName, Func<string, string> ProcessMessage)
         {
             using (NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut))
             {
-                Console.WriteLine("NamedPipeServerStream object created.");
+                // Console.WriteLine("NamedPipeServerStream object created.");
 
-                Console.Write("Waiting for client connection...");
+                // Console.Write("Waiting for client connection...");
                 pipeServer.WaitForConnection();
-                Console.WriteLine("Client connected.");
+                // Console.WriteLine("Client connected.");
 
                 try
                 {
@@ -69,17 +67,26 @@ namespace Database
                             {
                                 try
                                 {
-                                    action(message);
-                                    WriteMessageToPipeStream(pipeServer, MessageStatus.Success.ToString());
+                                    string result = ProcessMessage(message);
+
+                                    if (result != null)
+                                    {
+                                        WriteStatusToPipeStream(pipeServer, Status.SuccessWithResult);
+                                        WriteMessageToPipeStream(pipeServer, result);
+                                    }
+                                    else
+                                    {
+                                        WriteStatusToPipeStream(pipeServer, Status.Success);
+                                    }
                                 }
                                 catch (Exception exception)
                                 {
                                     Console.WriteLine(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
-                                    WriteMessageToPipeStream(pipeServer, MessageStatus.Failure.ToString());
+                                    WriteMessageToPipeStream(pipeServer, Status.Failure.ToString());
                                 }
                             }
 
-                            Thread.Sleep(TimeSpan.FromSeconds(0.1));
+                            Utility.WaitDefaultPipeTimeout();
                         }
                     }
                 }
@@ -104,11 +111,11 @@ namespace Database
             }
 
             PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
-            Console.Write("Attempting to connect to pipe...");
+            // Console.Write("Attempting to connect to pipe...");
             PipeClient.Connect();
 
-            Console.WriteLine("Connected to pipe.");
-            Console.WriteLine("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
+            // Console.WriteLine("Connected to pipe.");
+            // Console.WriteLine("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
         }
 
         public void SendMessageToPipe(string message)
@@ -117,14 +124,24 @@ namespace Database
                 action: () =>
                 {
                     WriteMessageToPipeStream(PipeClient, message);
-                    MessageStatus status = ReadStatusFromPipeStream(PipeClient);
+                    Status status = ReadStatusFromPipeStream(PipeClient);
 
-                    if (status == MessageStatus.Failure)
+                    switch (status)
                     {
-                        throw new Exception("Received failure from pipe, while sending message: " + message);
+                        case Status.Success:
+                            break;
+
+                        case Status.SuccessWithResult:
+                            string result = ReadMessageFromPipeStream(PipeClient);
+                            Table table = Table.Deserialize(result);
+                            table.Print();
+                            break;
+
+                        case Status.Failure:
+                            throw new Exception("Received failure from pipe, while sending message: " + message);
                     }
                 },
-                correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken." || exception.Message == "Cannot access a closed pipe.",
+                correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken.",
                 correctiveAction: () => RegisterPipeClient(PipeName)
                 );
         }
@@ -136,20 +153,22 @@ namespace Database
             streamWriter.Flush();
         }
 
-        private static void WriteStatusToPipeStream(PipeStream pipeStream, MessageStatus messageStatus)
+        private static void WriteStatusToPipeStream(PipeStream pipeStream, Status status)
         {
-            WriteMessageToPipeStream(pipeStream, messageStatus.ToString());
+            WriteMessageToPipeStream(pipeStream, status.ToString());
         }
 
         private static string ReadMessageFromPipeStream(PipeStream pipeStream)
         {
             StreamReader streamReader = new StreamReader(pipeStream);
-            return streamReader.ReadLine();
+            return Utility.WaitUntil(
+                func: () => streamReader.ReadLine(),
+                predicate: (result) => result != null && result != "");
         }
 
-        private static MessageStatus ReadStatusFromPipeStream(PipeStream pipeStream)
+        private static Status ReadStatusFromPipeStream(PipeStream pipeStream)
         {
-             return Enum.Parse<MessageStatus>(ReadMessageFromPipeStream(pipeStream));
+             return Enum.Parse<Status>(ReadMessageFromPipeStream(pipeStream));
         }
     }
 }

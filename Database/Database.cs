@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Database
 {
-    class Database
+    public class Database
     {
         List<Table> Tables;
 
@@ -73,15 +73,28 @@ namespace Database
             return table;
         }
 
-        public void ProcessQuery(string query)
+        public Table GetExistingTable(string tableName)
+        {
+            Table table = GetTable(tableName);
+            if (table == null)
+            {
+                throw new Exception(string.Format("Table with name {0} does not exists.", tableName));
+            }
+
+            return table;
+        }
+
+        public string ProcessQuery(string query)
         {
             Console.WriteLine("Received query: " + query);
 
             const string CreateTableStatement = "CREATE TABLE ";
-            const string InsertIntoTableStatementStart = "INSERT INTO TABLE ";
+            const string InsertIntoTableStatementStart = "INSERT INTO ";
             const string InsertIntoTableStatementValues = "VALUES";
+            const string SelectFromTableStatement = "SELECT FROM ";
 
             string tableName = null;
+            string result = null;
 
             switch (query)
             {
@@ -93,21 +106,15 @@ namespace Database
                     }
 
                     CreateTable(tableName);
-
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):
                     string insertIntoStatementPart = query.Substring(InsertIntoTableStatementStart.Length).Trim();
 
                     tableName = insertIntoStatementPart.Substring(0, insertIntoStatementPart.IndexOf(" "));
-                    Table table = GetTable(tableName);
-                    if (table == null)
-                    {
-                        throw new Exception("Table not found for insert statement.");
-                    }
+                    Table table = GetExistingTable(tableName);
 
-                    insertIntoStatementPart = insertIntoStatementPart.Substring(tableName.Length)
-                        .SkipWhile(char.IsWhiteSpace).ToString();
+                    insertIntoStatementPart = insertIntoStatementPart.Substring(tableName.Length).Trim();
                     if (!insertIntoStatementPart.StartsWith(InsertIntoTableStatementValues))
                     {
                         throw new Exception("Syntax error. VALUES expected.");
@@ -122,7 +129,19 @@ namespace Database
                     }
 
                     break;
+
+                case string s when s.StartsWith(SelectFromTableStatement):
+                    tableName = query.Substring(SelectFromTableStatement.Length).Trim();
+                    if (!tableName.All(char.IsLower))
+                    {
+                        throw new Exception("Invalid table name.");
+                    }
+
+                    result = GetExistingTable(tableName).Serialize();
+                    break;
             }
+
+            return result;
         }
     }
 }
