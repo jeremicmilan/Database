@@ -11,7 +11,7 @@ namespace Database
     {
         List<Table> Tables;
 
-        private const string DefaultLogFilePath = "..\\..\\..\\DatabaseFiles\\database.log";
+        private const string DefaultLogFilePath = "..\\..\\..\\WorkingDirectory\\database.log";
         public LogManager LogManager;
 
         private Database(string logPath = null)
