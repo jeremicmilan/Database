@@ -81,8 +81,9 @@ namespace Database
                                 }
                                 catch (Exception exception)
                                 {
-                                    Console.WriteLine(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
-                                    WriteMessageToPipeStream(pipeServer, Status.Failure.ToString());
+                                    // Console.WriteLine(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
+                                    WriteStatusToPipeStream(pipeServer, Status.Failure);
+                                    WriteMessageToPipeStream(pipeServer, exception.Message);
                                 }
                             }
 
@@ -138,7 +139,9 @@ namespace Database
                             break;
 
                         case Status.Failure:
-                            throw new Exception("Received failure from pipe, while sending message: " + message);
+                            string errorMessage = ReadMessageFromPipeStream(PipeClient);
+                            Console.WriteLine("ERROR: " + errorMessage);
+                            break;
                     }
                 },
                 correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken.",

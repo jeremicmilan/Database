@@ -86,7 +86,7 @@ namespace Database
 
         public string ProcessQuery(string query)
         {
-            Console.WriteLine("Received query: " + query);
+            // Console.WriteLine("Received query: " + query);
 
             const string CreateTableStatement = "CREATE TABLE ";
             const string InsertIntoTableStatementStart = "INSERT INTO ";
@@ -106,6 +106,7 @@ namespace Database
                     }
 
                     CreateTable(tableName);
+                    Console.WriteLine("Created table: " + tableName);
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):
@@ -122,12 +123,13 @@ namespace Database
 
                     string valuesPart = insertIntoStatementPart.Substring(InsertIntoTableStatementValues.Length);
 
-                    string[] values = valuesPart.Split(',');
-                    foreach (string value in values)
+                    int[] values = valuesPart.Split(',').Select(value => int.Parse(value.Trim())).ToArray();
+                    foreach (int value in values)
                     {
-                        table.Insert(int.Parse(value.Trim()));
+                        table.Insert(value);
                     }
 
+                    Console.WriteLine(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
                     break;
 
                 case string s when s.StartsWith(SelectFromTableStatement):
@@ -139,6 +141,9 @@ namespace Database
 
                     result = GetExistingTable(tableName).Serialize();
                     break;
+
+                default:
+                    throw new Exception("Syntax error.");
             }
 
             return result;
