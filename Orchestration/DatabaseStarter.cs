@@ -66,7 +66,14 @@ namespace Database
                     return;
                 }
 
-                ProcessUserInput(line.Trim());
+                try
+                {
+                    ProcessUserInput(line.Trim());
+                }
+                catch (Exception exception)
+                {
+                    Utility.LogFailure(exception.ToString());
+                }
             }
         }
 

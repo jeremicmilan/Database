@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
-using System.Linq;
 using System.Threading;
-using System.Xml.Serialization;
 
 namespace Database
 {
@@ -140,8 +137,7 @@ namespace Database
 
                         case Status.Failure:
                             string errorMessage = ReadMessageFromPipeStream(PipeClient);
-                            Console.WriteLine("ERROR: " + errorMessage);
-                            break;
+                            throw new Exception(errorMessage);
                     }
                 },
                 correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken.",

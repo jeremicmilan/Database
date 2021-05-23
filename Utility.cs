@@ -23,7 +23,6 @@ namespace Database
                     }
                     else
                     {
-                        Console.WriteLine(exception.ToString());
                         throw;
                     }
                 }
@@ -58,6 +57,16 @@ namespace Database
         public static void WaitDefaultPipeTimeout()
         {
             Thread.Sleep(DefaultPipeResultWaitTimespan);
+        }
+
+        public static void LogFailure(string message)
+        {
+            ConsoleColor previousConsoleColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.WriteLine("ERROR: " + message);
+
+            Console.ForegroundColor = previousConsoleColor;
         }
     }
 }

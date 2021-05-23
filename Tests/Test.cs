@@ -26,10 +26,7 @@ namespace Database.Tests
         public void Run()
         {
             LogTestMessage("Running test: " + TestName);
-
-            RecreateWorkingDirectory();
-
-            DatabaseStarter.Get().SetLogFilePath(TestLogFile);
+            Startup();
 
             try
             {
@@ -45,11 +42,22 @@ namespace Database.Tests
             }
             catch (Exception exception)
             {
-                Console.WriteLine(exception.ToString());
+                Utility.LogFailure(exception.ToString());
             }
 
-            DatabaseStarter.Get().SetLogFilePath(null);
+            Cleanup();
             LogTestMessage("Finnished test: " + TestName);
+        }
+
+        private void Startup()
+        {
+            RecreateWorkingDirectory();
+            DatabaseStarter.Get().SetLogFilePath(TestLogFile);
+        }
+
+        private void Cleanup()
+        {
+            DatabaseStarter.Get().SetLogFilePath(null);
         }
 
         private void RecreateWorkingDirectory()
