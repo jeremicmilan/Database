@@ -36,9 +36,12 @@ namespace Database
 
         public void WriteLogRecordToDisk(LogRecord logRecord)
         {
-            using (StreamWriter streamWriter = File.AppendText(LogFilePath))
+            if (Database.ServiceConfiguration.LoggingEnabled)
             {
-                streamWriter.WriteLine(logRecord.ToString());
+                using (StreamWriter streamWriter = File.AppendText(LogFilePath))
+                {
+                    streamWriter.WriteLine(logRecord.ToString());
+                }
             }
         }
 

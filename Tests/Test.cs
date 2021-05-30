@@ -26,10 +26,11 @@ namespace Database.Tests
         public void Run()
         {
             LogTestMessage("Running test: " + TestName);
-            Startup();
 
             try
             {
+                Startup();
+
                 ExecuteTestFile();
                 CheckExpectedOutputFiles();
             }
@@ -37,20 +38,28 @@ namespace Database.Tests
             {
                 Utility.TraceFailure(exception.ToString());
             }
+            finally
+            {
+                Cleanup();
+            }
 
-            Cleanup();
             LogTestMessage("Finnished test: " + TestName);
         }
 
         private void Startup()
         {
             RecreateWorkingDirectory();
-            DatabaseClient.Get().SetLogFilePath(TestLogFile);
+
+            ServiceConfiguration serviceConfiguration = File.Exists(DatabaseConfigFile) ?
+                ServiceConfiguration.Deserialize(File.ReadAllText(DatabaseConfigFile)) :
+                new ServiceConfiguration();
+            serviceConfiguration.LogFilePath = TestLogFile;
+            DatabaseClient.Get().OverrideDatabaseServiceConfirguration(serviceConfiguration);
         }
 
         private void Cleanup()
         {
-            DatabaseClient.Get().SetLogFilePath(null);
+            DatabaseClient.Get().OverrideDatabaseServiceConfirguration(null);
         }
 
         private void ExecuteTestFile()
@@ -68,7 +77,7 @@ namespace Database.Tests
 
         private void CheckExpectedOutputFiles()
         {
-            if (File.Exists(TestExpectedLogFile))
+            if (File.Exists(TestLogFile) && File.Exists(TestExpectedLogFile))
             {
                 CheckSameFileContent(TestLogFile, TestExpectedLogFile);
             }
@@ -117,6 +126,8 @@ namespace Database.Tests
         private string TestFile => TestDirectory + Path.DirectorySeparatorChar + "test.txt";
 
         private string TestExpectedLogFile => TestDirectory + Path.DirectorySeparatorChar + "expected.log";
+
+        private string DatabaseConfigFile => TestDirectory + Path.DirectorySeparatorChar + "database.config";
 
         private string WorkingDirectory => TestDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
 

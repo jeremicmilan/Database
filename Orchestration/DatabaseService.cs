@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Database
 {
-    class DatabaseService : Service
+    public class DatabaseService : Service
     {
         private Database _Database = null;
 
@@ -13,7 +13,7 @@ namespace Database
         public DatabaseService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
-            _Database = Database.Create(serviceConfiguration?.LogFilePath);
+            _Database = Database.Create(this, serviceConfiguration?.LogFilePath);
         }
 
         public override void StartUp()
@@ -30,9 +30,16 @@ namespace Database
             return _Database.ProcessQuery(query: message);
         }
 
-        public void SetLogFilePath(string logFilePath)
+        public void OverrideConfiguration(ServiceConfiguration serviceConfiguration)
         {
-            ServiceConfiguration.LogFilePath = logFilePath;
+            if (serviceConfiguration != null)
+            {
+                ServiceConfiguration.Override(serviceConfiguration);
+            }
+            else
+            {
+                ServiceConfiguration = DefaultServiceConfiguration;
+            }
         }
     }
 }

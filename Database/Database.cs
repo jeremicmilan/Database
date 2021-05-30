@@ -9,12 +9,17 @@ namespace Database
 {
     public class Database
     {
-        List<Table> Tables;
+        public DatabaseService DatabaseService { get; private set; }
+
+        public List<Table> Tables;
 
         public LogManager LogManager;
 
-        private Database(string logPath = null)
+        public static ServiceConfiguration ServiceConfiguration => Get().DatabaseService.ServiceConfiguration;
+
+        private Database(DatabaseService databaseService, string logPath = null)
         {
+            DatabaseService = databaseService;
             Tables = new List<Table>();
             LogManager = new LogManager(logPath ?? Utility.DefaultLogFilePath);
         }
@@ -22,14 +27,14 @@ namespace Database
         private static Database _Database = null;
         public static Database Get() => _Database;
 
-        public static Database Create(string logPath = null)
+        public static Database Create(DatabaseService databaseService, string logPath = null)
         {
             if (_Database != null)
             {
                 throw new Exception("There can be only one database per process.");
             }
 
-            return _Database = new Database(logPath);
+            return _Database = new Database(databaseService, logPath);
         }
 
         public static void Destroy()
@@ -178,7 +183,9 @@ namespace Database
             statementPart = statementPart.Substring(tableName.Length).Trim();
             string valuesPart = ParseOutValues(statementPart);
 
-            List<int> values = valuesPart.Split(',').Select(value => int.Parse(value.Trim())).ToList();
+            List<int> values = valuesPart != Table.Empty ?
+                valuesPart.Split(',').Select(value => int.Parse(value.Trim())).ToList() :
+                new List<int>();
 
             return (table, values);
         }

@@ -126,9 +126,9 @@ namespace Database
             DatabaseService.Process.Kill();
         }
 
-        public void SetLogFilePath(string logFilePath)
+        public void OverrideDatabaseServiceConfirguration(ServiceConfiguration serviceConfiguration)
         {
-            DatabaseService.SetLogFilePath(logFilePath);
+            DatabaseService.OverrideConfiguration(serviceConfiguration);
 
             // Restart database so new log file path value is picked up.
             //

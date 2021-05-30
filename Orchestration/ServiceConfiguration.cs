@@ -15,14 +15,22 @@ namespace Database
         [XmlElement]
         public string LogFilePath;
 
+        [XmlElement]
+        public bool LoggingEnabled = true;
+
         public ServiceConfiguration() { }
 
         public ServiceConfiguration(
-            string serviceType,
-            string logFilePath = null)
+            string serviceType)
         {
             ServiceType = serviceType;
-            LogFilePath = logFilePath;
+        }
+
+        public void Override(ServiceConfiguration serviceConfiguration)
+        {
+            ServiceType = serviceConfiguration.ServiceType ?? ServiceType;
+            LogFilePath = serviceConfiguration.LogFilePath ?? LogFilePath;
+            LoggingEnabled = serviceConfiguration.LoggingEnabled;
         }
 
         public string Serialize()

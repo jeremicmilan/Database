@@ -9,11 +9,12 @@ namespace Database
     public abstract class Service
     {
         public Process Process = null;
-        protected ServiceConfiguration ServiceConfiguration;
+        public ServiceConfiguration ServiceConfiguration;
+        protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration(this.GetType().ToString());
 
         protected Service(ServiceConfiguration serviceConfiguration = null)
         {
-            ServiceConfiguration = serviceConfiguration ?? new ServiceConfiguration(this.GetType().ToString());
+            ServiceConfiguration = serviceConfiguration ?? DefaultServiceConfiguration;
         }
 
         public abstract void StartUp();

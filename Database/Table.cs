@@ -25,6 +25,8 @@ namespace Database
 
         protected Database Database { get => Database.Get(); }
 
+        public const string Empty = "<empty>";
+
         public void Insert(int value, bool redo = false)
         {
             if (Values.Contains(value))
@@ -51,7 +53,7 @@ namespace Database
             }
             else
             {
-                Console.WriteLine("<empty>");
+                Console.WriteLine(Empty);
             }
 
             Console.WriteLine("--------  (end)  TABLE: " + TableName);
