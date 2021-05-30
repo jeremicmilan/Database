@@ -7,6 +7,7 @@ The main idea of the project is to create a prototype that would highlight how A
 Traditional DBMS has been implemented so far with an easy way of testing for a process crash. Couple of tests are added as well.
 
 Syntax:
+
 CREATE TABLE <table_name>
 
 INSTER INTO <table_name> VALUES
@@ -18,3 +19,7 @@ CHECK <table_name> VALUES
   | <empty>
 
 KILL
+
+RUN <test_name>
+
+RUN ALL
