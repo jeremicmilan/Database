@@ -4,7 +4,7 @@ The title of the master thesis is 'Horizontal Scaling of Database Management Sys
 The main idea of the project is to create a prototype that would highlight how Azure SQL DB HyperScale (https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tier-hyperscale) achieves consistency over multiple processes that represent the database.
 
 
-Traditional DBMS has been implemented so far with an easy way of testing for a process crash. Couple of tests are implemented.
+Traditional DBMS has been implemented so far with an easy way of testing for a process crash. Couple of tests are added as well.
 
 Syntax:
 CREATE TABLE <table_name>
