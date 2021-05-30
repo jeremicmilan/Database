@@ -9,22 +9,22 @@ using System.Threading;
 
 namespace Database
 {
-    class DatabaseStarter
+    class DatabaseClient
     {
 
-        private DatabaseStarter() { }
+        private DatabaseClient() { }
 
-        private static DatabaseStarter _DatabaseStarter = null;
-        public static DatabaseStarter Get() => _DatabaseStarter;
+        private static DatabaseClient _DatabaseClient = null;
+        public static DatabaseClient Get() => _DatabaseClient;
 
-        public static DatabaseStarter Create()
+        public static DatabaseClient Create()
         {
-            if (_DatabaseStarter != null)
+            if (_DatabaseClient != null)
             {
                 throw new Exception("There can be only one database starter.");
             }
 
-            return _DatabaseStarter = new DatabaseStarter();
+            return _DatabaseClient = new DatabaseClient();
         }
 
         DatabaseService DatabaseService = null;

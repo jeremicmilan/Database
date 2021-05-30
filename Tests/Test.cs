@@ -45,12 +45,12 @@ namespace Database.Tests
         private void Startup()
         {
             RecreateWorkingDirectory();
-            DatabaseStarter.Get().SetLogFilePath(TestLogFile);
+            DatabaseClient.Get().SetLogFilePath(TestLogFile);
         }
 
         private void Cleanup()
         {
-            DatabaseStarter.Get().SetLogFilePath(null);
+            DatabaseClient.Get().SetLogFilePath(null);
         }
 
         private void ExecuteTestFile()
@@ -61,7 +61,7 @@ namespace Database.Tests
                 {
                     string line = streamReader.ReadLine();
                     LogTestMessage(TestExecutionPrefix + line);
-                    DatabaseStarter.Get().ProcessDatabaseCommand(line);
+                    DatabaseClient.Get().ProcessDatabaseCommand(line);
                 }
             }
         }
