@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading;
 
 namespace Database
@@ -59,7 +60,28 @@ namespace Database
             Thread.Sleep(DefaultPipeResultWaitTimespan);
         }
 
-        public static void LogFailure(string message)
+        public static string RootDirectory => Path.GetFullPath(".." + Path.DirectorySeparatorChar + ".." + Path.DirectorySeparatorChar + "..");
+
+        public static string WorkingDirectory => RootDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
+
+        public static string DefaultLogFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.log";
+
+        public static string DefaultTraceFilePath = WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
+
+        public static void TraceDebugMessage(string message)
+        {
+            using (StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath))
+            {
+                streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
+            }
+        }
+
+        public static void TraceDebugMessage(string format, params object[] objects)
+        {
+            TraceDebugMessage(string.Format(format, objects));
+        }
+
+        public static void TraceFailure(string message)
         {
             ConsoleColor previousConsoleColor = Console.ForegroundColor;
             Console.ForegroundColor = ConsoleColor.Red;

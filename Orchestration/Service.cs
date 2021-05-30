@@ -33,7 +33,7 @@ namespace Database
 
             Process = Process.Start(processStartInfo);
 
-            // Console.WriteLine(string.Format("Process {0} started with arguments {1}", processName, arguments));
+            Utility.TraceDebugMessage(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
 
         private enum Status
@@ -47,11 +47,11 @@ namespace Database
         {
             using (NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut))
             {
-                // Console.WriteLine("NamedPipeServerStream object created.");
+                Utility.TraceDebugMessage("NamedPipeServerStream object created.");
 
-                // Console.Write("Waiting for client connection...");
+                Utility.TraceDebugMessage("Waiting for client connection...");
                 pipeServer.WaitForConnection();
-                // Console.WriteLine("Client connected.");
+                Utility.TraceDebugMessage("Client connected.");
 
                 try
                 {
@@ -78,7 +78,7 @@ namespace Database
                                 }
                                 catch (Exception exception)
                                 {
-                                    // Console.WriteLine(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
+                                    Utility.TraceDebugMessage(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
                                     WriteStatusToPipeStream(pipeServer, Status.Failure);
                                     WriteMessageToPipeStream(pipeServer, exception.Message);
                                 }
@@ -109,11 +109,11 @@ namespace Database
             }
 
             PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
-            // Console.Write("Attempting to connect to pipe...");
+            Utility.TraceDebugMessage("Attempting to connect to pipe...");
             PipeClient.Connect();
 
-            // Console.WriteLine("Connected to pipe.");
-            // Console.WriteLine("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
+            Utility.TraceDebugMessage("Connected to pipe.");
+            Utility.TraceDebugMessage("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
         }
 
         public void SendMessageToPipe(string message)

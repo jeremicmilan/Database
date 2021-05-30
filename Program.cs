@@ -21,7 +21,7 @@ namespace Database
             }
             else
             {
-                //Debugger.Launch();
+                // Debugger.Launch();
 
                 Window.SnapRight(Process.GetCurrentProcess());
 
@@ -32,9 +32,9 @@ namespace Database
                     Console.Title = type.Name;
                     Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
-                    // Console.WriteLine("Starting service...");
+                    Utility.TraceDebugMessage("Starting service...");
                     service.StartUp();
-                    // Console.WriteLine("Service ended.");
+                    Utility.TraceDebugMessage("Service ended.");
                 }
                 catch (Exception exception)
                 {

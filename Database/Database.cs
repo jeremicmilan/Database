@@ -11,13 +11,12 @@ namespace Database
     {
         List<Table> Tables;
 
-        private const string DefaultLogFilePath = "..\\..\\..\\WorkingDirectory\\database.log";
         public LogManager LogManager;
 
         private Database(string logPath = null)
         {
             Tables = new List<Table>();
-            LogManager = new LogManager(logPath ?? DefaultLogFilePath);
+            LogManager = new LogManager(logPath ?? Utility.DefaultLogFilePath);
         }
 
         private static Database _Database = null;
@@ -93,7 +92,7 @@ namespace Database
 
         public string ProcessQuery(string query)
         {
-            // Console.WriteLine("Received query: " + query);
+            Utility.TraceDebugMessage("Received query: " + query);
 
             Table table = null;
             List<int> values = null;

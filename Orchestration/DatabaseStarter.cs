@@ -72,7 +72,7 @@ namespace Database
                 }
                 catch (Exception exception)
                 {
-                    Utility.LogFailure(exception.ToString());
+                    Utility.TraceFailure(exception.ToString());
                 }
             }
         }
@@ -140,14 +140,14 @@ namespace Database
             Thread.CurrentThread.Name = MethodBase.GetCurrentMethod().Name;
 
             DatabaseService = new DatabaseService();
-            // Console.WriteLine("Database service created");
+            Utility.TraceDebugMessage("Database service created");
 
             while (true)
             {
-                // Console.WriteLine("Starting up database service...");
+                Utility.TraceDebugMessage("Starting up database service...");
                 DatabaseService.StartUpAsProcess();
                 DatabaseService.Process.WaitForExit();
-                // Console.WriteLine("Database service exited.");
+                Utility.TraceDebugMessage("Database service exited.");
 
                 if (KeepDatabaseServiceUpThreadCancellationTokenSource != null &&
                     KeepDatabaseServiceUpThreadCancellationTokenSource.IsCancellationRequested)

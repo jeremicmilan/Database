@@ -42,7 +42,7 @@ namespace Database.Tests
             }
             catch (Exception exception)
             {
-                Utility.LogFailure(exception.ToString());
+                Utility.TraceFailure(exception.ToString());
             }
 
             Cleanup();
@@ -74,9 +74,7 @@ namespace Database.Tests
             }
         }
 
-        private static string RootDirectory => Path.GetFullPath("..\\..\\..");
-
-        private static string TestsDirectory => RootDirectory + Path.DirectorySeparatorChar + "Tests";
+        private static string TestsDirectory => Utility.RootDirectory + Path.DirectorySeparatorChar + "Tests";
 
         private static DirectoryInfo TestsDirectoryInfo => new DirectoryInfo(TestsDirectory);
 
