@@ -28,6 +28,25 @@ namespace Database.Tests
             LogTestMessage("Running test: " + TestName);
             Startup();
 
+            ExecuteTestFile();
+
+            Cleanup();
+            LogTestMessage("Finnished test: " + TestName);
+        }
+
+        private void Startup()
+        {
+            RecreateWorkingDirectory();
+            DatabaseStarter.Get().SetLogFilePath(TestLogFile);
+        }
+
+        private void Cleanup()
+        {
+            DatabaseStarter.Get().SetLogFilePath(null);
+        }
+
+        private void ExecuteTestFile()
+        {
             try
             {
                 using (StreamReader streamReader = new StreamReader(TestFile))
@@ -44,20 +63,6 @@ namespace Database.Tests
             {
                 Utility.TraceFailure(exception.ToString());
             }
-
-            Cleanup();
-            LogTestMessage("Finnished test: " + TestName);
-        }
-
-        private void Startup()
-        {
-            RecreateWorkingDirectory();
-            DatabaseStarter.Get().SetLogFilePath(TestLogFile);
-        }
-
-        private void Cleanup()
-        {
-            DatabaseStarter.Get().SetLogFilePath(null);
         }
 
         private void RecreateWorkingDirectory()
