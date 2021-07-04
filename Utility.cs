@@ -6,7 +6,10 @@ namespace Database
 {
     class Utility
     {
-        public static void ExecuteWithRetry(Action action, Predicate<Exception> correctiveActionPredicate, Action correctiveAction)
+        public static void ExecuteWithRetry(
+            Action action,
+            Predicate<Exception> correctiveActionPredicate,
+            Action correctiveAction)
         {
 
             while (true)
@@ -20,6 +23,7 @@ namespace Database
                     if (correctiveActionPredicate(exception))
                     {
                         correctiveAction();
+                        WaitDefaultPipeTimeout();
                         continue;
                     }
                     else
@@ -70,10 +74,22 @@ namespace Database
 
         public static void TraceDebugMessage(string message)
         {
-            using (StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath))
-            {
-                streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
-            }
+            ExecuteWithRetry(() =>
+                {
+                    if (!File.Exists(DefaultTraceFilePath))
+                    {
+                        Directory.CreateDirectory(Directory.GetParent(DefaultTraceFilePath).FullName);
+                        File.Create(DefaultTraceFilePath);
+                    }
+
+                    using (StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath))
+                    {
+                        streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
+                    }
+                },
+                correctiveActionPredicate: (exception) => exception.Message.EndsWith("because it is being used by another process."),
+                correctiveAction: () => { }
+            );
         }
 
         public static void TraceDebugMessage(string format, params object[] objects)

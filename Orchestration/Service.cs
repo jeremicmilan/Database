@@ -141,7 +141,8 @@ namespace Database
                             throw new Exception(errorMessage);
                     }
                 },
-                correctiveActionPredicate: (exception) => exception.Message == "Pipe is broken.",
+                correctiveActionPredicate: (exception) =>
+                    exception.Message == "Pipe is broken." || exception.Message == "Pipe hasn't been connected yet.",
                 correctiveAction: () => RegisterPipeClient(PipeName)
                 );
         }
