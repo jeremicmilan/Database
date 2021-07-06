@@ -1,0 +1,9 @@
+TableCreate,first
+TableInsert,first,1
+TableInsert,first,2
+TableInsert,first,3
+TableCreate,second
+TableInsert,second,4
+TableInsert,second,5
+Checkpoint
+TableInsert,second,6
