@@ -10,22 +10,22 @@ Traditional DBMS has been implemented so far with an easy way of testing for a p
 
 ## Syntax
 
-CREATE TABLE <table_name>
+<pre><code>CREATE TABLE <<a>table_name>
 
-INSERT INTO <table_name> VALUES
-    <integer> [, <integer>]
-  | <empty>
+INSERT INTO <<a>table_name> VALUES
+    <<a>integer> [, <<a>integer>]  
+  | <<a>empty>
 
-SELECT FROM <table_name>
+SELECT FROM <<a>table_name>  
 
-CHECK <table_name> VALUES
-    <integer> [, <integer>]
-  | <empty>
+CHECK <<a>table_name> VALUES  
+    <<a>integer> [, <<a>integer>]  
+  | <<a>empty>
 
 CHECKPOINT
 
 KILL
 
-RUN <test_name>
+RUN <<a>test_name>
 
-RUN ALL
+RUN ALL</code></pre>
