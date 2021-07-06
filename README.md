@@ -10,13 +10,17 @@ Syntax:
 
 CREATE TABLE <table_name>
 
-INSTER INTO <table_name> VALUES
+INSERT INTO <table_name> VALUES
     <integer> [, <integer>]
   | <empty>
+
+SELECT FROM <table_name>
 
 CHECK <table_name> VALUES
     <integer> [, <integer>]
   | <empty>
+
+CHECKPOINT
 
 KILL
 

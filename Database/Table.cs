@@ -15,12 +15,15 @@ namespace Database
         [XmlElement]
         public List<int> Values;
 
+        public bool IsDirty;
+
         public Table() { }
 
         public Table(string tableName, List<int> values = null)
         {
             TableName = tableName;
             Values = values ?? new List<int>();
+            IsDirty = true;
         }
 
         protected Database Database { get => Database.Get(); }
@@ -35,6 +38,7 @@ namespace Database
             }
 
             Values.Add(value);
+            IsDirty = true;
 
             if (!redo)
             {
@@ -43,20 +47,14 @@ namespace Database
             }
         }
 
+        public void Clean()
+        {
+            IsDirty = false;
+        }
+
         public void Print()
         {
-            Console.WriteLine("-------- (start) TABLE: " + TableName);
-            
-            if (Values.Any())
-            {
-                Console.WriteLine(string.Join(", ", Values));
-            }
-            else
-            {
-                Console.WriteLine(Empty);
-            }
-
-            Console.WriteLine("--------  (end)  TABLE: " + TableName);
+            Console.WriteLine(ToString());
         }
 
         public string Serialize()
@@ -71,6 +69,27 @@ namespace Database
         {
             XmlSerializer tableSerializer = new XmlSerializer(typeof(Table));
             return (Table)tableSerializer.Deserialize(new StringReader(tableString));
+        }
+
+        public override string ToString()
+        {
+            return TableName + ":" +
+                (Values.Any() ? string.Join(",", Values) : Empty);
+        }
+
+        public static Table Parse(string tableString)
+        {
+            string[] tableStringParts = tableString.Split(":");
+            string tableName = tableStringParts[0];
+            string valuesString = tableStringParts[1];
+            return new Table(tableName, ParseValues(valuesString));
+        }
+
+        public static List<int> ParseValues(string valuesString)
+        {
+            return valuesString != Empty ?
+                valuesString.Split(',').Select(value => int.Parse(value.Trim())).ToList() :
+                new List<int>();
         }
     }
 }

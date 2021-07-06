@@ -16,6 +16,9 @@ namespace Database
         public string LogFilePath;
 
         [XmlElement]
+        public string DataFilePath;
+
+        [XmlElement]
         public bool LoggingEnabled = true;
 
         public ServiceConfiguration() { }
@@ -30,6 +33,7 @@ namespace Database
         {
             ServiceType = serviceConfiguration.ServiceType ?? ServiceType;
             LogFilePath = serviceConfiguration.LogFilePath ?? LogFilePath;
+            DataFilePath = serviceConfiguration.DataFilePath ?? DataFilePath;
             LoggingEnabled = serviceConfiguration.LoggingEnabled;
         }
 

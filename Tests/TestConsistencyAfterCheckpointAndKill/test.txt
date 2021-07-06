@@ -1,0 +1,9 @@
+CREATE TABLE testtable
+INSERT INTO testtable VALUES 1, 2, 3
+CHECK testtable VALUES 1, 2, 3
+
+CHECKPOINT
+
+KILL
+
+CHECK testtable VALUES 1, 2, 3

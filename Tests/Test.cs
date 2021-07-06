@@ -50,9 +50,10 @@ namespace Database.Tests
         {
             RecreateWorkingDirectory();
 
-            ServiceConfiguration serviceConfiguration = File.Exists(DatabaseConfigFile) ?
-                ServiceConfiguration.Deserialize(File.ReadAllText(DatabaseConfigFile)) :
+            ServiceConfiguration serviceConfiguration = File.Exists(TestDatabaseConfigFile) ?
+                ServiceConfiguration.Deserialize(File.ReadAllText(TestDatabaseConfigFile)) :
                 new ServiceConfiguration();
+            serviceConfiguration.DataFilePath = TestDataFile;
             serviceConfiguration.LogFilePath = TestLogFile;
             DatabaseClient.Get().OverrideDatabaseServiceConfirguration(serviceConfiguration);
         }
@@ -77,6 +78,11 @@ namespace Database.Tests
 
         private void CheckExpectedOutputFiles()
         {
+            if (File.Exists(TestDataFile) && File.Exists(TestExpectedDataFile))
+            {
+                CheckSameFileContent(TestDataFile, TestExpectedDataFile);
+            }
+
             if (File.Exists(TestLogFile) && File.Exists(TestExpectedLogFile))
             {
                 CheckSameFileContent(TestLogFile, TestExpectedLogFile);
@@ -90,14 +96,18 @@ namespace Database.Tests
 
             if (file1lines.Length != file2lines.Length)
             {
-                throw new Exception("Log file line count does not match the expected log file line count.");
+                throw new Exception(string.Format(
+                    "File {0} line count does not match the expected file {1} line count.",
+                    file1, file2));
             }
 
             for (int i = 0; i < file1lines.Length; i++)
             {
                 if (file1lines[i] != file2lines[i])
                 {
-                    throw new Exception("Log file does not match the expected log file on line: " + (i + 1));
+                    throw new Exception(string.Format(
+                        "File {0} does not match the expected file {1} on line: {2}",
+                        file1, file2, i + 1));
                 }
             }
         }
@@ -106,14 +116,14 @@ namespace Database.Tests
         private void RecreateWorkingDirectory()
         {
             CleanupWorkingDirectoryIfExists();
-            Directory.CreateDirectory(WorkingDirectory);
+            Directory.CreateDirectory(TestWorkingDirectory);
         }
 
         private void CleanupWorkingDirectoryIfExists()
         {
-            if (Directory.Exists(WorkingDirectory))
+            if (Directory.Exists(TestWorkingDirectory))
             {
-                Directory.Delete(WorkingDirectory, recursive: true);
+                Directory.Delete(TestWorkingDirectory, recursive: true);
             }
         }
 
@@ -127,11 +137,15 @@ namespace Database.Tests
 
         private string TestExpectedLogFile => TestDirectory + Path.DirectorySeparatorChar + "expected.log";
 
-        private string DatabaseConfigFile => TestDirectory + Path.DirectorySeparatorChar + "database.config";
+        private string TestExpectedDataFile => TestDirectory + Path.DirectorySeparatorChar + "expected.data";
 
-        private string WorkingDirectory => TestDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
+        private string TestDatabaseConfigFile => TestDirectory + Path.DirectorySeparatorChar + "database.config";
 
-        private string TestLogFile => WorkingDirectory + Path.DirectorySeparatorChar + "test.log";
+        private string TestWorkingDirectory => TestDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
+
+        private string TestDataFile => TestWorkingDirectory + Path.DirectorySeparatorChar + "test.data";
+
+        private string TestLogFile => TestWorkingDirectory + Path.DirectorySeparatorChar + "test.log";
 
         private const string TestExecutionPrefix = "-- ";
 

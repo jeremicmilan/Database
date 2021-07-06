@@ -70,11 +70,13 @@ namespace Database
 
         public static string DefaultLogFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.log";
 
+        public static string DefaultDataFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.data";
+
         public static string DefaultTraceFilePath = WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
 
         public static void TraceDebugMessage(string message)
         {
-            ExecuteWithRetry(() =>
+            ExecuteFileActionResiliently(() =>
                 {
                     if (!File.Exists(DefaultTraceFilePath))
                     {
@@ -86,10 +88,7 @@ namespace Database
                     {
                         streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
                     }
-                },
-                correctiveActionPredicate: (exception) => exception.Message.EndsWith("because it is being used by another process."),
-                correctiveAction: () => { }
-            );
+                });
         }
 
         public static void TraceDebugMessage(string format, params object[] objects)
@@ -105,6 +104,45 @@ namespace Database
             Console.WriteLine("ERROR: " + message);
 
             Console.ForegroundColor = previousConsoleColor;
+        }
+
+        public static void FileCreateIfNeeded(string filePath)
+        {
+            ExecuteFileActionResiliently(() =>
+            {
+                if (!File.Exists(filePath))
+                {
+                    using (File.Create(filePath)) { }
+                }
+            });
+        }
+
+        public static string[] FileReadAllLines(string filePath)
+        {
+            string[] lines = null;
+
+            ExecuteFileActionResiliently(() =>
+            {
+                lines = File.ReadAllLines(filePath);
+            });
+
+            return lines;
+        }
+
+        public static void FileWriteAllLines(string filePath, string[] lines)
+        {
+            ExecuteFileActionResiliently(() =>
+            {
+                File.WriteAllLines(filePath, lines);
+            });
+        }
+
+        public static void ExecuteFileActionResiliently(Action action)
+        {
+            ExecuteWithRetry(action,
+                correctiveActionPredicate: (exception) => exception.Message.EndsWith("because it is being used by another process."),
+                correctiveAction: () => { }
+            );
         }
     }
 }

@@ -8,5 +8,6 @@ namespace Database
     {
         TableCreate,
         TableInsert,
+        Checkpoint,
     }
 }

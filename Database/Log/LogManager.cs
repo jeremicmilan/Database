@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Database
@@ -26,9 +27,11 @@ namespace Database
             }
         }
 
-        public void RedoLog()
+        public void RedoLogFromLastCheckpoint()
         {
-            foreach (LogRecord logRecord in LogRecords)
+            int index = LogRecords.FindLastIndex(logRecord => logRecord is LogRecordCheckpoint);
+
+            foreach (LogRecord logRecord in LogRecords.Skip(index + 1))
             {
                 logRecord.Redo();
             }

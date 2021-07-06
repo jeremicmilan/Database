@@ -9,32 +9,39 @@ namespace Database
 {
     public class Database
     {
-        public DatabaseService DatabaseService { get; private set; }
-
-        public List<Table> Tables;
+        #region Database Lifecycle
 
         public LogManager LogManager;
 
+        public DatabaseService DatabaseService { get; private set; }
+
         public static ServiceConfiguration ServiceConfiguration => Get().DatabaseService.ServiceConfiguration;
 
-        private Database(DatabaseService databaseService, string logPath = null)
+        private Database(
+            DatabaseService databaseService,
+            string dataPath = null,
+            string logPath = null)
         {
             DatabaseService = databaseService;
             Tables = new List<Table>();
+            DataFilePath = dataPath ?? Utility.DefaultDataFilePath;
             LogManager = new LogManager(logPath ?? Utility.DefaultLogFilePath);
         }
 
         private static Database _Database = null;
         public static Database Get() => _Database;
 
-        public static Database Create(DatabaseService databaseService, string logPath = null)
+        public static Database Create(
+            DatabaseService databaseService,
+            string dataPath = null,
+            string logPath = null)
         {
             if (_Database != null)
             {
                 throw new Exception("There can be only one database per process.");
             }
 
-            return _Database = new Database(databaseService, logPath);
+            return _Database = new Database(databaseService, dataPath, logPath);
         }
 
         public static void Destroy()
@@ -49,12 +56,79 @@ namespace Database
 
         public void StartUp()
         {
+            if (File.Exists(DataFilePath))
+            {
+                foreach (string line in File.ReadAllLines(DataFilePath))
+                {
+                    Table table = Table.Parse(line);
+                    Tables.Add(table);
+                }
+            }
+
             if (File.Exists(LogManager.LogFilePath))
             {
                 LogManager.ReadFromDisk();
-                LogManager.RedoLog();
+                LogManager.RedoLogFromLastCheckpoint();
             }
         }
+
+        #endregion Database Lifecycle
+
+        #region Checkpoint and Disk Operations
+
+        public string DataFilePath { get; private set; }
+
+        // In a production system Checkpoint would have been performed automatically as part of some
+        // background thread. In our case, we will only allow user to perform Checkpoint due to simplicity.
+        // This way we can get away for doing a lot of licking as everything should be single threaded.
+        //
+        private void Checkpoint()
+        {
+            foreach (Table table in Tables)
+            {
+                if (table.IsDirty)
+                {
+                    WriteTableToDisk(table);
+                    table.Clean();
+                }
+            }
+
+            LogRecord logRecord = new LogRecordCheckpoint();
+            LogManager.WriteLogRecordToDisk(logRecord);
+        }
+
+        // Note that we are currently using a suboptimal implementation of writing to file.
+        // In our current implementation Table object maps to Table, Column and Page in a conventional database.
+        // Table would have multiple logical columns, while on the physical level Table would have multiple Pages.
+        // Pages are of a fixed size (8KB for example) making random access writes in database files optimal.
+        // However, in our implementation we are reading the whole file and only changing the desired table
+        // which is a line in the database file.
+        //
+        public void WriteTableToDisk(Table table)
+        {
+            Utility.FileCreateIfNeeded(DataFilePath);
+
+            string tableString = table.ToString();
+            string[] lines = Utility.FileReadAllLines(DataFilePath);
+
+            int index = Array.FindIndex(lines, (line) => Table.Parse(line).TableName == table.TableName);
+            if (index == -1)
+            {
+                lines = lines.Append(tableString).ToArray();
+            }
+            else
+            {
+                lines[index] = tableString;
+            }
+
+            Utility.FileWriteAllLines(DataFilePath, lines);
+        }
+
+        #endregion Checkpoint and Disk Operations
+
+        #region Table Operations
+
+        public List<Table> Tables;
 
         public Table GetTable(string tableName) => Tables.Where(table => table.TableName == tableName).FirstOrDefault();
 
@@ -88,12 +162,18 @@ namespace Database
             return table;
         }
 
+        #endregion Table Operations
+
+        #region Query Processing
+
         private const string CreateTableStatement = "CREATE TABLE ";
         private const string SelectFromTableStatement = "SELECT FROM ";
 
         private const string InsertIntoTableStatementStart = "INSERT INTO ";
         private const string CheckTableStatement = "CHECK ";
         private const string ValuesStatementPart = "VALUES";
+
+        private const string CheckpointStatement = "CHECKPOINT";
 
         public string ProcessQuery(string query)
         {
@@ -104,7 +184,7 @@ namespace Database
             string tableName = null;
             string result = null;
 
-            switch (query)
+            switch (query.Trim())
             {
                 case string s when s.StartsWith(CreateTableStatement):
                     tableName = query.Substring(CreateTableStatement.Length).Trim();
@@ -166,6 +246,10 @@ namespace Database
                     result = GetExistingTable(tableName).Serialize();
                     break;
 
+                case CheckpointStatement:
+                    Checkpoint();
+                    break;
+
                 default:
                     throw new Exception("Syntax error.");
             }
@@ -183,11 +267,7 @@ namespace Database
             statementPart = statementPart.Substring(tableName.Length).Trim();
             string valuesPart = ParseOutValues(statementPart);
 
-            List<int> values = valuesPart != Table.Empty ?
-                valuesPart.Split(',').Select(value => int.Parse(value.Trim())).ToList() :
-                new List<int>();
-
-            return (table, values);
+            return (table, Table.ParseValues(valuesPart));
         }
 
         private string ParseOutValues(string partWithValues)
@@ -199,5 +279,7 @@ namespace Database
 
             return partWithValues.Substring(ValuesStatementPart.Length).Trim();
         }
+
+        #endregion Query Processing
     }
 }
