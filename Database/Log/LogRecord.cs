@@ -11,8 +11,6 @@ namespace Database
 
         protected Database Database { get => Database.Get(); }
 
-        Transaction Transaction;
-
         public static LogRecord ParseLogRecord(string logRecordText)
         {
             string[] logRecordParts = logRecordText.Split(LogRecordParameterDelimiter);
