@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Database
 {
-    class LogRecordTableCreate : LogRecordTable
+    public class LogRecordTableCreate : LogRecordTable
     {
         public LogRecordTableCreate(string[] parameters)
             : base(parameters[0])

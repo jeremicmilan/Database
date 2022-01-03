@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Database
 {
-    abstract class LogRecordTable : LogRecord
+    public abstract class LogRecordTable : LogRecord
     {
         public string TableName;
 

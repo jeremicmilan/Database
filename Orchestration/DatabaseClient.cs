@@ -9,7 +9,7 @@ using System.Threading;
 
 namespace Database
 {
-    class DatabaseClient
+    public class DatabaseClient
     {
 
         private DatabaseClient() { }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Database
 {
-    class LogRecordTableInsert : LogRecordTable
+    public class LogRecordTableInsert : LogRecordTable
     {
         int Value;
 
