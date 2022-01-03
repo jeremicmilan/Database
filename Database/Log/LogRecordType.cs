@@ -9,5 +9,7 @@ namespace Database
         TableCreate,
         TableInsert,
         Checkpoint,
+        TransactionBegin,
+        TransactionEnd,
     }
 }
