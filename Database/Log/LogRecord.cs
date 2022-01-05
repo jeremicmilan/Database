@@ -25,7 +25,7 @@ namespace Database
                 case LogRecordType.TableInsert:
                     return new LogRecordTableInsert(parameters);
                 case LogRecordType.Checkpoint:
-                    return new LogRecordCheckpoint();
+                    return new LogRecordCheckpoint(parameters);
                 default:
                     throw new Exception("Unsupported log record type");
             }

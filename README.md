@@ -23,8 +23,10 @@ CHECK <<a>table_name> VALUES
 
 CHECKPOINT
 
+BEGIN TRANSACTION
+END TRANSACTION
+
 KILL
 
 RUN <<a>test_name>
-
 RUN ALL</code></pre>

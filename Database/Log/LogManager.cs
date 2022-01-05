@@ -34,6 +34,8 @@ namespace Database
             foreach (LogRecord logRecord in LogRecords.Skip(index + 1))
             {
                 logRecord.Redo();
+
+                // TODO: add undo phase
             }
         }
 

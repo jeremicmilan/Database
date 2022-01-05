@@ -11,6 +11,8 @@ namespace Database
 
         public LogManager LogManager;
 
+        public TransactionManager TransactionManager;
+
         public DatabaseService DatabaseService { get; private set; }
 
         public static ServiceConfiguration ServiceConfiguration => Get().DatabaseService.ServiceConfiguration;
@@ -24,6 +26,7 @@ namespace Database
             Tables = new List<Table>();
             DataFilePath = dataPath ?? Utility.DefaultDataFilePath;
             LogManager = new LogManager(logPath ?? Utility.DefaultLogFilePath);
+            TransactionManager = new TransactionManager();
         }
 
         private static Database _Database = null;
@@ -91,7 +94,7 @@ namespace Database
                 }
             }
 
-            LogRecord logRecord = new LogRecordCheckpoint();
+            LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.isTransactionActive);
             LogManager.WriteLogRecordToDisk(logRecord);
         }
 
@@ -173,6 +176,10 @@ namespace Database
 
         private const string CheckpointStatement = "CHECKPOINT";
 
+        private const string TransactionStatementPart = " TRANSACTION";
+        private const string TransactionStatementBegin = "BEGIN" + TransactionStatementPart;
+        private const string TransactionStatementEnd = "END" + TransactionStatementPart;
+
         public string ProcessQuery(string query)
         {
             Utility.TraceDebugMessage("Received query: " + query);
@@ -246,6 +253,14 @@ namespace Database
 
                 case CheckpointStatement:
                     Checkpoint();
+                    break;
+
+                case TransactionStatementBegin:
+                    TransactionManager.BeginTransaction();
+                    break;
+
+                case TransactionStatementEnd:
+                    TransactionManager.EndTransaction();
                     break;
 
                 default:

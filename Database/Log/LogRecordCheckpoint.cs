@@ -6,10 +6,21 @@ namespace Database
 {
     public class LogRecordCheckpoint : LogRecord
     {
+        public LogRecordCheckpoint(string[] parameters)
+            : this(parameters.Length > 0 && bool.Parse(parameters[0]))
+        { }
+
+        public LogRecordCheckpoint(bool isTransactionActive)
+        {
+            IsTransactionActive = isTransactionActive;
+        }
+
         public override LogRecordType GetLogRecordType()
         {
             return LogRecordType.Checkpoint;
         }
+
+        public bool IsTransactionActive { get; private set; }
 
         public override void Redo()
         {
