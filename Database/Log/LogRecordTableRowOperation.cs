@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Database
 {
-    public class LogRecordTableInsert : LogRecordTable
+    public abstract class LogRecordTableRowOperation : LogRecordTable
     {
-        int Value;
+        protected int Value;
 
-        public LogRecordTableInsert(string[] parameters)
+
+        public LogRecordTableRowOperation(string[] parameters)
             : base(parameters[0])
         {
             CheckParameterLength(parameters, 2);
@@ -17,13 +15,13 @@ namespace Database
             Value = int.Parse(parameters[1]);
         }
 
-        public LogRecordTableInsert(string tableName, int value)
+        public LogRecordTableRowOperation(string tableName, int value)
             : base(tableName)
         {
             Value = value;
         }
 
-        public override LogRecordType GetLogRecordType() => LogRecordType.TableInsert;
+        public abstract void RedoRowOperation(Table table);
 
         public override void Redo()
         {
@@ -34,7 +32,7 @@ namespace Database
                 throw new Exception("Table not found while redoing log record: " + ToString());
             }
 
-            table.Insert(Value, redo: true);
+            RedoRowOperation(table);
         }
 
         public override string ToString() => base.ToString() + LogRecordParameterDelimiter + Value;

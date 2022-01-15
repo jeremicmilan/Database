@@ -15,6 +15,10 @@ INSERT INTO <<a>table_name> VALUES
     <<a>integer> [, <<a>integer>]  
   | <<a>empty>
 
+DELETE FROM <<a>table_name> VALUES
+    <<a>integer> [, <<a>integer>]  
+  | <<a>empty>
+
 SELECT FROM <<a>table_name>  
 
 CHECK <<a>table_name> VALUES  

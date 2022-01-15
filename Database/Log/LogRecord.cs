@@ -22,8 +22,10 @@ namespace Database
             {
                 case LogRecordType.TableCreate:
                     return new LogRecordTableCreate(parameters);
-                case LogRecordType.TableInsert:
-                    return new LogRecordTableInsert(parameters);
+                case LogRecordType.TableRowInsert:
+                    return new LogRecordTableRowInsert(parameters);
+                case LogRecordType.TableRowDelete:
+                    return new LogRecordTableRowDelete(parameters);
                 case LogRecordType.Checkpoint:
                     return new LogRecordCheckpoint(parameters);
                 default:

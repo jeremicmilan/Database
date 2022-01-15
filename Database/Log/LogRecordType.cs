@@ -7,7 +7,8 @@ namespace Database
     public enum LogRecordType
     {
         TableCreate,
-        TableInsert,
+        TableRowInsert,
+        TableRowDelete,
         Checkpoint,
         TransactionBegin,
         TransactionEnd,

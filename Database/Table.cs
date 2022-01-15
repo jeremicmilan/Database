@@ -29,7 +29,7 @@ namespace Database
 
         public const string Empty = "<empty>";
 
-        public void Insert(int value, bool redo = false)
+        public void InsertRow(int value, bool redo = false)
         {
             if (Values.Contains(value))
             {
@@ -41,8 +41,23 @@ namespace Database
 
             if (!redo)
             {
-                LogRecord logRecord = new LogRecordTableInsert(TableName, value);
-                Database.LogManager.WriteLogRecordToDisk(logRecord);
+                Database.LogManager.WriteLogRecordToDisk(new LogRecordTableRowInsert(TableName, value));
+            }
+        }
+
+        public void DeleteRow(int value, bool redo = false)
+        {
+            if (!Values.Contains(value))
+            {
+                throw new Exception(string.Format("Delete failed. Value {0} does not exist in table {1}.", value, TableName));
+            }
+
+            Values.Remove(value);
+            IsDirty = true;
+
+            if (!redo)
+            {
+                Database.LogManager.WriteLogRecordToDisk(new LogRecordTableRowDelete(TableName, value));
             }
         }
 
@@ -72,8 +87,7 @@ namespace Database
 
         public override string ToString()
         {
-            return TableName + ":" +
-                (Values.Any() ? string.Join(",", Values) : Empty);
+            return TableName + ":" + (Values.Any() ? string.Join(",", Values) : Empty);
         }
 
         public static Table Parse(string tableString)

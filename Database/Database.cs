@@ -171,6 +171,7 @@ namespace Database
         private const string SelectFromTableStatement = "SELECT FROM ";
 
         private const string InsertIntoTableStatementStart = "INSERT INTO ";
+        private const string DeleteFromTableStatementStart = "DELETE FROM ";
         private const string CheckTableStatement = "CHECK ";
         private const string ValuesStatementPart = "VALUES";
 
@@ -185,7 +186,7 @@ namespace Database
             Utility.TraceDebugMessage("Received query: " + query);
 
             Table table = null;
-            List<int> values = null;
+            List<int> values = null, extraElementsInTable = null, extraElementsInValues = null;
             string tableName = null;
             string result = null;
 
@@ -203,40 +204,60 @@ namespace Database
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):
-                    (table, values) = ParseInsertOrCheckTableStatement(query, InsertIntoTableStatementStart);
+                    (table, values) = ParseTableRowStatement(query, InsertIntoTableStatementStart);
+
+                    (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
+
+                    List<int> valuesExistingInTableAlready = values.Except(extraElementsInValues).ToList();
+
+                    if (valuesExistingInTableAlready.Any())
+                    {
+                        throw new Exception(string.Format("Table {0} already contains elements: {1}",
+                            table.TableName, string.Join(", ", valuesExistingInTableAlready)));
+                    }
 
                     foreach (int value in values)
                     {
-                        table.Insert(value);
+                        table.InsertRow(value);
+                    }
+
+                    Console.WriteLine(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
+                    break;
+
+                case string s when s.StartsWith(DeleteFromTableStatementStart):
+                    (table, values) = ParseTableRowStatement(query, DeleteFromTableStatementStart);
+
+                    (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
+
+                    if (extraElementsInValues.Any())
+                    {
+                        throw new Exception(string.Format("Table {0} missing values for deletion: {1}",
+                            table.TableName, string.Join(", ", extraElementsInValues)));
+                    }
+
+                    foreach (int value in values)
+                    {
+                        table.DeleteRow(value);
                     }
 
                     Console.WriteLine(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
                     break;
 
                 case string s when s.StartsWith(CheckTableStatement):
-                    (table, values) = ParseInsertOrCheckTableStatement(query, CheckTableStatement);
+                    (table, values) = ParseTableRowStatement(query, CheckTableStatement);
 
-                    List<int> missingValues = new List<int>();
-                    foreach (int tableValue in table.Values)
+                    (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
+
+                    if (extraElementsInValues.Any())
                     {
-                        if (values.Contains(tableValue))
-                        {
-                            values.Remove(tableValue);
-                        }
-                        else
-                        {
-                            missingValues.Add(tableValue);
-                        }
+                        throw new Exception(string.Format("Table {0} missing elements: {1}",
+                            table.TableName, string.Join(", ", extraElementsInValues)));
                     }
 
-                    if (values.Any())
+                    if (extraElementsInTable.Any())
                     {
-                        throw new Exception("Table missing elements: " + string.Join(", ", values));
-                    }
-
-                    if (missingValues.Any())
-                    {
-                        throw new Exception("Table contains extra elements: " + string.Join(", ", missingValues));
+                        throw new Exception(string.Format("Table {0} contains extra elements: {1}",
+                            table.TableName, string.Join(", ", extraElementsInTable)));
                     }
 
                     break;
@@ -270,7 +291,7 @@ namespace Database
             return result;
         }
 
-        private (Table, List<int>) ParseInsertOrCheckTableStatement(string query, string prefix)
+        private (Table, List<int>) ParseTableRowStatement(string query, string prefix)
         {
             string statementPart = query.Substring(prefix.Length).Trim();
 
@@ -291,6 +312,26 @@ namespace Database
             }
 
             return partWithValues.Substring(ValuesStatementPart.Length).Trim();
+        }
+
+        private (List<int>, List<int>) CompareTableValues(Table table, List<int> values)
+        {
+            List<int> extraElementsInTable = new List<int>();
+            List<int> extraElementsInValues = new List<int>(values);
+
+            foreach (int tableValue in table.Values)
+            {
+                if (extraElementsInValues.Contains(tableValue))
+                {
+                    extraElementsInValues.Remove(tableValue);
+                }
+                else
+                {
+                    extraElementsInTable.Add(tableValue);
+                }
+            }
+
+            return (extraElementsInTable, extraElementsInValues);
         }
 
         #endregion Query Processing
