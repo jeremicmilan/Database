@@ -2,4 +2,4 @@ TableCreate,testtable
 TableRowInsert,testtable,1
 TableRowInsert,testtable,2
 TableRowInsert,testtable,3
-Checkpoint
+Checkpoint,False

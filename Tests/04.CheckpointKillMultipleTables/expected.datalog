@@ -7,6 +7,6 @@ TableCreate,second
 TableRowInsert,second,4
 TableRowInsert,second,5
 TableRowDelete,second,4
-Checkpoint
+Checkpoint,False
 TableRowDelete,first,1
 TableRowInsert,second,6
