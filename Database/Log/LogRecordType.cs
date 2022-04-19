@@ -12,5 +12,6 @@ namespace Database
         Checkpoint,
         TransactionBegin,
         TransactionEnd,
+        Undo,
     }
 }

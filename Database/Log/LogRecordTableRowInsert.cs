@@ -18,5 +18,10 @@ namespace Database
         {
             table.InsertRow(Value, redo: true);
         }
+
+        public override void UndoRowOperation(Table table)
+        {
+            table.DeleteRow(Value, redo: true);
+        }
     }
 }

@@ -57,6 +57,8 @@ namespace Database
 
         public void StartUp()
         {
+            // Boot from the data file.
+            //
             if (File.Exists(DataFilePath))
             {
                 foreach (string line in File.ReadAllLines(DataFilePath))
@@ -66,10 +68,12 @@ namespace Database
                 }
             }
 
+            // Boot from the log file.
+            //
             if (File.Exists(LogManager.LogFilePath))
             {
                 LogManager.ReadFromDisk();
-                LogManager.RedoLogFromLastCheckpoint();
+                LogManager.Recover();
             }
         }
 
@@ -94,7 +98,7 @@ namespace Database
                 }
             }
 
-            LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.isTransactionActive);
+            LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
             LogManager.WriteLogRecordToDisk(logRecord);
         }
 

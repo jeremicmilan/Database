@@ -8,10 +8,5 @@ namespace Database
         {
             return LogRecordType.TransactionBegin;
         }
-
-        public override void Redo()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

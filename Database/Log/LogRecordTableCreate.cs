@@ -22,5 +22,10 @@ namespace Database
         {
             Database.CreateTable(TableName, redo: true);
         }
+
+        public override void Undo()
+        {
+            throw new System.NotSupportedException();
+        }
     }
 }

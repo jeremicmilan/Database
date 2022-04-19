@@ -8,16 +8,16 @@ namespace Database
         // and we do not support nested transactions,
         // we only need to know whether we have started the transaction or not.
         //
-        public bool isTransactionActive { get; private set; }
+        public bool IsTransactionActive { get; private set; }
 
         public void BeginTransaction(bool redo = false)
         {
-            if (isTransactionActive)
+            if (IsTransactionActive)
             {
                 throw new Exception("There can be only one active transaction.");
             }
 
-            isTransactionActive = true;
+            IsTransactionActive = true;
 
             if (!redo)
             {
@@ -28,12 +28,12 @@ namespace Database
 
         public void EndTransaction(bool redo = false)
         {
-            if (!isTransactionActive)
+            if (!IsTransactionActive)
             {
                 throw new Exception("There is no transaction to end");
             }
 
-            isTransactionActive = false;
+            IsTransactionActive = false;
 
             if (!redo)
             {

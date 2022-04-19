@@ -24,9 +24,21 @@ namespace Database
 
         public override void Redo()
         {
-            // For now this is not doing anything, but it should boot server state from disk.
-            // Server state contains active transactions and locks being held by those transactions.
+            if (IsTransactionActive)
+            {
+                Database.TransactionManager.BeginTransaction(redo: true);
+            }
+        }
+
+        public override void Undo()
+        {
+            // Checkpoint does not redo anything.
             //
         }
+
+        public override string ToString() => base.ToString() + LogRecordParameterDelimiter + IsTransactionActive;
+
+        public override bool Equals(LogRecord other) => base.Equals(other) &&
+            IsTransactionActive == (other as LogRecordCheckpoint).IsTransactionActive;
     }
 }

@@ -14,5 +14,8 @@ namespace Database
         }
 
         public override string ToString() => base.ToString() + LogRecordParameterDelimiter + TableName;
+
+        public override bool Equals(LogRecord other) => base.Equals(other) &&
+            TableName == (other as LogRecordTable).TableName;
     }
 }

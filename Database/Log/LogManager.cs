@@ -8,7 +8,7 @@ namespace Database
 {
     public class LogManager
     {
-        private List<LogRecord> LogRecords = new List<LogRecord>();
+        private readonly List<LogRecord> LogRecords = new List<LogRecord>();
 
         public string LogFilePath { get; private set; }
 
@@ -27,26 +27,100 @@ namespace Database
             }
         }
 
-        public void RedoLogFromLastCheckpoint()
+        public void Recover()
         {
-            int index = LogRecords.FindLastIndex(logRecord => logRecord is LogRecordCheckpoint);
+            RedoLog();
+            UndoLog();
+        }
 
-            foreach (LogRecord logRecord in LogRecords.Skip(index + 1))
+        private void RedoLog()
+        {
+            int indexCheckpoint = LogRecords.FindLastIndex(logRecord => logRecord is LogRecordCheckpoint);
+            if (indexCheckpoint < 0)
+            {
+                // If checkpoint not found, start redoing from the beginning of the log
+                //
+                indexCheckpoint = 0;
+            }
+
+            foreach (LogRecord logRecord in LogRecords.Skip(indexCheckpoint).ToList())
             {
                 logRecord.Redo();
-
-                // TODO: add undo phase
             }
         }
 
-        public void WriteLogRecordToDisk(LogRecord logRecord)
+        private void UndoLog()
+        {
+            if (!Database.Get().TransactionManager.IsTransactionActive)
+            {
+                return;
+            }
+
+            List<LogRecord> logRecordsToBeUndone = GetLogToBeUndone();
+            List<LogRecordUndo> logRecordsUndone = GetUndoneLog();
+
+            // Do not undo log records we have undone on the previous recovery.
+            //
+            foreach (LogRecordUndo logRecordUndo in logRecordsUndone)
+            {
+                LogRecord logRecordToBeUndone = logRecordsToBeUndone.First();
+
+                if (!logRecordUndo.LogRecord.Equals(logRecordToBeUndone))
+                {
+                    throw new Exception("We did not undo properly the last time around.");
+                }
+
+                logRecordsToBeUndone.RemoveAt(0);
+            }
+
+            // Undo log.
+            //
+            foreach (LogRecord logRecord in logRecordsToBeUndone)
+            {
+                LogRecordUndo logRecordUndo = new LogRecordUndo(logRecord);
+                WriteLogRecordToDisk(logRecordUndo);
+                logRecordUndo.Redo();
+            }
+
+            // Complete the transaction so we can open a new one later.
+            // Also, this would be signal on the recovery not to undo this part of the log again.
+            //
+            Database.Get().TransactionManager.EndTransaction();
+        }
+
+        private List<LogRecord> GetLogToBeUndone()
+        {
+            return GetLogAfterLastBeginTransaction()
+                .TakeWhile(logRecord => logRecord.GetLogRecordType() != LogRecordType.Undo)
+                .Reverse()
+                .ToList();
+        }
+
+        private List<LogRecordUndo> GetUndoneLog()
+        {
+            return GetLogAfterLastBeginTransaction()
+                .SkipWhile(logRecord => logRecord.GetLogRecordType() != LogRecordType.Undo)
+                .Select(logRecord => logRecord as LogRecordUndo)
+                .ToList();
+        }
+
+        private List<LogRecord> GetLogAfterLastBeginTransaction()
+        {
+            int indexBeginTransaction = LogRecords.FindLastIndex(logRecord => logRecord is LogRecordTransactionBegin);
+
+            // We should not get the begin transaction itself.
+            //
+            indexBeginTransaction++;
+
+            return LogRecords.Skip(indexBeginTransaction).ToList();
+        }
+
+            public void WriteLogRecordToDisk(LogRecord logRecord)
         {
             if (Database.ServiceConfiguration.LoggingEnabled)
             {
-                using (StreamWriter streamWriter = File.AppendText(LogFilePath))
-                {
-                    streamWriter.WriteLine(logRecord.ToString());
-                }
+                using StreamWriter streamWriter = File.AppendText(LogFilePath);
+                streamWriter.WriteLine(logRecord.ToString());
             }
         }
 

@@ -10,34 +10,39 @@ namespace Database
         public const string LogRecordParameterDelimiter = ",";
 
         protected Database Database { get => Database.Get(); }
-
+        
         public static LogRecord ParseLogRecord(string logRecordText)
         {
-            string[] logRecordParts = logRecordText.Split(LogRecordParameterDelimiter);
+            return InterpretLogRecord(logRecordText.Split(LogRecordParameterDelimiter));
+        }
 
+        protected static LogRecord InterpretLogRecord(string[] logRecordParts)
+        {
             LogRecordType logRecordType = Enum.Parse<LogRecordType>(logRecordParts[0]);
             string[] parameters = logRecordParts.Skip(1).ToArray();
 
-            switch (logRecordType)
+            return logRecordType switch
             {
-                case LogRecordType.TableCreate:
-                    return new LogRecordTableCreate(parameters);
-                case LogRecordType.TableRowInsert:
-                    return new LogRecordTableRowInsert(parameters);
-                case LogRecordType.TableRowDelete:
-                    return new LogRecordTableRowDelete(parameters);
-                case LogRecordType.Checkpoint:
-                    return new LogRecordCheckpoint(parameters);
-                default:
-                    throw new Exception("Unsupported log record type");
-            }
+                LogRecordType.TableCreate => new LogRecordTableCreate(parameters),
+                LogRecordType.TableRowInsert => new LogRecordTableRowInsert(parameters),
+                LogRecordType.TableRowDelete => new LogRecordTableRowDelete(parameters),
+                LogRecordType.Checkpoint => new LogRecordCheckpoint(parameters),
+                LogRecordType.TransactionBegin => new LogRecordTransactionBegin(),
+                LogRecordType.TransactionEnd => new LogRecordTransactionEnd(),
+                LogRecordType.Undo => new LogRecordUndo(parameters),
+                _ => throw new Exception("Unsupported log record type"),
+            };
         }
 
         public override string ToString() => GetLogRecordType().ToString();
 
+        public virtual bool Equals(LogRecord other) => GetLogRecordType() == other.GetLogRecordType();
+
         public abstract LogRecordType GetLogRecordType();
 
         public abstract void Redo();
+
+        public abstract void Undo();
 
         protected void CheckParameterLength(string[] parameters, int expectedParameterCount)
         {

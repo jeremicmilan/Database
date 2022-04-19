@@ -6,7 +6,6 @@ namespace Database
     {
         protected int Value;
 
-
         public LogRecordTableRowOperation(string[] parameters)
             : base(parameters[0])
         {
@@ -21,20 +20,35 @@ namespace Database
             Value = value;
         }
 
+        public override void Redo()
+        {
+            RedoRowOperation(GetTable());
+        }
+
         public abstract void RedoRowOperation(Table table);
 
-        public override void Redo()
+        public override void Undo()
+        {
+            UndoRowOperation(GetTable());
+        }
+
+        public abstract void UndoRowOperation(Table table);
+
+        private Table GetTable()
         {
             Table table = Database.GetTable(TableName);
 
             if (table == null)
             {
-                throw new Exception("Table not found while redoing log record: " + ToString());
+                throw new Exception("Table not found while processing log record: " + ToString());
             }
 
-            RedoRowOperation(table);
+            return table;
         }
 
         public override string ToString() => base.ToString() + LogRecordParameterDelimiter + Value;
+
+        public override bool Equals(LogRecord other) => base.Equals(other) &&
+            Value == (other as LogRecordTableRowOperation).Value;
     }
 }
