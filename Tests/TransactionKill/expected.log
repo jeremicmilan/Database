@@ -4,7 +4,5 @@ TableRowInsert,first,2
 TableRowInsert,first,3
 TransactionBegin
 TableRowInsert,first,4
-Checkpoint,True
-Undo,Checkpoint,True
 Undo,TableRowInsert,first,4
 TransactionEnd
