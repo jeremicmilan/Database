@@ -100,7 +100,7 @@ namespace Database
             if (line.StartsWith(RunTestStatement))
             {
                 string testName = line.Substring(RunTestStatement.Length).Trim();
-                if (!testName.All(char.IsLetter))
+                if (!testName.All(c => char.IsLetterOrDigit(c) || c == '.'))
                 {
                     throw new Exception("Test name should contain only letters.");
                 }
