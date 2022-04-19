@@ -135,7 +135,7 @@ namespace Database.Tests
 
         private string TestFile => TestDirectory + Path.DirectorySeparatorChar + "test.txt";
 
-        private string TestExpectedLogFile => TestDirectory + Path.DirectorySeparatorChar + "expected.log";
+        private string TestExpectedLogFile => TestDirectory + Path.DirectorySeparatorChar + "expected.datalog";
 
         private string TestExpectedDataFile => TestDirectory + Path.DirectorySeparatorChar + "expected.data";
 
@@ -145,7 +145,7 @@ namespace Database.Tests
 
         private string TestDataFile => TestWorkingDirectory + Path.DirectorySeparatorChar + "test.data";
 
-        private string TestLogFile => TestWorkingDirectory + Path.DirectorySeparatorChar + "test.log";
+        private string TestLogFile => TestWorkingDirectory + Path.DirectorySeparatorChar + "test.datalog";
 
         private const string TestExecutionPrefix = "-- ";
 

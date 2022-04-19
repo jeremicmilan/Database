@@ -68,7 +68,7 @@ namespace Database
 
         public static string WorkingDirectory => RootDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
 
-        public static string DefaultLogFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.log";
+        public static string DefaultLogFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.datalog";
 
         public static string DefaultDataFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.data";
 
