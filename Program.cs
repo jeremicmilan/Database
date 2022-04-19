@@ -19,9 +19,9 @@ namespace Database
             }
             else
             {
-                // Debugger.Launch();
-
                 Window.SnapRight(Process.GetCurrentProcess());
+
+                // Debugger.Launch();
 
                 try
                 {
