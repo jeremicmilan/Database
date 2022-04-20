@@ -11,7 +11,7 @@ namespace Database
         {
             if (args.Count() == 0)
             {
-                Console.Title = "DatabaseStarter";
+                Console.Title = "DatabaseClient";
                 Window.SnapLeft(Process.GetCurrentProcess());
 
                 DatabaseClient databaseClient = DatabaseClient.Create();
