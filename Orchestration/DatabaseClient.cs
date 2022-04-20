@@ -28,7 +28,7 @@ namespace Database
         }
 
         DatabaseService DatabaseService = null;
-        CancellationTokenSource KeepDatabaseServiceUpThreadCancellationTokenSource;
+        CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
 
         public void StartUp()
         {
@@ -43,14 +43,14 @@ namespace Database
 
         private void StartProcesses()
         {
-            KeepDatabaseServiceUpThreadCancellationTokenSource = new CancellationTokenSource();
+            KeepServicesUpThreadCancellationTokenSource = new CancellationTokenSource();
             new Thread(KeepDatabaseServiceUp).Start();
             Utility.WaitUntil(() => DatabaseService != null);
         }
 
         private void KillStartedProcesses()
         {
-            KeepDatabaseServiceUpThreadCancellationTokenSource.Cancel();
+            KeepServicesUpThreadCancellationTokenSource.Cancel();
             DatabaseService?.Process?.Kill();
         }
 
@@ -149,8 +149,8 @@ namespace Database
                 DatabaseService.Process.WaitForExit();
                 Utility.TraceDebugMessage("Database service exited.");
 
-                if (KeepDatabaseServiceUpThreadCancellationTokenSource != null &&
-                    KeepDatabaseServiceUpThreadCancellationTokenSource.IsCancellationRequested)
+                if (KeepServicesUpThreadCancellationTokenSource != null &&
+                    KeepServicesUpThreadCancellationTokenSource.IsCancellationRequested)
                 {
                     break;
                 }
