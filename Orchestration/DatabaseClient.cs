@@ -130,7 +130,7 @@ namespace Database
         {
             DatabaseService.OverrideConfiguration(serviceConfiguration);
 
-            // Restart database so new log file path value is picked up.
+            // Restart database so new configuration is picked up.
             //
             KillDatabase();
         }
