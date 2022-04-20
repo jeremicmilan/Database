@@ -1,0 +1,14 @@
+TableCreate,first
+TableRowInsert,first,1
+TableRowInsert,first,2
+TableRowInsert,first,3
+Checkpoint,False
+TransactionBegin
+TableRowInsert,first,4
+TransactionEnd
+TableRowInsert,first,5
+TransactionBegin
+TableRowInsert,first,6
+Undo,TableRowInsert,first,6
+TransactionEnd
+Checkpoint,False
