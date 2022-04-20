@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Diagnostics;
 
 namespace Database
 {
@@ -26,6 +24,11 @@ namespace Database
             // Block on waiting for input from clients
             //
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
+        }
+
+        public override void SnapWindow()
+        {
+            Window.SnapRight(Process.GetCurrentProcess());
         }
 
         public string ProcessQuery(string message)

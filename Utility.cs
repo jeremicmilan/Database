@@ -72,6 +72,18 @@ namespace Database
 
         public static string DefaultDataFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.data";
 
+        public static string DefaultConfigPath = WorkingDirectory + Path.DirectorySeparatorChar + "database.config";
+
+        public static ServiceConfiguration ServiceConfiguration
+        {
+            get
+            {
+                return File.Exists(Utility.DefaultConfigPath) ?
+                    ServiceConfiguration.Deserialize(File.ReadAllText(Utility.DefaultConfigPath)) :
+                    new ServiceConfiguration();
+            }
+        }
+
         public static string DefaultTraceFilePath = WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
 
         public static void TraceDebugMessage(string message)

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
@@ -9,18 +8,16 @@ namespace Database
     {
         static void Main(string[] args)
         {
+
             if (args.Count() == 0)
             {
                 Console.Title = "DatabaseClient";
-                Window.SnapLeft(Process.GetCurrentProcess());
 
                 DatabaseClient databaseClient = DatabaseClient.Create();
                 databaseClient.StartUp();
             }
             else
             {
-                Window.SnapRight(Process.GetCurrentProcess());
-
                 // Debugger.Launch();
 
                 try
@@ -31,6 +28,7 @@ namespace Database
                     Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
                     Utility.TraceDebugMessage("Starting service...");
+                    service.SnapWindow();
                     service.StartUp();
                     Utility.TraceDebugMessage("Service ended.");
                 }

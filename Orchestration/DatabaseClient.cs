@@ -1,10 +1,8 @@
 ﻿using Database.Tests;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
 
 namespace Database
@@ -12,9 +10,9 @@ namespace Database
     public class DatabaseClient
     {
 
-        private DatabaseClient() { }
+        protected DatabaseClient() { }
 
-        private static DatabaseClient _DatabaseClient = null;
+        protected static DatabaseClient _DatabaseClient = null;
         public static DatabaseClient Get() => _DatabaseClient;
 
         public static DatabaseClient Create()
@@ -24,37 +22,53 @@ namespace Database
                 throw new Exception("There can be only one database starter.");
             }
 
-            return _DatabaseClient = new DatabaseClient();
+            return _DatabaseClient = Utility.ServiceConfiguration.IsHyperScale ? new DatabaseClientHyperscale() : new DatabaseClient();
         }
 
-        DatabaseService DatabaseService = null;
-        CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
+        private CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
+        protected DatabaseService DatabaseService = null;
 
         public void StartUp()
         {
-            AppDomain.CurrentDomain.ProcessExit += (s, e) => KillStartedProcesses();
+            AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+                {
+                    KeepServicesUpThreadCancellationTokenSource.Cancel();
+                    KillStartedProcesses();
+                };
 
-            StartProcesses();
+            SnapWindow();
+
+            KeepServicesUpThreadCancellationTokenSource = new CancellationTokenSource();
+            StartServices();
+            WaitForServicesBoot();
 
             DatabaseService.RegisterPipeClient(DatabaseService.DatabasePipeName);
 
             WaitForUserInput();
         }
 
-        private void StartProcesses()
+        protected virtual void StartServices()
         {
-            KeepServicesUpThreadCancellationTokenSource = new CancellationTokenSource();
-            new Thread(KeepDatabaseServiceUp).Start();
+            DatabaseService = new DatabaseService();
+            new Thread(() => KeepServiceUp(DatabaseService)).Start();
+        }
+
+        protected virtual void WaitForServicesBoot()
+        {
             Utility.WaitUntil(() => DatabaseService != null);
         }
 
-        private void KillStartedProcesses()
+        protected virtual void KillStartedProcesses()
         {
-            KeepServicesUpThreadCancellationTokenSource.Cancel();
             DatabaseService?.Process?.Kill();
         }
 
-        private void WaitForUserInput()
+        protected virtual void SnapWindow()
+        {
+            Window.SnapLeft(Process.GetCurrentProcess());
+        }
+
+        protected void WaitForUserInput()
         {
             while (true)
             {
@@ -94,7 +108,7 @@ namespace Database
             }
         }
 
-        private void ProcessUserInput(string line)
+        protected void ProcessUserInput(string line)
         {
             const string RunTestStatement = "RUN ";
             if (line.StartsWith(RunTestStatement))
@@ -121,7 +135,7 @@ namespace Database
             }
         }
 
-        private void KillDatabase()
+        protected void KillDatabase()
         {
             DatabaseService.Process.Kill();
         }
@@ -135,19 +149,16 @@ namespace Database
             KillDatabase();
         }
 
-        private void KeepDatabaseServiceUp()
+        protected void KeepServiceUp(Service service)
         {
-            Thread.CurrentThread.Name = MethodBase.GetCurrentMethod().Name;
-
-            DatabaseService = new DatabaseService();
-            Utility.TraceDebugMessage("Database service created");
+            Thread.CurrentThread.Name = service.GetType() + "_" + MethodBase.GetCurrentMethod().Name;
 
             while (true)
             {
-                Utility.TraceDebugMessage("Starting up database service...");
-                DatabaseService.StartUpAsProcess();
-                DatabaseService.Process.WaitForExit();
-                Utility.TraceDebugMessage("Database service exited.");
+                Utility.TraceDebugMessage(string.Format("Starting up {0}...", service.GetType()));
+                service.StartUpAsProcess();
+                service.Process.WaitForExit();
+                Utility.TraceDebugMessage(string.Format("{0} exited.", service.GetType()));
 
                 if (KeepServicesUpThreadCancellationTokenSource != null &&
                     KeepServicesUpThreadCancellationTokenSource.IsCancellationRequested)

@@ -13,10 +13,42 @@ namespace Database
             MoveWindow(process, rect);
         }
 
+        public static void SnapTopLeft(Process process)
+        {
+            Rect rect = GetWorkAreaRect();
+            rect.Right /= 2;
+            rect.Bottom /= 2;
+            MoveWindow(process, rect);
+        }
+
         public static void SnapRight(Process process)
         {
             Rect rect = GetWorkAreaRect();
             rect.Left = rect.Right / 2;
+            MoveWindow(process, rect);
+        }
+
+        public static void SnapTopRight(Process process)
+        {
+            Rect rect = GetWorkAreaRect();
+            rect.Left = rect.Right / 2;
+            rect.Bottom /= 2;
+            MoveWindow(process, rect);
+        }
+
+        public static void SnapBottomLeft(Process process)
+        {
+            Rect rect = GetWorkAreaRect();
+            rect.Right /= 2;
+            rect.Top = rect.Bottom / 2;
+            MoveWindow(process, rect);
+        }
+
+        public static void SnapBottomRight(Process process)
+        {
+            Rect rect = GetWorkAreaRect();
+            rect.Left = rect.Right / 2;
+            rect.Top = rect.Bottom / 2;
             MoveWindow(process, rect);
         }
 

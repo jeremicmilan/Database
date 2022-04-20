@@ -17,6 +17,7 @@ namespace Database
             ServiceConfiguration = serviceConfiguration ?? DefaultServiceConfiguration;
         }
 
+        public abstract void SnapWindow();
         public abstract void StartUp();
 
         public void StartUpAsProcess()
