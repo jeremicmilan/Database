@@ -99,7 +99,7 @@ namespace Database
             const string RunTestStatement = "RUN ";
             if (line.StartsWith(RunTestStatement))
             {
-                string testName = line.Substring(RunTestStatement.Length).Trim();
+                string testName = line[RunTestStatement.Length..].Trim();
                 if (!testName.All(c => char.IsLetterOrDigit(c) || c == '.'))
                 {
                     throw new Exception("Test name should contain only letters.");

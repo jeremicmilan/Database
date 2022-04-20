@@ -23,8 +23,10 @@ namespace Database
         {
             Process currentProcess = Process.GetCurrentProcess();
 
-            ProcessStartInfo processStartInfo = new ProcessStartInfo();
-            processStartInfo.UseShellExecute = true;
+            ProcessStartInfo processStartInfo = new ProcessStartInfo
+            {
+                UseShellExecute = true
+            };
 
             string serviceConfigurationString = ServiceConfiguration.Serialize();
             string arguments = "\"" + serviceConfigurationString.Replace("\"", "\\\"") + "\"";
@@ -46,54 +48,50 @@ namespace Database
 
         public static void RegisterPipeServer(string pipeName, Func<string, string> ProcessMessage)
         {
-            using (NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut))
+            using NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut);
+            Utility.TraceDebugMessage("NamedPipeServerStream object created.");
+
+            Utility.TraceDebugMessage("Waiting for client connection...");
+            pipeServer.WaitForConnection();
+            Utility.TraceDebugMessage("Client connected.");
+
+            try
             {
-                Utility.TraceDebugMessage("NamedPipeServerStream object created.");
-
-                Utility.TraceDebugMessage("Waiting for client connection...");
-                pipeServer.WaitForConnection();
-                Utility.TraceDebugMessage("Client connected.");
-
-                try
+                using StreamReader streamReader = new StreamReader(pipeServer);
+                while (true)
                 {
-                    using (StreamReader streamReader = new StreamReader(pipeServer))
+                    string message = streamReader.ReadLine();
+                    if (message != null)
                     {
-                        while (true)
+                        try
                         {
-                            string message = streamReader.ReadLine();
-                            if (message != null)
+                            string result = ProcessMessage(message);
+
+                            if (result != null)
                             {
-                                try
-                                {
-                                    string result = ProcessMessage(message);
-
-                                    if (result != null)
-                                    {
-                                        WriteStatusToPipeStream(pipeServer, Status.SuccessWithResult);
-                                        WriteMessageToPipeStream(pipeServer, result);
-                                    }
-                                    else
-                                    {
-                                        WriteStatusToPipeStream(pipeServer, Status.Success);
-                                    }
-                                }
-                                catch (Exception exception)
-                                {
-                                    Utility.TraceDebugMessage(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
-                                    WriteStatusToPipeStream(pipeServer, Status.Failure);
-                                    WriteMessageToPipeStream(pipeServer, exception.Message);
-                                }
+                                WriteStatusToPipeStream(pipeServer, Status.SuccessWithResult);
+                                WriteMessageToPipeStream(pipeServer, result);
                             }
-
-                            Utility.WaitDefaultPipeTimeout();
+                            else
+                            {
+                                WriteStatusToPipeStream(pipeServer, Status.Success);
+                            }
+                        }
+                        catch (Exception exception)
+                        {
+                            Utility.TraceDebugMessage(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
+                            WriteStatusToPipeStream(pipeServer, Status.Failure);
+                            WriteMessageToPipeStream(pipeServer, exception.Message);
                         }
                     }
+
+                    Utility.WaitDefaultPipeTimeout();
                 }
-                catch (Exception exception)
-                {
-                    Console.WriteLine("Pipe server main loop failed: {0}", exception.ToString());
-                    Thread.Sleep(TimeSpan.FromSeconds(10));
-                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Pipe server main loop failed: {0}", exception.ToString());
+                Thread.Sleep(TimeSpan.FromSeconds(10));
             }
         }
 

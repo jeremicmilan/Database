@@ -65,14 +65,12 @@ namespace Database.Tests
 
         private void ExecuteTestFile()
         {
-            using (StreamReader streamReader = new StreamReader(TestFile))
+            using StreamReader streamReader = new StreamReader(TestFile);
+            while (streamReader.Peek() >= 0)
             {
-                while (streamReader.Peek() >= 0)
-                {
-                    string line = streamReader.ReadLine();
-                    LogTestMessage(TestExecutionPrefix + line);
-                    DatabaseClient.Get().ProcessDatabaseCommand(line);
-                }
+                string line = streamReader.ReadLine();
+                LogTestMessage(TestExecutionPrefix + line);
+                DatabaseClient.Get().ProcessDatabaseCommand(line);
             }
         }
 

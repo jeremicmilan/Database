@@ -6,7 +6,7 @@ namespace Database
 {
     public class DatabaseService : Service
     {
-        private Database _Database = null;
+        private readonly Database _Database = null;
 
         public const string DatabasePipeName = "DatabasePipe";
 

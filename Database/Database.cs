@@ -197,7 +197,7 @@ namespace Database
             switch (query.Trim())
             {
                 case string s when s.StartsWith(CreateTableStatement):
-                    tableName = query.Substring(CreateTableStatement.Length).Trim();
+                    tableName = query[CreateTableStatement.Length..].Trim();
                     if (!tableName.All(char.IsLower))
                     {
                         throw new Exception("Invalid table name.");
@@ -267,7 +267,7 @@ namespace Database
                     break;
 
                 case string s when s.StartsWith(SelectFromTableStatement):
-                    tableName = query.Substring(SelectFromTableStatement.Length).Trim();
+                    tableName = query[SelectFromTableStatement.Length..].Trim();
                     if (!tableName.All(char.IsLower))
                     {
                         throw new Exception("Invalid table name.");
@@ -297,12 +297,12 @@ namespace Database
 
         private (Table, List<int>) ParseTableRowStatement(string query, string prefix)
         {
-            string statementPart = query.Substring(prefix.Length).Trim();
+            string statementPart = query[prefix.Length..].Trim();
 
-            string tableName = statementPart.Substring(0, statementPart.IndexOf(" "));
+            string tableName = statementPart[..statementPart.IndexOf(" ")];
             Table table = GetExistingTable(tableName);
 
-            statementPart = statementPart.Substring(tableName.Length).Trim();
+            statementPart = statementPart[tableName.Length..].Trim();
             string valuesPart = ParseOutValues(statementPart);
 
             return (table, Table.ParseValues(valuesPart));
@@ -315,7 +315,7 @@ namespace Database
                 throw new Exception("Syntax error. VALUES expected.");
             }
 
-            return partWithValues.Substring(ValuesStatementPart.Length).Trim();
+            return partWithValues[ValuesStatementPart.Length..].Trim();
         }
 
         private (List<int>, List<int>) CompareTableValues(Table table, List<int> values)

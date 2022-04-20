@@ -84,10 +84,8 @@ namespace Database
                         File.Create(DefaultTraceFilePath);
                     }
 
-                    using (StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath))
-                    {
-                        streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
-                    }
+                    using StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath);
+                    streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
                 });
         }
 
