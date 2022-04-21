@@ -78,7 +78,7 @@ namespace Database
             foreach (LogRecord logRecord in logRecordsToBeUndone)
             {
                 LogRecordUndo logRecordUndo = new LogRecordUndo(logRecord);
-                WriteLogRecordToDisk(logRecordUndo);
+                PersistLogRecord(logRecordUndo);
                 logRecordUndo.Redo();
             }
 
@@ -115,7 +115,7 @@ namespace Database
             return LogRecords.Skip(indexBeginTransaction).ToList();
         }
 
-            public void WriteLogRecordToDisk(LogRecord logRecord)
+            public void PersistLogRecord(LogRecord logRecord)
         {
             if (Database.ServiceConfiguration.LoggingEnabled)
             {

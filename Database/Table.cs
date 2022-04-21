@@ -41,7 +41,7 @@ namespace Database
 
             if (!redo)
             {
-                Database.LogManager.WriteLogRecordToDisk(new LogRecordTableRowInsert(TableName, value));
+                Database.LogManager.PersistLogRecord(new LogRecordTableRowInsert(TableName, value));
             }
         }
 
@@ -57,7 +57,7 @@ namespace Database
 
             if (!redo)
             {
-                Database.LogManager.WriteLogRecordToDisk(new LogRecordTableRowDelete(TableName, value));
+                Database.LogManager.PersistLogRecord(new LogRecordTableRowDelete(TableName, value));
             }
         }
 

@@ -22,7 +22,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionBegin();
-                Database.Get().LogManager.WriteLogRecordToDisk(logRecord);
+                Database.Get().LogManager.PersistLogRecord(logRecord);
             }
         }
 
@@ -38,7 +38,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionEnd();
-                Database.Get().LogManager.WriteLogRecordToDisk(logRecord);
+                Database.Get().LogManager.PersistLogRecord(logRecord);
             }
         }
     }

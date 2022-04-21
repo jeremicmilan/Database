@@ -95,13 +95,13 @@ namespace Database
             {
                 if (table.IsDirty)
                 {
-                    WriteTableToDisk(table);
+                    PersistTable(table);
                     table.Clean();
                 }
             }
 
             LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
-            LogManager.WriteLogRecordToDisk(logRecord);
+            LogManager.PersistLogRecord(logRecord);
         }
 
         // Note that we are currently using a suboptimal implementation of writing to file.
@@ -111,7 +111,7 @@ namespace Database
         // However, in our implementation we are reading the whole file and only changing the desired table
         // which is a line in the database file.
         //
-        public void WriteTableToDisk(Table table)
+        public void PersistTable(Table table)
         {
             Utility.FileCreateIfNeeded(DataFilePath);
 
@@ -152,7 +152,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTableCreate(tableName);
-                LogManager.WriteLogRecordToDisk(logRecord);
+                LogManager.PersistLogRecord(logRecord);
             }
 
             return table;
