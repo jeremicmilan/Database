@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
@@ -96,33 +97,29 @@ namespace Database
             }
         }
 
-        private NamedPipeClientStream PipeClient;
-        private string PipeName;
-
-        public void RegisterPipeClient(string pipeName)
+        private NamedPipeClientStream RegisterPipeClient(string pipeName)
         {
-            PipeName = pipeName;
-
-            if (PipeClient != null)
-            {
-                PipeClient.Dispose();
-            }
-
-            PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
+            NamedPipeClientStream PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
             Utility.TraceDebugMessage("Attempting to connect to pipe...");
             PipeClient.Connect();
 
             Utility.TraceDebugMessage("Connected to pipe.");
             Utility.TraceDebugMessage("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
+
+            return PipeClient;
         }
 
-        public void SendMessageToPipe(string message)
+        readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
+
+        public void SendMessageToPipe(string pipeName, string message)
         {
+            PipeClients[pipeName] = PipeClients.GetValueOrDefault(pipeName) ?? RegisterPipeClient(pipeName);
+
             Utility.ExecuteWithRetry(
                 action: () =>
                 {
-                    WriteMessageToPipeStream(PipeClient, message);
-                    Status status = ReadStatusFromPipeStream(PipeClient);
+                    WriteMessageToPipeStream(PipeClients[pipeName], message);
+                    Status status = ReadStatusFromPipeStream(PipeClients[pipeName]);
 
                     switch (status)
                     {
@@ -130,19 +127,19 @@ namespace Database
                             break;
 
                         case Status.SuccessWithResult:
-                            string result = ReadMessageFromPipeStream(PipeClient);
+                            string result = ReadMessageFromPipeStream(PipeClients[pipeName]);
                             Table table = Table.Deserialize(result);
                             table.Print();
                             break;
 
                         case Status.Failure:
-                            string errorMessage = ReadMessageFromPipeStream(PipeClient);
+                            string errorMessage = ReadMessageFromPipeStream(PipeClients[pipeName]);
                             throw new Exception(errorMessage);
                     }
                 },
                 correctiveActionPredicate: (exception) =>
                     exception.Message == "Pipe is broken." || exception.Message == "Pipe hasn't been connected yet.",
-                correctiveAction: () => RegisterPipeClient(PipeName)
+                correctiveAction: () => PipeClients[pipeName] = RegisterPipeClient(pipeName)
                 );
         }
 

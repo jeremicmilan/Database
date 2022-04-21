@@ -1,6 +1,7 @@
 ﻿using Database.Tests;
 using System;
 using System.Diagnostics;
+using System.IO.Pipes;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
@@ -42,14 +43,12 @@ namespace Database
             StartServices();
             WaitForServicesBoot();
 
-            DatabaseService.RegisterPipeClient(DatabaseService.DatabasePipeName);
-
             WaitForUserInput();
         }
 
         protected virtual void StartServices()
         {
-            DatabaseService = new DatabaseService();
+            DatabaseService = new DatabaseServiceTraditional();
             new Thread(() => KeepServiceUp(DatabaseService)).Start();
         }
 
@@ -103,7 +102,7 @@ namespace Database
                     break;
 
                 default:
-                    DatabaseService.SendMessageToPipe(line);
+                    DatabaseService.SendMessageToPipe(DatabaseService.DatabasePipeName, message: line);
                     break;
             }
         }

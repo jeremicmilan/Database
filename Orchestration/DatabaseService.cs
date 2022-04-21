@@ -2,7 +2,7 @@
 
 namespace Database
 {
-    public class DatabaseService : Service
+    public abstract class DatabaseService : Service
     {
         private readonly Database _Database = null;
 
@@ -14,16 +14,12 @@ namespace Database
             _Database = CreateDatabase(serviceConfiguration);
         }
 
-        public virtual Database CreateDatabase (ServiceConfiguration serviceConfiguration = null)
-        {
-            return DatabaseTraditional.Create(
-                this,
-                serviceConfiguration?.DataFilePath,
-                serviceConfiguration?.LogFilePath);
-        }
+        public abstract Database CreateDatabase(ServiceConfiguration serviceConfiguration);
 
         public override void StartUp()
         {
+            StartUpDependencies();
+
             _Database.StartUp();
 
             // Block on waiting for input from clients
@@ -31,10 +27,7 @@ namespace Database
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
         }
 
-        public override void SnapWindow()
-        {
-            Window.SnapRight(Process.GetCurrentProcess());
-        }
+        public virtual void StartUpDependencies() { }
 
         public string ProcessQuery(string message)
         {

@@ -8,11 +8,18 @@ namespace Database
             : base(serviceConfiguration)
         { }
 
-        public override Database CreateDatabase(ServiceConfiguration serviceConfiguration = null)
+        public override Database CreateDatabase(ServiceConfiguration serviceConfiguration)
         {
             return DatabaseHyperscale.Create(
                 this,
                 serviceConfiguration?.LogFilePath);
+        }
+
+
+
+        public override void StartUpDependencies()
+        {
+            //RegisterPipeClient()
         }
 
         public override void SnapWindow()
