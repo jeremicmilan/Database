@@ -11,7 +11,12 @@ namespace Database
         public DatabaseService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
-            _Database = Database.Create(
+            _Database = CreateDatabase(serviceConfiguration);
+        }
+
+        public virtual Database CreateDatabase (ServiceConfiguration serviceConfiguration = null)
+        {
+            return DatabaseTraditional.Create(
                 this,
                 serviceConfiguration?.DataFilePath,
                 serviceConfiguration?.LogFilePath);

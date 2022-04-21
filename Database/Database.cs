@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Database
 {
-    public class Database
+    public abstract class Database
     {
         #region Database Lifecycle
 
@@ -19,32 +19,24 @@ namespace Database
 
         protected Database(
             DatabaseService databaseService,
-            string dataPath = null,
-            string logPath = null)
+            string logPath)
         {
             DatabaseService = databaseService;
             Tables = new List<Table>();
-            DataFilePath = dataPath ?? Utility.DefaultDataFilePath;
             LogManager = new LogManager(logPath ?? Utility.DefaultLogFilePath);
             TransactionManager = new TransactionManager();
         }
 
-        private static Database _Database = null;
+        protected static Database _Database = null;
         public static Database Get() => _Database;
-
-        public static Database Create(
-            DatabaseService databaseService,
-            string dataPath = null,
-            string logPath = null)
+        protected static void Set(Database database)
         {
             if (_Database != null)
             {
                 throw new Exception("There can be only one database per process.");
             }
 
-            return _Database = databaseService is DatabaseServiceHyperscale ?
-                new DatabaseHyperscale(databaseService) :
-                new Database(databaseService, dataPath, logPath);
+            _Database = database;
         }
 
         public static void Destroy()
@@ -59,31 +51,17 @@ namespace Database
 
         public void StartUp()
         {
-            // Boot from the data file.
-            //
-            if (File.Exists(DataFilePath))
-            {
-                foreach (string line in File.ReadAllLines(DataFilePath))
-                {
-                    Table table = Table.Parse(line);
-                    Tables.Add(table);
-                }
-            }
-
-            // Boot from the log file.
-            //
-            if (File.Exists(LogManager.LogFilePath))
-            {
-                LogManager.ReadFromDisk();
-                LogManager.Recover();
-            }
+            BootData();
+            BootLog();
         }
+
+        protected abstract void BootData();
+
+        protected abstract void BootLog();
 
         #endregion Database Lifecycle
 
         #region Checkpoint and Disk Operations
-
-        public string DataFilePath { get; private set; }
 
         // In a production system Checkpoint would have been performed automatically as part of some
         // background thread. In our case, we will only allow user to perform Checkpoint due to simplicity.
@@ -104,32 +82,7 @@ namespace Database
             LogManager.PersistLogRecord(logRecord);
         }
 
-        // Note that we are currently using a suboptimal implementation of writing to file.
-        // In our current implementation Table object maps to Table, Column and Page in a conventional database.
-        // Table would have multiple logical columns, while on the physical level Table would have multiple Pages.
-        // Pages are of a fixed size (8KB for example) making random access writes in database files optimal.
-        // However, in our implementation we are reading the whole file and only changing the desired table
-        // which is a line in the database file.
-        //
-        public void PersistTable(Table table)
-        {
-            Utility.FileCreateIfNeeded(DataFilePath);
-
-            string tableString = table.ToString();
-            string[] lines = Utility.FileReadAllLines(DataFilePath);
-
-            int index = Array.FindIndex(lines, (line) => Table.Parse(line).TableName == table.TableName);
-            if (index == -1)
-            {
-                lines = lines.Append(tableString).ToArray();
-            }
-            else
-            {
-                lines[index] = tableString;
-            }
-
-            Utility.FileWriteAllLines(DataFilePath, lines);
-        }
+        public abstract void PersistTable(Table table);
 
         #endregion Checkpoint and Disk Operations
 
