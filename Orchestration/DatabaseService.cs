@@ -18,7 +18,7 @@ namespace Database
 
         public override void StartUp()
         {
-            StartUpDependencies();
+            StartUpDatabaseDependencies();
 
             _Database.StartUp();
 
@@ -27,7 +27,7 @@ namespace Database
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
         }
 
-        public virtual void StartUpDependencies() { }
+        public virtual void StartUpDatabaseDependencies() { }
 
         public string ProcessQuery(string message)
         {

@@ -17,7 +17,7 @@ namespace Database
 
 
 
-        public override void StartUpDependencies()
+        public override void StartUpDatabaseDependencies()
         {
             //RegisterPipeClient()
         }
