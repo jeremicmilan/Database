@@ -15,13 +15,6 @@ namespace Database
                 serviceConfiguration?.LogFilePath);
         }
 
-
-
-        public override void StartUpDatabaseDependencies()
-        {
-            //RegisterPipeClient()
-        }
-
         public override void SnapWindow()
         {
             Window.SnapTopRight(Process.GetCurrentProcess());

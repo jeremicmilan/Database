@@ -18,16 +18,12 @@ namespace Database
 
         public override void StartUp()
         {
-            StartUpDatabaseDependencies();
-
             _Database.StartUp();
 
             // Block on waiting for input from clients
             //
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
         }
-
-        public virtual void StartUpDatabaseDependencies() { }
 
         public string ProcessQuery(string message)
         {
