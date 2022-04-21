@@ -109,7 +109,7 @@ namespace Database
             return PipeClient;
         }
 
-        readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
+        private readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
 
         public void SendMessageToPipe(string pipeName, string message)
         {
