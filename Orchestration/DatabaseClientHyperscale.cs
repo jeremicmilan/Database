@@ -10,7 +10,7 @@ namespace Database
 
         protected override void StartServices()
         {
-            DatabaseService = new DatabaseServiceHyperScale();
+            DatabaseService = new DatabaseServiceHyperscale();
             new Thread(() => KeepServiceUp(DatabaseService)).Start();
 
             StorageService = new StorageService();

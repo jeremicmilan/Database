@@ -2,9 +2,9 @@
 
 namespace Database
 {
-    public class DatabaseServiceHyperScale : DatabaseService
+    public class DatabaseServiceHyperscale : DatabaseService
     {
-        public DatabaseServiceHyperScale(ServiceConfiguration serviceConfiguration = null)
+        public DatabaseServiceHyperscale(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         { }
 

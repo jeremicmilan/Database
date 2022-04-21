@@ -17,7 +17,7 @@ namespace Database
 
         public static ServiceConfiguration ServiceConfiguration => Get().DatabaseService.ServiceConfiguration;
 
-        private Database(
+        protected Database(
             DatabaseService databaseService,
             string dataPath = null,
             string logPath = null)
@@ -42,7 +42,9 @@ namespace Database
                 throw new Exception("There can be only one database per process.");
             }
 
-            return _Database = new Database(databaseService, dataPath, logPath);
+            return _Database = databaseService is DatabaseServiceHyperscale ?
+                new DatabaseHyperscale(databaseService) :
+                new Database(databaseService, dataPath, logPath);
         }
 
         public static void Destroy()
