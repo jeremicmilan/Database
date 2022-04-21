@@ -33,17 +33,5 @@ namespace Database
         {
             return _Database.ProcessQuery(query: message);
         }
-
-        public void OverrideConfiguration(ServiceConfiguration serviceConfiguration)
-        {
-            if (serviceConfiguration != null)
-            {
-                ServiceConfiguration.Override(serviceConfiguration);
-            }
-            else
-            {
-                ServiceConfiguration = DefaultServiceConfiguration;
-            }
-        }
     }
 }

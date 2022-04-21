@@ -167,5 +167,17 @@ namespace Database
         {
              return Enum.Parse<Status>(ReadMessageFromPipeStream(pipeStream));
         }
+
+        public void OverrideConfiguration(ServiceConfiguration serviceConfiguration)
+        {
+            if (serviceConfiguration != null)
+            {
+                ServiceConfiguration.Override(serviceConfiguration);
+            }
+            else
+            {
+                ServiceConfiguration = DefaultServiceConfiguration;
+            }
+        }
     }
 }
