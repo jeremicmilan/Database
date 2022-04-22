@@ -10,7 +10,6 @@ namespace Database
 {
     public class DatabaseClient
     {
-
         protected DatabaseClient() { }
 
         protected static DatabaseClient _DatabaseClient = null;
@@ -23,7 +22,7 @@ namespace Database
                 throw new Exception("There can be only one database starter.");
             }
 
-            return _DatabaseClient = Utility.ServiceConfiguration.IsHyperScale ? new DatabaseClientHyperscale() : new DatabaseClient();
+            return _DatabaseClient = new DatabaseClient();
         }
 
         private CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
@@ -98,6 +97,14 @@ namespace Database
                     KillDatabase();
                     break;
 
+                case "CONFIGURE LOGGING OFF":
+                    OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = false });
+                    break;
+
+                case "CONFIGURE LOGGING ON":
+                    OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = true });
+                    break;
+
                 case "":
                     break;
 
@@ -139,7 +146,7 @@ namespace Database
             DatabaseService.Process.Kill();
         }
 
-        public void OverrideDatabaseServiceConfirguration(ServiceConfiguration serviceConfiguration)
+        public void OverrideDatabaseServiceConfiguration(ServiceConfiguration serviceConfiguration)
         {
             DatabaseService.OverrideConfiguration(serviceConfiguration);
 

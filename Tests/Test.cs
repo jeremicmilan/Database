@@ -50,17 +50,17 @@ namespace Database.Tests
         {
             RecreateWorkingDirectory();
 
-            ServiceConfiguration serviceConfiguration = File.Exists(TestDatabaseConfigFile) ?
-                ServiceConfiguration.Deserialize(File.ReadAllText(TestDatabaseConfigFile)) :
-                new ServiceConfiguration();
-            serviceConfiguration.DataFilePath = TestDataFile;
-            serviceConfiguration.LogFilePath = TestLogFile;
-            DatabaseClient.Get().OverrideDatabaseServiceConfirguration(serviceConfiguration);
+            ServiceConfiguration serviceConfiguration = new ServiceConfiguration
+            {
+                DataFilePath = TestDataFile,
+                LogFilePath = TestLogFile
+            };
+            DatabaseClient.Get().OverrideDatabaseServiceConfiguration(serviceConfiguration);
         }
 
         private void Cleanup()
         {
-            DatabaseClient.Get().OverrideDatabaseServiceConfirguration(null);
+            DatabaseClient.Get().OverrideDatabaseServiceConfiguration(null);
         }
 
         private void ExecuteTestFile()
@@ -136,8 +136,6 @@ namespace Database.Tests
         private string TestExpectedLogFile => TestDirectory + Path.DirectorySeparatorChar + "expected.datalog";
 
         private string TestExpectedDataFile => TestDirectory + Path.DirectorySeparatorChar + "expected.data";
-
-        private string TestDatabaseConfigFile => TestDirectory + Path.DirectorySeparatorChar + "database.config";
 
         private string TestWorkingDirectory => TestDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
 

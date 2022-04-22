@@ -117,7 +117,7 @@ namespace Database
 
             public void PersistLogRecord(LogRecord logRecord)
         {
-            if (Database.ServiceConfiguration.LoggingEnabled)
+            if (Database.ServiceConfiguration.LoggingEnabled ?? false)
             {
                 using StreamWriter streamWriter = File.AppendText(LogFilePath);
                 streamWriter.WriteLine(logRecord.ToString());

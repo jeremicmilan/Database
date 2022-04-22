@@ -19,10 +19,10 @@ namespace Database
         public string DataFilePath;
 
         [XmlElement]
-        public bool LoggingEnabled = true;
+        public bool? LoggingEnabled = true;
 
         [XmlElement]
-        public bool IsHyperScale = false;
+        public bool? IsHyperScale = false;
 
         public ServiceConfiguration() { }
 
@@ -37,8 +37,8 @@ namespace Database
             ServiceType = serviceConfiguration.ServiceType ?? ServiceType;
             LogFilePath = serviceConfiguration.LogFilePath ?? LogFilePath;
             DataFilePath = serviceConfiguration.DataFilePath ?? DataFilePath;
-            LoggingEnabled = serviceConfiguration.LoggingEnabled;
-            IsHyperScale = serviceConfiguration.IsHyperScale;
+            LoggingEnabled = serviceConfiguration.LoggingEnabled ?? LoggingEnabled;
+            IsHyperScale = serviceConfiguration.IsHyperScale ?? IsHyperScale;
         }
 
         public string Serialize()

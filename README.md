@@ -34,3 +34,6 @@ KILL
 
 RUN <<a>test_name>
 RUN ALL</code></pre>
+
+CONFIGURE LOGGING OFF
+CONFIGURE LOGGING ON

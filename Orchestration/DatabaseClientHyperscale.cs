@@ -5,6 +5,8 @@ namespace Database
 {
     public class DatabaseClientHyperscale : DatabaseClient
     {
+        protected DatabaseClientHyperscale() { }
+
         StorageService StorageService = null;
         LogService LogService = null;
 
