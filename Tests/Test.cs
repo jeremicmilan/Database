@@ -29,7 +29,7 @@ namespace Database.Tests
 
             try
             {
-                Startup();
+                Start();
 
                 ExecuteTestFile();
                 CheckExpectedOutputFiles();
@@ -46,7 +46,7 @@ namespace Database.Tests
             LogTestMessage("Finnished test: " + TestName);
         }
 
-        private void Startup()
+        private void Start()
         {
             RecreateWorkingDirectory();
 
@@ -55,12 +55,12 @@ namespace Database.Tests
                 DataFilePath = TestDataFile,
                 LogFilePath = TestLogFile
             };
-            DatabaseClient.Get().OverrideDatabaseServiceConfiguration(serviceConfiguration);
+            DatabaseClient.Get().Orchestrator.OverrideDatabaseServiceConfiguration(serviceConfiguration);
         }
 
         private void Cleanup()
         {
-            DatabaseClient.Get().OverrideDatabaseServiceConfiguration(null);
+            DatabaseClient.Get().Orchestrator.OverrideDatabaseServiceConfiguration(null);
         }
 
         private void ExecuteTestFile()

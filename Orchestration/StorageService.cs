@@ -9,7 +9,7 @@ namespace Database
             : base(serviceConfiguration)
         { }
 
-        public override void StartUp()
+        public override void Start()
         {
             throw new NotImplementedException();
         }

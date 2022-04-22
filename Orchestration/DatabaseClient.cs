@@ -25,46 +25,22 @@ namespace Database
             return _DatabaseClient = new DatabaseClient();
         }
 
-        private CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
-        protected DatabaseService DatabaseService = null;
+        public Orchestrator Orchestrator { get; set; }
 
-        public void StartUp()
+        public void Start<T>() where T : Orchestrator, new()
         {
-            AppDomain.CurrentDomain.ProcessExit += (s, e) =>
-                {
-                    KeepServicesUpThreadCancellationTokenSource.Cancel();
-                    KillStartedProcesses();
-                };
-
-            SnapWindow();
-
-            KeepServicesUpThreadCancellationTokenSource = new CancellationTokenSource();
-            StartServices();
-            WaitForServicesBoot();
+            Orchestrator = new T();
+            Orchestrator.Start();
 
             WaitForUserInput();
         }
 
-        protected virtual void StartServices()
+        public void Restart<T>() where T : Orchestrator, new()
         {
-            DatabaseService = new DatabaseServiceTraditional();
-            new Thread(() => KeepServiceUp(DatabaseService)).Start();
+            Orchestrator.Stop();
+            Start<T>();
         }
 
-        protected virtual void WaitForServicesBoot()
-        {
-            Utility.WaitUntil(() => DatabaseService != null);
-        }
-
-        protected virtual void KillStartedProcesses()
-        {
-            DatabaseService?.Process?.Kill();
-        }
-
-        protected virtual void SnapWindow()
-        {
-            Window.SnapLeft(Process.GetCurrentProcess());
-        }
 
         protected void WaitForUserInput()
         {
@@ -100,21 +76,23 @@ namespace Database
             switch (line.Trim())
             {
                 case "KILL":
-                    KillDatabase();
+                    Orchestrator.DatabaseRestart();
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "OFF":
-                    OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = false });
+                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = false });
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "ON":
-                    OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = true });
+                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = true });
                     break;
 
                 case ConfigureStatement + DatabaseStatementPart + "TRADITIONAL":
+                    Restart<OrchestratorTraditional>();
                     break;
 
                 case ConfigureStatement + DatabaseStatementPart + "HYPERSCALE":
+                    Restart<OrchestratorHyperscale>();
                     break;
 
                 case string s when s.StartsWith(RunTestStatement):
@@ -140,43 +118,8 @@ namespace Database
                     break;
 
                 default:
-                    DatabaseService.SendMessageToPipe(DatabaseService.DatabasePipeName, message: line);
+                    Orchestrator.DatabaseService.SendMessageToPipe(DatabaseService.DatabasePipeName, message: line);
                     break;
-            }
-        }
-
-        protected void KillDatabase()
-        {
-            DatabaseService.Process.Kill();
-        }
-
-        public void OverrideDatabaseServiceConfiguration(ServiceConfiguration serviceConfiguration)
-        {
-            DatabaseService.OverrideConfiguration(serviceConfiguration);
-
-            // Restart database so new configuration is picked up.
-            //
-            KillDatabase();
-        }
-
-        protected void KeepServiceUp(Service service)
-        {
-            Thread.CurrentThread.Name = service.GetType() + "_" + MethodBase.GetCurrentMethod().Name;
-
-            while (true)
-            {
-                Utility.TraceDebugMessage(string.Format("Starting up {0}...", service.GetType()));
-                service.StartUpAsProcess();
-                service.Process.WaitForExit();
-                Utility.TraceDebugMessage(string.Format("{0} exited.", service.GetType()));
-
-                if (KeepServicesUpThreadCancellationTokenSource != null &&
-                    KeepServicesUpThreadCancellationTokenSource.IsCancellationRequested)
-                {
-                    break;
-                }
-
-                Thread.Sleep(TimeSpan.FromMilliseconds(100));
             }
         }
     }

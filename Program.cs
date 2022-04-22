@@ -14,7 +14,7 @@ namespace Database
                 Console.Title = "DatabaseClient";
 
                 DatabaseClient databaseClient = DatabaseClient.Create();
-                databaseClient.StartUp();
+                databaseClient.Start<OrchestratorTraditional>();
             }
             else
             {
@@ -29,7 +29,7 @@ namespace Database
 
                     Utility.TraceDebugMessage("Starting service...");
                     service.SnapWindow();
-                    service.StartUp();
+                    service.Start();
                     Utility.TraceDebugMessage("Service ended.");
                 }
                 catch (Exception exception)

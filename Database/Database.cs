@@ -39,7 +39,13 @@ namespace Database
             _Database = database;
         }
 
-        public static void Destroy()
+        public void Start()
+        {
+            BootData();
+            BootLog();
+        }
+
+        public void Stop()
         {
             if (_Database == null)
             {
@@ -47,12 +53,6 @@ namespace Database
             }
 
             _Database = null;
-        }
-
-        public void StartUp()
-        {
-            BootData();
-            BootLog();
         }
 
         protected abstract void BootData();

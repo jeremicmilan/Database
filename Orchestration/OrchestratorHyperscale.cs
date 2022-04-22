@@ -3,9 +3,9 @@ using System.Threading;
 
 namespace Database
 {
-    public class DatabaseClientHyperscale : DatabaseClient
+    public class OrchestratorHyperscale : Orchestrator
     {
-        protected DatabaseClientHyperscale() { }
+        public OrchestratorHyperscale() { }
 
         StorageService StorageService = null;
         LogService LogService = null;
@@ -29,11 +29,11 @@ namespace Database
             Utility.WaitUntil(() => LogService != null);
         }
 
-        protected override void KillStartedProcesses()
+        protected override void StopStartedServices()
         {
-            DatabaseService?.Process?.Kill();
-            StorageService?.Process?.Kill();
-            LogService?.Process?.Kill();
+            DatabaseService.Stop();
+            StorageService.Stop();
+            LogService.Stop();
         }
 
         protected override void SnapWindow()

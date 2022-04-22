@@ -19,9 +19,15 @@ namespace Database
         }
 
         public abstract void SnapWindow();
-        public abstract void StartUp();
 
-        public void StartUpAsProcess()
+        public abstract void Start();
+
+        public virtual void Stop()
+        {
+            Process?.Kill();
+        }
+
+        public void StartAsProcess()
         {
             Process currentProcess = Process.GetCurrentProcess();
 

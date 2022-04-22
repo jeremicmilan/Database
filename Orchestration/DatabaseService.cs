@@ -16,13 +16,19 @@ namespace Database
 
         public abstract Database CreateDatabase(ServiceConfiguration serviceConfiguration);
 
-        public override void StartUp()
+        public override void Start()
         {
-            _Database.StartUp();
+            _Database.Start();
 
             // Block on waiting for input from clients
             //
             RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
+        }
+
+        public override void Stop()
+        {
+            base.Stop();
+            _Database?.Stop();
         }
 
         public string ProcessQuery(string message)
