@@ -70,7 +70,7 @@ namespace Database.Tests
             {
                 string line = streamReader.ReadLine();
                 LogTestMessage(TestExecutionPrefix + line);
-                DatabaseClient.Get().ProcessDatabaseCommand(line);
+                DatabaseClient.Get().ProcessUserInput(line);
             }
         }
 
