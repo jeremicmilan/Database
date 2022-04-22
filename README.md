@@ -12,17 +12,17 @@ Traditional DBMS has been implemented so far with an easy way of testing for a p
 <pre><code>CREATE TABLE <<a>table_name>
 
 INSERT INTO <<a>table_name> VALUES
-    <<a>integer> [, <<a>integer>]  
+    <<a>integer> [, <<a>integer>]
   | <<a>empty>
 
 DELETE FROM <<a>table_name> VALUES
-    <<a>integer> [, <<a>integer>]  
+    <<a>integer> [, <<a>integer>]
   | <<a>empty>
 
-SELECT FROM <<a>table_name>  
+SELECT FROM <<a>table_name>
 
-CHECK <<a>table_name> VALUES  
-    <<a>integer> [, <<a>integer>]  
+CHECK <<a>table_name> VALUES
+    <<a>integer> [, <<a>integer>]
   | <<a>empty>
 
 CHECKPOINT
