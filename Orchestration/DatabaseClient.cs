@@ -95,6 +95,7 @@ namespace Database
 
             const string ConfigureStatement = "CONFIGURE ";
             const string LoggingStatementPart = "LOGGING ";
+            const string DatabaseStatementPart = "DATABASE ";
 
             switch (line.Trim())
             {
@@ -108,6 +109,12 @@ namespace Database
 
                 case ConfigureStatement + LoggingStatementPart + "ON":
                     OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = true });
+                    break;
+
+                case ConfigureStatement + DatabaseStatementPart + "TRADITIONAL":
+                    break;
+
+                case ConfigureStatement + DatabaseStatementPart + "HYPERSCALE":
                     break;
 
                 case string s when s.StartsWith(RunTestStatement):
