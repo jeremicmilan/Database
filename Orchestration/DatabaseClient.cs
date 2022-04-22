@@ -89,20 +89,44 @@ namespace Database
             }
         }
 
-        public void ProcessDatabaseCommand(string line)
+        public void ProcessUserInput(string line)
         {
+            const string RunTestStatement = "RUN ";
+
+            const string ConfigureStatement = "CONFIGURE ";
+            const string LoggingStatementPart = "LOGGING ";
+
             switch (line.Trim())
             {
                 case "KILL":
                     KillDatabase();
                     break;
 
-                case "CONFIGURE LOGGING OFF":
+                case ConfigureStatement + LoggingStatementPart + "OFF":
                     OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = false });
                     break;
 
-                case "CONFIGURE LOGGING ON":
+                case ConfigureStatement + LoggingStatementPart + "ON":
                     OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = true });
+                    break;
+
+                case string s when s.StartsWith(RunTestStatement):
+                    string testName = line[RunTestStatement.Length..].Trim();
+                    if (!testName.All(c => char.IsLetterOrDigit(c) || c == '.'))
+                    {
+                        throw new Exception("Test name should contain only letters.");
+                    }
+
+                    if (testName == "ALL")
+                    {
+                        Test.RunAll();
+                    }
+                    else
+                    {
+                        Test test = new Test(testName);
+                        test.Run();
+                    }
+
                     break;
 
                 case "":
@@ -111,33 +135,6 @@ namespace Database
                 default:
                     DatabaseService.SendMessageToPipe(DatabaseService.DatabasePipeName, message: line);
                     break;
-            }
-        }
-
-        protected void ProcessUserInput(string line)
-        {
-            const string RunTestStatement = "RUN ";
-            if (line.StartsWith(RunTestStatement))
-            {
-                string testName = line[RunTestStatement.Length..].Trim();
-                if (!testName.All(c => char.IsLetterOrDigit(c) || c == '.'))
-                {
-                    throw new Exception("Test name should contain only letters.");
-                }
-
-                if (testName == "ALL")
-                {
-                    Test.RunAll();
-                }
-                else
-                {
-                    Test test = new Test(testName);
-                    test.Run();
-                }
-            }
-            else
-            {
-                ProcessDatabaseCommand(line);
             }
         }
 
