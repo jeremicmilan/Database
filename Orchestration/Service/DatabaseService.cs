@@ -6,8 +6,6 @@ namespace Database
     {
         private readonly Database _Database = null;
 
-        public const string DatabasePipeName = "DatabasePipe";
-
         public DatabaseService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
@@ -16,13 +14,9 @@ namespace Database
 
         public abstract Database CreateDatabase(ServiceConfiguration serviceConfiguration);
 
-        public override void Start()
+        protected override void StartInternal()
         {
             _Database.Start();
-
-            // Block on waiting for input from clients
-            //
-            RegisterPipeServer(DatabasePipeName, (message) => ProcessQuery(message));
         }
 
         public override void Stop()
@@ -31,7 +25,9 @@ namespace Database
             _Database?.Stop();
         }
 
-        public string ProcessQuery(string message)
+        protected override string ServicePipeName => "DatabasePipe";
+
+        protected override string ProcessRequest(string message)
         {
             return _Database.ProcessQuery(query: message);
         }

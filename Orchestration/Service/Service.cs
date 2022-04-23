@@ -20,7 +20,20 @@ namespace Database
 
         public abstract void SnapWindow();
 
-        public abstract void Start();
+        public void Start()
+        {
+            StartInternal();
+
+            // Block on processing a request
+            //
+            RegisterPipeServer(ServicePipeName, ProcessRequest);
+        }
+
+        protected abstract string ServicePipeName { get; }
+
+        protected abstract string ProcessRequest(string message);
+
+        protected abstract void StartInternal();
 
         public virtual void Stop()
         {
@@ -117,15 +130,15 @@ namespace Database
 
         private readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
 
-        public void SendMessageToPipe(string pipeName, string message)
+        public void SendMessageToPipe(string message)
         {
-            PipeClients[pipeName] = PipeClients.GetValueOrDefault(pipeName) ?? RegisterPipeClient(pipeName);
+            PipeClients[ServicePipeName] = PipeClients.GetValueOrDefault(ServicePipeName) ?? RegisterPipeClient(ServicePipeName);
 
             Utility.ExecuteWithRetry(
                 action: () =>
                 {
-                    WriteMessageToPipeStream(PipeClients[pipeName], message);
-                    Status status = ReadStatusFromPipeStream(PipeClients[pipeName]);
+                    WriteMessageToPipeStream(PipeClients[ServicePipeName], message);
+                    Status status = ReadStatusFromPipeStream(PipeClients[ServicePipeName]);
 
                     switch (status)
                     {
@@ -133,19 +146,19 @@ namespace Database
                             break;
 
                         case Status.SuccessWithResult:
-                            string result = ReadMessageFromPipeStream(PipeClients[pipeName]);
+                            string result = ReadMessageFromPipeStream(PipeClients[ServicePipeName]);
                             Table table = Table.Deserialize(result);
                             table.Print();
                             break;
 
                         case Status.Failure:
-                            string errorMessage = ReadMessageFromPipeStream(PipeClients[pipeName]);
+                            string errorMessage = ReadMessageFromPipeStream(PipeClients[ServicePipeName]);
                             throw new Exception(errorMessage);
                     }
                 },
                 correctiveActionPredicate: (exception) =>
                     exception.Message == "Pipe is broken." || exception.Message == "Pipe hasn't been connected yet.",
-                correctiveAction: () => PipeClients[pipeName] = RegisterPipeClient(pipeName)
+                correctiveAction: () => PipeClients[ServicePipeName] = RegisterPipeClient(ServicePipeName)
                 );
         }
 

@@ -5,13 +5,21 @@ namespace Database
 {
     public class StorageService : Service
     {
+        protected override string ServicePipeName => "StorageServicePipe";
+
         public StorageService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         { }
 
-        public override void Start()
+        protected override void StartInternal()
         {
-            throw new NotImplementedException();
+            // TODO: start a thread for applying the log from log service
+        }
+
+        protected override string ProcessRequest(string message)
+        {
+            // TODO: implement
+            return "";
         }
 
         public override void SnapWindow()

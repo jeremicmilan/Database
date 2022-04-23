@@ -118,7 +118,7 @@ namespace Database
                     break;
 
                 default:
-                    Orchestrator.DatabaseService.SendMessageToPipe(DatabaseService.DatabasePipeName, message: line);
+                    Orchestrator.DatabaseService.SendMessageToPipe(message: line);
                     break;
             }
         }
