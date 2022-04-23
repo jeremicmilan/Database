@@ -7,6 +7,15 @@ namespace Database
 {
     public abstract class LogRecord
     {
+        public int LogSequenceNumber;
+
+        private static int _logSequenceNumberMax = 0;
+
+        protected LogRecord()
+        {
+            LogSequenceNumber = ++_logSequenceNumberMax;
+        }
+
         public const string LogRecordParameterDelimiter = ",";
 
         protected Database Database { get => Database.Get(); }
@@ -18,8 +27,9 @@ namespace Database
 
         protected static LogRecord InterpretLogRecord(string[] logRecordParts)
         {
-            LogRecordType logRecordType = Enum.Parse<LogRecordType>(logRecordParts[0]);
-            string[] parameters = logRecordParts.Skip(1).ToArray();
+            int logSequenceNumber = int.Parse(logRecordParts[0]);
+            LogRecordType logRecordType = Enum.Parse<LogRecordType>(logRecordParts[1]);
+            string[] parameters = logRecordParts.Skip(2).ToArray();
 
             return logRecordType switch
             {
@@ -34,7 +44,7 @@ namespace Database
             };
         }
 
-        public override string ToString() => GetLogRecordType().ToString();
+        public override string ToString() => LogSequenceNumber + LogRecordParameterDelimiter + GetLogRecordType().ToString();
 
         public virtual bool Equals(LogRecord other) => GetLogRecordType() == other.GetLogRecordType();
 
