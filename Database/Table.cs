@@ -104,5 +104,32 @@ namespace Database
                 valuesString.Split(',').Select(value => int.Parse(value.Trim())).ToList() :
                 new List<int>();
         }
+
+        // Note that we are currently using a suboptimal implementation of writing to file.
+        // In our current implementation Table object maps to Table, Column and Page in a conventional database.
+        // Table would have multiple logical columns, while on the physical level Table would have multiple Pages.
+        // Pages are of a fixed size (8KB for example) making random access writes in database files optimal.
+        // However, in our implementation we are reading the whole file and only changing the desired table
+        // which is a line in the database file.
+        //
+        public void WriteToFile(string filePath)
+        {
+            Utility.FileCreateIfNeeded(filePath);
+
+            string tableString = ToString();
+            string[] lines = Utility.FileReadAllLines(filePath);
+
+            int index = Array.FindIndex(lines, (line) => Table.Parse(line).TableName == TableName);
+            if (index == -1)
+            {
+                lines = lines.Append(tableString).ToArray();
+            }
+            else
+            {
+                lines[index] = tableString;
+            }
+
+            Utility.FileWriteAllLines(filePath, lines);
+        }
     }
 }
