@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-
-namespace Database
+﻿namespace Database
 {
-    public abstract class DatabaseService : Service
+    public abstract class DatabaseService : Service<DatabaseServiceAction, DatabaseServiceRequest, DatabaseServiceResponseResult>
     {
         private readonly Database _Database = null;
 
@@ -27,9 +25,9 @@ namespace Database
 
         protected override string ServicePipeName => "DatabasePipe";
 
-        protected override string ProcessRequest(string message)
+        protected override DatabaseServiceResponseResult ProcessRequest(DatabaseServiceRequest databaseServiceRequest)
         {
-            return _Database.ProcessQuery(query: message);
+            return _Database.ProcessQuery(query: databaseServiceRequest.Query);
         }
     }
 }

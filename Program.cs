@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 
 namespace Database
@@ -22,10 +24,11 @@ namespace Database
 
                 try
                 {
-                    ServiceConfiguration serviceConfiguration = ServiceConfiguration.Deserialize(args[0]);
+                    ServiceConfiguration serviceConfiguration = JsonSerializer.Deserialize<ServiceConfiguration>(args[0]);
                     Type type = Type.GetType(serviceConfiguration.ServiceType);
                     Console.Title = type.Name;
-                    Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
+                    object o = Activator.CreateInstance(type, serviceConfiguration);
+                    dynamic service = Convert.ChangeType(o, type);
 
                     Utility.TraceDebugMessage("Starting service...");
                     service.SnapWindow();

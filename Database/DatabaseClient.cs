@@ -1,10 +1,6 @@
 ﻿using Database.Tests;
 using System;
-using System.Diagnostics;
-using System.IO.Pipes;
 using System.Linq;
-using System.Reflection;
-using System.Threading;
 
 namespace Database
 {
@@ -80,11 +76,11 @@ namespace Database
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "OFF":
-                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = false });
+                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingDisabled = true });
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "ON":
-                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingEnabled = true });
+                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingDisabled = false });
                     break;
 
                 case ConfigureStatement + DatabaseStatementPart + "TRADITIONAL":
@@ -118,7 +114,8 @@ namespace Database
                     break;
 
                 default:
-                    Orchestrator.DatabaseService.SendMessageToPipe(message: line);
+                    Orchestrator.DatabaseService.SendMessageToPipe(
+                        new DatabaseServiceRequest(DatabaseServiceAction.Query, line));
                     break;
             }
         }

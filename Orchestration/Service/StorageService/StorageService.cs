@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Database
 {
-    public class StorageService : Service
+    public class StorageService : Service<StorageServiceAction, StorageServiceRequest, StorageServiceResponseResult>
     {
         protected override string ServicePipeName => "StorageServicePipe";
 
@@ -16,10 +16,9 @@ namespace Database
             // TODO: start a thread for applying the log from log service
         }
 
-        protected override string ProcessRequest(string message)
+        protected override StorageServiceResponseResult ProcessRequest(StorageServiceRequest message)
         {
-            // TODO: implement
-            return "";
+            throw new NotImplementedException();
         }
 
         public override void SnapWindow()

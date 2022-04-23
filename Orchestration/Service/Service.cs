@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
+using System.Text.Json;
 using System.Threading;
 
 namespace Database
 {
-    public abstract class Service
+    public abstract class Service<TServiceAction, TServiceRequest, TServiceResponseResult>
+        where TServiceAction : Enum
+        where TServiceRequest : ServiceRequest<TServiceAction>
+        where TServiceResponseResult : ServiceResponseResult
     {
         public Process Process = null;
         public ServiceConfiguration ServiceConfiguration;
-        protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration(this.GetType().ToString());
+        protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration { ServiceType = this.GetType().ToString() };
 
         protected Service(ServiceConfiguration serviceConfiguration = null)
         {
@@ -31,7 +35,7 @@ namespace Database
 
         protected abstract string ServicePipeName { get; }
 
-        protected abstract string ProcessRequest(string message);
+        protected abstract TServiceResponseResult ProcessRequest(TServiceRequest serviceMessage);
 
         protected abstract void StartInternal();
 
@@ -49,7 +53,7 @@ namespace Database
                 UseShellExecute = true
             };
 
-            string serviceConfigurationString = ServiceConfiguration.Serialize();
+            string serviceConfigurationString = JsonSerializer.Serialize(ServiceConfiguration);
             string arguments = "\"" + serviceConfigurationString.Replace("\"", "\\\"") + "\"";
             string processName = currentProcess.ProcessName;
             processStartInfo.FileName = processName;
@@ -60,14 +64,7 @@ namespace Database
             Utility.TraceDebugMessage(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
 
-        private enum Status
-        {
-            Success,
-            SuccessWithResult,
-            Failure,
-        }
-
-        public static void RegisterPipeServer(string pipeName, Func<string, string> ProcessMessage)
+        public static void RegisterPipeServer(string pipeName, Func<TServiceRequest, TServiceResponseResult> ProcessMessage)
         {
             using NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut);
             Utility.TraceDebugMessage("NamedPipeServerStream object created.");
@@ -81,28 +78,26 @@ namespace Database
                 using StreamReader streamReader = new StreamReader(pipeServer);
                 while (true)
                 {
-                    string message = streamReader.ReadLine();
-                    if (message != null)
+                    TServiceRequest serviceRequest = JsonSerializer.Deserialize<TServiceRequest>(streamReader.ReadLine());
+                    if (serviceRequest != null)
                     {
                         try
                         {
-                            string result = ProcessMessage(message);
+                            TServiceResponseResult serviceResponse = ProcessMessage(serviceRequest);
 
-                            if (result != null)
+                            if (serviceResponse != null)
                             {
-                                WriteStatusToPipeStream(pipeServer, Status.SuccessWithResult);
-                                WriteMessageToPipeStream(pipeServer, result);
+                                WriteToPipeStream(pipeServer, new ServiceResponseSuccessWithResults<TServiceResponseResult>(serviceResponse));
                             }
                             else
                             {
-                                WriteStatusToPipeStream(pipeServer, Status.Success);
+                                WriteToPipeStream(pipeServer, new ServiceResponseSuccess());
                             }
                         }
                         catch (Exception exception)
                         {
-                            Utility.TraceDebugMessage(string.Format("While processing message {0} hit exception {1}", message, exception.ToString()));
-                            WriteStatusToPipeStream(pipeServer, Status.Failure);
-                            WriteMessageToPipeStream(pipeServer, exception.Message);
+                            Utility.TraceDebugMessage(string.Format("While processing message {0} hit exception {1}", serviceRequest, exception.ToString()));
+                            WriteToPipeStream(pipeServer, new ServiceResponseFailure(exception.Message));
                         }
                     }
 
@@ -130,30 +125,32 @@ namespace Database
 
         private readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
 
-        public void SendMessageToPipe(string message)
+        public void SendMessageToPipe(TServiceRequest serviceRequest)
         {
             PipeClients[ServicePipeName] = PipeClients.GetValueOrDefault(ServicePipeName) ?? RegisterPipeClient(ServicePipeName);
 
             Utility.ExecuteWithRetry(
                 action: () =>
                 {
-                    WriteMessageToPipeStream(PipeClients[ServicePipeName], message);
-                    Status status = ReadStatusFromPipeStream(PipeClients[ServicePipeName]);
+                    WriteToPipeStream(PipeClients[ServicePipeName], serviceRequest);
+                    string serviceResponseString = ReadResponseFromPipeStream(PipeClients[ServicePipeName]);
 
-                    switch (status)
+                    ServiceResponse serviceResponse = JsonSerializer.Deserialize<ServiceResponse>(serviceResponseString);
+                    switch (serviceResponse.ServiceAction)
                     {
-                        case Status.Success:
+                        case ServiceResponseStatus.Success:
                             break;
 
-                        case Status.SuccessWithResult:
-                            string result = ReadMessageFromPipeStream(PipeClients[ServicePipeName]);
-                            Table table = Table.Deserialize(result);
-                            table.Print();
+                        case ServiceResponseStatus.SuccessWithResult:
+                            ServiceResponseSuccessWithResults<TServiceResponseResult> serviceResponseSuccessWithResults =
+                                JsonSerializer.Deserialize<ServiceResponseSuccessWithResults<TServiceResponseResult>>(serviceResponseString);
+                            serviceResponseSuccessWithResults.ServiceResponseResult.ProcessResult();
                             break;
 
-                        case Status.Failure:
-                            string errorMessage = ReadMessageFromPipeStream(PipeClients[ServicePipeName]);
-                            throw new Exception(errorMessage);
+                        case ServiceResponseStatus.Failure:
+                            ServiceResponseFailure serviceResponseFailure =
+                                JsonSerializer.Deserialize<ServiceResponseFailure>(serviceResponseString);
+                            throw new Exception(serviceResponseFailure.ExceptionMessage);
                     }
                 },
                 correctiveActionPredicate: (exception) =>
@@ -162,29 +159,34 @@ namespace Database
                 );
         }
 
-        private static void WriteMessageToPipeStream(PipeStream pipeStream, string message)
+        private static void WriteToPipeStream(PipeStream pipeStream, TServiceRequest serviceRequest)
+        {
+            WriteToPipeStreamInternal<TServiceAction, TServiceRequest>(pipeStream, serviceRequest);
+        }
+
+        private static void WriteToPipeStream<TServiceResponse>(PipeStream pipeStream, TServiceResponse serviceResponseResult)
+            where TServiceResponse : ServiceResponse
+        {
+            WriteToPipeStreamInternal<ServiceResponseStatus, TServiceResponse>(pipeStream, serviceResponseResult);
+        }
+
+        private static void WriteToPipeStreamInternal<TServiceActionWriteToPipeStream, TServiceMessage>(
+            PipeStream pipeStream,
+            TServiceMessage serviceMessage)
+            where TServiceActionWriteToPipeStream : Enum
+            where TServiceMessage : ServiceMessage<TServiceActionWriteToPipeStream>
         {
             StreamWriter streamWriter = new StreamWriter(pipeStream);
-            streamWriter.WriteLine(message);
+            streamWriter.WriteLine(JsonSerializer.Serialize(serviceMessage));
             streamWriter.Flush();
         }
 
-        private static void WriteStatusToPipeStream(PipeStream pipeStream, Status status)
-        {
-            WriteMessageToPipeStream(pipeStream, status.ToString());
-        }
-
-        private static string ReadMessageFromPipeStream(PipeStream pipeStream)
+        private static string ReadResponseFromPipeStream(PipeStream pipeStream)
         {
             StreamReader streamReader = new StreamReader(pipeStream);
             return Utility.WaitUntil(
                 func: () => streamReader.ReadLine(),
                 predicate: (result) => result != null && result != "");
-        }
-
-        private static Status ReadStatusFromPipeStream(PipeStream pipeStream)
-        {
-             return Enum.Parse<Status>(ReadMessageFromPipeStream(pipeStream));
         }
 
         public void OverrideConfiguration(ServiceConfiguration serviceConfiguration)

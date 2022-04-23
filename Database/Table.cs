@@ -1,22 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Xml.Serialization;
 
 namespace Database
 {
     public class Table
     {
-        [XmlElement]
-        public string TableName;
+        public string TableName { get; set; }
 
-        [XmlElement]
-        public List<int> Values;
+        public List<int> Values { get; set; }
 
-        public bool IsDirty;
+        public bool IsDirty { get; set; }
 
-        public Table() { }
+        public Table()
+        { }
 
         public Table(string tableName, List<int> values = null)
         {
@@ -69,20 +66,6 @@ namespace Database
         public void Print()
         {
             Console.WriteLine(ToString());
-        }
-
-        public string Serialize()
-        {
-            XmlSerializer tableSerializer = new XmlSerializer(typeof(Table));
-            StringWriter stringWriter = new StringWriter();
-            tableSerializer.Serialize(stringWriter, this);
-            return new string(stringWriter.ToString().Where(c => !Environment.NewLine.Contains(c)).ToArray());
-        }
-
-        public static Table Deserialize(string tableString)
-        {
-            XmlSerializer tableSerializer = new XmlSerializer(typeof(Table));
-            return (Table)tableSerializer.Deserialize(new StringReader(tableString));
         }
 
         public override string ToString()

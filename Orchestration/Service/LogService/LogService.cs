@@ -3,8 +3,9 @@ using System.Diagnostics;
 
 namespace Database
 {
-    public class LogService : Service
+    public class LogService : Service<LogServiceAction, LogServiceRequest, LogServiceResponseResult>
     {
+
         protected override string ServicePipeName => "LogServicePipe";
 
         public LogService(ServiceConfiguration serviceConfiguration = null)
@@ -24,10 +25,9 @@ namespace Database
             Window.SnapBottomRight(Process.GetCurrentProcess());
         }
 
-        protected override string ProcessRequest(string message)
+        protected override LogServiceResponseResult ProcessRequest(LogServiceRequest message)
         {
-            // TODO: implement
-            return "";
+            throw new NotImplementedException();
         }
     }
 }
