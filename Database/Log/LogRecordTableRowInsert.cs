@@ -4,8 +4,8 @@ namespace Database
 {
     public class LogRecordTableRowInsert : LogRecordTableRowOperation
     {
-        public LogRecordTableRowInsert(string[] parameters)
-            : base(parameters)
+        public LogRecordTableRowInsert(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber, parameters)
         { }
 
         public LogRecordTableRowInsert(string tableName, int value)

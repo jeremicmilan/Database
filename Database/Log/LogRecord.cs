@@ -16,6 +16,16 @@ namespace Database
             LogSequenceNumber = ++_logSequenceNumberMax;
         }
 
+        protected LogRecord(int logSequenceNumber)
+        {
+            LogSequenceNumber = logSequenceNumber;
+
+            if (logSequenceNumber > _logSequenceNumberMax)
+            {
+                _logSequenceNumberMax = logSequenceNumber;
+            }
+        }
+
         public const string LogRecordParameterDelimiter = ",";
 
         protected Database Database { get => Database.Get(); }
@@ -33,13 +43,13 @@ namespace Database
 
             return logRecordType switch
             {
-                LogRecordType.TableCreate => new LogRecordTableCreate(parameters),
-                LogRecordType.TableRowInsert => new LogRecordTableRowInsert(parameters),
-                LogRecordType.TableRowDelete => new LogRecordTableRowDelete(parameters),
-                LogRecordType.Checkpoint => new LogRecordCheckpoint(parameters),
-                LogRecordType.TransactionBegin => new LogRecordTransactionBegin(),
-                LogRecordType.TransactionEnd => new LogRecordTransactionEnd(),
-                LogRecordType.Undo => new LogRecordUndo(parameters),
+                LogRecordType.TableCreate => new LogRecordTableCreate(logSequenceNumber, parameters),
+                LogRecordType.TableRowInsert => new LogRecordTableRowInsert(logSequenceNumber, parameters),
+                LogRecordType.TableRowDelete => new LogRecordTableRowDelete(logSequenceNumber, parameters),
+                LogRecordType.Checkpoint => new LogRecordCheckpoint(logSequenceNumber, parameters),
+                LogRecordType.TransactionBegin => new LogRecordTransactionBegin(logSequenceNumber),
+                LogRecordType.TransactionEnd => new LogRecordTransactionEnd(logSequenceNumber),
+                LogRecordType.Undo => new LogRecordUndo(logSequenceNumber, parameters),
                 _ => throw new Exception("Unsupported log record type"),
             };
         }

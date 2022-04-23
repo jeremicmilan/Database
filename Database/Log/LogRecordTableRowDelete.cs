@@ -4,8 +4,8 @@ namespace Database
 {
     public class LogRecordTableRowDelete : LogRecordTableRowOperation
     {
-        public LogRecordTableRowDelete(string[] parameters)
-            : base(parameters)
+        public LogRecordTableRowDelete(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber, parameters)
         { }
 
         public LogRecordTableRowDelete(string tableName, int value)

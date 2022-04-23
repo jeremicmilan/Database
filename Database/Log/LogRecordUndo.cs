@@ -6,7 +6,8 @@ namespace Database
     {
         public LogRecord LogRecord { get; private set; }
 
-        public LogRecordUndo(string[] parameters)
+        public LogRecordUndo(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber)
         {
             LogRecord = InterpretLogRecord(parameters);
         }

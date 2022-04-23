@@ -6,8 +6,8 @@ namespace Database
     {
         protected int Value;
 
-        public LogRecordTableRowOperation(string[] parameters)
-            : base(parameters[0])
+        public LogRecordTableRowOperation(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber, parameters[0])
         {
             CheckParameterLength(parameters, 2);
 

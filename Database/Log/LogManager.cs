@@ -10,6 +10,8 @@ namespace Database
     {
         private readonly List<LogRecord> LogRecords = new List<LogRecord>();
 
+        public int LogSequenceNumberMax => LogRecords.Last().LogSequenceNumber;
+
         public string LogFilePath { get; private set; }
 
         public LogManager(string logFilePath)

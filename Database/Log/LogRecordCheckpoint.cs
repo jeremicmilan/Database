@@ -6,9 +6,15 @@ namespace Database
 {
     public class LogRecordCheckpoint : LogRecord
     {
-        public LogRecordCheckpoint(string[] parameters)
-            : this(parameters.Length > 0 && bool.Parse(parameters[0]))
+        public LogRecordCheckpoint(int logSequenceNumber, string[] parameters)
+            : this(logSequenceNumber, parameters.Length > 0 && bool.Parse(parameters[0]))
         { }
+
+        public LogRecordCheckpoint(int logSequenceNumber, bool isTransactionActive)
+            : base(logSequenceNumber)
+        {
+            IsTransactionActive = isTransactionActive;
+        }
 
         public LogRecordCheckpoint(bool isTransactionActive)
         {

@@ -6,8 +6,8 @@ namespace Database
 {
     public class LogRecordTableCreate : LogRecordTable
     {
-        public LogRecordTableCreate(string[] parameters)
-            : base(parameters[0])
+        public LogRecordTableCreate(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber, parameters[0])
         {
             CheckParameterLength(parameters, 1);
         }
