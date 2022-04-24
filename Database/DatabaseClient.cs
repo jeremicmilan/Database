@@ -8,7 +8,7 @@ namespace Database
     {
         protected DatabaseClient() { }
 
-        protected static DatabaseClient _DatabaseClient = null;
+        private static DatabaseClient _DatabaseClient = null;
         public static DatabaseClient Get() => _DatabaseClient;
 
         public static DatabaseClient Create()
