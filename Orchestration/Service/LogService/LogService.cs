@@ -5,8 +5,8 @@ namespace Database
 {
     public class LogService : Service<LogServiceAction, LogServiceRequest, LogServiceResponseResult>
     {
-
-        protected override string ServicePipeName => "LogServicePipe";
+        private const string LogServicePipeName = "LogServicePipe";
+        protected override string ServicePipeName => LogServicePipeName;
 
         public LogService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
@@ -28,6 +28,12 @@ namespace Database
         protected override LogServiceResponseResult ProcessRequest(LogServiceRequest message)
         {
             throw new NotImplementedException();
+        }
+
+        public static void SendMessageToPipe<TLogServiceRequest>(TLogServiceRequest logServiceRequest)
+            where TLogServiceRequest : LogServiceRequest
+        {
+            SendMessageToPipe(logServiceRequest, LogServicePipeName);
         }
     }
 }

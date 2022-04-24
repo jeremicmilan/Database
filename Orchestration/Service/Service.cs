@@ -17,6 +17,8 @@ namespace Database
         public ServiceConfiguration ServiceConfiguration;
         protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration { ServiceType = this.GetType().ToString() };
 
+        protected abstract string ServicePipeName { get; }
+
         protected Service(ServiceConfiguration serviceConfiguration = null)
         {
             ServiceConfiguration = serviceConfiguration ?? DefaultServiceConfiguration;
@@ -32,8 +34,6 @@ namespace Database
             //
             RegisterPipeServer(ServicePipeName, ProcessRequest);
         }
-
-        protected abstract string ServicePipeName { get; }
 
         protected abstract TServiceResponseResult ProcessRequest(TServiceRequest serviceMessage);
 
@@ -111,7 +111,7 @@ namespace Database
             }
         }
 
-        private NamedPipeClientStream RegisterPipeClient(string pipeName)
+        private static NamedPipeClientStream RegisterPipeClient(string pipeName)
         {
             NamedPipeClientStream PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
             Utility.TraceDebugMessage("Attempting to connect to pipe...");
@@ -123,17 +123,17 @@ namespace Database
             return PipeClient;
         }
 
-        private readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
+        private static readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
 
-        public void SendMessageToPipe(TServiceRequest serviceRequest)
+        protected static void SendMessageToPipe(TServiceRequest serviceRequest, string servicePipeName)
         {
-            PipeClients[ServicePipeName] = PipeClients.GetValueOrDefault(ServicePipeName) ?? RegisterPipeClient(ServicePipeName);
+            PipeClients[servicePipeName] = PipeClients.GetValueOrDefault(servicePipeName) ?? RegisterPipeClient(servicePipeName);
 
             Utility.ExecuteWithRetry(
                 action: () =>
                 {
-                    WriteToPipeStream(PipeClients[ServicePipeName], serviceRequest);
-                    string serviceResponseString = ReadResponseFromPipeStream(PipeClients[ServicePipeName]);
+                    WriteToPipeStream(PipeClients[servicePipeName], serviceRequest);
+                    string serviceResponseString = ReadResponseFromPipeStream(PipeClients[servicePipeName]);
 
                     ServiceResponse serviceResponse = JsonSerializer.Deserialize<ServiceResponse>(serviceResponseString);
                     switch (serviceResponse.ServiceAction)
@@ -155,7 +155,7 @@ namespace Database
                 },
                 correctiveActionPredicate: (exception) =>
                     exception.Message == "Pipe is broken." || exception.Message == "Pipe hasn't been connected yet.",
-                correctiveAction: () => PipeClients[ServicePipeName] = RegisterPipeClient(ServicePipeName)
+                correctiveAction: () => PipeClients[servicePipeName] = RegisterPipeClient(servicePipeName)
                 );
         }
 

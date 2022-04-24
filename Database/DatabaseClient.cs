@@ -37,7 +37,6 @@ namespace Database
             Start<T>();
         }
 
-
         protected void WaitForUserInput()
         {
             while (true)
@@ -114,8 +113,7 @@ namespace Database
                     break;
 
                 default:
-                    Orchestrator.DatabaseService.SendMessageToPipe(
-                        new DatabaseServiceRequest(DatabaseServiceAction.Query, line));
+                    DatabaseService.SendMessageToPipe(new DatabaseServiceRequest(DatabaseServiceAction.Query, line));
                     break;
             }
         }

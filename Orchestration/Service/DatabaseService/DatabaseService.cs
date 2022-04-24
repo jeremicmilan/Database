@@ -2,32 +2,38 @@
 {
     public abstract class DatabaseService : Service<DatabaseServiceAction, DatabaseServiceRequest, DatabaseServiceResponseResult>
     {
-        private readonly Database _Database = null;
+        private const string DatabaseServicePipeName = "DatabaseServicePipe";
+        protected override string ServicePipeName => DatabaseServicePipeName;
+
+        private Database Database { get; set; } = null;
 
         public DatabaseService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
-        {
-            _Database = CreateDatabase(serviceConfiguration);
-        }
+        { }
 
         public abstract Database CreateDatabase(ServiceConfiguration serviceConfiguration);
 
         protected override void StartInternal()
         {
-            _Database.Start();
+            Database = CreateDatabase(ServiceConfiguration);
+            Database.Start();
         }
 
         public override void Stop()
         {
             base.Stop();
-            _Database?.Stop();
+            Database?.Stop();
         }
-
-        protected override string ServicePipeName => "DatabasePipe";
 
         protected override DatabaseServiceResponseResult ProcessRequest(DatabaseServiceRequest databaseServiceRequest)
         {
-            return _Database.ProcessQuery(query: databaseServiceRequest.Query);
+            return Database.ProcessQuery(query: databaseServiceRequest.Query);
+        }
+
+        public static void SendMessageToPipe<TDatabaseServiceRequest>(TDatabaseServiceRequest databaseServiceRequest)
+            where TDatabaseServiceRequest : DatabaseServiceRequest
+        {
+            SendMessageToPipe(databaseServiceRequest, DatabaseServicePipeName);
         }
     }
 }

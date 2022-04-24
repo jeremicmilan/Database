@@ -5,7 +5,8 @@ namespace Database
 {
     public class StorageService : Service<StorageServiceAction, StorageServiceRequest, StorageServiceResponseResult>
     {
-        protected override string ServicePipeName => "StorageServicePipe";
+        private const string StorageServicePipeName = "StorageServicePipe";
+        protected override string ServicePipeName => StorageServicePipeName;
 
         public StorageService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
@@ -24,6 +25,12 @@ namespace Database
         public override void SnapWindow()
         {
             Window.SnapBottomLeft(Process.GetCurrentProcess());
+        }
+
+        public static void SendMessageToPipe<TStorageServiceRequest>(TStorageServiceRequest storageServiceRequest)
+            where TStorageServiceRequest : StorageServiceRequest
+        {
+            SendMessageToPipe(storageServiceRequest, StorageServicePipeName);
         }
     }
 }
