@@ -26,8 +26,7 @@ namespace Database
                     ServiceConfiguration serviceConfiguration = Utility.Deserialize<ServiceConfiguration>(args[0]);
                     Type type = Type.GetType(serviceConfiguration.ServiceType);
                     Console.Title = type.Name;
-                    object o = Activator.CreateInstance(type, serviceConfiguration);
-                    dynamic service = Convert.ChangeType(o, type);
+                    Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
                     Utility.TraceDebugMessage("Starting service...");
                     service.SnapWindow();
