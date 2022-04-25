@@ -28,7 +28,7 @@ namespace Database
 
         public void DatabaseRestart()
         {
-            DatabaseService.Process.Kill();
+            DatabaseService.Kill();
         }
 
         protected void KeepServiceUp(Service service)
@@ -39,7 +39,7 @@ namespace Database
             {
                 Utility.TraceDebugMessage(string.Format("Starting up {0}...", service.GetType()));
                 service.StartAsProcess();
-                service.Process.WaitForExit();
+                service.WaitForExit();
                 Utility.TraceDebugMessage(string.Format("{0} exited.", service.GetType()));
 
                 if (KeepServicesUpThreadCancellationTokenSource != null &&

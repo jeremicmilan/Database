@@ -5,11 +5,16 @@
         public const string DatabaseServicePipeName = "DatabaseServicePipe";
         protected override string ServicePipeName => DatabaseServicePipeName;
 
-        private Database Database { get; set; } = null;
+        public Database Database { get; set; } = null;
 
         public DatabaseService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         { }
+
+        public static DatabaseService Get()
+        {
+            return Get<DatabaseService>();
+        }
 
         public abstract Database CreateDatabase(ServiceConfiguration serviceConfiguration);
 
@@ -17,12 +22,6 @@
         {
             Database = CreateDatabase(ServiceConfiguration);
             Database.Start();
-        }
-
-        public override void Stop()
-        {
-            base.Stop();
-            Database?.Stop();
         }
     }
 }

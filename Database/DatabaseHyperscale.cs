@@ -4,26 +4,26 @@ namespace Database
 {
     public class DatabaseHyperscale : Database
     {
-        public DatabaseHyperscale(DatabaseService databaseService, string logPath)
-            : base(databaseService, logPath)
+        public DatabaseHyperscale(DatabaseService databaseService)
+            : base(
+                  databaseService,
+                  new LogManagerHyperscale(),
+                  new DataManagerHyperscale())
         { }
 
-        public static Database Create(
-            DatabaseService databaseService,
-            string logPath)
+        public static DatabaseHyperscale Create(DatabaseService databaseService)
         {
-            Database database = new DatabaseHyperscale(databaseService, logPath);
-            Set(database);
-            return database;
+            return new DatabaseHyperscale(databaseService);
         }
 
         protected override void BootData()
         {
             // Ideally, we should be getting tables only needed for recovery.
             //
-            StorageServiceResponseResultAllTables storageServiceResponseResultAllTables =
-                new StorageServiceRequestAllTables().Send();
-            Tables = storageServiceResponseResultAllTables.Tables;
+            StorageServiceResponseResultGetTable storageServiceResponseResultGetTable =
+                new StorageServiceRequestGetTable().Send();
+            Tables.Add(storageServiceResponseResultGetTable.Table);
+            throw new NotImplementedException();
         }
 
         protected override void BootLog()

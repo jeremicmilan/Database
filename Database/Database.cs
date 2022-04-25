@@ -8,9 +8,11 @@ namespace Database
     {
         #region Database Lifecycle
 
-        public LogManager LogManager;
+        public LogManager LogManager { get; private set; }
 
-        public TransactionManager TransactionManager;
+        public TransactionManager TransactionManager { get; private set; }
+
+        public DataManager DataManager { get; private set; }
 
         public DatabaseService DatabaseService { get; private set; }
 
@@ -18,40 +20,22 @@ namespace Database
 
         protected Database(
             DatabaseService databaseService,
-            string logPath)
+            LogManager logManager,
+            DataManager dataManager)
         {
             DatabaseService = databaseService;
+            LogManager = logManager;
+            DataManager = dataManager;
             Tables = new List<Table>();
-            LogManager = new LogManager(logPath ?? Utility.DefaultLogFilePath);
             TransactionManager = new TransactionManager();
         }
 
-        protected static Database _Database = null;
-        public static Database Get() => _Database;
-        protected static void Set(Database database)
-        {
-            if (_Database != null)
-            {
-                throw new Exception("There can be only one database per process.");
-            }
-
-            _Database = database;
-        }
+        public static Database Get() => DatabaseService.Get().Database;
 
         public void Start()
         {
             BootData();
             BootLog();
-        }
-
-        public void Stop()
-        {
-            if (_Database == null)
-            {
-                throw new Exception("No database to destroy.");
-            }
-
-            _Database = null;
         }
 
         protected abstract void BootData();

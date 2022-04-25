@@ -1,14 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Pipes;
+using System.Linq;
 using System.Threading;
 
 namespace Database
 {
     public abstract class Service
     {
-        public Process Process = null;
+        protected Process Process = null;
         public ServiceConfiguration ServiceConfiguration;
         protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration { ServiceType = this.GetType().ToString() };
 
@@ -19,10 +21,36 @@ namespace Database
             ServiceConfiguration = serviceConfiguration ?? DefaultServiceConfiguration;
         }
 
+        private static readonly List<Service> _Services = new List<Service>();
+        protected static Service Get(Type type)
+        {
+            return _Services.Where(service => service.GetType().IsSubclassOf(type)).FirstOrDefault();
+        }
+        protected static TService Get<TService>()
+            where TService : Service
+        {
+            return (TService)Get(typeof(TService));
+        }
+
+
+        protected Service GetSingleton()
+        {
+            return Get(GetType());
+        }
+
         public abstract void SnapWindow();
 
         public void Start()
         {
+            if (GetSingleton() != null)
+            {
+                throw new Exception("Only one service can be started per process. Stop the existing service, before starting another.");
+            }
+            else
+            {
+                _Services.Add(this);
+            }
+
             StartInternal();
 
             // Block on processing a request
@@ -32,9 +60,28 @@ namespace Database
 
         protected abstract void StartInternal();
 
-        public virtual void Stop()
+        public void Stop()
+        {
+            if (GetSingleton() == null || GetSingleton() != this)
+            {
+                throw new Exception("This service is not running and cannot be stopped.");
+            }
+            else
+            {
+                _Services.Remove(this);
+            }
+
+            Kill();
+        }
+
+        public void Kill()
         {
             Process?.Kill();
+        }
+
+        public void WaitForExit()
+        {
+            Process?.WaitForExit();
         }
 
         public void StartAsProcess()

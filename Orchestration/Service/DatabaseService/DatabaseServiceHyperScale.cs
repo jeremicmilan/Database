@@ -10,9 +10,7 @@ namespace Database
 
         public override Database CreateDatabase(ServiceConfiguration serviceConfiguration)
         {
-            return DatabaseHyperscale.Create(
-                this,
-                serviceConfiguration?.LogFilePath);
+            return DatabaseHyperscale.Create(this);
         }
 
         public override void SnapWindow()

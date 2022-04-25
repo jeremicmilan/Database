@@ -11,6 +11,11 @@ namespace Database
             : base(serviceConfiguration)
         { }
 
+        public static StorageService Get()
+        {
+            return Get<StorageService>();
+        }
+
         protected override void StartInternal()
         {
             // TODO: start a thread for applying the log from log service

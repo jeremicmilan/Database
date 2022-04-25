@@ -11,6 +11,11 @@ namespace Database
             : base(serviceConfiguration)
         { }
 
+        public static LogService Get()
+        {
+            return Get<LogService>();
+        }
+
         protected override void StartInternal()
         {
             // Log service only processes the requests from Database Service and Storage Service

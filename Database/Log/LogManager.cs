@@ -6,28 +6,15 @@ using System.Text;
 
 namespace Database
 {
-    public class LogManager
+    public abstract class LogManager
     {
-        private readonly List<LogRecord> LogRecords = new List<LogRecord>();
+        public readonly List<LogRecord> LogRecords = new List<LogRecord>();
 
         public int LogSequenceNumberMax => LogRecords.Last().LogSequenceNumber;
 
-        public string LogFilePath { get; private set; }
+        protected Database Database { get => Database.Get(); }
 
-        public LogManager(string logFilePath)
-        {
-            LogFilePath = logFilePath;
-        }
-
-        public void ReadFromDisk()
-        {
-            string[] logRecordTexts = File.ReadAllLines(LogFilePath);
-
-            foreach (string logRecordText in logRecordTexts)
-            {
-                LogRecords.Add(LogRecord.ParseLogRecord(logRecordText));
-            }
-        }
+        public abstract void ReadEntireLog();
 
         public void Recover()
         {
@@ -53,7 +40,7 @@ namespace Database
 
         private void UndoLog()
         {
-            if (!Database.Get().TransactionManager.IsTransactionActive)
+            if (!Database.TransactionManager.IsTransactionActive)
             {
                 return;
             }
@@ -87,7 +74,7 @@ namespace Database
             // Complete the transaction so we can open a new one later.
             // Also, this would be signal on the recovery not to undo this part of the log again.
             //
-            Database.Get().TransactionManager.EndTransaction();
+            Database.TransactionManager.EndTransaction();
         }
 
         private List<LogRecord> GetLogToBeUndone()
@@ -117,16 +104,7 @@ namespace Database
             return LogRecords.Skip(indexBeginTransaction).ToList();
         }
 
-            public void PersistLogRecord(LogRecord logRecord)
-        {
-            bool? loggingDisabled = Database.ServiceConfiguration.LoggingDisabled;
-            bool loggingEnabled = !(loggingDisabled.HasValue && loggingDisabled.Value);
-            if (loggingEnabled)
-            {
-                using StreamWriter streamWriter = File.AppendText(LogFilePath);
-                streamWriter.WriteLine(logRecord.ToString());
-            }
-        }
+        public abstract void PersistLogRecord(LogRecord logRecord);
 
         public override string ToString()
         {

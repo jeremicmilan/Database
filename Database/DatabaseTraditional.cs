@@ -5,19 +5,20 @@ namespace Database
     public class DatabaseTraditional : Database
     {
         private DatabaseTraditional(DatabaseService databaseService, string logPath, string dataPath)
-            : base(databaseService, logPath)
+            : base(
+                  databaseService,
+                  new LogManagerTraditional(logPath ?? Utility.DefaultLogFilePath),
+                  new DataManagerTraditional())
         {
             DataFilePath = dataPath ?? Utility.DefaultDataFilePath;
         }
 
-        public static Database Create(
+        public static DatabaseTraditional Create(
             DatabaseService databaseService,
             string logPath = null,
             string dataPath = null)
         {
-            Database database = new DatabaseTraditional(databaseService, dataPath, logPath);
-            Set(database);
-            return database;
+            return new DatabaseTraditional(databaseService, dataPath, logPath);
         }
 
         public string DataFilePath { get; private set; }
@@ -36,11 +37,8 @@ namespace Database
 
         protected override void BootLog()
         {
-            if (File.Exists(LogManager.LogFilePath))
-            {
-                LogManager.ReadFromDisk();
-                LogManager.Recover();
-            }
+            LogManager.ReadEntireLog();
+            LogManager.Recover();
         }
 
         public override void PersistTable(Table table)

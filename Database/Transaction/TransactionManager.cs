@@ -10,6 +10,8 @@ namespace Database
         //
         public bool IsTransactionActive { get; private set; }
 
+        protected Database Database { get => Database.Get(); }
+
         public void BeginTransaction(bool redo = false)
         {
             if (IsTransactionActive)
@@ -22,7 +24,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionBegin();
-                Database.Get().LogManager.PersistLogRecord(logRecord);
+                Database.LogManager.PersistLogRecord(logRecord);
             }
         }
 
@@ -38,7 +40,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionEnd();
-                Database.Get().LogManager.PersistLogRecord(logRecord);
+                Database.LogManager.PersistLogRecord(logRecord);
             }
         }
     }
