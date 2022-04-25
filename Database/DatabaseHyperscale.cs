@@ -19,6 +19,8 @@ namespace Database
 
         protected override void BootData()
         {
+            // Ideally, we should be getting tables only needed for recovery.
+            //
             StorageServiceResponseResultAllTables storageServiceResponseResultAllTables =
                 new StorageServiceRequestAllTables().Send();
             Tables = storageServiceResponseResultAllTables.Tables;
@@ -34,7 +36,8 @@ namespace Database
         public override void PersistTable(Table table)
         {
             // We do not do anything to persist the table on DatabaseHyperscale,
-            // as StorageService will be the one to persist the data portion of the database.
+            // as StorageService will be the one to persist the data portion of the database
+            // automatically by syncing from the secondaries.
             //
         }
     }
