@@ -36,7 +36,7 @@ namespace Database
 
         private Table GetTable()
         {
-            Table table = Database.GetTable(TableName);
+            Table table = Database.DataManager.GetTable(TableName);
 
             if (table == null)
             {

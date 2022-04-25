@@ -22,28 +22,5 @@ namespace Database
         }
 
         public string DataFilePath { get; private set; }
-
-        protected override void BootData()
-        {
-            if (File.Exists(DataFilePath))
-            {
-                foreach (string line in File.ReadAllLines(DataFilePath))
-                {
-                    Table table = Table.Parse(line);
-                    Tables.Add(table);
-                }
-            }
-        }
-
-        protected override void BootLog()
-        {
-            LogManager.ReadEntireLog();
-            LogManager.Recover();
-        }
-
-        public override void PersistTable(Table table)
-        {
-            table.WriteToFile(DataFilePath);
-        }
     }
 }

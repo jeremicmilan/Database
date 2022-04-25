@@ -18,6 +18,8 @@ namespace Database
 
         public void Recover()
         {
+            ReadEntireLog(); // TODO: implement better
+
             RedoLog();
             UndoLog();
         }

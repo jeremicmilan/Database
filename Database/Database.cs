@@ -26,7 +26,6 @@ namespace Database
             DatabaseService = databaseService;
             LogManager = logManager;
             DataManager = dataManager;
-            Tables = new List<Table>();
             TransactionManager = new TransactionManager();
         }
 
@@ -34,13 +33,8 @@ namespace Database
 
         public void Start()
         {
-            BootData();
-            BootLog();
+            LogManager.Recover();
         }
-
-        protected abstract void BootData();
-
-        protected abstract void BootLog();
 
         #endregion Database Lifecycle
 
@@ -52,38 +46,25 @@ namespace Database
         //
         private void Checkpoint()
         {
-            foreach (Table table in Tables)
-            {
-                if (table.IsDirty)
-                {
-                    PersistTable(table);
-                    table.Clean();
-                }
-            }
+            DataManager.Checkpoint();
 
             LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
             LogManager.PersistLogRecord(logRecord);
         }
 
-        public abstract void PersistTable(Table table);
-
         #endregion Checkpoint and Disk Operations
 
         #region Table Operations
 
-        public List<Table> Tables;
-
-        public Table GetTable(string tableName) => Tables.Where(table => table.TableName == tableName).FirstOrDefault();
-
         public Table CreateTable(string tableName, bool redo = false)
         {
-            if (GetTable(tableName) != null)
+            if (DataManager.GetTable(tableName) != null)
             {
                 throw new Exception(string.Format("Table with name {0} already exists.", tableName));
             }
 
             Table table = new Table(tableName);
-            Tables.Add(table);
+            DataManager.PersistTable(table);
 
             if (!redo)
             {
@@ -96,7 +77,7 @@ namespace Database
 
         public Table GetExistingTable(string tableName)
         {
-            Table table = GetTable(tableName);
+            Table table = DataManager.GetTable(tableName);
             if (table == null)
             {
                 throw new Exception(string.Format("Table with name {0} does not exists.", tableName));
