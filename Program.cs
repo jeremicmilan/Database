@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
-using System.Text.Json;
 using System.Threading;
 
 namespace Database
@@ -24,7 +23,7 @@ namespace Database
 
                 try
                 {
-                    ServiceConfiguration serviceConfiguration = JsonSerializer.Deserialize<ServiceConfiguration>(args[0]);
+                    ServiceConfiguration serviceConfiguration = Utility.Deserialize<ServiceConfiguration>(args[0]);
                     Type type = Type.GetType(serviceConfiguration.ServiceType);
                     Console.Title = type.Name;
                     object o = Activator.CreateInstance(type, serviceConfiguration);

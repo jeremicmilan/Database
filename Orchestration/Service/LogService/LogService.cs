@@ -1,11 +1,10 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Database
 {
-    public class LogService : Service<LogServiceAction, LogServiceRequest, LogServiceResponseResult>
+    public class LogService : Service
     {
-        private const string LogServicePipeName = "LogServicePipe";
+        public const string LogServicePipeName = "LogServicePipe";
         protected override string ServicePipeName => LogServicePipeName;
 
         public LogService(ServiceConfiguration serviceConfiguration = null)
@@ -23,17 +22,6 @@ namespace Database
         public override void SnapWindow()
         {
             Window.SnapBottomRight(Process.GetCurrentProcess());
-        }
-
-        protected override LogServiceResponseResult ProcessRequest(LogServiceRequest message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public static void SendMessageToPipe<TLogServiceRequest>(TLogServiceRequest logServiceRequest)
-            where TLogServiceRequest : LogServiceRequest
-        {
-            SendMessageToPipe(logServiceRequest, LogServicePipeName);
         }
     }
 }

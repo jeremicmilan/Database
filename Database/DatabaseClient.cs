@@ -113,7 +113,9 @@ namespace Database
                     break;
 
                 default:
-                    DatabaseService.SendMessageToPipe(new DatabaseServiceRequest(DatabaseServiceAction.Query, line));
+                    DatabaseServiceResponseResultQuery databaseServiceResponseResult =
+                        new DatabaseServiceRequestQuery(line).Send();
+                    databaseServiceResponseResult?.Table?.Print();
                     break;
             }
         }

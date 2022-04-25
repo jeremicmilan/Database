@@ -3,7 +3,6 @@
     public class ServiceResponseSuccess : ServiceResponse
     {
         public ServiceResponseSuccess()
-            : base(ServiceResponseStatus.Success)
         { }
     }
 }

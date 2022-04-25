@@ -8,7 +8,6 @@
         { }
 
         public ServiceResponseFailure(string exceptionMessage)
-            : base(ServiceResponseStatus.Failure)
         {
             ExceptionMessage = exceptionMessage;
         }

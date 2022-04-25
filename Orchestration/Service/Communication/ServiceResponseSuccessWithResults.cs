@@ -9,7 +9,6 @@
         { }
 
         public ServiceResponseSuccessWithResults(TServiceResponseResult serviceResponseResult)
-            : base(ServiceResponseStatus.SuccessWithResult)
         {
             ServiceResponseResult = serviceResponseResult;
         }

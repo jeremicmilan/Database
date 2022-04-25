@@ -19,9 +19,9 @@ namespace Database
 
         protected override void BootData()
         {
-            // TODO: We need to read from StorageService
-            //
-            throw new NotImplementedException();
+            StorageServiceResponseResultAllTables storageServiceResponseResultAllTables =
+                new StorageServiceRequestAllTables().Send();
+            Tables = storageServiceResponseResultAllTables.Tables;
         }
 
         protected override void BootLog()

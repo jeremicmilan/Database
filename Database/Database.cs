@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
 
 namespace Database
 {
@@ -140,14 +139,14 @@ namespace Database
         private const string TransactionStatementBegin = "BEGIN" + TransactionStatementPart;
         private const string TransactionStatementEnd = "END" + TransactionStatementPart;
 
-        public DatabaseServiceResponseResult ProcessQuery(string query)
+        public DatabaseServiceResponseResultQuery ProcessQuery(string query)
         {
             Utility.TraceDebugMessage("Received query: " + query);
 
             Table table = null;
             List<int> values = null, extraElementsInTable = null, extraElementsInValues = null;
             string tableName = null;
-            DatabaseServiceResponseResult databaseServiceResponseResult = null;
+            DatabaseServiceResponseResultQuery databaseServiceResponseResultQuery = null;
 
             switch (query.Trim())
             {
@@ -228,7 +227,7 @@ namespace Database
                         throw new Exception("Invalid table name.");
                     }
 
-                    databaseServiceResponseResult = new DatabaseServiceResponseResult(GetExistingTable(tableName));
+                    databaseServiceResponseResultQuery = new DatabaseServiceResponseResultQuery(GetExistingTable(tableName));
                     break;
 
                 case CheckpointStatement:
@@ -247,7 +246,7 @@ namespace Database
                     throw new Exception("Syntax error.");
             }
 
-            return databaseServiceResponseResult;
+            return databaseServiceResponseResultQuery;
         }
 
         private (Table, List<int>) ParseTableRowStatement(string query, string prefix)

@@ -31,11 +31,7 @@ namespace Database
             DatabaseService.Process.Kill();
         }
 
-        protected void KeepServiceUp<TServiceAction, TServiceRequest, TServiceResponseResult>(
-            Service<TServiceAction, TServiceRequest, TServiceResponseResult> service)
-            where TServiceAction : Enum
-            where TServiceRequest : ServiceRequest<TServiceAction>
-            where TServiceResponseResult : ServiceResponseResult
+        protected void KeepServiceUp(Service service)
         {
             Thread.CurrentThread.Name = service.GetType() + "_" + MethodBase.GetCurrentMethod().Name;
 

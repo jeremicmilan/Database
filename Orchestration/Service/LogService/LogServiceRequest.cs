@@ -1,12 +1,11 @@
 ﻿namespace Database
 {
-    public class LogServiceRequest : ServiceRequest<LogServiceAction>
+    public abstract class LogServiceRequest<TServiceResponseResult> : ServiceRequest<TServiceResponseResult>
+        where TServiceResponseResult : ServiceResponseResult
     {
-        public LogServiceRequest()
-        { }
-
-        public LogServiceRequest(LogServiceAction serviceAction)
-            : base(serviceAction)
-        { }
+        public override TServiceResponseResult Send()
+        {
+            return WriteToPipe(LogService.LogServicePipeName);
+        }
     }
 }

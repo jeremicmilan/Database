@@ -1,18 +1,18 @@
-﻿using System;
+﻿using System.IO;
+using System.IO.Pipes;
 
 namespace Database
 {
-    public abstract class ServiceMessage<TServiceAction>
-        where TServiceAction : Enum
+    public abstract class ServiceMessage
     {
-        public TServiceAction ServiceAction { get; set; }
-
         public ServiceMessage()
         { }
 
-        public ServiceMessage(TServiceAction serviceAction)
+        public void WriteToPipeStream(PipeStream pipeStream)
         {
-            ServiceAction = serviceAction;
+            StreamWriter streamWriter = new StreamWriter(pipeStream);
+            streamWriter.WriteLine(Utility.Serialize(this));
+            streamWriter.Flush();
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿namespace Database
 {
-    public class StorageServiceRequest : ServiceRequest<StorageServiceAction>
+    public abstract class StorageServiceRequest<TServiceResponseResult> : ServiceRequest<TServiceResponseResult>
+        where TServiceResponseResult : ServiceResponseResult
     {
-        public StorageServiceRequest()
-        { }
-
-        public StorageServiceRequest(StorageServiceAction serviceAction)
-            : base(serviceAction)
-        { }
+        public override TServiceResponseResult Send()
+        {
+            return WriteToPipe(StorageService.StorageServicePipeName);
+        }
     }
 }

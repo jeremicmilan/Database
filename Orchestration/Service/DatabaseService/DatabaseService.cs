@@ -1,8 +1,8 @@
 ﻿namespace Database
 {
-    public abstract class DatabaseService : Service<DatabaseServiceAction, DatabaseServiceRequest, DatabaseServiceResponseResult>
+    public abstract class DatabaseService : Service
     {
-        private const string DatabaseServicePipeName = "DatabaseServicePipe";
+        public const string DatabaseServicePipeName = "DatabaseServicePipe";
         protected override string ServicePipeName => DatabaseServicePipeName;
 
         private Database Database { get; set; } = null;
@@ -23,17 +23,6 @@
         {
             base.Stop();
             Database?.Stop();
-        }
-
-        protected override DatabaseServiceResponseResult ProcessRequest(DatabaseServiceRequest databaseServiceRequest)
-        {
-            return Database.ProcessQuery(query: databaseServiceRequest.Query);
-        }
-
-        public static void SendMessageToPipe<TDatabaseServiceRequest>(TDatabaseServiceRequest databaseServiceRequest)
-            where TDatabaseServiceRequest : DatabaseServiceRequest
-        {
-            SendMessageToPipe(databaseServiceRequest, DatabaseServicePipeName);
         }
     }
 }

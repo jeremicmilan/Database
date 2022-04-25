@@ -1,16 +1,11 @@
 ﻿namespace Database
 {
-    public class DatabaseServiceRequest: ServiceRequest<DatabaseServiceAction>
+    public abstract class DatabaseServiceRequest<TServiceResponseResult> : ServiceRequest<TServiceResponseResult>
+        where TServiceResponseResult : ServiceResponseResult
     {
-        public string Query { get; set; }
-
-        public DatabaseServiceRequest()
-        { }
-
-        public DatabaseServiceRequest(DatabaseServiceAction serviceAction, string query)
-            : base(serviceAction)
+        public override TServiceResponseResult Send()
         {
-            Query = query;
+            return WriteToPipe(DatabaseService.DatabaseServicePipeName);
         }
     }
 }

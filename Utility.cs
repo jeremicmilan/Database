@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Newtonsoft.Json;
 using System.Threading;
 
 namespace Database
@@ -68,11 +69,11 @@ namespace Database
 
         public static string WorkingDirectory => RootDirectory + Path.DirectorySeparatorChar + "WorkingDirectory";
 
-        public static string DefaultLogFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.datalog";
+        public static string DefaultLogFilePath => WorkingDirectory + Path.DirectorySeparatorChar + "database.datalog";
 
-        public static string DefaultDataFilePath = WorkingDirectory + Path.DirectorySeparatorChar + "database.data";
+        public static string DefaultDataFilePath => WorkingDirectory + Path.DirectorySeparatorChar + "database.data";
 
-        public static string DefaultTraceFilePath = WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
+        public static string DefaultTraceFilePath => WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
 
         public static void TraceDebugMessage(string message)
         {
@@ -142,5 +143,17 @@ namespace Database
                 correctiveAction: () => { }
             );
         }
+
+        public static string Serialize<T>(T obj)
+        {
+            return JsonConvert.SerializeObject(obj, JsonSerializerSettings);
+        }
+
+        public static T Deserialize<T>(string json)
+        {
+            return (T)JsonConvert.DeserializeObject(json, JsonSerializerSettings);
+        }
+
+        public static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
     }
 }
