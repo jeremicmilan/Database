@@ -14,12 +14,15 @@ namespace Database
 
         protected Database Database { get => Database.Get(); }
 
+        protected LogManager()
+        {
+            ReadEntireLog();
+        }
+
         public abstract void ReadEntireLog();
 
         public void Recover()
         {
-            ReadEntireLog(); // TODO: implement better
-
             RedoLog();
             UndoLog();
         }

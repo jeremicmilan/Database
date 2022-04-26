@@ -13,7 +13,7 @@ namespace Database
 
         public override void ReadEntireLog()
         {
-            throw new NotImplementedException();
+            LogRecords.AddRange(new LogServiceRequestReadEntireLog().Send().LogRecords);
         }
     }
 }
