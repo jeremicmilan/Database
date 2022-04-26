@@ -15,7 +15,7 @@ namespace Database
                 Console.Title = "DatabaseClient";
 
                 DatabaseClient databaseClient = DatabaseClient.Create();
-                databaseClient.Start<OrchestratorTraditional>();
+                databaseClient.Start<OrchestratorHyperscale>();
             }
             else
             {
