@@ -22,13 +22,5 @@ namespace Database
         {
             return new StorageServiceRequestGetTable(tableName).Send().Table;
         }
-
-        public override void PersistTable(Table table)
-        {
-            // We do not do anything to persist the table on DatabaseHyperscale,
-            // as StorageService will be the one to persist the data portion of the database
-            // automatically by syncing from the secondaries.
-            //
-        }
     }
 }

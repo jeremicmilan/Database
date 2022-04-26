@@ -64,7 +64,7 @@ namespace Database
             }
 
             Table table = new Table(tableName);
-            DataManager.PersistTable(table);
+            DataManager.AddTable(table);
 
             if (!redo)
             {

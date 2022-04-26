@@ -10,8 +10,6 @@ namespace Database
 
         public abstract void AddTable(Table table);
 
-        public abstract void PersistTable(Table table);
-
         public abstract void Checkpoint();
     }
 }

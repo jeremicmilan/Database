@@ -18,7 +18,7 @@ namespace Database
             {
                 if (table.IsDirty)
                 {
-                    PersistTable(table);
+                    table.WriteToFile(DataFilePath);
                     table.Clean();
                 }
             }
@@ -31,14 +31,14 @@ namespace Database
 
         public override Table GetTable(string tableName)
         {
+            Table table = CachedTables.Where(table => table.TableName == tableName).FirstOrDefault();
+            if (table != null)
+            {
+                return table;
+            }
+
             if (File.Exists(DataFilePath))
             {
-                Table table = CachedTables.Where(table => table.TableName == tableName).FirstOrDefault();
-                if (table != null)
-                {
-                    return table;
-                }
-
                 // This is a very bad implementation as we are always reading the entire file to read one table and we do that every time.
                 // It would be better to just read the file once. However, the idea is to simulate what a DBMS would which is to read one
                 // chunk from the data file (in our case a table). To implement this better, we could add an identifier to tables,
@@ -56,11 +56,6 @@ namespace Database
             }
 
             return null;
-        }
-
-        public override void PersistTable(Table table)
-        {
-            table.WriteToFile(DataFilePath);
         }
     }
 }
