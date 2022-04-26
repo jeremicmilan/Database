@@ -6,21 +6,17 @@ namespace Database
 {
     public class DataManagerHyperscale : DataManager
     {
-        public override void AddTable(Table table)
-        {
-            throw new NotImplementedException();
-        }
-
         public override void Checkpoint()
         {
-            // TODO: We need to clean the dirty tables
+            // We do not need to do anything here, as all of that will be handled on the page server side autoamtically.
             //
-            throw new NotImplementedException();
         }
 
-        public override Table GetTable(string tableName)
+        protected override Table GetTableFromPersistentStorage(string tableName)
         {
-            return new StorageServiceRequestGetTable(tableName).Send().Table;
+            // TODO: Read from storage service
+            //
+            throw new NotImplementedException();
         }
     }
 }

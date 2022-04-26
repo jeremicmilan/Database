@@ -8,8 +8,6 @@ namespace Database
 {
     public class DataManagerTraditional : DataManager
     {
-        private readonly List<Table> CachedTables = new List<Table>();
-
         private readonly HashSet<string> DirtyTableNames = new HashSet<string>();
 
         private string DataFilePath => ((DatabaseTraditional)DatabaseService.Get().Database).DataFilePath;
@@ -26,19 +24,8 @@ namespace Database
             }
         }
 
-        public override void AddTable(Table table)
+        protected override Table GetTableFromPersistentStorage(string tableName)
         {
-            CachedTables.Add(table);
-        }
-
-        public override Table GetTable(string tableName)
-        {
-            Table table = CachedTables.Where(table => table.TableName == tableName).FirstOrDefault();
-            if (table != null)
-            {
-                return table;
-            }
-
             if (File.Exists(DataFilePath))
             {
                 // This is a very bad implementation as we are always reading the entire file to read one table and we do that every time.
@@ -49,12 +36,10 @@ namespace Database
                 // are needed. The best thing to do here is to have a proper physical format and R/W directly to the file and not go through
                 // Windows APIs (eliminating all buffering and make sure it is persisted at the end of write - currently that's not the case).
                 //
-                table = File.ReadAllLines(DataFilePath)
+                return File.ReadAllLines(DataFilePath)
                     .Select(line => Table.Parse(line))
                     .Where(table => table.TableName == tableName)
                     .FirstOrDefault();
-                CachedTables.Add(table);
-                return table;
             }
 
             return null;
