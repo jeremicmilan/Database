@@ -21,34 +21,24 @@ namespace Database
             ServiceConfiguration = serviceConfiguration ?? DefaultServiceConfiguration;
         }
 
-        private static readonly List<Service> _Services = new List<Service>();
-        protected static Service Get(Type type)
-        {
-            return _Services.Where(service => service.GetType().IsSubclassOf(type)).FirstOrDefault();
-        }
+        private static Service _Service = null;
         protected static TService Get<TService>()
             where TService : Service
         {
-            return (TService)Get(typeof(TService));
-        }
-
-
-        protected Service GetSingleton()
-        {
-            return Get(GetType());
+            return (TService)_Service;
         }
 
         public abstract void SnapWindow();
 
         public void Start()
         {
-            if (GetSingleton() != null)
+            if (_Service != null)
             {
-                throw new Exception("Only one service can be started per process. Stop the existing service, before starting another.");
+                throw new Exception("Only one service can be started per process.");
             }
             else
             {
-                _Services.Add(this);
+                _Service = this;
             }
 
             StartInternal();
@@ -62,15 +52,6 @@ namespace Database
 
         public void Stop()
         {
-            if (GetSingleton() == null || GetSingleton() != this)
-            {
-                throw new Exception("This service is not running and cannot be stopped.");
-            }
-            else
-            {
-                _Services.Remove(this);
-            }
-
             Kill();
         }
 
