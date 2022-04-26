@@ -14,15 +14,15 @@ namespace Database
 
         protected Database Database { get => Database.Get(); }
 
-        protected LogManager()
-        {
-            ReadEntireLog();
-        }
-
         public abstract void ReadEntireLog();
 
         public void Recover()
         {
+            // We could improve here by reading only the log section needed for recovery.
+            // However, this would mean we should probably dabble log truncation, which is currently out of scope.
+            //
+            ReadEntireLog(); 
+
             RedoLog();
             UndoLog();
         }
