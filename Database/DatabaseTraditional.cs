@@ -4,6 +4,8 @@ namespace Database
 {
     public class DatabaseTraditional : Database
     {
+        public string DataFilePath { get; private set; }
+
         private DatabaseTraditional(DatabaseService databaseService, string logPath, string dataPath)
             : base(
                   databaseService,
@@ -20,7 +22,5 @@ namespace Database
         {
             return new DatabaseTraditional(databaseService, dataPath, logPath);
         }
-
-        public string DataFilePath { get; private set; }
     }
 }
