@@ -10,8 +10,6 @@ namespace Database
 
         public List<int> Values { get; set; }
 
-        public bool IsDirty { get; set; }
-
         public Table()
         { }
 
@@ -19,7 +17,6 @@ namespace Database
         {
             TableName = tableName;
             Values = values ?? new List<int>();
-            IsDirty = true;
         }
 
         protected Database Database { get => Database.Get(); }
@@ -34,7 +31,7 @@ namespace Database
             }
 
             Values.Add(value);
-            IsDirty = true;
+            Database.DataManager.MarkTableAsDirty(this);
 
             if (!redo)
             {
@@ -50,17 +47,12 @@ namespace Database
             }
 
             Values.Remove(value);
-            IsDirty = true;
+            Database.DataManager.MarkTableAsDirty(this);
 
             if (!redo)
             {
                 Database.LogManager.PersistLogRecord(new LogRecordTableRowDelete(TableName, value));
             }
-        }
-
-        public void Clean()
-        {
-            IsDirty = false;
         }
 
         public void Print()
@@ -102,7 +94,7 @@ namespace Database
             string tableString = ToString();
             string[] lines = Utility.FileReadAllLines(filePath);
 
-            int index = Array.FindIndex(lines, (line) => Table.Parse(line).TableName == TableName);
+            int index = Array.FindIndex(lines, (line) => Parse(line).TableName == TableName);
             if (index == -1)
             {
                 lines = lines.Append(tableString).ToArray();

@@ -10,16 +10,18 @@ namespace Database
     {
         private readonly List<Table> CachedTables = new List<Table>();
 
+        private readonly HashSet<string> DirtyTableNames = new HashSet<string>();
+
         private string DataFilePath => ((DatabaseTraditional)DatabaseService.Get().Database).DataFilePath;
 
         public override void Checkpoint()
         {
             foreach (Table table in CachedTables)
             {
-                if (table.IsDirty)
+                if (DirtyTableNames.Contains(table.TableName))
                 {
                     table.WriteToFile(DataFilePath);
-                    table.Clean();
+                    DirtyTableNames.Remove(table.TableName);
                 }
             }
         }
@@ -56,6 +58,11 @@ namespace Database
             }
 
             return null;
+        }
+
+        public override void MarkTableAsDirty(Table table)
+        {
+            DirtyTableNames.Add(table.TableName);
         }
     }
 }
