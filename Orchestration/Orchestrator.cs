@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Threading;
 
@@ -8,6 +9,8 @@ namespace Database
     {
         private CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
         public DatabaseService DatabaseService { get; protected set; }
+
+        protected List<Service> Services = new List<Service>();
 
         public void Start()
         {
@@ -63,9 +66,23 @@ namespace Database
 
         protected abstract void StartServices();
 
-        protected abstract void WaitForServicesBoot();
+        protected void WaitForServicesBoot()
+        {
+            foreach (Service service in Services)
+            {
+                service.IsServiceUp();
+            }
+        }
 
-        protected abstract void StopStartedServices();
+        protected void StopStartedServices()
+        {
+            foreach (Service service in Services)
+            {
+                service.Stop();
+            }
+
+            Services.Clear();
+        }
 
         protected abstract void SnapWindow();
     }

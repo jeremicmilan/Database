@@ -12,16 +12,7 @@ namespace Database
         {
             DatabaseService = new DatabaseServiceTraditional();
             new Thread(() => KeepServiceUp(DatabaseService)).Start();
-        }
-
-        protected override void WaitForServicesBoot()
-        {
-            Utility.WaitUntil(() => DatabaseService != null);
-        }
-
-        protected override void StopStartedServices()
-        {
-            DatabaseService.Stop();
+            Services.Add(DatabaseService);
         }
 
         protected override void SnapWindow()

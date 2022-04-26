@@ -14,26 +14,15 @@ namespace Database
         {
             DatabaseService = new DatabaseServiceHyperscale();
             new Thread(() => KeepServiceUp(DatabaseService)).Start();
+            Services.Add(DatabaseService);
 
             StorageService = new StorageService();
             new Thread(() => KeepServiceUp(StorageService)).Start();
+            Services.Add(StorageService);
 
             LogService = new LogService();
             new Thread(() => KeepServiceUp(LogService)).Start();
-        }
-
-        protected override void WaitForServicesBoot()
-        {
-            Utility.WaitUntil(() => DatabaseService != null);
-            Utility.WaitUntil(() => StorageService != null);
-            Utility.WaitUntil(() => LogService != null);
-        }
-
-        protected override void StopStartedServices()
-        {
-            DatabaseService.Stop();
-            StorageService.Stop();
-            LogService.Stop();
+            Services.Add(LogService);
         }
 
         protected override void SnapWindow()

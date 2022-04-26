@@ -55,6 +55,8 @@ namespace Database
             Kill();
         }
 
+        public bool IsServiceUp() => Process != null;
+
         public void Kill()
         {
             Process?.Kill();
