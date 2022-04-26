@@ -8,7 +8,7 @@ namespace Database
             : base(
                   databaseService,
                   new LogManagerHyperscale(),
-                  new DataManagerHyperscale())
+                  new StorageManagerHyperscale())
         { }
 
         public static DatabaseHyperscale Create(DatabaseService databaseService)

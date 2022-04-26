@@ -10,7 +10,7 @@ namespace Database
             : base(
                   databaseService,
                   new LogManagerTraditional(logPath),
-                  new DataManagerTraditional(dataPath))
+                  new StorageManagerTraditional(dataPath))
         {
             DataFilePath = dataPath ?? Utility.DefaultDataFilePath;
         }

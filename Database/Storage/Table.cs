@@ -31,7 +31,7 @@ namespace Database
             }
 
             Values.Add(value);
-            Database.DataManager.MarkTableAsDirty(this);
+            Database.StorageManager.MarkTableAsDirty(this);
 
             if (!redo)
             {
@@ -47,7 +47,7 @@ namespace Database
             }
 
             Values.Remove(value);
-            Database.DataManager.MarkTableAsDirty(this);
+            Database.StorageManager.MarkTableAsDirty(this);
 
             if (!redo)
             {

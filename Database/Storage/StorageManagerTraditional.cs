@@ -6,13 +6,13 @@ using System.Text;
 
 namespace Database
 {
-    public class DataManagerTraditional : DataManager
+    public class StorageManagerTraditional : StorageManager
     {
         private readonly HashSet<string> DirtyTableNames = new HashSet<string>();
 
         private string DataFilePath { get; set; }
 
-        public DataManagerTraditional(string dataFilePath)
+        public StorageManagerTraditional(string dataFilePath)
         {
             DataFilePath = dataFilePath ?? Utility.DefaultDataFilePath;
         }

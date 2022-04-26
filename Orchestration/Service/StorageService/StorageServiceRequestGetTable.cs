@@ -16,7 +16,7 @@ namespace Database
 
         public override ServiceResponseResult Process()
         {
-            return new StorageServiceResponseResultGetTable(StorageService.Get().DataManager.GetTable(TableName));
+            return new StorageServiceResponseResultGetTable(StorageService.Get().StorageManager.GetTable(TableName));
         }
     }
 }

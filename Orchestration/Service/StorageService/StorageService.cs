@@ -7,12 +7,12 @@ namespace Database
         public const string StorageServicePipeName = "StorageServicePipe";
         protected override string ServicePipeName => StorageServicePipeName;
 
-        public DataManagerTraditional DataManager;
+        public StorageManagerTraditional StorageManager;
 
         public StorageService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
-            DataManager = new DataManagerTraditional(serviceConfiguration?.DataFilePath);
+            StorageManager = new StorageManagerTraditional(serviceConfiguration?.DataFilePath);
         }
 
         public static StorageService Get()

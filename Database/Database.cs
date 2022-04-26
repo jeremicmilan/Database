@@ -12,7 +12,7 @@ namespace Database
 
         public TransactionManager TransactionManager { get; private set; }
 
-        public DataManager DataManager { get; private set; }
+        public StorageManager StorageManager { get; private set; }
 
         public DatabaseService DatabaseService { get; private set; }
 
@@ -21,11 +21,11 @@ namespace Database
         protected Database(
             DatabaseService databaseService,
             LogManager logManager,
-            DataManager dataManager)
+            StorageManager dataManager)
         {
             DatabaseService = databaseService;
             LogManager = logManager;
-            DataManager = dataManager;
+            StorageManager = dataManager;
             TransactionManager = new TransactionManager();
         }
 
@@ -46,7 +46,7 @@ namespace Database
         //
         private void Checkpoint()
         {
-            DataManager.Checkpoint();
+            StorageManager.Checkpoint();
 
             LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
             LogManager.PersistLogRecord(logRecord);
@@ -58,13 +58,13 @@ namespace Database
 
         public Table CreateTable(string tableName, bool redo = false)
         {
-            if (DataManager.GetTable(tableName) != null)
+            if (StorageManager.GetTable(tableName) != null)
             {
                 throw new Exception(string.Format("Table with name {0} already exists.", tableName));
             }
 
             Table table = new Table(tableName);
-            DataManager.AddTable(table);
+            StorageManager.AddTable(table);
 
             if (!redo)
             {
@@ -77,7 +77,7 @@ namespace Database
 
         public Table GetExistingTable(string tableName)
         {
-            Table table = DataManager.GetTable(tableName);
+            Table table = StorageManager.GetTable(tableName);
             if (table == null)
             {
                 throw new Exception(string.Format("Table with name {0} does not exists.", tableName));

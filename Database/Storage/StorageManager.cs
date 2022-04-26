@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Database
 {
-    public abstract class DataManager
+    public abstract class StorageManager
     {
         protected readonly List<Table> CachedTables = new List<Table>();
 

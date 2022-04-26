@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Database
 {
-    public class DataManagerHyperscale : DataManager
+    public class StorageManagerHyperscale : StorageManager
     {
         public override void Checkpoint()
         {
