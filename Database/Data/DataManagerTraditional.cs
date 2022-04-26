@@ -10,7 +10,12 @@ namespace Database
     {
         private readonly HashSet<string> DirtyTableNames = new HashSet<string>();
 
-        private string DataFilePath => ((DatabaseTraditional)DatabaseService.Get().Database).DataFilePath;
+        private string DataFilePath { get; set; }
+
+        public DataManagerTraditional(string dataFilePath)
+        {
+            DataFilePath = dataFilePath ?? Utility.DefaultDataFilePath;
+        }
 
         public override void Checkpoint()
         {

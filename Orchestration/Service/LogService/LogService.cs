@@ -7,9 +7,13 @@ namespace Database
         public const string LogServicePipeName = "LogServicePipe";
         protected override string ServicePipeName => LogServicePipeName;
 
+        public LogManagerTraditional LogManager { get; private set; }
+
         public LogService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
-        { }
+        {
+            LogManager = new LogManagerTraditional(serviceConfiguration?.LogFilePath);
+        }
 
         public static LogService Get()
         {

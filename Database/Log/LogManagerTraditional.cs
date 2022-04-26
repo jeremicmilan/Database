@@ -11,7 +11,7 @@ namespace Database
 
         public LogManagerTraditional(string logFilePath)
         {
-            LogFilePath = logFilePath;
+            LogFilePath = logFilePath ?? Utility.DefaultLogFilePath;
         }
 
         public override void ReadEntireLog()

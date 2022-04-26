@@ -9,8 +9,8 @@ namespace Database
         private DatabaseTraditional(DatabaseService databaseService, string logPath, string dataPath)
             : base(
                   databaseService,
-                  new LogManagerTraditional(logPath ?? Utility.DefaultLogFilePath),
-                  new DataManagerTraditional())
+                  new LogManagerTraditional(logPath),
+                  new DataManagerTraditional(dataPath))
         {
             DataFilePath = dataPath ?? Utility.DefaultDataFilePath;
         }
