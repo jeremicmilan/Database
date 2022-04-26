@@ -14,9 +14,7 @@ namespace Database
 
         protected override Table GetTableFromPersistentStorage(string tableName)
         {
-            // TODO: Read from storage service
-            //
-            throw new NotImplementedException();
+            return new StorageServiceRequestGetTable(tableName).Send().Table;
         }
     }
 }
