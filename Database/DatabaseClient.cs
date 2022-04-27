@@ -63,6 +63,7 @@ namespace Database
         public void ProcessUserInput(string line)
         {
             const string RunTestStatement = "RUN ";
+            const string KillStatement = "KILL";
 
             const string ConfigureStatement = "CONFIGURE ";
             const string LoggingStatementPart = "LOGGING ";
@@ -70,8 +71,30 @@ namespace Database
 
             switch (line.Trim())
             {
-                case "KILL":
-                    Orchestrator.DatabaseRestart();
+                case string s when s.StartsWith(KillStatement):
+                    string killStatementPart = line[KillStatement.Length..].Trim();
+                    switch (killStatementPart.Trim())
+                    {
+                        case "":
+                        case "DATABASE":
+                            Orchestrator.KillDatabaseService();
+                            break;
+
+                        case "LOG":
+                            ((OrchestratorHyperscale)Orchestrator).KillLogService();
+                            break;
+
+                        case "STORAGE":
+                            ((OrchestratorHyperscale)Orchestrator).KillStorageService();
+                            break;
+
+                        case "ALL":
+                            Orchestrator.KillAllServices();
+                            break;
+
+                        default:
+                            throw new Exception("Unsupported KILL statement.");
+                    }
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "OFF":

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Threading;
 
@@ -8,9 +9,14 @@ namespace Database
     public abstract class Orchestrator
     {
         private CancellationTokenSource KeepServicesUpThreadCancellationTokenSource;
-        public DatabaseService DatabaseService { get; protected set; }
+        public DatabaseService DatabaseService => GetService<DatabaseService>();
 
         protected List<Service> Services = new List<Service>();
+        protected TService GetService<TService>()
+            where TService : Service
+        {
+            return (TService)Services.Where(service => service.GetType().IsSubclassOf(typeof(TService))).FirstOrDefault();
+        }
 
         public void Start()
         {
@@ -29,7 +35,9 @@ namespace Database
             StopStartedServices();
         }
 
-        public void DatabaseRestart()
+        public abstract void KillAllServices();
+
+        public void KillDatabaseService()
         {
             DatabaseService.Kill();
         }
@@ -57,11 +65,14 @@ namespace Database
 
         public void OverrideDatabaseServiceConfiguration(ServiceConfiguration serviceConfiguration)
         {
-            DatabaseService.OverrideConfiguration(serviceConfiguration);
+            foreach (Service service in Services)
+            {
+                service.OverrideConfiguration(serviceConfiguration);
 
-            // Restart database so new configuration is picked up.
-            //
-            DatabaseRestart();
+                // Restart service so new configuration is picked up.
+                //
+                service.Kill();
+            }
         }
 
         protected abstract void StartServices();

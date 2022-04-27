@@ -7,22 +7,39 @@ namespace Database
     {
         public OrchestratorHyperscale() { }
 
-        StorageService StorageService = null;
-        LogService LogService = null;
+        public LogService LogService => GetService<LogService>();
+        public StorageService StorageService => GetService<StorageService>();
 
         protected override void StartServices()
         {
-            DatabaseService = new DatabaseServiceHyperscale();
-            new Thread(() => KeepServiceUp(DatabaseService)).Start();
-            Services.Add(DatabaseService);
+            DatabaseService databaseService = new DatabaseServiceHyperscale();
+            new Thread(() => KeepServiceUp(databaseService)).Start();
+            Services.Add(databaseService);
 
-            StorageService = new StorageService();
-            new Thread(() => KeepServiceUp(StorageService)).Start();
-            Services.Add(StorageService);
+            StorageService storageService = new StorageService();
+            new Thread(() => KeepServiceUp(storageService)).Start();
+            Services.Add(storageService);
 
-            LogService = new LogService();
-            new Thread(() => KeepServiceUp(LogService)).Start();
-            Services.Add(LogService);
+            LogService logService = new LogService();
+            new Thread(() => KeepServiceUp(logService)).Start();
+            Services.Add(logService);
+        }
+
+        public override void KillAllServices()
+        {
+            KillDatabaseService();
+            KillLogService();
+            KillStorageService();
+        }
+
+        public void KillLogService()
+        {
+            LogService.Kill();
+        }
+
+        public void KillStorageService()
+        {
+            StorageService.Kill();
         }
 
         protected override void SnapWindow()

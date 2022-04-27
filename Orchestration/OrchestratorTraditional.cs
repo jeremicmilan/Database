@@ -10,14 +10,19 @@ namespace Database
 
         protected override void StartServices()
         {
-            DatabaseService = new DatabaseServiceTraditional();
-            new Thread(() => KeepServiceUp(DatabaseService)).Start();
-            Services.Add(DatabaseService);
+            DatabaseService databaseService = new DatabaseServiceTraditional();
+            new Thread(() => KeepServiceUp(databaseService)).Start();
+            Services.Add(databaseService);
         }
 
         protected override void SnapWindow()
         {
             Window.SnapLeft(Process.GetCurrentProcess());
+        }
+
+        public override void KillAllServices()
+        {
+            KillDatabaseService();
         }
     }
 }
