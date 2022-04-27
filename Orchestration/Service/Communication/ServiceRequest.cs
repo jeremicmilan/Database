@@ -37,10 +37,6 @@ namespace Database
                             serviceResponseResult = (TServiceResponseResult)serviceResponseSuccessWithResults.ServiceResponseResult;
                             break;
 
-                        case ServiceResponseSuccessWithResults<TServiceResponseResult> serviceResponseSuccessWithResults:
-                            serviceResponseResult = serviceResponseSuccessWithResults.ServiceResponseResult;
-                            break;
-
                         case ServiceResponseFailure serviceResponseFailure:
                             throw new Exception(serviceResponseFailure.ExceptionMessage);
 

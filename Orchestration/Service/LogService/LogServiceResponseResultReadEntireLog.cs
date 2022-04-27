@@ -4,7 +4,7 @@ namespace Database
 {
     public class LogServiceResponseResultReadEntireLog : LogServiceResponseResult
     {
-        public readonly List<LogRecord> LogRecords;
+        public List<LogRecord> LogRecords { get; set; }
 
         public LogServiceResponseResultReadEntireLog()
         { }
