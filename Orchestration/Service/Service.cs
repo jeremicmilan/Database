@@ -22,6 +22,7 @@ namespace Database
         }
 
         private static Service _Service = null;
+        public static Service Get() => _Service;
         protected static TService Get<TService>()
             where TService : Service
         {

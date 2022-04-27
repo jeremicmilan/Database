@@ -30,7 +30,7 @@ namespace Database
 
         public override void PersistLogRecord(LogRecord logRecord)
         {
-            bool? loggingDisabled = Database.ServiceConfiguration.LoggingDisabled;
+            bool? loggingDisabled = Service.Get().ServiceConfiguration.LoggingDisabled;
             bool loggingEnabled = !(loggingDisabled.HasValue && loggingDisabled.Value);
             if (loggingEnabled)
             {

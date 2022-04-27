@@ -15,7 +15,7 @@ namespace Database
             LogManager = new LogManagerTraditional(serviceConfiguration?.LogFilePath);
         }
 
-        public static LogService Get()
+        public static new LogService Get()
         {
             return Get<LogService>();
         }

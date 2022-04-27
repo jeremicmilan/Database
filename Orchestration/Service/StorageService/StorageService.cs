@@ -15,7 +15,7 @@ namespace Database
             StorageManager = new StorageManagerTraditional(serviceConfiguration?.DataFilePath);
         }
 
-        public static StorageService Get()
+        public static new StorageService Get()
         {
             return Get<StorageService>();
         }

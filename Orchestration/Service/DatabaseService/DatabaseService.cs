@@ -11,7 +11,7 @@
             : base(serviceConfiguration)
         { }
 
-        public static DatabaseService Get()
+        public static new DatabaseService Get()
         {
             return Get<DatabaseService>();
         }
