@@ -1,5 +1,5 @@
 ﻿namespace Database
 {
-    public class ServiceResponse : ServiceMessage
+    public abstract class ServiceResponse : ServiceMessage
     { }
 }
