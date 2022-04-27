@@ -94,42 +94,52 @@ namespace Database
 
         protected void RegisterPipeServer()
         {
-            using NamedPipeServerStream pipeServer = new NamedPipeServerStream(ServicePipeName, PipeDirection.InOut);
-            Utility.TraceDebugMessage("NamedPipeServerStream object created.");
-
-            Utility.TraceDebugMessage("Waiting for client connection...");
-            pipeServer.WaitForConnection();
-            Utility.TraceDebugMessage("Client connected.");
-
             try
             {
-                using StreamReader streamReader = new StreamReader(pipeServer);
                 while (true)
                 {
-                    IServiceRequest serviceRequest = Utility.Deserialize<IServiceRequest>(streamReader.ReadLine());
-                    if (serviceRequest != null)
-                    {
-                        try
-                        {
-                            ServiceResponseResult serviceResponseResult = ProcessRequest(serviceRequest);
+                    using NamedPipeServerStream pipeServer = new NamedPipeServerStream(ServicePipeName, PipeDirection.InOut);
 
-                            if (serviceResponseResult != null)
-                            {
-                                new ServiceResponseSuccessWithResults<ServiceResponseResult>(serviceResponseResult).WriteToPipeStream(pipeServer);
-                            }
-                            else
-                            {
-                                new ServiceResponseSuccess().WriteToPipeStream(pipeServer);
-                            }
-                        }
-                        catch (Exception exception)
+                    Utility.TraceDebugMessage("Waiting for client connection...");
+                    pipeServer.WaitForConnection();
+                    Utility.TraceDebugMessage("Client connected.");
+
+                    using StreamReader streamReader = new StreamReader(pipeServer);
+                    while (true)
+                    {
+                        string line = streamReader.ReadLine();
+                        if (line == null)
                         {
-                            Utility.TraceDebugMessage(string.Format("While processing request {0} hit exception {1}", serviceRequest, exception.ToString()));
-                            new ServiceResponseFailure(exception.Message).WriteToPipeStream(pipeServer);
+                            break;
                         }
+
+                        IServiceRequest serviceRequest = Utility.Deserialize<IServiceRequest>(line);
+                        if (serviceRequest != null)
+                        {
+                            try
+                            {
+                                ServiceResponseResult serviceResponseResult = ProcessRequest(serviceRequest);
+
+                                if (serviceResponseResult != null)
+                                {
+                                    new ServiceResponseSuccessWithResults<ServiceResponseResult>(serviceResponseResult).WriteToPipeStream(pipeServer);
+                                }
+                                else
+                                {
+                                    new ServiceResponseSuccess().WriteToPipeStream(pipeServer);
+                                }
+                            }
+                            catch (Exception exception)
+                            {
+                                Utility.TraceDebugMessage(string.Format("While processing request {0} hit exception {1}", serviceRequest, exception.ToString()));
+                                new ServiceResponseFailure(exception).WriteToPipeStream(pipeServer);
+                            }
+                        }
+
+                        Utility.WaitDefaultPipeTimeout();
                     }
 
-                    Utility.WaitDefaultPipeTimeout();
+                    Utility.TraceDebugMessage("Client connection closed.");
                 }
             }
             catch (Exception exception)

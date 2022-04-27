@@ -8,8 +8,6 @@ namespace Database
     public abstract class ServiceRequest<TServiceResponseResult> : ServiceMessage, IServiceRequest
         where TServiceResponseResult : ServiceResponseResult
     {
-        private static readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
-
         public ServiceRequest()
         { }
 
