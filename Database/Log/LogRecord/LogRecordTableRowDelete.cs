@@ -2,12 +2,15 @@
 {
     public class LogRecordTableRowDelete : LogRecordTableRowOperation
     {
-        public LogRecordTableRowDelete(int logSequenceNumber, string[] parameters)
-            : base(logSequenceNumber, parameters)
+        public LogRecordTableRowDelete()
         { }
 
         public LogRecordTableRowDelete(string tableName, int value)
             : base(tableName, value)
+        { }
+
+        public LogRecordTableRowDelete(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber, parameters)
         { }
 
         public override LogRecordType GetLogRecordType() => LogRecordType.TableRowDelete;

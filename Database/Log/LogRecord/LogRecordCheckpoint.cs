@@ -2,8 +2,9 @@
 {
     public class LogRecordCheckpoint : LogRecord
     {
-        public LogRecordCheckpoint(int logSequenceNumber, string[] parameters)
-            : this(logSequenceNumber, parameters.Length > 0 && bool.Parse(parameters[0]))
+        public bool IsTransactionActive { get; set; }
+
+        public LogRecordCheckpoint()
         { }
 
         public LogRecordCheckpoint(int logSequenceNumber, bool isTransactionActive)
@@ -11,6 +12,10 @@
         {
             IsTransactionActive = isTransactionActive;
         }
+
+        public LogRecordCheckpoint(int logSequenceNumber, string[] parameters)
+            : this(logSequenceNumber, parameters.Length > 0 && bool.Parse(parameters[0]))
+        { }
 
         public LogRecordCheckpoint(bool isTransactionActive)
         {
@@ -21,8 +26,6 @@
         {
             return LogRecordType.Checkpoint;
         }
-
-        public bool IsTransactionActive { get; private set; }
 
         public override void Redo()
         {

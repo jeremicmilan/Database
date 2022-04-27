@@ -5,9 +5,13 @@ namespace Database
 {
     public abstract class LogRecord
     {
-        public int LogSequenceNumber;
+        public int LogSequenceNumber { get; set; }
 
         private static int _logSequenceNumberMax = 0;
+
+        public const string LogRecordParameterDelimiter = ",";
+
+        protected Database Database { get => Database.Get(); }
 
         protected LogRecord()
         {
@@ -24,10 +28,6 @@ namespace Database
             }
         }
 
-        public const string LogRecordParameterDelimiter = ",";
-
-        protected Database Database { get => Database.Get(); }
-        
         public static LogRecord ParseLogRecord(string logRecordText)
         {
             return InterpretLogRecord(logRecordText.Split(LogRecordParameterDelimiter));

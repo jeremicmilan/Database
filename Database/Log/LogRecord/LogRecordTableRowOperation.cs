@@ -4,7 +4,16 @@ namespace Database
 {
     public abstract class LogRecordTableRowOperation : LogRecordTable
     {
-        protected int Value;
+        public int Value { get; set; }
+
+        public LogRecordTableRowOperation()
+        { }
+
+        public LogRecordTableRowOperation(string tableName, int value)
+            : base(tableName)
+        {
+            Value = value;
+        }
 
         public LogRecordTableRowOperation(int logSequenceNumber, string[] parameters)
             : base(logSequenceNumber, parameters[0])
@@ -12,12 +21,6 @@ namespace Database
             CheckParameterLength(parameters, 2);
 
             Value = int.Parse(parameters[1]);
-        }
-
-        public LogRecordTableRowOperation(string tableName, int value)
-            : base(tableName)
-        {
-            Value = value;
         }
 
         public override void Redo()

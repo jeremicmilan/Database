@@ -2,12 +2,16 @@
 {
     public class LogRecordTableRowInsert : LogRecordTableRowOperation
     {
-        public LogRecordTableRowInsert(int logSequenceNumber, string[] parameters)
-            : base(logSequenceNumber, parameters)
+
+        public LogRecordTableRowInsert()
         { }
 
         public LogRecordTableRowInsert(string tableName, int value)
             : base(tableName, value)
+        { }
+
+        public LogRecordTableRowInsert(int logSequenceNumber, string[] parameters)
+            : base(logSequenceNumber, parameters)
         { }
 
         public override LogRecordType GetLogRecordType() => LogRecordType.TableRowInsert;

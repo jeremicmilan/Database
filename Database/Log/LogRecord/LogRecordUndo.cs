@@ -4,17 +4,20 @@ namespace Database
 {
     public class LogRecordUndo : LogRecord
     {
-        public LogRecord LogRecord { get; private set; }
+        public LogRecord LogRecord { get; set; }
+
+        public LogRecordUndo()
+        { }
+
+        public LogRecordUndo(LogRecord logRecord)
+        {
+            LogRecord = logRecord;
+        }
 
         public LogRecordUndo(int logSequenceNumber, string[] parameters)
             : base(logSequenceNumber)
         {
             LogRecord = InterpretLogRecord(parameters);
-        }
-
-        public LogRecordUndo(LogRecord logRecord)
-        {
-            LogRecord = logRecord;
         }
 
         public override LogRecordType GetLogRecordType()

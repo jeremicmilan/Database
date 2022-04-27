@@ -4,6 +4,9 @@
     {
         public string TableName;
 
+        protected LogRecordTable()
+        { }
+
         protected LogRecordTable(string tableName)
         {
             TableName = tableName;
