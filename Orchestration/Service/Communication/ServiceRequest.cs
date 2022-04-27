@@ -38,7 +38,7 @@ namespace Database
                             break;
 
                         case ServiceResponseFailure serviceResponseFailure:
-                            throw new Exception(serviceResponseFailure.ExceptionMessage);
+                            throw serviceResponseFailure.Exception;
 
                         default:
                             throw new Exception("Unknown service response.");
