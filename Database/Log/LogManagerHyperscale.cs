@@ -8,7 +8,7 @@ namespace Database
     {
         public override void PersistLogRecord(LogRecord logRecord)
         {
-            throw new NotImplementedException();
+            new LogServiceRequestPersistLogRecord(logRecord).Send();
         }
 
         public override void ReadEntireLog()
