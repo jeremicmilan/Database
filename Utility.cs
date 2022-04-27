@@ -75,6 +75,7 @@ namespace Database
 
         public static string DefaultTraceFilePath => WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
 
+        public static bool TracesPurged = false;
         public static void TraceDebugMessage(string message)
         {
             ExecuteFileActionResiliently(() =>
@@ -83,6 +84,14 @@ namespace Database
                     {
                         Directory.CreateDirectory(Directory.GetParent(DefaultTraceFilePath).FullName);
                         File.Create(DefaultTraceFilePath);
+                    }
+
+                    if (!TracesPurged)
+                    {
+                        // Purge traces on startup for easier debugging.
+                        //
+                        File.WriteAllText(DefaultTraceFilePath, "");
+                        TracesPurged = true;
                     }
 
                     using StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath);
