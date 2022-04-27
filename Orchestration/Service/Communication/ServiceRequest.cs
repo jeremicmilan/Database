@@ -33,12 +33,19 @@ namespace Database
                         case ServiceResponseSuccess serviceResponseSuccess:
                             break;
 
+                        case ServiceResponseSuccessWithResults<ServiceResponseResult> serviceResponseSuccessWithResults:
+                            serviceResponseResult = (TServiceResponseResult)serviceResponseSuccessWithResults.ServiceResponseResult;
+                            break;
+
                         case ServiceResponseSuccessWithResults<TServiceResponseResult> serviceResponseSuccessWithResults:
                             serviceResponseResult = serviceResponseSuccessWithResults.ServiceResponseResult;
                             break;
 
                         case ServiceResponseFailure serviceResponseFailure:
                             throw new Exception(serviceResponseFailure.ExceptionMessage);
+
+                        default:
+                            throw new Exception("Unknown service response.");
                     }
                 },
                 correctiveActionPredicate: (exception) =>
