@@ -12,6 +12,7 @@ namespace Database
         { }
 
         // To use TServiceResponseResult here we need https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/covariant-returns
+        //
         public abstract ServiceResponseResult Process();
 
         public abstract TServiceResponseResult Send();
