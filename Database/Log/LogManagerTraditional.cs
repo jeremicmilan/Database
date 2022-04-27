@@ -28,15 +28,10 @@ namespace Database
             }
         }
 
-        public override void PersistLogRecord(LogRecord logRecord)
+        public override void PersistLogRecordInternal(LogRecord logRecord)
         {
-            bool? loggingDisabled = Service.Get().ServiceConfiguration.LoggingDisabled;
-            bool loggingEnabled = !(loggingDisabled.HasValue && loggingDisabled.Value);
-            if (loggingEnabled)
-            {
-                using StreamWriter streamWriter = File.AppendText(LogFilePath);
-                streamWriter.WriteLine(logRecord.ToString());
-            }
+            using StreamWriter streamWriter = File.AppendText(LogFilePath);
+            streamWriter.WriteLine(logRecord.ToString());
         }
     }
 }

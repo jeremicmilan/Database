@@ -6,14 +6,14 @@ namespace Database
 {
     public class LogManagerHyperscale : LogManager
     {
-        public override void PersistLogRecord(LogRecord logRecord)
-        {
-            new LogServiceRequestPersistLogRecord(logRecord).Send();
-        }
-
         public override void ReadEntireLog()
         {
             LogRecords.AddRange(new LogServiceRequestReadEntireLog().Send().LogRecords);
+        }
+
+        public override void PersistLogRecordInternal(LogRecord logRecord)
+        {
+            new LogServiceRequestPersistLogRecord(logRecord).Send();
         }
     }
 }

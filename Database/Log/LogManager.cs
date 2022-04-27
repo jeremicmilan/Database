@@ -109,7 +109,15 @@ namespace Database
             return LogRecords.Skip(indexBeginTransaction).ToList();
         }
 
-        public abstract void PersistLogRecord(LogRecord logRecord);
+        public void PersistLogRecord(LogRecord logRecord)
+        {
+            if (Service.Get().ServiceConfiguration.LoggingEnabled())
+            {
+                PersistLogRecordInternal(logRecord);
+            }
+        }
+
+        public abstract void PersistLogRecordInternal(LogRecord logRecord);
 
         public override string ToString()
         {

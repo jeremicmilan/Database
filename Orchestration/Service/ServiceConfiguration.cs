@@ -9,6 +9,7 @@
         public string DataFilePath { get; set; }
 
         public bool? LoggingDisabled { get; set; }
+        public bool LoggingEnabled() => !(LoggingDisabled.HasValue && LoggingDisabled.Value);
 
         public ServiceConfiguration()
         { }
