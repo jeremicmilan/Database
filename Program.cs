@@ -9,9 +9,10 @@ namespace Database
     {
         static void Main(string[] args)
         {
-
             if (args.Count() == 0)
             {
+                Utility.CleanupTraces();
+
                 Console.Title = "DatabaseClient";
 
                 DatabaseClient databaseClient = DatabaseClient.Create();
