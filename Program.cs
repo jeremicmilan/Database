@@ -11,9 +11,10 @@ namespace Database
         {
             if (args.Count() == 0)
             {
-                Utility.CleanupTraces();
-
                 Console.Title = "DatabaseClient";
+
+                Utility.CleanupFiles();
+                Utility.CleanupTraces();
 
                 DatabaseClient databaseClient = DatabaseClient.Create();
                 databaseClient.Start<OrchestratorHyperscale>();

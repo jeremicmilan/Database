@@ -75,13 +75,29 @@ namespace Database
 
         public static string DefaultTraceFilePath => WorkingDirectory + Path.DirectorySeparatorChar + Console.Title + ".trace";
 
+        public static void CleanupFiles()
+        {
+            if (File.Exists(DefaultLogFilePath))
+            {
+                File.WriteAllText(DefaultLogFilePath, "");
+            }
+
+            if (File.Exists(DefaultDataFilePath))
+            {
+                File.WriteAllText(DefaultDataFilePath, "");
+            }
+        }
+
         public static void CleanupTraces()
         {
             string[] files = Directory.GetFiles(WorkingDirectory, "*.trace");
 
             foreach (string file in files)
             {
-                File.WriteAllText(file, "");
+                if (File.Exists(file))
+                {
+                    File.WriteAllText(file, "");
+                }
             }
         }
 
