@@ -78,10 +78,18 @@ namespace Database.Tests
             {
                 CheckSameFileContent(TestDataFile, TestExpectedDataFile);
             }
+            else if (File.Exists(TestExpectedDataFile))
+            {
+                throw new Exception("Test data file not generated when it should have been.");
+            }
 
             if (File.Exists(TestLogFile) && File.Exists(TestExpectedLogFile))
             {
                 CheckSameFileContent(TestLogFile, TestExpectedLogFile);
+            }
+            else if (File.Exists(TestExpectedLogFile))
+            {
+                throw new Exception("Test log file not generated when it should have been.");
             }
         }
 
