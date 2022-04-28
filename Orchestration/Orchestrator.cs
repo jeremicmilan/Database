@@ -48,10 +48,11 @@ namespace Database
 
             while (true)
             {
-                Utility.TraceDebugMessage(string.Format("Starting up {0}...", service.GetType()));
+                Utility.LogMessage(string.Format("Starting up {0}...", service.GetType().ToString()[9..]));
                 service.StartAsProcess();
+                Utility.LogMessage(string.Format("{0} started.", service.GetType().ToString()[9..]));
                 service.WaitForExit();
-                Utility.TraceDebugMessage(string.Format("{0} exited.", service.GetType()));
+                Utility.LogMessage(string.Format("{0} exited.", service.GetType().ToString()[9..]));
 
                 if (KeepServicesUpThreadCancellationTokenSource != null &&
                     KeepServicesUpThreadCancellationTokenSource.IsCancellationRequested)
@@ -81,7 +82,7 @@ namespace Database
         {
             foreach (Service service in Services)
             {
-                service.IsServiceUp();
+                Utility.WaitUntil(() => service.IsWaitingForExit);
             }
         }
 

@@ -18,6 +18,8 @@ namespace Database
 
         public TServiceResponseResult Send(Type issuerType = null)
         {
+            Utility.LogMessage("Initiating request {0}.", GetType().ToString()[9..]);
+
             issuerType ??= Service.Get().GetType();
 
             List<Tuple<Type, Type>> keys = Service.ServiceToServicePipeNames.Keys
@@ -30,7 +32,11 @@ namespace Database
             }
 
             string pipeName = Service.ServiceToServicePipeNames[keys.First()];
-            return WriteToPipe(pipeName);
+            TServiceResponseResult serviceResponseResult = WriteToPipe(pipeName);
+
+            Utility.LogMessage("Request {0} finished.", GetType().ToString()[9..]);
+
+            return serviceResponseResult;
         }
 
         private TServiceResponseResult WriteToPipe(string servicePipeName)
@@ -70,11 +76,10 @@ namespace Database
         private static NamedPipeClientStream RegisterPipeClient(string pipeName)
         {
             NamedPipeClientStream PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
-            Utility.TraceDebugMessage("Attempting to connect to pipe...");
+            Utility.TraceDebugMessage("Attempting to connect to pipe {0}...", pipeName);
             PipeClient.Connect();
 
-            Utility.TraceDebugMessage("Connected to pipe.");
-            Utility.TraceDebugMessage("There are currently {0} pipe server instances open.", PipeClient.NumberOfServerInstances);
+            Utility.TraceDebugMessage("Connected to pipe {0}.", pipeName);
 
             return PipeClient;
         }

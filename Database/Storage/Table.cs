@@ -98,7 +98,7 @@ namespace Database
 
         public void Print()
         {
-            Console.WriteLine(ToString());
+            Utility.LogMessage(ToString());
         }
 
         public override string ToString()

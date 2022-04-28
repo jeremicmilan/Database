@@ -55,7 +55,7 @@ namespace Database
                 }
                 catch (Exception exception)
                 {
-                    Utility.TraceFailure(exception.ToString());
+                    Utility.LogFailure(exception.ToString());
                 }
             }
         }

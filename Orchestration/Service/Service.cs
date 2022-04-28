@@ -44,6 +44,8 @@ namespace Database
 
         public void Start()
         {
+            Utility.LogMessage("Starting {0}...", GetType().ToString()[9..]);
+
             if (_Service != null)
             {
                 throw new Exception("Only one service can be started per process.");
@@ -54,6 +56,8 @@ namespace Database
             }
 
             StartInternal();
+
+            Utility.LogMessage("{0} started.", GetType().ToString()[9..]);
 
             RegisterPipeServersAndBlock();
         }
@@ -86,15 +90,15 @@ namespace Database
             Kill();
         }
 
-        public bool IsServiceUp() => Process != null;
-
         public void Kill()
         {
             Process?.Kill();
         }
 
+        public bool IsWaitingForExit { get; private set; } = false;
         public void WaitForExit()
         {
+            IsWaitingForExit = true;
             Process?.WaitForExit();
         }
 
@@ -131,9 +135,9 @@ namespace Database
                 {
                     using NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut);
 
-                    Utility.TraceDebugMessage("Waiting for client connection...");
+                    Utility.TraceDebugMessage("Waiting for client connection on pipe {0}...", pipeName);
                     pipeServer.WaitForConnection();
-                    Utility.TraceDebugMessage("Client connected.");
+                    Utility.TraceDebugMessage("Client connected on pipe {0}.", pipeName);
 
                     using StreamReader streamReader = new StreamReader(pipeServer);
                     while (true)
@@ -162,7 +166,7 @@ namespace Database
                             }
                             catch (Exception exception)
                             {
-                                Utility.TraceDebugMessage(string.Format("While processing request {0} hit exception {1}", serviceRequest, exception.ToString()));
+                                Utility.LogFailure(string.Format("While processing request {0} hit exception {1}", serviceRequest, exception.ToString()));
                                 new ServiceResponseFailure(exception).WriteToPipeStream(pipeServer);
                             }
                         }
@@ -175,7 +179,7 @@ namespace Database
             }
             catch (Exception exception)
             {
-                Console.WriteLine("Pipe server main loop failed: {0}", exception.ToString());
+                Utility.LogMessage("Pipe server main loop failed: {0}", exception.ToString());
             }
         }
 

@@ -101,6 +101,24 @@ namespace Database
             }
         }
 
+        public static string DateTimePrefix => DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  ";
+
+        public static void LogMessage(string message, params object[] parameters)
+        {
+            Console.WriteLine(DateTimePrefix + message, parameters);
+            TraceDebugMessage(message, parameters);
+        }
+
+        public static void LogFailure(string message)
+        {
+            ConsoleColor previousConsoleColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            LogMessage("ERROR: " + message);
+
+            Console.ForegroundColor = previousConsoleColor;
+        }
+
         public static void TraceDebugMessage(string message)
         {
             ExecuteFileActionResiliently(() =>
@@ -112,23 +130,13 @@ namespace Database
                     }
 
                     using StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath);
-                    streamWriter.WriteLine(DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  " + message);
+                    streamWriter.WriteLine(DateTimePrefix + message);
                 });
         }
 
-        public static void TraceDebugMessage(string format, params object[] objects)
+        public static void TraceDebugMessage(string format, params object[] paramaters)
         {
-            TraceDebugMessage(string.Format(format, objects));
-        }
-
-        public static void TraceFailure(string message)
-        {
-            ConsoleColor previousConsoleColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-
-            Console.WriteLine("ERROR: " + message);
-
-            Console.ForegroundColor = previousConsoleColor;
+            TraceDebugMessage(string.Format(format, paramaters));
         }
 
         public static void FileCreateIfNeeded(string filePath)

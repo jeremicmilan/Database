@@ -104,7 +104,7 @@ namespace Database
                     }
 
                     StorageManager.CreateTable(tableName);
-                    Console.WriteLine("Created table: " + tableName);
+                    Utility.LogMessage("Created table: " + tableName);
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):
@@ -125,7 +125,7 @@ namespace Database
                         table.InsertRow(value);
                     }
 
-                    Console.WriteLine(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
+                    Utility.LogMessage(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
                     break;
 
                 case string s when s.StartsWith(DeleteFromTableStatementStart):
@@ -144,7 +144,7 @@ namespace Database
                         table.DeleteRow(value);
                     }
 
-                    Console.WriteLine(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
+                    Utility.LogMessage(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
                     break;
 
                 case string s when s.StartsWith(CheckTableStatement):

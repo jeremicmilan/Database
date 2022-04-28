@@ -16,6 +16,8 @@
 
         public override ServiceResponseResult Process()
         {
+            Utility.LogMessage("Getting table {0} with LSN {1}.", TableName, LogSequenceNumber);
+
             StorageService storageService = StorageService.Get();
 
             if (LogSequenceNumber > storageService.LogSequenceNumberMax)
@@ -23,7 +25,18 @@
                 storageService.CatchUpLog(LogSequenceNumber);
             }
 
-            return new StorageServiceResponseResultGetTable(storageService.StorageManager.GetTable(TableName));
+            Table table = storageService.StorageManager.GetTable(TableName);
+
+            if (table != null)
+            {
+                Utility.LogMessage("Returning table {0}", table);
+            }
+            else
+            {
+                Utility.LogMessage("No table to return.");
+            }
+
+            return new StorageServiceResponseResultGetTable(table);
         }
     }
 }

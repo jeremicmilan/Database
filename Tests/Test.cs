@@ -34,7 +34,7 @@ namespace Database.Tests
             }
             catch (Exception exception)
             {
-                Utility.TraceFailure(exception.ToString());
+                Utility.LogFailure(exception.ToString());
             }
             finally
             {
@@ -115,8 +115,6 @@ namespace Database.Tests
                 }
             }
         }
-
-
         private void RecreateWorkingDirectory()
         {
             CleanupWorkingDirectoryIfExists();
@@ -153,7 +151,7 @@ namespace Database.Tests
 
         private void LogTestMessage(string message)
         {
-            Console.WriteLine(TestExecutionPrefix + message);
+            Utility.LogMessage(TestExecutionPrefix + message);
         }
     }
 }

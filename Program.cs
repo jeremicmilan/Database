@@ -30,14 +30,13 @@ namespace Database
                     Console.Title = type.Name;
                     Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
-                    Utility.TraceDebugMessage("Starting service...");
                     service.SnapWindow();
                     service.Start();
-                    Utility.TraceDebugMessage("Service ended.");
+                    Utility.LogMessage("Service ended.");
                 }
                 catch (Exception exception)
                 {
-                    Console.WriteLine(exception.ToString());
+                    Utility.LogMessage(exception.ToString());
                 }
 
                 Thread.Sleep(TimeSpan.FromSeconds(10));
