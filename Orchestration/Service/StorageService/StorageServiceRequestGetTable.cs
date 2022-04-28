@@ -18,7 +18,7 @@
         {
             StorageService storageService = StorageService.Get();
 
-            if (LogSequenceNumber > storageService.StorageManager.LogSequenceNumberMax)
+            if (LogSequenceNumber > storageService.LogSequenceNumberMax)
             {
                 storageService.CatchUpLog(LogSequenceNumber);
             }

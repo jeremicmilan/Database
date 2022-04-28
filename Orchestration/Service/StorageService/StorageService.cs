@@ -9,6 +9,8 @@ namespace Database
         public StorageManagerTraditional StorageManager { get; private set; }
         public override StorageManager GetStorageManager() => StorageManager;
 
+        public int LogSequenceNumberMax { get; private set; } = -1;
+
         public StorageService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
@@ -31,7 +33,7 @@ namespace Database
 
         public void CatchUpLog(int logSequenceNumberMax)
         {
-            List<LogRecord> logRecords = new LogServiceRequestGetLog(StorageManager.LogSequenceNumberMax).Send().LogRecords;
+            List<LogRecord> logRecords = new LogServiceRequestGetLog(LogSequenceNumberMax).Send().LogRecords;
             foreach (LogRecord logRecord in logRecords)
             {
                 if (logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)) ||
@@ -40,12 +42,14 @@ namespace Database
                 {
                     logRecord.Redo();
                 }
+
+                LogSequenceNumberMax = logRecord.LogSequenceNumber;
             }
 
-            if (logSequenceNumberMax > StorageManager.LogSequenceNumberMax)
+            if (logSequenceNumberMax > LogSequenceNumberMax)
             {
                 throw new Exception(string.Format("We caught up log redo up to {0}, but we needed up to {1}",
-                    StorageManager.LogSequenceNumberMax, logSequenceNumberMax));
+                    LogSequenceNumberMax, logSequenceNumberMax));
             }
         }
 

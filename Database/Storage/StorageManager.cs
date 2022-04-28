@@ -10,8 +10,6 @@ namespace Database
 
         public static StorageManager Get() => Service.Get().GetStorageManager();
 
-        public int LogSequenceNumberMax => CachedTables.Any() ? CachedTables.Max(table => table.LogSequenceNumberMax) : -1;
-
         public Table CreateTable(string tableName, LogRecordTableCreate logRecordTableCreate = null)
         {
             Table table = GetTable(tableName);
