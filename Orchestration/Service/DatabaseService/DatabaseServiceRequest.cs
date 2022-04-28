@@ -1,11 +1,10 @@
-﻿namespace Database
+﻿using System;
+
+namespace Database
 {
     public abstract class DatabaseServiceRequest<TServiceResponseResult> : ServiceRequest<TServiceResponseResult>
         where TServiceResponseResult : ServiceResponseResult
     {
-        public override TServiceResponseResult Send()
-        {
-            return WriteToPipe(DatabaseService.DatabaseServicePipeName);
-        }
+        protected override Type GetServiceType() => typeof(DatabaseService);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Database
+﻿namespace Database
 {
     public class StorageServiceRequestGetTable : StorageServiceRequest<StorageServiceResponseResultGetTable>
     {
@@ -18,12 +16,14 @@ namespace Database
 
         public override ServiceResponseResult Process()
         {
-            if (LogSequenceNumber > StorageService.LogSequenceNumberMax)
+            StorageService storageService = StorageService.Get();
+
+            if (LogSequenceNumber > storageService.LogSequenceNumberMax)
             {
-                StorageService.CatchUpLog(LogSequenceNumber);
+                storageService.CatchUpLog(LogSequenceNumber);
             }
 
-            return new StorageServiceResponseResultGetTable(StorageService.Get().StorageManager.GetTable(TableName));
+            return new StorageServiceResponseResultGetTable(storageService.StorageManager.GetTable(TableName));
         }
     }
 }

@@ -4,9 +4,6 @@ namespace Database
 {
     public class LogService : Service
     {
-        public const string LogServicePipeName = "LogServicePipe";
-        protected override string ServicePipeName => LogServicePipeName;
-
         public LogManagerTraditional LogManager { get; private set; }
 
         public LogService(ServiceConfiguration serviceConfiguration = null)

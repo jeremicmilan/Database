@@ -137,7 +137,7 @@ namespace Database
 
                 default:
                     DatabaseServiceResponseResultQuery databaseServiceResponseResult =
-                        new DatabaseServiceRequestQuery(line).Send();
+                        new DatabaseServiceRequestQuery(line).Send(this.GetType());
                     databaseServiceResponseResult?.Table?.Print();
                     break;
             }

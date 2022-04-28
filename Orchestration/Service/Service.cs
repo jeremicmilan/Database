@@ -10,11 +10,18 @@ namespace Database
 {
     public abstract class Service
     {
-        protected Process Process = null;
         public ServiceConfiguration ServiceConfiguration;
         protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration { ServiceType = this.GetType().ToString() };
 
-        protected abstract string ServicePipeName { get; }
+        protected Process Process = null;
+
+        public static readonly Dictionary<Tuple<Type, Type>, string> ServiceToServicePipeNames = new Dictionary<Tuple<Type, Type>, string>()
+        {
+            { new Tuple<Type, Type>(typeof(DatabaseClient),            typeof(DatabaseService)), "DatabaseClientPipe"    },
+            { new Tuple<Type, Type>(typeof(DatabaseServiceHyperscale), typeof(LogService)),      "DatabaseToLogPipe"     },
+            { new Tuple<Type, Type>(typeof(DatabaseServiceHyperscale), typeof(StorageService)),  "DatabaseToStoragePipe" },
+            { new Tuple<Type, Type>(typeof(StorageService),            typeof(LogService)),      "StorageToLogPipe"      },
+        };
 
         protected Service(ServiceConfiguration serviceConfiguration = null)
         {
@@ -44,9 +51,28 @@ namespace Database
 
             StartInternal();
 
-            // Block on processing a request
+            RegisterPipeServersAndBlock();
+        }
+
+        private void RegisterPipeServersAndBlock()
+        {
+            List<string> pipeNames = ServiceToServicePipeNames
+                .Where(item => this.GetType() == item.Key.Item2 || this.GetType().IsSubclassOf(item.Key.Item2))
+                .Select(item => item.Value)
+                .ToList();
+            List<Thread> threads = new List<Thread>();
+
+            foreach (string pipeName in pipeNames)
+            {
+                Thread thread = new Thread(() => RegisterPipeServer(pipeName));
+                threads.Add(thread);
+                thread.Name = this.GetType().ToString()[9..] + "_" + pipeName;
+                thread.Start();
+            }
+
+            // Block until one of the pipe server fails
             //
-            RegisterPipeServer();
+            Utility.WaitUntil(() => threads.Where(thread => !thread.IsAlive).FirstOrDefault() != null);
         }
 
         protected abstract void StartInternal();
@@ -93,13 +119,13 @@ namespace Database
             return serviceRequest.Process();
         }
 
-        protected void RegisterPipeServer()
+        protected void RegisterPipeServer(string pipeName)
         {
             try
             {
                 while (true)
                 {
-                    using NamedPipeServerStream pipeServer = new NamedPipeServerStream(ServicePipeName, PipeDirection.InOut);
+                    using NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut);
 
                     Utility.TraceDebugMessage("Waiting for client connection...");
                     pipeServer.WaitForConnection();
@@ -146,7 +172,6 @@ namespace Database
             catch (Exception exception)
             {
                 Console.WriteLine("Pipe server main loop failed: {0}", exception.ToString());
-                Thread.Sleep(TimeSpan.FromSeconds(10));
             }
         }
 

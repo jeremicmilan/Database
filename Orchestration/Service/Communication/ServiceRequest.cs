@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Pipes;
+using System.Linq;
 
 namespace Database
 {
@@ -11,13 +12,28 @@ namespace Database
         public ServiceRequest()
         { }
 
-        // To use TServiceResponseResult here we need https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/proposals/csharp-9.0/covariant-returns
-        //
         public abstract ServiceResponseResult Process();
 
-        public abstract TServiceResponseResult Send();
+        protected abstract Type GetServiceType();
 
-        protected TServiceResponseResult WriteToPipe(string servicePipeName)
+        public TServiceResponseResult Send(Type issuerType = null)
+        {
+            issuerType ??= Service.Get().GetType();
+
+            List<Tuple<Type, Type>> keys = Service.ServiceToServicePipeNames.Keys
+                .Where(key => (key.Item1 == issuerType       || key.Item1.IsSubclassOf(issuerType)) &&
+                              (key.Item2 == GetServiceType() || key.Item2.IsSubclassOf(GetServiceType())))
+                .ToList();
+            if (keys.Count > 1)
+            {
+                throw new Exception("We found more than one pipe, which should not be possible.");
+            }
+
+            string pipeName = Service.ServiceToServicePipeNames[keys.First()];
+            return WriteToPipe(pipeName);
+        }
+
+        private TServiceResponseResult WriteToPipe(string servicePipeName)
         {
             PipeClients[servicePipeName] = PipeClients.GetValueOrDefault(servicePipeName) ?? RegisterPipeClient(servicePipeName);
             TServiceResponseResult serviceResponseResult = null;

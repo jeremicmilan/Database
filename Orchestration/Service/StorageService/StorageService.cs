@@ -6,9 +6,6 @@ namespace Database
 {
     public class StorageService : Service
     {
-        public const string StorageServicePipeName = "StorageServicePipe";
-        protected override string ServicePipeName => StorageServicePipeName;
-
         public StorageManagerTraditional StorageManager { get; private set; }
 
         public int LogSequenceNumberMax { get; private set; }
