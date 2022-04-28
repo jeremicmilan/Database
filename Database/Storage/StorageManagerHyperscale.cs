@@ -14,7 +14,7 @@ namespace Database
 
         protected override Table GetTableFromPersistentStorage(string tableName)
         {
-            return new StorageServiceRequestGetTable(tableName).Send().Table;
+            return new StorageServiceRequestGetTable(tableName, Database.Get().LogManager.LogSequenceNumberMax).Send().Table;
         }
     }
 }

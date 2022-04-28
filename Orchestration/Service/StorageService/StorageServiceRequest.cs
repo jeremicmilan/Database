@@ -7,5 +7,7 @@
         {
             return WriteToPipe(StorageService.StorageServicePipeName);
         }
+
+        protected StorageService StorageService => StorageService.Get();
     }
 }
