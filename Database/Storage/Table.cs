@@ -28,6 +28,11 @@ namespace Database
         {
             if (Values.Contains(value))
             {
+                if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
+                {
+                    return;
+                }
+
                 throw new Exception(string.Format("Insert failed. Value {0} already exists in table {1}.", value, TableName));
             }
 
@@ -47,6 +52,11 @@ namespace Database
         {
             if (!Values.Contains(value))
             {
+                if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
+                {
+                    return;
+                }
+
                 throw new Exception(string.Format("Delete failed. Value {0} does not exist in table {1}.", value, TableName));
             }
 
@@ -74,6 +84,16 @@ namespace Database
                 throw new Exception(string.Format("{0} cannot be applied on table {1}.",
                     logRecord.ToString(), ToString()));
             }
+        }
+
+        public bool IsLogAlreadyApplied(int? logSequenceNumber)
+        {
+            if (logSequenceNumber == null)
+            {
+                return false;
+            }
+
+            return logSequenceNumber <= LogSequenceNumberMax;
         }
 
         public void Print()

@@ -9,13 +9,10 @@ namespace Database
         public StorageManagerTraditional StorageManager { get; private set; }
         public override StorageManager GetStorageManager() => StorageManager;
 
-        public int LogSequenceNumberMax { get; private set; }
-
         public StorageService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)
         {
             StorageManager = new StorageManagerTraditional(serviceConfiguration?.DataFilePath);
-            LogSequenceNumberMax = 0;
         }
 
         public static new StorageService Get()
@@ -25,12 +22,16 @@ namespace Database
 
         protected override void StartInternal()
         {
-            // We could start a new thread here 
+            // We could start a new thread to periodically apply the log from storage here,
+            // but it is not needed for consistency.
+            // Starting this thread will lower the latency of table delivery by storage service,
+            // but we do not care about performance in this prototype.
+            //
         }
 
-        public void CatchUpLog(int logSequenceNumerMax)
+        public void CatchUpLog(int logSequenceNumberMax)
         {
-            List<LogRecord> logRecords = new LogServiceRequestGetLog(LogSequenceNumberMax).Send().LogRecords;
+            List<LogRecord> logRecords = new LogServiceRequestGetLog(StorageManager.LogSequenceNumberMax).Send().LogRecords;
             foreach (LogRecord logRecord in logRecords)
             {
                 if (logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)) ||
@@ -39,14 +40,12 @@ namespace Database
                 {
                     logRecord.Redo();
                 }
-
-                LogSequenceNumberMax = logRecord.LogSequenceNumber;
             }
 
-            if (logSequenceNumerMax > LogSequenceNumberMax)
+            if (logSequenceNumberMax > StorageManager.LogSequenceNumberMax)
             {
                 throw new Exception(string.Format("We caught up log redo up to {0}, but we needed up to {1}",
-                    LogSequenceNumberMax, logSequenceNumerMax));
+                    StorageManager.LogSequenceNumberMax, logSequenceNumberMax));
             }
         }
 

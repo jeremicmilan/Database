@@ -10,14 +10,22 @@ namespace Database
 
         public static StorageManager Get() => Service.Get().GetStorageManager();
 
+        public int LogSequenceNumberMax => CachedTables.Any() ? CachedTables.Max(table => table.LogSequenceNumberMax) : -1;
+
         public Table CreateTable(string tableName, LogRecordTableCreate logRecordTableCreate = null)
         {
-            if (GetTable(tableName) != null)
+            Table table = GetTable(tableName);
+            if (table != null)
             {
+                if (table.IsLogAlreadyApplied(logRecordTableCreate?.LogSequenceNumber))
+                {
+                    return table;
+                }
+
                 throw new Exception(string.Format("Table with name {0} already exists.", tableName));
             }
 
-            Table table = new Table(tableName);
+            table = new Table(tableName);
             AddTable(table);
 
             if (logRecordTableCreate == null)
