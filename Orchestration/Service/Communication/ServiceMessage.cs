@@ -6,7 +6,7 @@ namespace Database
 {
     public abstract class ServiceMessage
     {
-        // We ahve to put the PipeClients in this base class as ServiceRequest class is generic
+        // We have to put the PipeClients in this base class as ServiceRequest class is generic
         // and will have multiple versions of this static field.
         //
         protected static readonly Dictionary<string, NamedPipeClientStream> PipeClients = new Dictionary<string, NamedPipeClientStream>();
