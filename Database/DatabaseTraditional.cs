@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace Database
+﻿namespace Database
 {
     public class DatabaseTraditional : Database
     {

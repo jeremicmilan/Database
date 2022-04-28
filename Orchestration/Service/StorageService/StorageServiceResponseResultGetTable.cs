@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Database
+﻿namespace Database
 {
     public class StorageServiceResponseResultGetTable : StorageServiceResponseResult
     {
