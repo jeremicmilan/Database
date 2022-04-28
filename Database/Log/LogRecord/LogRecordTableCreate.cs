@@ -19,12 +19,7 @@
 
         public override void Redo()
         {
-            StorageManager.Get().CreateTable(TableName, redo: true);
-        }
-
-        public override void Undo()
-        {
-            throw new System.NotSupportedException();
+            StorageManager.Get().CreateTable(TableName, logRecordTableCreate: this);
         }
     }
 }

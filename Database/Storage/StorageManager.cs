@@ -10,7 +10,7 @@ namespace Database
 
         public static StorageManager Get() => Service.Get().GetStorageManager();
 
-        public Table CreateTable(string tableName, bool redo = false)
+        public Table CreateTable(string tableName, LogRecordTableCreate logRecordTableCreate = null)
         {
             if (GetTable(tableName) != null)
             {
@@ -20,11 +20,13 @@ namespace Database
             Table table = new Table(tableName);
             AddTable(table);
 
-            if (!redo)
+            if (logRecordTableCreate == null)
             {
-                LogRecord logRecord = new LogRecordTableCreate(tableName);
-                LogManager.Get().PersistLogRecord(logRecord);
+                logRecordTableCreate = new LogRecordTableCreate(tableName);
+                LogManager.Get().PersistLogRecord(logRecordTableCreate);
             }
+
+            table.UpdateLogSequenceNumberMax(logRecordTableCreate);
 
             return table;
         }

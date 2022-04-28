@@ -30,12 +30,12 @@ namespace Database
 
         public abstract void RedoRowOperation(Table table);
 
-        public override void Undo()
+        public override void Undo(LogRecordUndo logRecordUndo)
         {
-            UndoRowOperation(GetTable());
+            UndoRowOperation(logRecordUndo, GetTable());
         }
 
-        public abstract void UndoRowOperation(Table table);
+        public abstract void UndoRowOperation(LogRecordUndo logRecordUndo, Table table);
 
         private Table GetTable()
         {

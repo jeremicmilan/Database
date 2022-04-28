@@ -18,12 +18,12 @@
 
         public override void RedoRowOperation(Table table)
         {
-            table.InsertRow(Value, redo: true);
+            table.InsertRow(Value, logRecord: this);
         }
 
-        public override void UndoRowOperation(Table table)
+        public override void UndoRowOperation(LogRecordUndo logRecordUndo, Table table)
         {
-            table.DeleteRow(Value, redo: true);
+            table.DeleteRow(Value, logRecord: logRecordUndo);
         }
     }
 }

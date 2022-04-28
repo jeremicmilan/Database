@@ -58,7 +58,7 @@ namespace Database
 
         public abstract void Redo();
 
-        public abstract void Undo();
+        public virtual void Undo(LogRecordUndo logRecordUndo) => throw new Exception(GetLogRecordType() + " is not undoable.");
 
         protected void CheckParameterLength(string[] parameters, int expectedParameterCount)
         {

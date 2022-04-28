@@ -10,18 +10,21 @@ namespace Database
 
         public List<int> Values { get; set; }
 
+        public int LogSequenceNumberMax { get; set; }
+
         public Table()
         { }
 
-        public Table(string tableName, List<int> values = null)
+        public Table(string tableName, List<int> values = null, int logSequenceNumberMax = -1)
         {
             TableName = tableName;
             Values = values ?? new List<int>();
+            LogSequenceNumberMax = logSequenceNumberMax;
         }
 
         public const string Empty = "<empty>";
 
-        public void InsertRow(int value, bool redo = false)
+        public void InsertRow(int value, LogRecord logRecord = null)
         {
             if (Values.Contains(value))
             {
@@ -31,13 +34,16 @@ namespace Database
             Values.Add(value);
             StorageManager.Get().MarkTableAsDirty(this);
 
-            if (!redo)
+            if (logRecord == null)
             {
-                LogManager.Get().PersistLogRecord(new LogRecordTableRowInsert(TableName, value));
+                logRecord = new LogRecordTableRowInsert(TableName, value);
+                LogManager.Get().PersistLogRecord(logRecord);
             }
+
+            UpdateLogSequenceNumberMax(logRecord);
         }
 
-        public void DeleteRow(int value, bool redo = false)
+        public void DeleteRow(int value, LogRecord logRecord = null)
         {
             if (!Values.Contains(value))
             {
@@ -47,9 +53,26 @@ namespace Database
             Values.Remove(value);
             StorageManager.Get().MarkTableAsDirty(this);
 
-            if (!redo)
+            if (logRecord == null)
             {
-                LogManager.Get().PersistLogRecord(new LogRecordTableRowDelete(TableName, value));
+                logRecord = new LogRecordTableRowDelete(TableName, value);
+                LogManager.Get().PersistLogRecord(logRecord);
+            }
+
+            UpdateLogSequenceNumberMax(logRecord);
+        }
+
+        public void UpdateLogSequenceNumberMax<TLogRecord>(TLogRecord logRecord)
+            where TLogRecord : LogRecord
+        {
+            if (LogSequenceNumberMax < logRecord.LogSequenceNumber)
+            {
+                LogSequenceNumberMax = logRecord.LogSequenceNumber;
+            }
+            else
+            {
+                throw new Exception(string.Format("{0} cannot be applied on table {1}.",
+                    logRecord.ToString(), ToString()));
             }
         }
 
@@ -60,7 +83,7 @@ namespace Database
 
         public override string ToString()
         {
-            return TableName + ":" + (Values.Any() ? string.Join(",", Values) : Empty);
+            return TableName + ":" + (Values.Any() ? string.Join(",", Values) : Empty) + ":" + LogSequenceNumberMax;
         }
 
         public static Table Parse(string tableString)
@@ -68,7 +91,8 @@ namespace Database
             string[] tableStringParts = tableString.Split(":");
             string tableName = tableStringParts[0];
             string valuesString = tableStringParts[1];
-            return new Table(tableName, ParseValues(valuesString));
+            int logSequenceNumberMax = int.Parse(tableStringParts[2]);
+            return new Table(tableName, ParseValues(valuesString), logSequenceNumberMax);
         }
 
         public static List<int> ParseValues(string valuesString)

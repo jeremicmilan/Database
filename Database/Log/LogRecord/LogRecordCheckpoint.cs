@@ -1,4 +1,6 @@
-﻿namespace Database
+﻿using System;
+
+namespace Database
 {
     public class LogRecordCheckpoint : LogRecord
     {
@@ -33,12 +35,6 @@
             {
                 TransactionManager.Get().BeginTransaction(redo: true);
             }
-        }
-
-        public override void Undo()
-        {
-            // Checkpoint does not redo anything.
-            //
         }
 
         public override string ToString() => base.ToString() + LogRecordParameterDelimiter + IsTransactionActive;

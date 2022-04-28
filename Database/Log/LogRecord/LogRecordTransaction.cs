@@ -8,10 +8,5 @@
         protected LogRecordTransaction(int logSequenceNumber)
             : base(logSequenceNumber)
         { }
-
-        public override void Undo()
-        {
-            throw new System.NotSupportedException();
-        }
     }
 }

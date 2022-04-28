@@ -27,12 +27,7 @@ namespace Database
 
         public override void Redo()
         {
-            LogRecordTable.Undo();
-        }
-
-        public override void Undo()
-        {
-            throw new NotSupportedException();
+            LogRecordTable.Undo(logRecordUndo: this);
         }
 
         public override string ToString() => base.ToString() + LogRecordParameterDelimiter + LogRecordTable.ToString();
