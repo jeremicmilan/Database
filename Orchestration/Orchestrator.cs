@@ -44,7 +44,7 @@ namespace Database
 
         protected void KeepServiceUp(Service service)
         {
-            Thread.CurrentThread.Name = service.GetType() + "_" + MethodBase.GetCurrentMethod().Name;
+            Thread.CurrentThread.Name = service.GetType().ToString()[9..] + "_" + MethodBase.GetCurrentMethod().Name;
 
             while (true)
             {
