@@ -19,8 +19,6 @@ namespace Database
             Values = values ?? new List<int>();
         }
 
-        protected Database Database { get => Database.Get(); }
-
         public const string Empty = "<empty>";
 
         public void InsertRow(int value, bool redo = false)
@@ -31,11 +29,11 @@ namespace Database
             }
 
             Values.Add(value);
-            Database.StorageManager.MarkTableAsDirty(this);
+            StorageManager.Get().MarkTableAsDirty(this);
 
             if (!redo)
             {
-                Database.LogManager.PersistLogRecord(new LogRecordTableRowInsert(TableName, value));
+                LogManager.Get().PersistLogRecord(new LogRecordTableRowInsert(TableName, value));
             }
         }
 
@@ -47,11 +45,11 @@ namespace Database
             }
 
             Values.Remove(value);
-            Database.StorageManager.MarkTableAsDirty(this);
+            StorageManager.Get().MarkTableAsDirty(this);
 
             if (!redo)
             {
-                Database.LogManager.PersistLogRecord(new LogRecordTableRowDelete(TableName, value));
+                LogManager.Get().PersistLogRecord(new LogRecordTableRowDelete(TableName, value));
             }
         }
 

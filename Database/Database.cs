@@ -56,25 +56,6 @@ namespace Database
 
         #region Table Operations
 
-        public Table CreateTable(string tableName, bool redo = false)
-        {
-            if (StorageManager.GetTable(tableName) != null)
-            {
-                throw new Exception(string.Format("Table with name {0} already exists.", tableName));
-            }
-
-            Table table = new Table(tableName);
-            StorageManager.AddTable(table);
-
-            if (!redo)
-            {
-                LogRecord logRecord = new LogRecordTableCreate(tableName);
-                LogManager.PersistLogRecord(logRecord);
-            }
-
-            return table;
-        }
-
         public Table GetExistingTable(string tableName)
         {
             Table table = StorageManager.GetTable(tableName);
@@ -122,7 +103,7 @@ namespace Database
                         throw new Exception("Invalid table name.");
                     }
 
-                    CreateTable(tableName);
+                    StorageManager.CreateTable(tableName);
                     Console.WriteLine("Created table: " + tableName);
                     break;
 

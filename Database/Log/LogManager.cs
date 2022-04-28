@@ -11,7 +11,7 @@ namespace Database
 
         public int LogSequenceNumberMax => LogRecords.LastOrDefault()?.LogSequenceNumber ?? -1;
 
-        protected Database Database { get => Database.Get(); }
+        public static LogManager Get() => Service.Get().GetLogManager();
 
         public abstract void ReadEntireLog();
 
@@ -44,7 +44,7 @@ namespace Database
 
         private void UndoLog()
         {
-            if (!Database.TransactionManager.IsTransactionActive)
+            if (!Database.Get().TransactionManager.IsTransactionActive)
             {
                 return;
             }
@@ -78,7 +78,7 @@ namespace Database
             // Complete the transaction so we can open a new one later.
             // Also, this would be signal on the recovery not to undo this part of the log again.
             //
-            Database.TransactionManager.EndTransaction();
+            Database.Get().TransactionManager.EndTransaction();
         }
 
         private List<LogRecordTable> GetLogToBeUndone()

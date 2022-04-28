@@ -39,7 +39,7 @@ namespace Database
 
         private Table GetTable()
         {
-            Table table = Database.StorageManager.GetTable(TableName);
+            Table table = StorageManager.Get().GetTable(TableName);
 
             if (table == null)
             {

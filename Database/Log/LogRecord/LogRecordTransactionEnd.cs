@@ -11,7 +11,7 @@
 
         public override void Redo()
         {
-            Database.TransactionManager.EndTransaction(redo: true);
+            TransactionManager.Get().EndTransaction(redo: true);
         }
 
         public override LogRecordType GetLogRecordType()

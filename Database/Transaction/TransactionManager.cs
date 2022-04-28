@@ -12,6 +12,8 @@ namespace Database
 
         protected Database Database { get => Database.Get(); }
 
+        public static TransactionManager Get() => Service.Get().GetTransactionManager();
+
         public void BeginTransaction(bool redo = false)
         {
             if (IsTransactionActive)

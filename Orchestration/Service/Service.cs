@@ -36,6 +36,10 @@ namespace Database
             return (TService)_Service;
         }
 
+        public virtual LogManager GetLogManager() => null;
+        public virtual StorageManager GetStorageManager() => null;
+        public virtual TransactionManager GetTransactionManager() => null;
+
         public abstract void SnapWindow();
 
         public void Start()

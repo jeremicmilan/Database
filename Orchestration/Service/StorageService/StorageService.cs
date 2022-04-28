@@ -7,6 +7,7 @@ namespace Database
     public class StorageService : Service
     {
         public StorageManagerTraditional StorageManager { get; private set; }
+        public override StorageManager GetStorageManager() => StorageManager;
 
         public int LogSequenceNumberMax { get; private set; }
 

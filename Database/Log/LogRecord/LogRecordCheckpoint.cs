@@ -31,7 +31,7 @@
         {
             if (IsTransactionActive)
             {
-                Database.TransactionManager.BeginTransaction(redo: true);
+                TransactionManager.Get().BeginTransaction(redo: true);
             }
         }
 

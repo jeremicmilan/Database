@@ -5,6 +5,7 @@ namespace Database
     public class LogService : Service
     {
         public LogManagerTraditional LogManager { get; private set; }
+        public override LogManager GetLogManager() => LogManager;
 
         public LogService(ServiceConfiguration serviceConfiguration = null)
             : base(serviceConfiguration)

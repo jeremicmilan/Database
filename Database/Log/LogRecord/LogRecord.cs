@@ -11,8 +11,6 @@ namespace Database
 
         public const string LogRecordParameterDelimiter = ",";
 
-        protected Database Database { get => Database.Get(); }
-
         protected LogRecord()
         {
             LogSequenceNumber = ++_logSequenceNumberMax;

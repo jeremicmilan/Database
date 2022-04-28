@@ -19,7 +19,7 @@
 
         public override void Redo()
         {
-            Database.CreateTable(TableName, redo: true);
+            StorageManager.Get().CreateTable(TableName, redo: true);
         }
 
         public override void Undo()
