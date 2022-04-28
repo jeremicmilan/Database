@@ -1,5 +1,6 @@
 ﻿namespace Database
 {
+    // TODO: Deprecate
     public enum LogRecordType
     {
         TableCreate,

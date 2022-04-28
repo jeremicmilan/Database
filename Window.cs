@@ -52,6 +52,7 @@ namespace Database
             MoveWindow(process, rect);
         }
 
+        // TODO: Remove process parameter
         private static void MoveWindow(Process process, Rect rect)
         {
             if (!MoveWindow(process.MainWindowHandle,
