@@ -4,20 +4,20 @@ namespace Database
 {
     public class LogRecordUndo : LogRecord
     {
-        public LogRecord LogRecord { get; set; }
+        public LogRecordTable LogRecordTable { get; set; }
 
         public LogRecordUndo()
         { }
 
-        public LogRecordUndo(LogRecord logRecord)
+        public LogRecordUndo(LogRecordTable logRecordTable)
         {
-            LogRecord = logRecord;
+            LogRecordTable = logRecordTable;
         }
 
         public LogRecordUndo(int logSequenceNumber, string[] parameters)
             : base(logSequenceNumber)
         {
-            LogRecord = InterpretLogRecord(parameters);
+            LogRecordTable = (LogRecordTable)InterpretLogRecord(parameters);
         }
 
         public override LogRecordType GetLogRecordType()
@@ -27,7 +27,7 @@ namespace Database
 
         public override void Redo()
         {
-            LogRecord.Undo();
+            LogRecordTable.Undo();
         }
 
         public override void Undo()
@@ -35,6 +35,6 @@ namespace Database
             throw new NotSupportedException();
         }
 
-        public override string ToString() => base.ToString() + LogRecordParameterDelimiter + LogRecord.ToString();
+        public override string ToString() => base.ToString() + LogRecordParameterDelimiter + LogRecordTable.ToString();
     }
 }

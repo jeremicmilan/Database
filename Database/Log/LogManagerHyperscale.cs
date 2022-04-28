@@ -8,7 +8,7 @@ namespace Database
     {
         public override void ReadEntireLog()
         {
-            LogRecords.AddRange(new LogServiceRequestReadEntireLog().Send().LogRecords);
+            LogRecords.AddRange(new LogServiceRequestReadLog().Send().LogRecords);
         }
 
         public override void PersistLogRecordInternal(LogRecord logRecord)

@@ -10,7 +10,7 @@ namespace Database
     {
         public readonly List<LogRecord> LogRecords = new List<LogRecord>();
 
-        public int LogSequenceNumberMax => LogRecords.Last().LogSequenceNumber;
+        public int LogSequenceNumberMax => LogRecords.LastOrDefault()?.LogSequenceNumber ?? -1;
 
         protected Database Database { get => Database.Get(); }
 
@@ -50,16 +50,16 @@ namespace Database
                 return;
             }
 
-            List<LogRecord> logRecordsToBeUndone = GetLogToBeUndone();
+            List<LogRecordTable> logRecordsToBeUndone = GetLogToBeUndone();
             List<LogRecordUndo> logRecordsUndone = GetUndoneLog();
 
             // Do not undo log records we have undone on the previous recovery.
             //
             foreach (LogRecordUndo logRecordUndo in logRecordsUndone)
             {
-                LogRecord logRecordToBeUndone = logRecordsToBeUndone.First();
+                LogRecordTable logRecordToBeUndone = logRecordsToBeUndone.First();
 
-                if (!logRecordUndo.LogRecord.Equals(logRecordToBeUndone))
+                if (!logRecordUndo.LogRecordTable.Equals(logRecordToBeUndone))
                 {
                     throw new Exception("We did not undo properly the last time around.");
                 }
@@ -69,7 +69,7 @@ namespace Database
 
             // Undo log.
             //
-            foreach (LogRecord logRecord in logRecordsToBeUndone)
+            foreach (LogRecordTable logRecord in logRecordsToBeUndone)
             {
                 LogRecordUndo logRecordUndo = new LogRecordUndo(logRecord);
                 PersistLogRecord(logRecordUndo);
@@ -82,10 +82,12 @@ namespace Database
             Database.TransactionManager.EndTransaction();
         }
 
-        private List<LogRecord> GetLogToBeUndone()
+        private List<LogRecordTable> GetLogToBeUndone()
         {
             return GetLogAfterLastBeginTransaction()
                 .TakeWhile(logRecord => logRecord.GetLogRecordType() != LogRecordType.Undo)
+                .Where(logRecord => logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)))
+                .Select(logRecord => (LogRecordTable)logRecord)
                 .Reverse()
                 .ToList();
         }
