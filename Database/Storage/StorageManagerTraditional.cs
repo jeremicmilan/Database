@@ -15,7 +15,7 @@ namespace Database
             DataFilePath = dataFilePath ?? Utility.DefaultDataFilePath;
         }
 
-        public override void Checkpoint()
+        public override void Checkpoint(int logSequenceNumber)
         {
             foreach (Table table in CachedTables)
             {

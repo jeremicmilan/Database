@@ -71,7 +71,7 @@ namespace Database
 
         protected abstract Table GetTableFromPersistentStorage(string tableName);
 
-        public abstract void Checkpoint();
+        public abstract void Checkpoint(int logSequenceNumber);
 
         public virtual void MarkTableAsDirty(Table table)
         { }

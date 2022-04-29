@@ -46,10 +46,9 @@ namespace Database
         //
         private void Checkpoint()
         {
-            StorageManager.Checkpoint();
-
-            LogRecord logRecord = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
-            LogManager.PersistLogRecord(logRecord);
+            LogRecordCheckpoint logRecordCheckpoint = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
+            LogManager.PersistLogRecord(logRecordCheckpoint);
+            StorageManager.Checkpoint(logRecordCheckpoint.LogSequenceNumber);
         }
 
         #endregion Checkpoint and Disk Operations
