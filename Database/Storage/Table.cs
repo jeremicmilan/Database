@@ -26,13 +26,13 @@ namespace Database
 
         public void InsertRow(int value, LogRecord logRecord = null)
         {
+            if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
+            {
+                return;
+            }
+
             if (Values.Contains(value))
             {
-                if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
-                {
-                    return;
-                }
-
                 throw new Exception(string.Format("Insert failed. Value {0} already exists in table {1}.", value, TableName));
             }
 
@@ -50,13 +50,13 @@ namespace Database
 
         public void DeleteRow(int value, LogRecord logRecord = null)
         {
+            if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
+            {
+                return;
+            }
+
             if (!Values.Contains(value))
             {
-                if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
-                {
-                    return;
-                }
-
                 throw new Exception(string.Format("Delete failed. Value {0} does not exist in table {1}.", value, TableName));
             }
 
