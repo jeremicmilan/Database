@@ -42,7 +42,6 @@ namespace Database
             foreach (LogRecord logRecord in logRecords)
             {
                 if (logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)) ||
-                    logRecord is LogRecordCheckpoint ||
                     logRecord is LogRecordUndo)
                 {
                     logRecord.Redo();
