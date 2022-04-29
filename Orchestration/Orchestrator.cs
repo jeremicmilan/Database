@@ -80,7 +80,7 @@ namespace Database
 
         protected abstract void StartServices();
 
-        protected void WaitForServicesBoot()
+        public void WaitForServicesBoot()
         {
             foreach (Service service in Services)
             {

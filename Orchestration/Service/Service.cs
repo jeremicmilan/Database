@@ -92,6 +92,7 @@ namespace Database
 
         public void Kill()
         {
+            IsWaitingForExit = false;
             Process?.Kill();
         }
 

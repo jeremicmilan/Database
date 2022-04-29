@@ -57,6 +57,10 @@ namespace Database
                 {
                     Utility.LogFailure(exception.ToString());
                 }
+
+                // Waiting for all messages to flush to console before requesting new input.
+                //
+                Orchestrator.WaitForServicesBoot();
             }
         }
 
