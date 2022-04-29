@@ -15,7 +15,7 @@ namespace Database
             Table table = GetTable(tableName);
             if (table != null)
             {
-                if (table.IsLogAlreadyApplied(logRecordTableCreate?.LogSequenceNumber))
+                if (table.IsLogAlreadyApplied(logRecordTableCreate))
                 {
                     return table;
                 }

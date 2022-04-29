@@ -25,7 +25,7 @@ namespace Database
             return LogRecordType.Undo;
         }
 
-        public override void Redo()
+        protected override void RedoInternal()
         {
             LogRecordTable.Undo(logRecordUndo: this);
         }

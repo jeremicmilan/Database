@@ -29,7 +29,7 @@ namespace Database
             return LogRecordType.Checkpoint;
         }
 
-        public override void Redo()
+        protected override void RedoInternal()
         {
             if (IsTransactionActive)
             {

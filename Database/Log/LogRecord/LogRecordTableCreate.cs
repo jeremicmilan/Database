@@ -17,7 +17,7 @@
 
         public override LogRecordType GetLogRecordType() => LogRecordType.TableCreate;
 
-        public override void Redo()
+        protected override void RedoInternal()
         {
             StorageManager.Get().CreateTable(TableName, logRecordTableCreate: this);
         }

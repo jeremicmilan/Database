@@ -113,21 +113,28 @@ namespace Database
             RequestEnd,
             ServiceBegin,
             ServiceEnd,
+            OperationBegin,
+            OperationEnd,
+            OperationSkip,
             TestBegin,
             TestMessage,
             TestEnd,
         }
 
-        private static  Dictionary<LogMessageType, ConsoleColor> LogMessageColorMap = new Dictionary<LogMessageType, ConsoleColor>()
+        private static readonly Dictionary<LogMessageType, ConsoleColor> LogMessageColorMap =
+            new Dictionary<LogMessageType, ConsoleColor>()
         {
-            { LogMessageType.Failure,       ConsoleColor.Red },
-            { LogMessageType.RequestBegin,  ConsoleColor.DarkCyan },
-            { LogMessageType.RequestEnd,    ConsoleColor.Cyan },
-            { LogMessageType.ServiceBegin,  ConsoleColor.DarkBlue },
-            { LogMessageType.ServiceEnd,    ConsoleColor.Blue },
-            { LogMessageType.TestBegin,     ConsoleColor.DarkGreen },
-            { LogMessageType.TestMessage,   ConsoleColor.Yellow },
-            { LogMessageType.TestEnd,       ConsoleColor.Green },
+            { LogMessageType.Failure,           ConsoleColor.Red            },
+            { LogMessageType.RequestBegin,      ConsoleColor.DarkCyan       },
+            { LogMessageType.RequestEnd,        ConsoleColor.Cyan           },
+            { LogMessageType.ServiceBegin,      ConsoleColor.DarkBlue       },
+            { LogMessageType.ServiceEnd,        ConsoleColor.Blue           },
+            { LogMessageType.OperationBegin,    ConsoleColor.DarkYellow     },
+            { LogMessageType.OperationEnd,      ConsoleColor.Yellow         },
+            { LogMessageType.OperationSkip,     ConsoleColor.DarkMagenta    },
+            { LogMessageType.TestBegin,         ConsoleColor.DarkGreen      },
+            { LogMessageType.TestMessage,       ConsoleColor.DarkGray       },
+            { LogMessageType.TestEnd,           ConsoleColor.Green          },
         };
 
         public static void LogMessage(string message, params object[] parameters) =>
@@ -147,6 +154,12 @@ namespace Database
         public static void LogServiceEnd(string message, params object[] parameters) =>
             LogMessage(LogMessageType.ServiceEnd, message, parameters);
 
+        public static void LogOperationBegin(string message, params object[] parameters) =>
+            LogMessage(LogMessageType.OperationBegin, message, parameters);
+        public static void LogOperationEnd(string message, params object[] parameters) =>
+            LogMessage(LogMessageType.OperationEnd, message, parameters);
+        public static void LogOperationSkip(string message, params object[] parameters) =>
+            LogMessage(LogMessageType.OperationSkip, message, parameters);
 
         public static void LogTestBegin(string message, params object[] parameters) =>
             LogMessage(LogMessageType.TestBegin, message, parameters);

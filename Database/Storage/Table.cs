@@ -26,7 +26,7 @@ namespace Database
 
         public void InsertRow(int value, LogRecord logRecord = null)
         {
-            if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
+            if (IsLogAlreadyApplied(logRecord))
             {
                 return;
             }
@@ -50,7 +50,7 @@ namespace Database
 
         public void DeleteRow(int value, LogRecord logRecord = null)
         {
-            if (IsLogAlreadyApplied(logRecord?.LogSequenceNumber))
+            if (IsLogAlreadyApplied(logRecord))
             {
                 return;
             }
@@ -86,14 +86,21 @@ namespace Database
             }
         }
 
-        public bool IsLogAlreadyApplied(int? logSequenceNumber)
+        public bool IsLogAlreadyApplied(LogRecord logRecord)
         {
-            if (logSequenceNumber == null)
+            if (logRecord == null)
             {
                 return false;
             }
 
-            return logSequenceNumber <= LogSequenceNumberMax;
+            bool isLogAlreadyApplied = logRecord.LogSequenceNumber <= LogSequenceNumberMax;
+
+            if (isLogAlreadyApplied)
+            {
+                Utility.LogOperationSkip("Skipping apply of log record: " + logRecord);
+            }
+
+            return isLogAlreadyApplied;
         }
 
         public void Print()

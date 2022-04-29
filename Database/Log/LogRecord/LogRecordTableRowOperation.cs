@@ -23,14 +23,14 @@ namespace Database
             Value = int.Parse(parameters[1]);
         }
 
-        public override void Redo()
+        protected override void RedoInternal()
         {
             RedoRowOperation(GetTable());
         }
 
         public abstract void RedoRowOperation(Table table);
 
-        public override void Undo(LogRecordUndo logRecordUndo)
+        protected override void UndoInternal(LogRecordUndo logRecordUndo)
         {
             UndoRowOperation(logRecordUndo, GetTable());
         }

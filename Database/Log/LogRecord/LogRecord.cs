@@ -56,9 +56,21 @@ namespace Database
 
         public abstract LogRecordType GetLogRecordType();
 
-        public abstract void Redo();
+        protected abstract void RedoInternal();
+        public void Redo()
+        {
+            Utility.LogOperationBegin("Redoing log record {0}", ToString());
+            RedoInternal();
+            Utility.LogOperationEnd("Redone log record {0}", ToString());
+        }
 
-        public virtual void Undo(LogRecordUndo logRecordUndo) => throw new Exception(GetLogRecordType() + " is not undoable.");
+        protected virtual void UndoInternal(LogRecordUndo logRecordUndo) => throw new Exception(GetLogRecordType() + " is not undoable.");
+        public void Undo(LogRecordUndo logRecordUndo)
+        {
+            Utility.LogOperationBegin("Undoing log record {0}", ToString());
+            UndoInternal(logRecordUndo);
+            Utility.LogOperationEnd("Undone log record {0}", ToString());
+        }
 
         protected void CheckParameterLength(string[] parameters, int expectedParameterCount)
         {

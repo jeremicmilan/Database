@@ -9,7 +9,7 @@
             : base(logSequenceNumber)
         { }
 
-        public override void Redo()
+        protected override void RedoInternal()
         {
             TransactionManager.Get().EndTransaction(redo: true);
         }
