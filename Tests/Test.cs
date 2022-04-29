@@ -53,12 +53,12 @@ namespace Database.Tests
                 DataFilePath = TestDataFile,
                 LogFilePath = TestLogFile
             };
-            DatabaseClient.Get().Orchestrator.OverrideDatabaseServiceConfiguration(serviceConfiguration);
+            DatabaseClient.Get().Orchestrator.OverrideServicesConfiguration(serviceConfiguration);
         }
 
         private void Cleanup()
         {
-            DatabaseClient.Get().Orchestrator.OverrideDatabaseServiceConfiguration(null);
+            DatabaseClient.Get().Orchestrator.OverrideServicesConfiguration(null);
         }
 
         private void ExecuteTestFile()

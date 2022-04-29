@@ -98,11 +98,11 @@ namespace Database
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "OFF":
-                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingDisabled = true });
+                    Orchestrator.OverrideServicesConfiguration(new ServiceConfiguration { LoggingDisabled = true });
                     break;
 
                 case ConfigureStatement + LoggingStatementPart + "ON":
-                    Orchestrator.OverrideDatabaseServiceConfiguration(new ServiceConfiguration { LoggingDisabled = false });
+                    Orchestrator.OverrideServicesConfiguration(new ServiceConfiguration { LoggingDisabled = false });
                     break;
 
                 case ConfigureStatement + DatabaseStatementPart + "TRADITIONAL":
