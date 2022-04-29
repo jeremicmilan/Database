@@ -16,7 +16,7 @@
 
         public override ServiceResponseResult Process()
         {
-            Utility.LogMessage("Getting table {0} with LSN {1}.", TableName, LogSequenceNumber);
+            Utility.LogServiceRequestBegin("Getting table {0} with LSN {1}.", TableName, LogSequenceNumber);
 
             StorageService storageService = StorageService.Get();
 
@@ -29,11 +29,11 @@
 
             if (table != null)
             {
-                Utility.LogMessage("Returning table {0}", table);
+                Utility.LogServiceRequestEnd("Returning table {0}", table);
             }
             else
             {
-                Utility.LogMessage("No table to return.");
+                Utility.LogServiceRequestEnd("No table to return.");
             }
 
             return new StorageServiceResponseResultGetTable(table);

@@ -33,7 +33,12 @@ namespace Database
 
         public void CatchUpLog(int logSequenceNumberMax)
         {
-            List<LogRecord> logRecords = new LogServiceRequestGetLog(LogSequenceNumberMax).Send().LogRecords;
+            Utility.LogMessage("Catching up log from LSN {0} to LSN {1}.", LogSequenceNumberMax, logSequenceNumberMax);
+
+            List<LogRecord> logRecords = new LogServiceRequestGetLog(
+                    logSequenceNumberMin: LogSequenceNumberMax,
+                    logSequenceNumberMax: logSequenceNumberMax)
+                .Send().LogRecords;
             foreach (LogRecord logRecord in logRecords)
             {
                 if (logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)) ||
@@ -51,6 +56,8 @@ namespace Database
                 throw new Exception(string.Format("We caught up log redo up to {0}, but we needed up to {1}",
                     LogSequenceNumberMax, logSequenceNumberMax));
             }
+
+            Utility.LogMessage("Caught up log from LSN {0} to LSN {1}.", LogSequenceNumberMax, logSequenceNumberMax);
         }
 
         public override void SnapWindow()

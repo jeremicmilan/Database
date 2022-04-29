@@ -32,11 +32,11 @@ namespace Database
 
                     service.SnapWindow();
                     service.Start();
-                    Utility.LogMessage("Service ended.");
+                    Utility.LogServiceEnd("Service ended.");
                 }
                 catch (Exception exception)
                 {
-                    Utility.LogMessage(exception.ToString());
+                    Utility.LogFailure(exception.ToString());
                 }
 
                 Thread.Sleep(TimeSpan.FromSeconds(10));

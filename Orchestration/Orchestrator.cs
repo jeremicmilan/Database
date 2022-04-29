@@ -48,11 +48,11 @@ namespace Database
 
             while (true)
             {
-                Utility.LogMessage(string.Format("Starting up {0}...", service.GetType().ToString()[9..]));
+                Utility.LogServiceBegin(string.Format("Starting up {0}...", service.GetType().ToString()[9..]));
                 service.StartAsProcess();
-                Utility.LogMessage(string.Format("{0} started.", service.GetType().ToString()[9..]));
+                Utility.LogServiceEnd(string.Format("{0} started.", service.GetType().ToString()[9..]));
                 service.WaitForExit();
-                Utility.LogMessage(string.Format("{0} exited.", service.GetType().ToString()[9..]));
+                Utility.LogServiceEnd(string.Format("{0} exited.", service.GetType().ToString()[9..]));
 
                 if (KeepServicesUpThreadCancellationTokenSource != null &&
                     KeepServicesUpThreadCancellationTokenSource.IsCancellationRequested)

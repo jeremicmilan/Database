@@ -18,7 +18,7 @@ namespace Database
 
         public TServiceResponseResult Send(Type issuerType = null)
         {
-            Utility.LogMessage("Initiating request {0}.", GetType().ToString()[9..]);
+            Utility.LogServiceRequestBegin("Initiating request {0}.", GetType().ToString()[9..]);
 
             issuerType ??= Service.Get().GetType();
 
@@ -34,7 +34,7 @@ namespace Database
             string pipeName = Service.ServiceToServicePipeNames[keys.First()];
             TServiceResponseResult serviceResponseResult = WriteToPipe(pipeName);
 
-            Utility.LogMessage("Request {0} finished.", GetType().ToString()[9..]);
+            Utility.LogServiceRequestEnd("Request {0} finished.", GetType().ToString()[9..]);
 
             return serviceResponseResult;
         }

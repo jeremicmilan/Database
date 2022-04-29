@@ -9,17 +9,22 @@ namespace Database
         //
         public int? LogSequenceNumberMin { get; set; }
 
+        // If specified only log before this log sequence number will be sent in response (including this one)
+        //
+        public int? LogSequenceNumberMax { get; set; }
+
         public LogServiceRequestGetLog()
         { }
 
-        public LogServiceRequestGetLog(int? logSequenceNumberMin = null)
+        public LogServiceRequestGetLog(int? logSequenceNumberMin = null, int ? logSequenceNumberMax = null)
         {
             LogSequenceNumberMin = logSequenceNumberMin;
+            LogSequenceNumberMax = logSequenceNumberMax;
         }
 
         public override ServiceResponseResult Process()
         {
-            Utility.LogMessage(LogSequenceNumberMin == null || LogSequenceNumberMin.Value == -1
+            Utility.LogServiceRequestBegin(LogSequenceNumberMin == null || LogSequenceNumberMin.Value == -1
                 ? "Getting entire log."
                 : "Getting log with min LSN: " + LogSequenceNumberMin.Value);
 
@@ -27,21 +32,24 @@ namespace Database
 
             if (LogSequenceNumberMin != null)
             {
-                logRecords = logRecords.SkipWhile(logRecord => logRecord.LogSequenceNumber <= LogSequenceNumberMin.Value).ToList();
+                logRecords = logRecords
+                    .SkipWhile(logRecord => logRecord.LogSequenceNumber <= LogSequenceNumberMin.Value)
+                    .TakeWhile(logRecord => logRecord.LogSequenceNumber <= LogSequenceNumberMax.Value)
+                    .ToList();
             }
 
             if (logRecords.Any())
             {
-                Utility.LogMessage("Returning log records: ");
+                Utility.LogServiceRequestEnd("Returning log records: ");
             }
             else
             {
-                Utility.LogMessage("Nothing to return.");
+                Utility.LogServiceRequestEnd("Nothing to return.");
             }
 
             foreach (LogRecord logRecord in logRecords)
             {
-                Utility.LogMessage("-- " + logRecord.ToString());
+                Utility.LogServiceRequestEnd("-- " + logRecord.ToString());
             }
 
             return new LogServiceResponseResultGetLog(logRecords);

@@ -103,20 +103,47 @@ namespace Database
 
         public static string DateTimePrefix => DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  ";
 
-        public static void LogMessage(string message, params object[] parameters)
+        public static void LogServiceRequestBegin(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.DarkCyan, message, parameters);
+        public static void LogServiceRequestEnd(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.Cyan, message, parameters);
+
+        public static void LogServiceBegin(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.DarkBlue, message, parameters);
+        public static void LogServiceEnd(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.Blue, message, parameters);
+
+        public static void LogFailure(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.Red , "ERROR: " + message, parameters);
+
+        public static void LogTestBegin(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.DarkGreen, "ERROR: " + message, parameters);
+        public static void LogTestMessage(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.Yellow, "ERROR: " + message, parameters);
+        public static void LogTestEnd(string message, params object[] parameters) =>
+            LogMessage(ConsoleColor.Green, "ERROR: " + message, parameters);
+
+        private static readonly object LogMessageLock = new object();
+        private static void LogMessage(ConsoleColor color, string message, params object[] parameters)
         {
-            Console.WriteLine(DateTimePrefix + message, parameters);
-            TraceDebugMessage(message, parameters);
+            lock (LogMessageLock)
+            {
+                ConsoleColor previousConsoleColor = Console.ForegroundColor;
+                Console.ForegroundColor = color;
+
+                LogMessage(message, parameters);
+
+                Console.ForegroundColor = previousConsoleColor;
+            }
         }
 
-        public static void LogFailure(string message)
+        public static void LogMessage(string message, params object[] parameters)
         {
-            ConsoleColor previousConsoleColor = Console.ForegroundColor;
-            Console.ForegroundColor = ConsoleColor.Red;
-
-            LogMessage("ERROR: " + message);
-
-            Console.ForegroundColor = previousConsoleColor;
+            lock (LogMessageLock)
+            {
+                Console.WriteLine(DateTimePrefix + message, parameters);
+                TraceDebugMessage(message, parameters);
+            }
         }
 
         public static void TraceDebugMessage(string message)

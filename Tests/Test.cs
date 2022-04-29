@@ -23,7 +23,7 @@ namespace Database.Tests
 
         public void Run()
         {
-            LogTestMessage("Running test: " + TestName);
+            Utility.LogTestBegin(TestExecutionPrefix + "Running test: " + TestName);
 
             try
             {
@@ -41,7 +41,7 @@ namespace Database.Tests
                 Cleanup();
             }
 
-            LogTestMessage("Finnished test: " + TestName);
+            Utility.LogTestEnd(TestExecutionPrefix + "Finnished test: " + TestName);
         }
 
         private void Start()
@@ -67,7 +67,7 @@ namespace Database.Tests
             while (streamReader.Peek() >= 0)
             {
                 string line = streamReader.ReadLine();
-                LogTestMessage(TestExecutionPrefix + line);
+                Utility.LogTestMessage(TestExecutionPrefix + TestExecutionPrefix + line);
                 DatabaseClient.Get().ProcessUserInput(line);
             }
         }
@@ -148,10 +148,5 @@ namespace Database.Tests
         private string TestLogFile => TestWorkingDirectory + Path.DirectorySeparatorChar + "test.datalog";
 
         private const string TestExecutionPrefix = "-- ";
-
-        private void LogTestMessage(string message)
-        {
-            Utility.LogMessage(TestExecutionPrefix + message);
-        }
     }
 }

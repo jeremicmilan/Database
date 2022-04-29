@@ -44,7 +44,7 @@ namespace Database
 
         public void Start()
         {
-            Utility.LogMessage("Starting {0}...", GetType().ToString()[9..]);
+            Utility.LogServiceBegin("Starting {0}...", GetType().ToString()[9..]);
 
             if (_Service != null)
             {
@@ -57,7 +57,7 @@ namespace Database
 
             StartInternal();
 
-            Utility.LogMessage("{0} started.", GetType().ToString()[9..]);
+            Utility.LogServiceEnd("{0} started.", GetType().ToString()[9..]);
 
             RegisterPipeServersAndBlock();
         }
@@ -179,7 +179,7 @@ namespace Database
             }
             catch (Exception exception)
             {
-                Utility.LogMessage("Pipe server main loop failed: {0}", exception.ToString());
+                Utility.LogFailure("Pipe server main loop failed: {0}", exception.ToString());
             }
         }
 
