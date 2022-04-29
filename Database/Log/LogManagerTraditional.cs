@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 
 namespace Database
 {
@@ -13,6 +14,8 @@ namespace Database
 
         public override void ReadEntireLog()
         {
+            Utility.LogOperationBegin("Reading log from disk...");
+
             if (!File.Exists(LogFilePath))
             {
                 return;
@@ -23,12 +26,30 @@ namespace Database
             {
                 LogRecords.Add(LogRecord.ParseLogRecord(logRecordText));
             }
+
+            if (LogRecords.Any())
+            {
+                Utility.LogOperationEnd("Read log from disk: ");
+            }
+            else
+            {
+                Utility.LogOperationEnd("No log found on disk.");
+            }
+
+            foreach (LogRecord logRecord in LogRecords)
+            {
+                Utility.LogOperationEnd("-- " + logRecord.ToString());
+            }
         }
 
         public override void PersistLogRecordInternal(LogRecord logRecord)
         {
+            Utility.LogOperationBegin("Writing log record to disk: " + logRecord);
+
             using StreamWriter streamWriter = File.AppendText(LogFilePath);
             streamWriter.WriteLine(logRecord.ToString());
+
+            Utility.LogOperationEnd("Written log record to disk: " + logRecord);
         }
     }
 }

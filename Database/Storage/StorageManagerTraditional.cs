@@ -29,6 +29,8 @@ namespace Database
 
         protected override Table GetTableFromPersistentStorage(string tableName)
         {
+            Utility.LogOperationBegin("Reading table from disk: " + tableName);
+
             if (File.Exists(DataFilePath))
             {
                 // This is a very bad implementation as we are always reading the entire file to read one table and we do that every time.
@@ -39,12 +41,15 @@ namespace Database
                 // are needed. The best thing to do here is to have a proper physical format and R/W directly to the file and not go through
                 // Windows APIs (eliminating all buffering and make sure it is persisted at the end of write - currently that's not the case).
                 //
-                return File.ReadAllLines(DataFilePath)
+                Table table = File.ReadAllLines(DataFilePath)
                     .Select(line => Table.Parse(line))
                     .Where(table => table.TableName == tableName)
                     .FirstOrDefault();
+                Utility.LogOperationBegin("Read table from disk: " + table);
+                return table;
             }
 
+            Utility.LogOperationBegin("Table on disk not found: " + tableName);
             return null;
         }
 

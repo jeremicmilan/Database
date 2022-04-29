@@ -138,6 +138,8 @@ namespace Database
         //
         public void WriteToFile(string filePath)
         {
+            Utility.LogOperationBegin("Writing table to disk: " + ToString());
+
             Utility.FileCreateIfNeeded(filePath);
 
             string tableString = ToString();
@@ -154,6 +156,8 @@ namespace Database
             }
 
             Utility.FileWriteAllLines(filePath, lines);
+
+            Utility.LogOperationBegin("Written table to disk: " + ToString());
         }
     }
 }
