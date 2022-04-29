@@ -117,11 +117,11 @@ namespace Database
             LogMessage(ConsoleColor.Red , "ERROR: " + message, parameters);
 
         public static void LogTestBegin(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.DarkGreen, "ERROR: " + message, parameters);
+            LogMessage(ConsoleColor.DarkGreen, message, parameters);
         public static void LogTestMessage(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Yellow, "ERROR: " + message, parameters);
+            LogMessage(ConsoleColor.Yellow, message, parameters);
         public static void LogTestEnd(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Green, "ERROR: " + message, parameters);
+            LogMessage(ConsoleColor.Green, message, parameters);
 
         private static readonly object LogMessageLock = new object();
         private static void LogMessage(ConsoleColor color, string message, params object[] parameters)

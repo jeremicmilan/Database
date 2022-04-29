@@ -21,7 +21,7 @@ namespace Database
             }
             else
             {
-                // Debugger.Launch();
+                Debugger.Launch();
 
                 try
                 {
