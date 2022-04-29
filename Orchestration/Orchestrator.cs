@@ -66,7 +66,7 @@ namespace Database
 
         public void OverrideServicesConfiguration(ServiceConfiguration serviceConfiguration)
         {
-            Utility.LogMessage("Overriding services configuration with configuration.");
+            Utility.LogMessage("Overriding services configuration.");
 
             foreach (Service service in Services)
             {
