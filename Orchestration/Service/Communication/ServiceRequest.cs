@@ -76,10 +76,10 @@ namespace Database
         private static NamedPipeClientStream RegisterPipeClient(string pipeName)
         {
             NamedPipeClientStream PipeClient = new NamedPipeClientStream(".", pipeName, PipeDirection.InOut);
-            Utility.TraceDebugMessage("Attempting to connect to pipe {0}...", pipeName);
+            Utility.LogDebugMessage("Attempting to connect to pipe {0}...", pipeName);
             PipeClient.Connect();
 
-            Utility.TraceDebugMessage("Connected to pipe {0}.", pipeName);
+            Utility.LogDebugMessage("Connected to pipe {0}.", pipeName);
 
             return PipeClient;
         }

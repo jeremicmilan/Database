@@ -2,6 +2,7 @@
 using System.IO;
 using Newtonsoft.Json;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Database
 {
@@ -103,47 +104,109 @@ namespace Database
 
         public static string DateTimePrefix => DateTime.Now.ToString(format: "yyyy-MM-dd HH:mm:ss.ffff") + "  ::  ";
 
+        private enum LogMessageType
+        {
+            Normal,
+            Debug,
+            Failure,
+            RequestBegin,
+            RequestEnd,
+            ServiceBegin,
+            ServiceEnd,
+            TestBegin,
+            TestMessage,
+            TestEnd,
+        }
+
+        private static  Dictionary<LogMessageType, ConsoleColor> LogMessageColorMap = new Dictionary<LogMessageType, ConsoleColor>()
+        {
+            { LogMessageType.Failure,       ConsoleColor.Red },
+            { LogMessageType.RequestBegin,  ConsoleColor.DarkCyan },
+            { LogMessageType.RequestEnd,    ConsoleColor.Cyan },
+            { LogMessageType.ServiceBegin,  ConsoleColor.DarkBlue },
+            { LogMessageType.ServiceEnd,    ConsoleColor.Blue },
+            { LogMessageType.TestBegin,     ConsoleColor.DarkGreen },
+            { LogMessageType.TestMessage,   ConsoleColor.Yellow },
+            { LogMessageType.TestEnd,       ConsoleColor.Green },
+        };
+
+        public static void LogMessage(string message, params object[] parameters) =>
+            LogMessage(LogMessageType.Normal, message, parameters);
+        public static void LogDebugMessage(string message, params object[] parameters) =>
+            LogMessage(LogMessageType.Debug, message, parameters);
+        public static void LogFailure(string message, params object[] parameters) =>
+            LogMessage(LogMessageType.Failure, message, parameters);
+
         public static void LogServiceRequestBegin(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.DarkCyan, message, parameters);
+            LogMessage(LogMessageType.RequestBegin, message, parameters);
         public static void LogServiceRequestEnd(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Cyan, message, parameters);
+            LogMessage(LogMessageType.RequestEnd, message, parameters);
 
         public static void LogServiceBegin(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.DarkBlue, message, parameters);
+            LogMessage(LogMessageType.ServiceBegin, message, parameters);
         public static void LogServiceEnd(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Blue, message, parameters);
+            LogMessage(LogMessageType.ServiceEnd, message, parameters);
 
-        public static void LogFailure(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Red , "ERROR: " + message, parameters);
 
         public static void LogTestBegin(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.DarkGreen, message, parameters);
+            LogMessage(LogMessageType.TestBegin, message, parameters);
         public static void LogTestMessage(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Yellow, message, parameters);
+            LogMessage(LogMessageType.TestMessage, message, parameters);
         public static void LogTestEnd(string message, params object[] parameters) =>
-            LogMessage(ConsoleColor.Green, message, parameters);
+            LogMessage(LogMessageType.TestEnd, message, parameters);
 
+        private static bool TraceLoadingDone = false;
+        private static bool ShouldTrace = false;
         private static readonly object LogMessageLock = new object();
-        private static void LogMessage(ConsoleColor color, string message, params object[] parameters)
+        private static void LogMessage(LogMessageType logMessageType, string message, params object[] parameters)
         {
             lock (LogMessageLock)
             {
                 ConsoleColor previousConsoleColor = Console.ForegroundColor;
-                Console.ForegroundColor = color;
 
-                LogMessage(message, parameters);
+                if (logMessageType != LogMessageType.Normal && logMessageType != LogMessageType.Debug)
+                {
+                    Console.ForegroundColor = LogMessageColorMap[logMessageType];
+                }
+
+                if (TraceLoadingDone)
+                {
+                    message = DateTimePrefix + message;
+                }
+
+                if (logMessageType != LogMessageType.Debug)
+                {
+                    Console.WriteLine(message, parameters);
+                }
+
+                if (ShouldTrace)
+                {
+                    TraceDebugMessage("[[" + logMessageType.ToString().PadRight(15) + "]] " + message, parameters);
+                }
 
                 Console.ForegroundColor = previousConsoleColor;
             }
         }
 
-        public static void LogMessage(string message, params object[] parameters)
+        public static void LoadTracesToConsoleLog()
         {
-            lock (LogMessageLock)
+            ExecuteFileActionResiliently(() =>
             {
-                Console.WriteLine(DateTimePrefix + message, parameters);
-                TraceDebugMessage(message, parameters);
-            }
+                if (File.Exists(DefaultTraceFilePath))
+                {
+                    string[] lines = File.ReadAllLines(DefaultTraceFilePath);
+                    foreach (string line in lines)
+                    {
+                        LogMessageType logMessageType = Enum.Parse<LogMessageType>(line[2..17].Trim());
+                        LogMessage(logMessageType, line[20..]);
+                    }
+                }
+
+            });
+
+            ShouldTrace = true;
+            LogMessage("---------------------------------------------------------------------------------------");
+            TraceLoadingDone = true;
         }
 
         public static void TraceDebugMessage(string message)
@@ -157,7 +220,7 @@ namespace Database
                     }
 
                     using StreamWriter streamWriter = File.AppendText(DefaultTraceFilePath);
-                    streamWriter.WriteLine(DateTimePrefix + message);
+                    streamWriter.WriteLine(message);
                 });
         }
 

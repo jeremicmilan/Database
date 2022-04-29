@@ -120,7 +120,7 @@ namespace Database
 
             Process = Process.Start(processStartInfo);
 
-            Utility.TraceDebugMessage(string.Format("Process {0} started with arguments {1}", processName, arguments));
+            Utility.LogDebugMessage(string.Format("Process {0} started with arguments {1}", processName, arguments));
         }
 
         private ServiceResponseResult ProcessRequest(IServiceRequest serviceRequest)
@@ -136,9 +136,9 @@ namespace Database
                 {
                     using NamedPipeServerStream pipeServer = new NamedPipeServerStream(pipeName, PipeDirection.InOut);
 
-                    Utility.TraceDebugMessage("Waiting for client connection on pipe {0}...", pipeName);
+                    Utility.LogDebugMessage("Waiting for client connection on pipe {0}...", pipeName);
                     pipeServer.WaitForConnection();
-                    Utility.TraceDebugMessage("Client connected on pipe {0}.", pipeName);
+                    Utility.LogDebugMessage("Client connected on pipe {0}.", pipeName);
 
                     using StreamReader streamReader = new StreamReader(pipeServer);
                     while (true)
@@ -175,7 +175,7 @@ namespace Database
                         Utility.WaitDefaultPipeTimeout();
                     }
 
-                    Utility.TraceDebugMessage("Client connection closed.");
+                    Utility.LogDebugMessage("Client connection closed.");
                 }
             }
             catch (Exception exception)

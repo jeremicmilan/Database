@@ -31,6 +31,7 @@ namespace Database
                     Service service = (Service)Activator.CreateInstance(type, serviceConfiguration);
 
                     service.SnapWindow();
+                    Utility.LoadTracesToConsoleLog();
                     service.Start();
                     Utility.LogServiceEnd("Service ended.");
                 }

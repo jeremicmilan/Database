@@ -86,7 +86,7 @@ namespace Database
 
         public DatabaseServiceResponseResultQuery ProcessQuery(string query)
         {
-            Utility.TraceDebugMessage("Received query: " + query);
+            Utility.LogDebugMessage("Received query: " + query);
 
             Table table = null;
             List<int> values = null, extraElementsInTable = null, extraElementsInValues = null;
