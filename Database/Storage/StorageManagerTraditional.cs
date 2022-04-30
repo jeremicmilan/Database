@@ -45,11 +45,14 @@ namespace Database
                     .Select(line => Table.Parse(line))
                     .Where(table => table.TableName == tableName)
                     .FirstOrDefault();
-                Utility.LogOperationBegin("Read table from disk: " + table);
-                return table;
+                if (table != null)
+                {
+                    Utility.LogOperationBegin("Read table from disk: " + table);
+                    return table;
+                }
             }
 
-            Utility.LogOperationBegin("Table on disk not found: " + tableName);
+            Utility.LogOperationBegin("Table on disk not found.");
             return null;
         }
 

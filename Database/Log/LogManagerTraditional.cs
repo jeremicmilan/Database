@@ -18,6 +18,7 @@ namespace Database
 
             if (!File.Exists(LogFilePath))
             {
+                Utility.LogOperationEnd("No log file found.");
                 return;
             }
 
@@ -33,7 +34,7 @@ namespace Database
             }
             else
             {
-                Utility.LogOperationEnd("No log found on disk.");
+                Utility.LogOperationEnd("No log found in file.");
             }
 
             foreach (LogRecord logRecord in LogRecords)

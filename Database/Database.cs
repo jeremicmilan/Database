@@ -96,6 +96,8 @@ namespace Database
             switch (query.Trim())
             {
                 case string s when s.StartsWith(CreateTableStatement):
+                    Utility.LogOperationBegin("Creating table: " + tableName);
+
                     tableName = query[CreateTableStatement.Length..].Trim();
                     if (!tableName.All(char.IsLower))
                     {
@@ -103,11 +105,13 @@ namespace Database
                     }
 
                     StorageManager.CreateTable(tableName);
-                    Utility.LogMessage("Created table: " + tableName);
+
+                    Utility.LogOperationEnd("Created table: " + tableName);
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):
                     (table, values) = ParseTableRowStatement(query, InsertIntoTableStatementStart);
+                    Utility.LogOperationBegin(string.Format("Adding [{0}] to table {1}", string.Join(", ", values), table.TableName));
 
                     (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
 
@@ -124,11 +128,12 @@ namespace Database
                         table.InsertRow(value);
                     }
 
-                    Utility.LogMessage(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
+                    Utility.LogOperationEnd(string.Format("Added [{0}] to table {1}", string.Join(", ", values), table.TableName));
                     break;
 
                 case string s when s.StartsWith(DeleteFromTableStatementStart):
                     (table, values) = ParseTableRowStatement(query, DeleteFromTableStatementStart);
+                    Utility.LogOperationBegin(string.Format("Deleting [{0}] from table {1}", string.Join(", ", values), table.TableName));
 
                     (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
 
@@ -143,11 +148,12 @@ namespace Database
                         table.DeleteRow(value);
                     }
 
-                    Utility.LogMessage(string.Format("Added [{0}] to table {1}", string.Join(", ", values), tableName));
+                    Utility.LogOperationEnd(string.Format("Deleted [{0}] from table {1}", string.Join(", ", values), table.TableName));
                     break;
 
                 case string s when s.StartsWith(CheckTableStatement):
                     (table, values) = ParseTableRowStatement(query, CheckTableStatement);
+                    Utility.LogOperationBegin(string.Format("Checking [{0}] in table {1}", string.Join(", ", values), table.TableName));
 
                     (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
 
@@ -163,28 +169,37 @@ namespace Database
                             table.TableName, string.Join(", ", extraElementsInTable)));
                     }
 
+                    Utility.LogOperationEnd(string.Format("Checked [{0}] in table {1}", string.Join(", ", values), table.TableName));
                     break;
 
                 case string s when s.StartsWith(SelectFromTableStatement):
                     tableName = query[SelectFromTableStatement.Length..].Trim();
+                    Utility.LogOperationBegin(string.Format("Selecting table: ", tableName));
+
                     if (!tableName.All(char.IsLower))
                     {
                         throw new Exception("Invalid table name.");
                     }
 
                     databaseServiceResponseResultQuery = new DatabaseServiceResponseResultQuery(GetExistingTable(tableName));
+
+                    Utility.LogOperationEnd(string.Format("Returning table: ", databaseServiceResponseResultQuery.Table));
                     break;
 
                 case CheckpointStatement:
+                    Utility.LogOperationBegin("Checkpoint started.");
                     Checkpoint();
+                    Utility.LogOperationEnd("Checkpoint done.");
                     break;
 
                 case TransactionStatementBegin:
+                    Utility.LogOperationBegin("Transaction started.");
                     TransactionManager.BeginTransaction();
                     break;
 
                 case TransactionStatementEnd:
                     TransactionManager.EndTransaction();
+                    Utility.LogOperationEnd("Transaction ended.");
                     break;
 
                 default:
