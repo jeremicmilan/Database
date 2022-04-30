@@ -68,11 +68,11 @@ namespace Database
         {
             if (serviceConfiguration != null)
             {
-                Utility.LogMessage("Overriding services configuration.");
+                Utility.LogOperationBegin("Overriding services configuration.");
             }
             else
             {
-                Utility.LogMessage("Defaulting services configuration.");
+                Utility.LogOperationEnd("Defaulting services configuration.");
             }
 
             foreach (Service service in Services)
