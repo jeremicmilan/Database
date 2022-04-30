@@ -222,6 +222,12 @@ namespace Database
             TraceLoadingDone = true;
         }
 
+        public static void SetShouldTrace()
+        {
+            TraceLoadingDone = true;
+            ShouldTrace = true;
+        }
+
         public static void TraceDebugMessage(string message)
         {
             ExecuteFileActionResiliently(() =>

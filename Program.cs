@@ -12,6 +12,7 @@ namespace Database
             if (args.Count() == 0)
             {
                 Console.Title = "DatabaseClient";
+                Utility.SetShouldTrace();
 
                 Utility.CleanupFiles();
                 Utility.CleanupTraces();

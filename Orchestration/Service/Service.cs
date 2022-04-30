@@ -120,7 +120,7 @@ namespace Database
 
             Process = Process.Start(processStartInfo);
 
-            Utility.LogDebugMessage(string.Format("Process {0} started with arguments {1}", processName, arguments));
+            Utility.LogDebugMessage("Process {0} started with arguments {1}", processName, arguments);
         }
 
         private ServiceResponseResult ProcessRequest(IServiceRequest serviceRequest)
