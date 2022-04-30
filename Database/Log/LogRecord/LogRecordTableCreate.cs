@@ -15,8 +15,6 @@
             CheckParameterLength(parameters, 1);
         }
 
-        public override LogRecordType GetLogRecordType() => LogRecordType.TableCreate;
-
         protected override void RedoInternal()
         {
             StorageManager.Get().CreateTable(TableName, logRecordTableCreate: this);

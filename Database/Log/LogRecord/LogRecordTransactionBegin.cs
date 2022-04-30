@@ -13,10 +13,5 @@
         {
             TransactionManager.Get().BeginTransaction(redo: true);
         }
-
-        public override LogRecordType GetLogRecordType()
-        {
-            return LogRecordType.TransactionBegin;
-        }
     }
 }

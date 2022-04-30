@@ -24,11 +24,6 @@ namespace Database
             IsTransactionActive = isTransactionActive;
         }
 
-        public override LogRecordType GetLogRecordType()
-        {
-            return LogRecordType.Checkpoint;
-        }
-
         protected override void RedoInternal()
         {
             if (IsTransactionActive)

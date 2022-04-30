@@ -34,27 +34,18 @@ namespace Database
         protected static LogRecord InterpretLogRecord(string[] logRecordParts)
         {
             int logSequenceNumber = int.Parse(logRecordParts[0]);
-            LogRecordType logRecordType = Enum.Parse<LogRecordType>(logRecordParts[1]);
+            Type type = Type.GetType("Database.LogRecord" + logRecordParts[1]);
             string[] parameters = logRecordParts.Skip(2).ToArray();
+            LogRecord logRecord = (LogRecord)Activator.CreateInstance(type, logSequenceNumber, parameters);
 
-            return logRecordType switch
-            {
-                LogRecordType.TableCreate => new LogRecordTableCreate(logSequenceNumber, parameters),
-                LogRecordType.TableRowInsert => new LogRecordTableRowInsert(logSequenceNumber, parameters),
-                LogRecordType.TableRowDelete => new LogRecordTableRowDelete(logSequenceNumber, parameters),
-                LogRecordType.Checkpoint => new LogRecordCheckpoint(logSequenceNumber, parameters),
-                LogRecordType.TransactionBegin => new LogRecordTransactionBegin(logSequenceNumber),
-                LogRecordType.TransactionEnd => new LogRecordTransactionEnd(logSequenceNumber),
-                LogRecordType.Undo => new LogRecordUndo(logSequenceNumber, parameters),
-                _ => throw new Exception("Unsupported log record type"),
-            };
+            return logRecord;
         }
 
-        public override string ToString() => LogSequenceNumber + LogRecordParameterDelimiter + GetLogRecordType().ToString();
+        public override string ToString() => LogSequenceNumber + LogRecordParameterDelimiter + GetLogRecordType();
 
-        public virtual bool Equals(LogRecord other) => GetLogRecordType() == other.GetLogRecordType();
+        public virtual bool Equals(LogRecord other) => LogSequenceNumber == other.LogSequenceNumber;
 
-        public abstract LogRecordType GetLogRecordType();
+        public string GetLogRecordType() => GetType().ToString()[18..];
 
         protected abstract void RedoInternal();
         public void Redo()
@@ -64,7 +55,7 @@ namespace Database
             Utility.LogOperationEnd("Redone log record {0}", ToString());
         }
 
-        protected virtual void UndoInternal(LogRecordUndo logRecordUndo) => throw new Exception(GetLogRecordType() + " is not undoable.");
+        protected virtual void UndoInternal(LogRecordUndo logRecordUndo) => throw new Exception(ToString() + " is not undoable.");
         public void Undo(LogRecordUndo logRecordUndo)
         {
             Utility.LogOperationBegin("Undoing log record {0}", ToString());

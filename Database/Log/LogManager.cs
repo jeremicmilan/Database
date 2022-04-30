@@ -84,7 +84,7 @@ namespace Database
         private List<LogRecordTable> GetLogToBeUndone()
         {
             return GetLogAfterLastBeginTransaction()
-                .TakeWhile(logRecord => logRecord.GetLogRecordType() != LogRecordType.Undo)
+                .TakeWhile(logRecord => !(logRecord is LogRecordUndo))
                 .Where(logRecord => logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)))
                 .Select(logRecord => (LogRecordTable)logRecord)
                 .Reverse()
@@ -94,7 +94,7 @@ namespace Database
         private List<LogRecordUndo> GetUndoneLog()
         {
             return GetLogAfterLastBeginTransaction()
-                .SkipWhile(logRecord => logRecord.GetLogRecordType() != LogRecordType.Undo)
+                .SkipWhile(logRecord => !(logRecord is LogRecordUndo))
                 .Select(logRecord => logRecord as LogRecordUndo)
                 .ToList();
         }

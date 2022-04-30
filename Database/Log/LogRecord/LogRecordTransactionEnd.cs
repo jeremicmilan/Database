@@ -13,10 +13,5 @@
         {
             TransactionManager.Get().EndTransaction(redo: true);
         }
-
-        public override LogRecordType GetLogRecordType()
-        {
-            return LogRecordType.TransactionEnd;
-        }
     }
 }

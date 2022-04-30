@@ -14,8 +14,6 @@
             : base(logSequenceNumber, parameters)
         { }
 
-        public override LogRecordType GetLogRecordType() => LogRecordType.TableRowInsert;
-
         public override void RedoRowOperation(Table table)
         {
             table.InsertRow(Value, logRecord: this);

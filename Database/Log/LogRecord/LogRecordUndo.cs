@@ -20,11 +20,6 @@ namespace Database
             LogRecordTable = (LogRecordTable)InterpretLogRecord(parameters);
         }
 
-        public override LogRecordType GetLogRecordType()
-        {
-            return LogRecordType.Undo;
-        }
-
         protected override void RedoInternal()
         {
             LogRecordTable.Undo(logRecordUndo: this);

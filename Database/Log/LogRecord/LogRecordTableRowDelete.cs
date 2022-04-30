@@ -13,8 +13,6 @@
             : base(logSequenceNumber, parameters)
         { }
 
-        public override LogRecordType GetLogRecordType() => LogRecordType.TableRowDelete;
-
         public override void RedoRowOperation(Table table)
         {
             table.DeleteRow(Value, logRecord: this);
