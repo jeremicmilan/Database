@@ -15,7 +15,7 @@ namespace Database
 
         public override void SnapWindow()
         {
-            Window.SnapTopRight(Process.GetCurrentProcess());
+            Window.SnapTopRight();
         }
     }
 }

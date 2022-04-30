@@ -44,7 +44,7 @@ namespace Database
 
         protected override void SnapWindow()
         {
-            Window.SnapTopLeft(Process.GetCurrentProcess());
+            Window.SnapTopLeft();
         }
     }
 }

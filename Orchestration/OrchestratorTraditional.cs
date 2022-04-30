@@ -17,7 +17,7 @@ namespace Database
 
         protected override void SnapWindow()
         {
-            Window.SnapLeft(Process.GetCurrentProcess());
+            Window.SnapLeft();
         }
 
         public override void KillAllServices()

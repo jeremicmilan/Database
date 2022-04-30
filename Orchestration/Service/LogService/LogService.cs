@@ -30,7 +30,7 @@ namespace Database
 
         public override void SnapWindow()
         {
-            Window.SnapBottomRight(Process.GetCurrentProcess());
+            Window.SnapBottomRight();
         }
     }
 }

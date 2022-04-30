@@ -6,56 +6,55 @@ namespace Database
 {
     class Window
     {
-        public static void SnapLeft(Process process)
+        public static void SnapLeft()
         {
             Rect rect = GetWorkAreaRect();
             rect.Right /= 2;
-            MoveWindow(process, rect);
+            MoveWindow(rect);
         }
 
-        public static void SnapTopLeft(Process process)
+        public static void SnapTopLeft()
         {
             Rect rect = GetWorkAreaRect();
             rect.Right /= 2;
             rect.Bottom /= 2;
-            MoveWindow(process, rect);
+            MoveWindow(rect);
         }
 
-        public static void SnapRight(Process process)
+        public static void SnapRight()
         {
             Rect rect = GetWorkAreaRect();
             rect.Left = rect.Right / 2;
-            MoveWindow(process, rect);
+            MoveWindow(rect);
         }
 
-        public static void SnapTopRight(Process process)
+        public static void SnapTopRight()
         {
             Rect rect = GetWorkAreaRect();
             rect.Left = rect.Right / 2;
             rect.Bottom /= 2;
-            MoveWindow(process, rect);
+            MoveWindow(rect);
         }
 
-        public static void SnapBottomLeft(Process process)
+        public static void SnapBottomLeft()
         {
             Rect rect = GetWorkAreaRect();
             rect.Right /= 2;
             rect.Top = rect.Bottom / 2;
-            MoveWindow(process, rect);
+            MoveWindow(rect);
         }
 
-        public static void SnapBottomRight(Process process)
+        public static void SnapBottomRight()
         {
             Rect rect = GetWorkAreaRect();
             rect.Left = rect.Right / 2;
             rect.Top = rect.Bottom / 2;
-            MoveWindow(process, rect);
+            MoveWindow(rect);
         }
 
-        // TODO: Remove process parameter
-        private static void MoveWindow(Process process, Rect rect)
+        private static void MoveWindow(Rect rect)
         {
-            if (!MoveWindow(process.MainWindowHandle,
+            if (!MoveWindow(Process.GetCurrentProcess().MainWindowHandle,
                 rect.Left, rect.Top,
                 rect.Width, rect.Height,
                 true))
