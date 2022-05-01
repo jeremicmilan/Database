@@ -33,7 +33,7 @@ namespace Database
 
         public void CatchUpLog(int logSequenceNumberMax)
         {
-            Utility.LogMessage("Catching up log from LSN {0} to LSN {1}.", LogSequenceNumberMax, logSequenceNumberMax);
+            Utility.LogOperationBegin("Catching up log from LSN {0} to LSN {1}.", LogSequenceNumberMax, logSequenceNumberMax);
 
             List<LogRecord> logRecords = new LogServiceRequestGetLog(
                     logSequenceNumberMin: LogSequenceNumberMax,
@@ -56,7 +56,7 @@ namespace Database
                     LogSequenceNumberMax, logSequenceNumberMax));
             }
 
-            Utility.LogMessage("Caught up log from LSN {0} to LSN {1}.", LogSequenceNumberMax, logSequenceNumberMax);
+            Utility.LogOperationEnd("Caught up log from LSN {0} to LSN {1}.", LogSequenceNumberMax, logSequenceNumberMax);
         }
 
         public override void SnapWindow()
