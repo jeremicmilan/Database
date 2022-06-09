@@ -5,6 +5,12 @@ The title of the master thesis is 'Horizontal Scaling of Database Management Sys
 
 The main idea of the project is to create a prototype that would highlight how Azure SQL DB HyperScale (https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tier-hyperscale) achieves consistency over multiple processes that represent the database.
 
+## Setup
+
+Downalod and install latest Visual Studio (i.e. VS22). Intall all needed VS redistributables (I can't remember all the things I installed, so hopefully VS prompts you to what's missing).
+Open VS and pull the code from github.
+Before building and running the code go to "Tools -> Options -> Debugging -> General" and turn on the option "Automatically close the console when debugging stops". This option is needed for MoveWindow calls to properly work, as without it for some reason VS debugger is doing something funny (maybe a silent parent orchestrating process?), but I did not want to invest the time in fixing this.
+
 ## Syntax
 
 <pre><code>CREATE TABLE <<a>table_name>
