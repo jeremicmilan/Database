@@ -1,11 +1,9 @@
 # Database
 
-This is a project done for the master thesis on the Faculty of Mathematics, University of Belgrade.
+This is a project done for the master thesis for the Faculty of Mathematics, University of Belgrade.
 The title of the master thesis is 'Horizontal Scaling of Database Management Systems (DBMS)'.
 
 The main idea of the project is to create a prototype that would highlight how Azure SQL DB HyperScale (https://docs.microsoft.com/en-us/azure/azure-sql/database/service-tier-hyperscale) achieves consistency over multiple processes that represent the database.
-
-Traditional DBMS has been implemented so far with an easy way of testing for a process crash. Couple of tests are added as well.
 
 ## Syntax
 
@@ -33,10 +31,10 @@ END TRANSACTION
 KILL
 
 RUN <<a>test_name>
-RUN ALL</code></pre>
+RUN ALL
 
 CONFIGURE LOGGING OFF
 CONFIGURE LOGGING ON
 
 CONFIGURE DATABASE TRADITIONAL
-CONFIGURE DATABASE HYPERSCALE
+CONFIGURE DATABASE HYPERSCALE</code></pre>
