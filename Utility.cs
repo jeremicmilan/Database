@@ -3,6 +3,7 @@ using System.IO;
 using Newtonsoft.Json;
 using System.Threading;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Database
 {
@@ -194,7 +195,11 @@ namespace Database
 
                 if (ShouldTrace)
                 {
-                    TraceDebugMessage("[[" + logMessageType.ToString().PadRight(15) + "]] " + message, parameters);
+                    string[] lines = string.Format(message, parameters).Split(new[] { '\r', '\n' });
+                    foreach (string line in lines.Where(line => line != ""))
+                    {
+                        TraceDebugMessage("[[" + logMessageType.ToString().PadRight(15) + "]] " + line);
+                    }
                 }
 
                 Console.ForegroundColor = previousConsoleColor;
