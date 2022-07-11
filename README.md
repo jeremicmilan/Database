@@ -11,7 +11,7 @@ Downalod and install latest Visual Studio (i.e. VS22). Intall all needed VS redi
 
 Open VS and pull the code from github.
 
-Before building and running the code go to "Tools -> Options -> Debugging -> General" and turn on the option "Automatically close the console when debugging stops". This option is needed for MoveWindow calls to properly work, as without it for some reason VS debugger is doing something funny (maybe a silent parent orchestrating process?), but I did not want to invest the time in fixing this.
+Recommended, but not mandatory: Before building and running the code go to "Tools -> Options -> Debugging -> General" and turn on the option "Automatically close the console when debugging stops".
 
 ## Syntax
 

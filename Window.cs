@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 
 namespace Database
@@ -52,9 +51,12 @@ namespace Database
             MoveWindow(rect);
         }
 
+        [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
+        public static extern IntPtr FindWindowByCaption(IntPtr zeroOnly, string lpWindowName);
+
         private static void MoveWindow(Rect rect)
         {
-            if (!MoveWindow(Process.GetCurrentProcess().MainWindowHandle,
+            if (!MoveWindow(FindWindowByCaption(IntPtr.Zero, Console.Title),
                 rect.Left, rect.Top,
                 rect.Width, rect.Height,
                 true))
