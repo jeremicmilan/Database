@@ -17,13 +17,9 @@ Recommended, but not mandatory: Before building and running the code go to "Tool
 
 <pre><code>CREATE TABLE <<a>table_name>
 
-INSERT INTO <<a>table_name> VALUES
-    <<a>integer> [, <<a>integer>]
-  | <<a>empty>
+INSERT INTO <<a>table_name> VALUES <<a>integer> [, <<a>integer>]
 
-DELETE FROM <<a>table_name> VALUES
-    <<a>integer> [, <<a>integer>]
-  | <<a>empty>
+DELETE FROM <<a>table_name> VALUES <<a>integer> [, <<a>integer>]
 
 SELECT FROM <<a>table_name>
 

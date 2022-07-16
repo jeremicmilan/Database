@@ -122,11 +122,21 @@ namespace Database
             return new Table(tableName, ParseValues(valuesString), logSequenceNumberMax);
         }
 
-        public static List<int> ParseValues(string valuesString)
+        public static List<int> ParseValues(string valuesString, bool emptySupported = true)
         {
-            return valuesString != Empty ?
-                valuesString.Split(',').Select(value => int.Parse(value.Trim())).ToList() :
-                new List<int>();
+            if (valuesString == Empty)
+            {
+                if (emptySupported)
+                {
+                    return new List<int>();
+                }
+                else
+                {
+                    throw new Exception("Clause <empty> not supported for this statement.");
+                }
+            }
+
+            return valuesString.Split(',').Select(value => int.Parse(value.Trim())).ToList();
         }
 
         // Note that we are currently using a suboptimal implementation of writing to file.

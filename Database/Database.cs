@@ -110,7 +110,7 @@ namespace Database
                     break;
 
                 case string s when s.StartsWith(InsertIntoTableStatementStart):
-                    (table, values) = ParseTableRowStatement(query, InsertIntoTableStatementStart);
+                    (table, values) = ParseTableRowStatement(query, InsertIntoTableStatementStart,emptySupported: false);
                     Utility.LogOperationBegin(string.Format("Adding [{0}] to table {1}", string.Join(", ", values), table.TableName));
 
                     (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
@@ -132,7 +132,7 @@ namespace Database
                     break;
 
                 case string s when s.StartsWith(DeleteFromTableStatementStart):
-                    (table, values) = ParseTableRowStatement(query, DeleteFromTableStatementStart);
+                    (table, values) = ParseTableRowStatement(query, DeleteFromTableStatementStart, emptySupported: false);
                     Utility.LogOperationBegin(string.Format("Deleting [{0}] from table {1}", string.Join(", ", values), table.TableName));
 
                     (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
@@ -152,7 +152,7 @@ namespace Database
                     break;
 
                 case string s when s.StartsWith(CheckTableStatement):
-                    (table, values) = ParseTableRowStatement(query, CheckTableStatement);
+                    (table, values) = ParseTableRowStatement(query, CheckTableStatement, emptySupported: true);
                     Utility.LogOperationBegin(string.Format("Checking [{0}] in table {1}", string.Join(", ", values), table.TableName));
 
                     (extraElementsInTable, extraElementsInValues) = CompareTableValues(table, values);
@@ -209,7 +209,7 @@ namespace Database
             return databaseServiceResponseResultQuery;
         }
 
-        private (Table, List<int>) ParseTableRowStatement(string query, string prefix)
+        private (Table, List<int>) ParseTableRowStatement(string query, string prefix, bool emptySupported)
         {
             string statementPart = query[prefix.Length..].Trim();
 
@@ -219,7 +219,7 @@ namespace Database
             statementPart = statementPart[tableName.Length..].Trim();
             string valuesPart = ParseOutValues(statementPart);
 
-            return (table, Table.ParseValues(valuesPart));
+            return (table, Table.ParseValues(valuesPart, emptySupported));
         }
 
         private string ParseOutValues(string partWithValues)
