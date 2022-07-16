@@ -7,7 +7,7 @@ The main idea of the project is to create a prototype that would highlight how A
 
 ## Setup
 
-Downalod and install latest Visual Studio (i.e. VS22). Intall all needed VS redistributables (I can't remember all the things I installed, so hopefully VS prompts you to what's missing).
+Download and install latest Visual Studio (i.e. VS22). Intall all needed VS redistributables (I can't remember all the things I installed, so hopefully VS prompts you to what's missing).
 
 Open VS and pull the code from github.
 
