@@ -174,7 +174,7 @@ namespace Database
 
                 case string s when s.StartsWith(SelectFromTableStatement):
                     tableName = query[SelectFromTableStatement.Length..].Trim();
-                    Utility.LogOperationBegin(string.Format("Selecting table: ", tableName));
+                    Utility.LogOperationBegin(string.Format("Selecting table: {0}", tableName));
 
                     if (!tableName.All(char.IsLower))
                     {
@@ -183,7 +183,7 @@ namespace Database
 
                     databaseServiceResponseResultQuery = new DatabaseServiceResponseResultQuery(GetExistingTable(tableName));
 
-                    Utility.LogOperationEnd(string.Format("Returning table: ", databaseServiceResponseResultQuery.Table));
+                    Utility.LogOperationEnd(string.Format("Returning table: {0}", databaseServiceResponseResultQuery.Table));
                     break;
 
                 case CheckpointStatement:
