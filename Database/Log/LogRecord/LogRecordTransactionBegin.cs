@@ -5,7 +5,7 @@
         public LogRecordTransactionBegin()
         { }
 
-        public LogRecordTransactionBegin(int logSequenceNumber)
+        public LogRecordTransactionBegin(int logSequenceNumber, string[] parameters)
             : base (logSequenceNumber)
         { }
 
