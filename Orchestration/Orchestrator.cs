@@ -15,7 +15,9 @@ namespace Database
         protected TService GetService<TService>()
             where TService : Service
         {
-            return (TService)Services.Where(service => service.GetType().IsSubclassOf(typeof(TService))).FirstOrDefault();
+            return (TService)Services
+                .Where(service => service.GetType().IsSubclassOf(typeof(TService)) || service is TService)
+                .FirstOrDefault();
         }
 
         public void Start()

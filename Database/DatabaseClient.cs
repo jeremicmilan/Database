@@ -79,7 +79,6 @@ namespace Database
                     string killStatementPart = line[KillStatement.Length..].Trim();
                     switch (killStatementPart.Trim())
                     {
-                        case "":
                         case "DATABASE":
                             Orchestrator.KillDatabaseService();
                             break;
@@ -92,6 +91,7 @@ namespace Database
                             ((OrchestratorHyperscale)Orchestrator).KillStorageService();
                             break;
 
+                        case "":
                         case "ALL":
                             Orchestrator.KillAllServices();
                             break;
