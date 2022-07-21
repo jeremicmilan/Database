@@ -1,6 +1,6 @@
 ﻿namespace Database
 {
-    public class StorageServiceRequestCheckpoint : StorageServiceRequest<ServiceResponseResult>
+    public class StorageServiceRequestCheckpoint : StorageServiceRequest<StorageServiceResponseResult>
     {
         public int LogSequenceNumber { get; set; }
 

@@ -1,6 +1,6 @@
 ﻿namespace Database
 {
-    public class LogServiceRequestPersistLogRecord : LogServiceRequest<ServiceResponseResult>
+    public class LogServiceRequestPersistLogRecord : LogServiceRequest<LogServiceResponseResult>
     {
         public LogRecord LogRecord { get; set; }
 
