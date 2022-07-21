@@ -19,5 +19,13 @@
         {
             return new StorageServiceRequestGetTable(tableName, Database.Get().LogManager.LogSequenceNumberMax).Send().Table;
         }
+
+        public override void MarkTableAsDirty(Table table)
+        {
+            // In Hyperscale, nothing needs to be done here as storage service is the one responsible for persisting the data.
+            // and whenever the database service process needs a page that it is not in memory anymore, it will get it from
+            // storage service.
+            //
+        }
     }
 }

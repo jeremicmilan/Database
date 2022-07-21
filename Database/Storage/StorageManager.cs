@@ -24,7 +24,7 @@ namespace Database
             }
 
             table = new Table(tableName);
-            AddTable(table);
+            AddTableToCache(table);
 
             if (logRecordTableCreate == null)
             {
@@ -37,7 +37,7 @@ namespace Database
             return table;
         }
 
-        public void AddTable(Table table)
+        private void AddTableToCache(Table table)
         {
             if (GetTableFromCache(table.TableName) != null)
             {
@@ -58,7 +58,7 @@ namespace Database
             table = GetTableFromPersistentStorage(tableName);
             if (table != null)
             {
-                AddTable(table);
+                AddTableToCache(table);
             }
 
             return table;
@@ -73,7 +73,6 @@ namespace Database
 
         public abstract void Checkpoint(int logSequenceNumber);
 
-        public virtual void MarkTableAsDirty(Table table)
-        { }
+        public abstract void MarkTableAsDirty(Table table);
     }
 }
