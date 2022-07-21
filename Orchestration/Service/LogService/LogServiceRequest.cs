@@ -2,8 +2,8 @@
 
 namespace Database
 {
-    public abstract class LogServiceRequest<TServiceResponseResult> : ServiceRequest<TServiceResponseResult>
-        where TServiceResponseResult : ServiceResponseResult
+    public abstract class LogServiceRequest<TLogServiceResponseResult> : ServiceRequest<TLogServiceResponseResult>
+        where TLogServiceResponseResult : LogServiceResponseResult
     {
         protected override Type GetServiceType() => typeof(LogService);
     }
