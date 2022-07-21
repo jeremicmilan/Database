@@ -10,7 +10,7 @@ namespace Database
 {
     public abstract class Service
     {
-        public ServiceConfiguration ServiceConfiguration;
+        public ServiceConfiguration ServiceConfiguration { get; private set; }
         protected ServiceConfiguration DefaultServiceConfiguration => new ServiceConfiguration { ServiceType = this.GetType().ToString() };
 
         protected Process Process = null;
