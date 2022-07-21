@@ -28,14 +28,14 @@ namespace Database
             RedoRowOperation(GetTable());
         }
 
-        public abstract void RedoRowOperation(Table table);
+        protected abstract void RedoRowOperation(Table table);
 
         protected override void UndoInternal(LogRecordUndo logRecordUndo)
         {
             UndoRowOperation(logRecordUndo, GetTable());
         }
 
-        public abstract void UndoRowOperation(LogRecordUndo logRecordUndo, Table table);
+        protected abstract void UndoRowOperation(LogRecordUndo logRecordUndo, Table table);
 
         private Table GetTable()
         {

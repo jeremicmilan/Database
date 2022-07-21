@@ -13,12 +13,12 @@
             : base(logSequenceNumber, parameters)
         { }
 
-        public override void RedoRowOperation(Table table)
+        protected override void RedoRowOperation(Table table)
         {
             table.DeleteRow(Value, logRecord: this);
         }
 
-        public override void UndoRowOperation(LogRecordUndo logRecordUndo, Table table)
+        protected override void UndoRowOperation(LogRecordUndo logRecordUndo, Table table)
         {
             table.InsertRow(Value, logRecord: logRecordUndo);
         }
