@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Database.ServiceMessage">
-    <Position X="5.75" Y="0.5" Width="1.75" />
+    <Position X="0.5" Y="0.5" Width="1.75" />
     <Members>
       <Field Name="PipeClients" Hidden="true" />
       <Method Name="ServiceMessage" Hidden="true" />
@@ -12,7 +12,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.ServiceRequest&lt;TServiceResponseResult&gt;">
-    <Position X="2" Y="2.5" Width="2.75" />
+    <Position X="5" Y="0.5" Width="2.75" />
     <Members>
       <Method Name="GetServiceType" Hidden="true" />
       <Method Name="ServiceRequest" Hidden="true" />
@@ -20,10 +20,10 @@
     </Members>
     <InheritanceLine Type="Database.ServiceMessage" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.625" Y="1.603" />
-        <Point X="6.625" Y="1.853" />
-        <Point X="3.375" Y="1.853" />
-        <Point X="3.375" Y="2.5" />
+        <Point X="2.25" Y="1.125" />
+        <Point X="2.625" Y="1.125" />
+        <Point X="2.625" Y="1.125" />
+        <Point X="5" Y="1.125" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -33,55 +33,91 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Database.ServiceResponse" Collapsed="true">
-    <Position X="12" Y="2" Width="1.5" />
+    <Position X="3" Y="5.25" Width="1.5" />
+    <InheritanceLine Type="Database.ServiceMessage" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="2.25" Y="1.125" />
+        <Point X="2.625" Y="1.125" />
+        <Point X="2.625" Y="5.562" />
+        <Point X="3" Y="5.562" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\Communication\ServiceResponse.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.ServiceResponseFailure">
-    <Position X="14.25" Y="3.25" Width="2" />
+    <Position X="5" Y="6.75" Width="2" />
     <Members>
       <Method Name="ServiceResponseFailure" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.ServiceResponse" FixedFromPoint="true">
+      <Path>
+        <Point X="4.5" Y="5.625" />
+        <Point X="4.74" Y="5.625" />
+        <Point X="4.74" Y="7.366" />
+        <Point X="5" Y="7.366" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\Communication\ServiceResponseFailure.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.ServiceResponseResult" Collapsed="true">
-    <Position X="5" Y="3" Width="1.75" />
+    <Position X="5" Y="2.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\Communication\ServiceResponseResult.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.ServiceResponseSuccess" Collapsed="true">
-    <Position X="11.75" Y="3.25" Width="2" />
+    <Position X="5" Y="5.25" Width="2" />
+    <InheritanceLine Type="Database.ServiceResponse" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="5.625" />
+        <Point X="5" Y="5.625" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\Communication\ServiceResponseSuccess.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.ServiceResponseSuccessWithResults&lt;TServiceResponseResult&gt;">
-    <Position X="7" Y="3.25" Width="4.25" />
+    <Position X="5" Y="3.25" Width="4.25" />
     <Members>
       <Method Name="ServiceResponseSuccessWithResults" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.ServiceResponse" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.5" Y="5.625" />
+        <Point X="4.74" Y="5.625" />
+        <Point X="4.74" Y="3.875" />
+        <Point X="5" Y="3.875" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\Communication\ServiceResponseSuccessWithResults.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseServiceRequest&lt;TDatabaseServiceResponseResult&gt;" Collapsed="true">
-    <Position X="0.5" Y="5.25" Width="3.75" />
+    <Position X="10" Y="1" Width="3.75" />
+    <InheritanceLine Type="Database.ServiceRequest&lt;TServiceResponseResult&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="1.375" />
+        <Point X="10" Y="1.375" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\DatabaseService\DatabaseServiceRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseServiceRequestQuery">
-    <Position X="0.5" Y="6.5" Width="3.75" />
+    <Position X="14" Y="0.5" Width="3.75" />
     <Members>
       <Method Name="DatabaseServiceRequestQuery" Hidden="true" />
       <Method Name="Process" Hidden="true" />
@@ -92,11 +128,15 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseServiceResponseResult" Collapsed="true">
-    <Position X="4.75" Y="5.25" Width="2.25" />
+    <Position X="10" Y="1.75" Width="2.25" />
     <InheritanceLine Type="Database.ServiceResponseResult" FixedFromPoint="true">
       <Path>
-        <Point X="5.875" Y="3.562" />
-        <Point X="5.875" Y="5.25" />
+        <Point X="6.75" Y="2.812" />
+        <Point X="9.375" Y="2.812" />
+        <Point X="9.375" Y="2.096" />
+        <Point X="9.542" Y="2.096" Type="JumpStart" />
+        <Point X="9.708" Y="2.096" Type="JumpEnd" />
+        <Point X="10" Y="2.096" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -105,45 +145,67 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseServiceResponseResultQuery">
-    <Position X="4.5" Y="6.5" Width="2.75" />
+    <Position X="14" Y="1.75" Width="2.75" />
     <Members>
       <Method Name="DatabaseServiceResponseResultQuery" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.DatabaseServiceResponseResult" FixedFromPoint="true">
+      <Path>
+        <Point X="12.25" Y="2.062" />
+        <Point X="14" Y="2.062" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\DatabaseService\DatabaseServiceResponseResultQuery.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogServiceRequestGetLog">
-    <Position X="15.25" Y="8.25" Width="3.25" />
+    <Position X="14" Y="11" Width="3.25" />
     <Members>
       <Method Name="LogServiceRequestGetLog" Hidden="true" />
       <Method Name="Process" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.LogServiceRequest&lt;TLogServiceResponseResult&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13" Y="11.125" />
+        <Point X="13.375" Y="11.125" />
+        <Point X="13.375" Y="11.813" />
+        <Point X="14" Y="11.813" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAACAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\LogService\LogServiceRequestGetLog.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogServiceRequestPersistLogRecord">
-    <Position X="15.25" Y="6.5" Width="2.75" />
+    <Position X="14" Y="9.25" Width="2.75" />
     <Members>
       <Method Name="LogServiceRequestPersistLogRecord" Hidden="true" />
       <Method Name="Process" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.LogServiceRequest&lt;TLogServiceResponseResult&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="13" Y="11.125" />
+        <Point X="13.375" Y="11.125" />
+        <Point X="13.375" Y="9.866" />
+        <Point X="14" Y="9.866" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
       <FileName>Orchestration\Service\LogService\LogServiceRequestPersistLogRecord.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogServiceResponseResult" Collapsed="true">
-    <Position X="19" Y="5.25" Width="2" />
-    <InheritanceLine Type="Database.ServiceResponseResult" ManuallyRouted="true" FixedFromPoint="true">
+    <Position X="10" Y="11.5" Width="2" />
+    <InheritanceLine Type="Database.ServiceResponseResult" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.875" Y="3.562" />
-        <Point X="5.875" Y="4.601" />
-        <Point X="20" Y="4.601" />
-        <Point X="20" Y="5.25" />
+        <Point X="6.75" Y="2.812" />
+        <Point X="9.375" Y="2.812" />
+        <Point X="9.375" Y="11.813" />
+        <Point X="10" Y="11.813" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -152,52 +214,84 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogServiceResponseResultGetLog">
-    <Position X="18.75" Y="8.25" Width="2.5" />
+    <Position X="14" Y="12.5" Width="2.5" />
     <Members>
       <Method Name="LogServiceResponseResultGetLog" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.LogServiceResponseResult" FixedFromPoint="true">
+      <Path>
+        <Point X="12" Y="11.875" />
+        <Point X="12.375" Y="11.875" />
+        <Point X="12.375" Y="13.116" />
+        <Point X="14" Y="13.116" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\LogService\LogServiceResponseResultGetLog.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageServiceRequest&lt;TStorageServiceResponseResult&gt;" Collapsed="true">
-    <Position X="7.75" Y="5.25" Width="3.5" />
+    <Position X="10" Y="5.75" Width="3.5" />
+    <InheritanceLine Type="Database.ServiceRequest&lt;TServiceResponseResult&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="1.375" />
+        <Point X="9.625" Y="1.375" />
+        <Point X="9.625" Y="6.125" />
+        <Point X="10" Y="6.125" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\StorageService\StorageServiceRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageServiceRequestCheckpoint">
-    <Position X="7.75" Y="6.5" Width="2.75" />
+    <Position X="14" Y="4" Width="2.75" />
     <Members>
       <Method Name="Process" Hidden="true" />
       <Method Name="StorageServiceRequestCheckpoint" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.StorageServiceRequest&lt;TStorageServiceResponseResult&gt;" FixedFromPoint="true">
+      <Path>
+        <Point X="13.5" Y="6.125" />
+        <Point X="13.74" Y="6.125" />
+        <Point X="13.74" Y="4.616" />
+        <Point X="14" Y="4.616" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\StorageService\StorageServiceRequestCheckpoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageServiceRequestGetTable">
-    <Position X="7.75" Y="8.25" Width="3.75" />
+    <Position X="14" Y="5.5" Width="3.75" />
     <Members>
       <Method Name="Process" Hidden="true" />
       <Method Name="StorageServiceRequestGetTable" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.StorageServiceRequest&lt;TStorageServiceResponseResult&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="13.5" Y="6.125" />
+        <Point X="14" Y="6.125" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>Orchestration\Service\StorageService\StorageServiceRequestGetTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageServiceResponseResult" Collapsed="true">
-    <Position X="12" Y="5.25" Width="2.5" />
-    <InheritanceLine Type="Database.ServiceResponseResult" ManuallyRouted="true" FixedFromPoint="true">
+    <Position X="10" Y="6.5" Width="2.5" />
+    <InheritanceLine Type="Database.ServiceResponseResult" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.875" Y="3.562" />
-        <Point X="5.875" Y="4.601" />
-        <Point X="13.25" Y="4.601" />
-        <Point X="13.25" Y="5.25" />
+        <Point X="6.75" Y="2.812" />
+        <Point X="9.375" Y="2.812" />
+        <Point X="9.375" Y="6.813" />
+        <Point X="9.542" Y="6.812" Type="JumpStart" />
+        <Point X="9.708" Y="6.813" Type="JumpEnd" />
+        <Point X="10" Y="6.813" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -206,24 +300,40 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageServiceResponseResultGetTable">
-    <Position X="11.75" Y="8.25" Width="3" />
+    <Position X="14" Y="7" Width="3" />
     <Members>
       <Method Name="StorageServiceResponseResultGetTable" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.StorageServiceResponseResult" FixedFromPoint="true">
+      <Path>
+        <Point X="12.5" Y="6.875" />
+        <Point X="12.875" Y="6.875" />
+        <Point X="12.875" Y="7.616" />
+        <Point X="14" Y="7.616" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\StorageService\StorageServiceResponseResultGetTable.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogServiceRequest&lt;TLogServiceResponseResult&gt;" Collapsed="true">
-    <Position X="15.25" Y="5.25" Width="3" />
+    <Position X="10" Y="10.75" Width="3" />
+    <InheritanceLine Type="Database.ServiceRequest&lt;TServiceResponseResult&gt;" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.75" Y="1.375" />
+        <Point X="9.625" Y="1.375" />
+        <Point X="9.625" Y="11.063" />
+        <Point X="10" Y="11.063" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\LogService\LogServiceRequest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Service">
-    <Position X="3.75" Y="0.5" Width="1.75" />
+    <Position X="0.5" Y="2" Width="1.75" />
     <Members>
       <Field Name="_Service" Hidden="true" />
       <Property Name="DefaultServiceConfiguration" Hidden="true" />
