@@ -12,7 +12,7 @@
             LogRecord = logRecord;
         }
 
-        public override ServiceResponseResult Process()
+        public override LogServiceResponseResult Process()
         {
             Utility.LogServiceRequestBegin("Persisting log record: " + LogRecord);
 

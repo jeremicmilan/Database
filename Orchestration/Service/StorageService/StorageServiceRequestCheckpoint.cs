@@ -12,7 +12,7 @@
             LogSequenceNumber = logSequenceNumber;
         }
 
-        public override ServiceResponseResult Process()
+        public override StorageServiceResponseResult Process()
         {
             Utility.LogServiceRequestBegin("Processing checkpoint with LSN {0}.", LogSequenceNumber);
 

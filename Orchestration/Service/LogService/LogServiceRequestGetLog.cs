@@ -22,7 +22,7 @@ namespace Database
             LogSequenceNumberMax = logSequenceNumberMax;
         }
 
-        public override ServiceResponseResult Process()
+        public override LogServiceResponseResultGetLog Process()
         {
             Utility.LogServiceRequestBegin(LogSequenceNumberMin == null || LogSequenceNumberMin.Value == -1
                 ? "Getting entire log."

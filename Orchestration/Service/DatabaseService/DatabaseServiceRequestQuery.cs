@@ -12,7 +12,7 @@
             Query = query;
         }
 
-        public override ServiceResponseResult Process()
+        public override DatabaseServiceResponseResultQuery Process()
         {
             return Database.Get().ProcessQuery(Query);
         }

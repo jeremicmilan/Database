@@ -14,7 +14,7 @@
             LogSequenceNumber = logSequenceNumber;
         }
 
-        public override ServiceResponseResult Process()
+        public override StorageServiceResponseResultGetTable Process()
         {
             Utility.LogServiceRequestBegin("Getting table {0} with LSN {1}.", TableName, LogSequenceNumber);
 
