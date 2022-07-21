@@ -2,8 +2,8 @@
 
 namespace Database
 {
-    public abstract class StorageServiceRequest<TServiceResponseResult> : ServiceRequest<TServiceResponseResult>
-        where TServiceResponseResult : ServiceResponseResult
+    public abstract class StorageServiceRequest<TStorageServiceResponseResult> : ServiceRequest<TStorageServiceResponseResult>
+        where TStorageServiceResponseResult : StorageServiceResponseResult
     {
         protected override Type GetServiceType() => typeof(StorageService);
     }
