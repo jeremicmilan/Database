@@ -72,8 +72,8 @@
       <Path>
         <Point X="5" Y="1.062" />
         <Point X="7.349" Y="1.062" />
-        <Point X="7.349" Y="0.258" />
-        <Point X="12.875" Y="0.258" />
+        <Point X="7.349" Y="0.573" />
+        <Point X="12.875" Y="0.573" />
         <Point X="12.875" Y="3" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
@@ -145,7 +145,7 @@
     </Members>
     <InheritanceLine Type="Database.Service" ManuallyRouted="true">
       <Path>
-        <Point X="10.5" Y="2.247" />
+        <Point X="10.5" Y="2.497" />
         <Point X="10.5" Y="2.709" />
         <Point X="12.5" Y="2.709" />
         <Point X="12.5" Y="3" />
@@ -222,7 +222,7 @@
     <Position X="7.75" Y="3" Width="1.5" />
     <InheritanceLine Type="Database.Service" ManuallyRouted="true">
       <Path>
-        <Point X="10.5" Y="2.247" />
+        <Point X="10.5" Y="2.497" />
         <Point X="10.5" Y="2.709" />
         <Point X="8.5" Y="2.709" />
         <Point X="8.5" Y="3" />
@@ -234,7 +234,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Service">
-    <Position X="9.75" Y="0.5" Width="1.5" />
+    <Position X="9.75" Y="0.75" Width="1.5" />
     <Members>
       <Field Name="_Service" Hidden="true" />
       <Property Name="DefaultServiceConfiguration" Hidden="true" />
