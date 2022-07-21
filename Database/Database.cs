@@ -16,16 +16,14 @@ namespace Database
 
         public DatabaseService DatabaseService { get; private set; }
 
-        public static ServiceConfiguration ServiceConfiguration => Get().DatabaseService.ServiceConfiguration;
-
         protected Database(
             DatabaseService databaseService,
             LogManager logManager,
-            StorageManager dataManager)
+            StorageManager storageManager)
         {
             DatabaseService = databaseService;
             LogManager = logManager;
-            StorageManager = dataManager;
+            StorageManager = storageManager;
             TransactionManager = new TransactionManager();
         }
 
