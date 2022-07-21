@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Database.Database" Collapsed="true">
-    <Position X="4" Y="4.5" Width="1.5" />
+    <Position X="4.25" Y="4.25" Width="1.5" />
     <AssociationLine Name="DatabaseService" Type="Database.DatabaseService" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.5" Y="4.625" />
-        <Point X="11.625" Y="4.625" />
-        <Point X="11.625" Y="4.233" />
+        <Point X="5.75" Y="4.375" />
+        <Point X="11.875" Y="4.375" />
+        <Point X="11.875" Y="4.233" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="4.815" Y="0.131" />
+        <Position X="0.071" Y="0.131" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -21,7 +21,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.DatabaseClient">
-    <Position X="0.5" Y="0.75" Width="1.75" />
+    <Position X="0.5" Y="0.5" Width="1.75" />
     <Members>
       <Field Name="_DatabaseClient" Hidden="true" />
       <Method Name="Create" Hidden="true" />
@@ -39,21 +39,21 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.DatabaseHyperscale" Collapsed="true">
-    <Position X="2.75" Y="6" Width="1.75" />
+    <Position X="3" Y="5.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Database\DatabaseHyperscale.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseTraditional" Collapsed="true">
-    <Position X="5" Y="6" Width="1.75" />
+    <Position X="5.25" Y="5.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Database\DatabaseTraditional.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Orchestrator">
-    <Position X="3.25" Y="0.75" Width="1.5" />
+    <Position X="3.5" Y="0.5" Width="1.5" />
     <Members>
       <Method Name="GetService" Hidden="true" />
       <Field Name="KeepServicesUpThreadCancellationTokenSource" Hidden="true" />
@@ -70,12 +70,14 @@
     </Members>
     <AssociationLine Name="DatabaseService" Type="Database.DatabaseService" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="4.75" Y="1.312" />
-        <Point X="12.625" Y="1.312" />
-        <Point X="12.625" Y="3" />
+        <Point X="5" Y="1.062" />
+        <Point X="7.349" Y="1.062" />
+        <Point X="7.349" Y="0.258" />
+        <Point X="12.875" Y="0.258" />
+        <Point X="12.875" Y="3" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="6.482" Y="1.822" />
+        <Position X="0.157" Y="0.385" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -87,24 +89,24 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.OrchestratorHyperscale" Collapsed="true">
-    <Position X="4.25" Y="3" Width="2" />
+    <Position X="4.5" Y="2.75" Width="2" />
     <InheritanceLine Type="Database.Orchestrator" ManuallyRouted="true">
       <Path>
-        <Point X="4" Y="1.853" />
-        <Point X="4" Y="2.157" />
-        <Point X="5.25" Y="2.157" />
-        <Point X="5.25" Y="3" />
+        <Point X="4.25" Y="1.603" />
+        <Point X="4.25" Y="2.157" />
+        <Point X="5.5" Y="2.157" />
+        <Point X="5.5" Y="2.75" />
       </Path>
     </InheritanceLine>
     <AssociationLine Name="LogService" Type="Database.LogService" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="5.25" Y="3.691" />
-        <Point X="5.25" Y="4.066" />
-        <Point X="10.25" Y="4.066" />
-        <Point X="10.25" Y="3.691" />
+        <Point X="5.5" Y="3.441" />
+        <Point X="5.5" Y="4.066" />
+        <Point X="10.5" Y="4.066" />
+        <Point X="10.5" Y="3.691" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="3.958" Y="0.11" />
+        <Position X="0.077" Y="0.11" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -117,13 +119,13 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.OrchestratorTraditional" Collapsed="true">
-    <Position X="1.75" Y="3" Width="2" />
+    <Position X="2" Y="2.75" Width="2" />
     <InheritanceLine Type="Database.Orchestrator" ManuallyRouted="true">
       <Path>
-        <Point X="4" Y="1.853" />
-        <Point X="4" Y="2.157" />
-        <Point X="2.75" Y="2.157" />
-        <Point X="2.75" Y="3" />
+        <Point X="4.25" Y="1.603" />
+        <Point X="4.25" Y="2.157" />
+        <Point X="3" Y="2.157" />
+        <Point X="3" Y="2.75" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -132,7 +134,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseService">
-    <Position X="11.5" Y="3" Width="1.5" />
+    <Position X="11.75" Y="3" Width="1.5" />
     <Members>
       <Method Name="DatabaseService" Hidden="true" />
       <Method Name="Get" Hidden="true" />
@@ -143,20 +145,20 @@
     </Members>
     <InheritanceLine Type="Database.Service" ManuallyRouted="true">
       <Path>
-        <Point X="10.25" Y="2.497" />
-        <Point X="10.25" Y="2.709" />
-        <Point X="12.25" Y="2.709" />
-        <Point X="12.25" Y="3" />
+        <Point X="10.5" Y="2.247" />
+        <Point X="10.5" Y="2.709" />
+        <Point X="12.5" Y="2.709" />
+        <Point X="12.5" Y="3" />
       </Path>
     </InheritanceLine>
     <AssociationLine Name="Database" Type="Database.Database" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="11.938" Y="4.233" />
-        <Point X="11.938" Y="5" />
-        <Point X="5.5" Y="5" />
+        <Point X="12.188" Y="4.233" />
+        <Point X="12.188" Y="4.75" />
+        <Point X="5.75" Y="4.75" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
-        <Position X="5.587" Y="-0.252" />
+        <Position X="0.125" Y="0.035" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -168,11 +170,11 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.DatabaseServiceHyperscale" Collapsed="true">
-    <Position X="10.75" Y="6" Width="2.25" />
+    <Position X="11" Y="5.5" Width="2.25" />
     <InheritanceLine Type="Database.DatabaseService" FixedToPoint="true">
       <Path>
-        <Point X="12.25" Y="4.233" />
-        <Point X="12.25" Y="6" />
+        <Point X="12.5" Y="4.233" />
+        <Point X="12.5" Y="5.5" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -181,14 +183,22 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.DatabaseServiceTraditional" Collapsed="true">
-    <Position X="8" Y="6" Width="2.25" />
+    <Position X="8.25" Y="5.5" Width="2.25" />
+    <InheritanceLine Type="Database.DatabaseService" ManuallyRouted="true">
+      <Path>
+        <Point X="12.5" Y="4.233" />
+        <Point X="12.5" Y="5.053" />
+        <Point X="9.375" Y="5.053" />
+        <Point X="9.375" Y="5.5" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Orchestration\Service\DatabaseService\DatabaseServiceTraditional.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.ServiceConfiguration">
-    <Position X="6" Y="1.5" Width="1.75" />
+    <Position X="6.25" Y="1.25" Width="1.75" />
     <Members>
       <Property Name="LoggingDisabled" Hidden="true" />
       <Method Name="LoggingEnabled" Hidden="true" />
@@ -202,27 +212,20 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogService" Collapsed="true">
-    <Position X="9.5" Y="3" Width="1.5" />
-    <Members>
-      <Method Name="Get" Hidden="true" />
-      <Method Name="GetLogManager" Hidden="true" />
-      <Method Name="LogService" Hidden="true" />
-      <Method Name="SnapWindow" Hidden="true" />
-      <Method Name="StartInternal" Hidden="true" />
-    </Members>
+    <Position X="9.75" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAJAAAAAAAAAgAAAAAAAAAAAIAAgAAA=</HashCode>
       <FileName>Orchestration\Service\LogService\LogService.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageService" Collapsed="true">
-    <Position X="7.5" Y="3" Width="1.5" />
+    <Position X="7.75" Y="3" Width="1.5" />
     <InheritanceLine Type="Database.Service" ManuallyRouted="true">
       <Path>
-        <Point X="10.25" Y="2.497" />
-        <Point X="10.25" Y="2.709" />
-        <Point X="8.25" Y="2.709" />
-        <Point X="8.25" Y="3" />
+        <Point X="10.5" Y="2.247" />
+        <Point X="10.5" Y="2.709" />
+        <Point X="8.5" Y="2.709" />
+        <Point X="8.5" Y="3" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
@@ -231,7 +234,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Service">
-    <Position X="9.5" Y="0.75" Width="1.5" />
+    <Position X="9.75" Y="0.5" Width="1.5" />
     <Members>
       <Field Name="_Service" Hidden="true" />
       <Property Name="DefaultServiceConfiguration" Hidden="true" />
