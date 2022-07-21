@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Database.Database" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <AssociationLine Name="DatabaseService" Type="Database.DatabaseService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.5" Y="4.625" />
+        <Point X="11.625" Y="4.625" />
+        <Point X="11.625" Y="4.233" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="4.815" Y="0.131" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAEGggAgBEoAIoAIAAAAAACAEAAAAAAACggEA=</HashCode>
+      <FileName>Database\Database.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DatabaseService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Database.DatabaseClient">
+    <Position X="0.5" Y="0.75" Width="1.75" />
+    <Members>
+      <Field Name="_DatabaseClient" Hidden="true" />
+      <Method Name="Create" Hidden="true" />
+      <Method Name="DatabaseClient" Hidden="true" />
+      <Method Name="Get" Hidden="true" />
+      <Method Name="Restart" Hidden="true" />
+      <Method Name="Start" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EAAAQAAAACAAABhAAAAAAAAAAAAAAEAAAAAIAAAAAAA=</HashCode>
+      <FileName>Database\DatabaseClient.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Orchestrator" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Database.DatabaseHyperscale" Collapsed="true">
+    <Position X="2.75" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\DatabaseHyperscale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseTraditional" Collapsed="true">
+    <Position X="5" Y="6" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\DatabaseTraditional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.Orchestrator">
+    <Position X="3.25" Y="0.75" Width="1.5" />
+    <Members>
+      <Method Name="GetService" Hidden="true" />
+      <Field Name="KeepServicesUpThreadCancellationTokenSource" Hidden="true" />
+      <Method Name="KillAllServices" Hidden="true" />
+      <Method Name="KillDatabaseService" Hidden="true" />
+      <Method Name="OverrideServicesConfiguration" Hidden="true" />
+      <Field Name="Services" Hidden="true" />
+      <Method Name="SnapWindow" Hidden="true" />
+      <Method Name="Start" Hidden="true" />
+      <Method Name="StartServices" Hidden="true" />
+      <Method Name="Stop" Hidden="true" />
+      <Method Name="StopStartedServices" Hidden="true" />
+      <Method Name="WaitForServicesBoot" Hidden="true" />
+    </Members>
+    <AssociationLine Name="DatabaseService" Type="Database.DatabaseService" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="1.312" />
+        <Point X="12.625" Y="1.312" />
+        <Point X="12.625" Y="3" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="6.482" Y="1.822" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gQAAAAAEECAAAAAIghAAgAAAgAAAAAAAIAAAgAAAAEA=</HashCode>
+      <FileName>Orchestration\Orchestrator.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="DatabaseService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Database.OrchestratorHyperscale" Collapsed="true">
+    <Position X="4.25" Y="3" Width="2" />
+    <InheritanceLine Type="Database.Orchestrator" ManuallyRouted="true">
+      <Path>
+        <Point X="4" Y="1.853" />
+        <Point X="4" Y="2.157" />
+        <Point X="5.25" Y="2.157" />
+        <Point X="5.25" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="LogService" Type="Database.LogService" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.25" Y="3.691" />
+        <Point X="5.25" Y="4.066" />
+        <Point X="10.25" Y="4.066" />
+        <Point X="10.25" Y="3.691" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="3.958" Y="0.11" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>gQAAAAAAEAABAAAgAAAAgAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\OrchestratorHyperscale.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LogService" />
+      <Property Name="StorageService" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Database.OrchestratorTraditional" Collapsed="true">
+    <Position X="1.75" Y="3" Width="2" />
+    <InheritanceLine Type="Database.Orchestrator" ManuallyRouted="true">
+      <Path>
+        <Point X="4" Y="1.853" />
+        <Point X="4" Y="2.157" />
+        <Point X="2.75" Y="2.157" />
+        <Point X="2.75" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\OrchestratorTraditional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseService">
+    <Position X="11.5" Y="3" Width="1.5" />
+    <Members>
+      <Method Name="DatabaseService" Hidden="true" />
+      <Method Name="Get" Hidden="true" />
+      <Method Name="GetLogManager" Hidden="true" />
+      <Method Name="GetStorageManager" Hidden="true" />
+      <Method Name="GetTransactionManager" Hidden="true" />
+      <Method Name="StartInternal" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="Database.Service" ManuallyRouted="true">
+      <Path>
+        <Point X="10.25" Y="2.497" />
+        <Point X="10.25" Y="2.709" />
+        <Point X="12.25" Y="2.709" />
+        <Point X="12.25" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <AssociationLine Name="Database" Type="Database.Database" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="11.938" Y="4.233" />
+        <Point X="11.938" Y="5" />
+        <Point X="5.5" Y="5" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="5.587" Y="-0.252" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAFAAAAJAAAAAAAAEAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseService.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Database" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Database.DatabaseServiceHyperscale" Collapsed="true">
+    <Position X="10.75" Y="6" Width="2.25" />
+    <InheritanceLine Type="Database.DatabaseService" FixedToPoint="true">
+      <Path>
+        <Point X="12.25" Y="4.233" />
+        <Point X="12.25" Y="6" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseServiceHyperScale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseServiceTraditional" Collapsed="true">
+    <Position X="8" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseServiceTraditional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.ServiceConfiguration">
+    <Position X="6" Y="1.5" Width="1.75" />
+    <Members>
+      <Property Name="LoggingDisabled" Hidden="true" />
+      <Method Name="LoggingEnabled" Hidden="true" />
+      <Method Name="Override" Hidden="true" />
+      <Method Name="ServiceConfiguration" Hidden="true" />
+      <Property Name="ServiceType" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAQAAEAAAAAAACAAAAAAAAAAAAAAICAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\ServiceConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.LogService" Collapsed="true">
+    <Position X="9.5" Y="3" Width="1.5" />
+    <Members>
+      <Method Name="Get" Hidden="true" />
+      <Method Name="GetLogManager" Hidden="true" />
+      <Method Name="LogService" Hidden="true" />
+      <Method Name="SnapWindow" Hidden="true" />
+      <Method Name="StartInternal" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAJAAAAAAAAAgAAAAAAAAAAAIAAgAAA=</HashCode>
+      <FileName>Orchestration\Service\LogService\LogService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.StorageService" Collapsed="true">
+    <Position X="7.5" Y="3" Width="1.5" />
+    <InheritanceLine Type="Database.Service" ManuallyRouted="true">
+      <Path>
+        <Point X="10.25" Y="2.497" />
+        <Point X="10.25" Y="2.709" />
+        <Point X="8.25" Y="2.709" />
+        <Point X="8.25" Y="3" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAABAAAAJAAAAAAAAAgAAAAAEAAEAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\StorageService\StorageService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.Service">
+    <Position X="9.5" Y="0.75" Width="1.5" />
+    <Members>
+      <Field Name="_Service" Hidden="true" />
+      <Property Name="DefaultServiceConfiguration" Hidden="true" />
+      <Method Name="Get" Hidden="true" />
+      <Method Name="GetLogManager" Hidden="true" />
+      <Method Name="GetStorageManager" Hidden="true" />
+      <Method Name="GetTransactionManager" Hidden="true" />
+      <Property Name="IsWaitingForExit" Hidden="true" />
+      <Method Name="Kill" Hidden="true" />
+      <Method Name="OverrideConfiguration" Hidden="true" />
+      <Method Name="ProcessRequest" Hidden="true" />
+      <Method Name="RegisterPipeServer" Hidden="true" />
+      <Method Name="RegisterPipeServersAndBlock" Hidden="true" />
+      <Method Name="Service" Hidden="true" />
+      <Field Name="ServiceToServicePipeNames" Hidden="true" />
+      <Method Name="SnapWindow" Hidden="true" />
+      <Method Name="StartAsProcess" Hidden="true" />
+      <Method Name="StartInternal" Hidden="true" />
+      <Method Name="WaitForExit" Hidden="true" />
+    </Members>
+    <AssociationLine Name="ServiceConfiguration" Type="Database.ServiceConfiguration">
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.205" Y="0.129" Height="0.182" Width="1.475" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>EIAAQAAAAHAQgAJAAhAAAAAQgRAAAAAQIAAQIAAABAA=</HashCode>
+      <FileName>Orchestration\Service\Service.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="ServiceConfiguration" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

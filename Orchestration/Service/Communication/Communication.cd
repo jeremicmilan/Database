@@ -1,0 +1,254 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Database.ServiceMessage">
+    <Position X="6" Y="3.25" Width="1.75" />
+    <Members>
+      <Field Name="PipeClients" Hidden="true" />
+      <Method Name="ServiceMessage" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceMessage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.ServiceRequest&lt;TServiceResponseResult&gt;">
+    <Position X="2" Y="3.75" Width="2.75" />
+    <Members>
+      <Method Name="GetServiceType" Hidden="true" />
+      <Method Name="ServiceRequest" Hidden="true" />
+      <Method Name="WriteToPipe" Hidden="true" />
+    </Members>
+    <InheritanceLine Type="Database.ServiceMessage" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="6" Y="4" />
+        <Point X="4.75" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAIAAAAkAAIAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceRequest.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Database.ServiceResponse" Collapsed="true">
+    <Position X="13.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.ServiceResponseFailure">
+    <Position X="16" Y="4.25" Width="2" />
+    <Members>
+      <Method Name="ServiceResponseFailure" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceResponseFailure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.ServiceResponseResult" Collapsed="true">
+    <Position X="6" Y="4.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceResponseResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.ServiceResponseSuccess" Collapsed="true">
+    <Position X="13.5" Y="4.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceResponseSuccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.ServiceResponseSuccessWithResults&lt;TServiceResponseResult&gt;">
+    <Position X="8.75" Y="4.25" Width="4.25" />
+    <Members>
+      <Method Name="ServiceResponseSuccessWithResults" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\Communication\ServiceResponseSuccessWithResults.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseServiceRequest&lt;TDatabaseServiceResponseResult&gt;" Collapsed="true">
+    <Position X="1.5" Y="6.5" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseServiceRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseServiceRequestQuery">
+    <Position X="1.5" Y="7.75" Width="3.75" />
+    <Members>
+      <Method Name="DatabaseServiceRequestQuery" Hidden="true" />
+      <Method Name="Process" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseServiceRequestQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseServiceResponseResult" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="2.25" />
+    <InheritanceLine Type="Database.ServiceResponseResult" FixedFromPoint="true">
+      <Path>
+        <Point X="6.875" Y="5.312" />
+        <Point X="6.875" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseServiceResponseResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseServiceResponseResultQuery">
+    <Position X="5.5" Y="7.75" Width="2.75" />
+    <Members>
+      <Method Name="DatabaseServiceResponseResultQuery" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\DatabaseService\DatabaseServiceResponseResultQuery.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.LogServiceRequestGetLog">
+    <Position X="16.25" Y="9.5" Width="3.25" />
+    <Members>
+      <Method Name="LogServiceRequestGetLog" Hidden="true" />
+      <Method Name="Process" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAgAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\LogService\LogServiceRequestGetLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.LogServiceRequestPersistLogRecord">
+    <Position X="16.25" Y="7.75" Width="2.75" />
+    <Members>
+      <Method Name="LogServiceRequestPersistLogRecord" Hidden="true" />
+      <Method Name="Process" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Orchestration\Service\LogService\LogServiceRequestPersistLogRecord.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.LogServiceResponseResult" Collapsed="true">
+    <Position X="20.25" Y="6.5" Width="2" />
+    <InheritanceLine Type="Database.ServiceResponseResult" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="6.875" Y="5.312" />
+        <Point X="6.875" Y="5.84" />
+        <Point X="21.25" Y="5.84" />
+        <Point X="21.25" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\LogService\LogServiceResponseResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.LogServiceResponseResultGetLog">
+    <Position X="20" Y="9.5" Width="2.5" />
+    <Members>
+      <Method Name="LogServiceResponseResultGetLog" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\LogService\LogServiceResponseResultGetLog.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.StorageServiceRequest&lt;TStorageServiceResponseResult&gt;" Collapsed="true">
+    <Position X="9" Y="6.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\StorageService\StorageServiceRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.StorageServiceRequestCheckpoint">
+    <Position X="9" Y="7.75" Width="2.75" />
+    <Members>
+      <Method Name="Process" Hidden="true" />
+      <Method Name="StorageServiceRequestCheckpoint" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\StorageService\StorageServiceRequestCheckpoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.StorageServiceRequestGetTable">
+    <Position X="9" Y="9.5" Width="3.75" />
+    <Members>
+      <Method Name="Process" Hidden="true" />
+      <Method Name="StorageServiceRequestGetTable" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAQAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Orchestration\Service\StorageService\StorageServiceRequestGetTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.StorageServiceResponseResult" Collapsed="true">
+    <Position X="13.25" Y="6.5" Width="2.5" />
+    <InheritanceLine Type="Database.ServiceResponseResult" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="6.875" Y="5.312" />
+        <Point X="6.875" Y="5.84" />
+        <Point X="14.5" Y="5.84" />
+        <Point X="14.5" Y="6.5" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\StorageService\StorageServiceResponseResult.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.StorageServiceResponseResultGetTable">
+    <Position X="13" Y="9.5" Width="3" />
+    <Members>
+      <Method Name="StorageServiceResponseResultGetTable" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\StorageService\StorageServiceResponseResultGetTable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.LogServiceRequest&lt;TLogServiceResponseResult&gt;" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Orchestration\Service\LogService\LogServiceRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.Service">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <Members>
+      <Field Name="_Service" Hidden="true" />
+      <Property Name="DefaultServiceConfiguration" Hidden="true" />
+      <Method Name="Get" Hidden="true" />
+      <Method Name="GetLogManager" Hidden="true" />
+      <Method Name="GetStorageManager" Hidden="true" />
+      <Method Name="GetTransactionManager" Hidden="true" />
+      <Property Name="IsWaitingForExit" Hidden="true" />
+      <Method Name="Kill" Hidden="true" />
+      <Method Name="OverrideConfiguration" Hidden="true" />
+      <Field Name="Process" Hidden="true" />
+      <Method Name="ProcessRequest" Hidden="true" />
+      <Method Name="RegisterPipeServersAndBlock" Hidden="true" />
+      <Method Name="Service" Hidden="true" />
+      <Property Name="ServiceConfiguration" Hidden="true" />
+      <Field Name="ServiceToServicePipeNames" Hidden="true" />
+      <Method Name="SnapWindow" Hidden="true" />
+      <Method Name="Start" Hidden="true" />
+      <Method Name="StartAsProcess" Hidden="true" />
+      <Method Name="StartInternal" Hidden="true" />
+      <Method Name="Stop" Hidden="true" />
+      <Method Name="WaitForExit" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>EIAAQAAAAHAQgAJAAhAAAAAQgRAAAAAQIAAQIAAABAA=</HashCode>
+      <FileName>Orchestration\Service\Service.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
