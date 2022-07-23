@@ -123,11 +123,6 @@ namespace Database
             Utility.LogDebugMessage("Process {0} started with arguments {1}", processName, arguments);
         }
 
-        private ServiceResponseResult ProcessRequest(IServiceRequest serviceRequest)
-        {
-            return serviceRequest.Process();
-        }
-
         protected void RegisterPipeServer(string pipeName)
         {
             try
@@ -154,7 +149,7 @@ namespace Database
                         {
                             try
                             {
-                                ServiceResponseResult serviceResponseResult = ProcessRequest(serviceRequest);
+                                ServiceResponseResult serviceResponseResult = serviceRequest.Process();
 
                                 if (serviceResponseResult != null)
                                 {
