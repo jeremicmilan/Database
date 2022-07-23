@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Database.LogManager">
-    <Position X="8.25" Y="4" Width="2" />
+    <Position X="7.25" Y="4.75" Width="2" />
     <Members>
       <Method Name="Get" Hidden="true" />
       <Method Name="GetLogAfterLastBeginTransaction" Hidden="true" />
@@ -12,6 +12,16 @@
       <Method Name="ToString" Hidden="true" />
       <Method Name="UndoLog" Hidden="true" />
     </Members>
+    <AssociationLine Name="LogRecords" Type="Database.LogRecord" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="7.25" Y="4.937" />
+        <Point X="6.125" Y="4.937" />
+        <Point X="6.125" Y="5.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.084" Y="0.038" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAACCAAACIAAAABEAAUAACAAAAAAAAAIAQEAAAAAAAA=</HashCode>
       <FileName>Database\Log\LogManager.cs</FileName>
@@ -21,30 +31,40 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Database.LogManagerHyperscale" Collapsed="true">
-    <Position X="9.5" Y="7" Width="2" />
-    <Members>
-      <Method Name="PersistLogRecordInternal" Hidden="true" />
-      <Method Name="ReadEntireLog" Hidden="true" />
-    </Members>
+    <Position X="5.5" Y="7.25" Width="2" />
+    <InheritanceLine Type="Database.LogManager" FixedToPoint="true">
+      <Path>
+        <Point X="8.25" Y="6.69" />
+        <Point X="8.25" Y="6.95" />
+        <Point X="7.25" Y="6.95" />
+        <Point X="7.25" Y="7.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Database\Log\LogManagerHyperscale.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogManagerTraditional">
-    <Position X="7" Y="7" Width="2" />
+    <Position X="7.75" Y="7.25" Width="2" />
     <Members>
       <Method Name="LogManagerTraditional" Hidden="true" />
       <Method Name="PersistLogRecordInternal" Hidden="true" />
       <Method Name="ReadEntireLog" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.LogManager" FixedToPoint="true">
+      <Path>
+        <Point X="8.25" Y="6.69" />
+        <Point X="8.25" Y="7.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAAAAA=</HashCode>
       <FileName>Database\Log\LogManagerTraditional.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogRecord">
-    <Position X="11.25" Y="4" Width="1.75" />
+    <Position X="5.25" Y="5.25" Width="1.75" />
     <Members>
       <Field Name="_logSequenceNumberMax" Hidden="true" />
       <Method Name="CheckParameterLength" Hidden="true" />
@@ -64,7 +84,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageManager">
-    <Position X="3" Y="4.5" Width="1.5" />
+    <Position X="2.75" Y="5.25" Width="1.5" />
     <Members>
       <Method Name="AddTableToCache" Hidden="true" />
       <Method Name="Get" Hidden="true" />
@@ -72,10 +92,11 @@
       <Method Name="GetTableFromPersistentStorage" Hidden="true" />
       <Method Name="MarkTableAsDirty" Hidden="true" />
     </Members>
-    <AssociationLine Name="CachedTables" Type="Database.Table" FixedFromPoint="true">
+    <AssociationLine Name="CachedTables" Type="Database.Table" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="4.5" Y="5.552" />
-        <Point X="5.75" Y="5.552" />
+        <Point X="2.75" Y="6.738" />
+        <Point X="1.938" Y="6.738" />
+        <Point X="1.938" Y="6.382" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -87,31 +108,40 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Database.StorageManagerHyperscale" Collapsed="true">
-    <Position X="4" Y="7" Width="2.25" />
-    <Members>
-      <Method Name="Checkpoint" Hidden="true" />
-      <Method Name="GetTableFromPersistentStorage" Hidden="true" />
-      <Method Name="MarkTableAsDirty" Hidden="true" />
-    </Members>
+    <Position X="0.5" Y="7.25" Width="2.25" />
+    <InheritanceLine Type="Database.StorageManager" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="6.738" />
+        <Point X="3.5" Y="6.95" />
+        <Point X="1.688" Y="6.95" />
+        <Point X="1.688" Y="7.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAgAAAgAAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Database\Storage\StorageManagerHyperscale.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageManagerTraditional">
-    <Position X="1.25" Y="7" Width="2.25" />
+    <Position X="3" Y="7.25" Width="2.25" />
     <Members>
       <Method Name="Checkpoint" Hidden="true" />
       <Method Name="GetTableFromPersistentStorage" Hidden="true" />
       <Method Name="StorageManagerTraditional" Hidden="true" />
     </Members>
+    <InheritanceLine Type="Database.StorageManager" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="6.738" />
+        <Point X="3.5" Y="7.25" />
+      </Path>
+    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEgAAAgEAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
       <FileName>Database\Storage\StorageManagerTraditional.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Table">
-    <Position X="5.75" Y="4" Width="2" />
+    <Position X="0.5" Y="4.25" Width="2" />
     <Members>
       <Field Name="Empty" Hidden="true" />
       <Method Name="IsLogAlreadyApplied" Hidden="true" />
@@ -129,7 +159,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Database">
-    <Position X="4.75" Y="2.5" Width="1.5" />
+    <Position X="2.75" Y="2.5" Width="1.5" />
     <Members>
       <Method Name="Checkpoint" Hidden="true" />
       <Field Name="CheckpointStatement" Hidden="true" />
@@ -153,31 +183,33 @@
     </Members>
     <AssociationLine Name="LogManager" Type="Database.LogManager" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="6.25" Y="3.25" />
-        <Point X="8.469" Y="3.25" />
-        <Point X="8.469" Y="4" />
+        <Point X="4.25" Y="3.25" />
+        <Point X="7.469" Y="3.25" />
+        <Point X="7.469" Y="4.75" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="-1.159" Y="0.11" />
       </MemberNameLabel>
     </AssociationLine>
-    <AssociationLine Name="StorageManager" Type="Database.StorageManager" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="TransactionManager" Type="Database.TransactionManager" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="4.75" Y="3.25" />
-        <Point X="3.812" Y="3.25" />
-        <Point X="3.812" Y="4.5" />
-      </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="-1.353" Y="0.129" />
-      </MemberNameLabel>
-    </AssociationLine>
-    <AssociationLine Name="TransactionManager" Type="Database.TransactionManager" FixedToPoint="true">
-      <Path>
-        <Point X="4.75" Y="2.812" />
-        <Point X="3.25" Y="2.812" />
+        <Point X="2.875" Y="2.5" />
+        <Point X="2.875" Y="2.25" />
+        <Point X="2.25" Y="2.25" />
       </Path>
       <MemberNameLabel ManuallyPlaced="true">
         <Position X="0.023" Y="0.089" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="StorageManager" Type="Database.StorageManager" ManuallyRouted="true" FixedFromPoint="true">
+      <Path>
+        <Point X="3" Y="3.603" />
+        <Point X="3" Y="3.733" />
+        <Point X="3" Y="3.733" />
+        <Point X="3" Y="5.25" />
+      </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="-1.353" Y="0.129" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -186,12 +218,12 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="LogManager" />
-      <Property Name="StorageManager" />
       <Property Name="TransactionManager" />
+      <Property Name="StorageManager" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.DatabaseClient">
-    <Position X="3.25" Y="0.5" Width="1.75" />
+    <Position X="0.5" Y="0.5" Width="1.75" />
     <Members>
       <Field Name="_DatabaseClient" Hidden="true" />
       <Method Name="Create" Hidden="true" />
@@ -199,6 +231,7 @@
       <Method Name="Get" Hidden="true" />
       <Method Name="Restart" Hidden="true" />
       <Method Name="Start" Hidden="true" />
+      <Method Name="WaitForUserInput" Hidden="true" />
     </Members>
     <TypeIdentifier>
       <HashCode>EAAAQAAAACAAABhAAAAAAAAAAAAAAEAAAAAIAAAAAAA=</HashCode>
@@ -209,7 +242,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.TransactionManager">
-    <Position X="1.5" Y="2.25" Width="1.75" />
+    <Position X="0.5" Y="2" Width="1.75" />
     <Members>
       <Property Name="Database" Hidden="true" />
       <Method Name="Get" Hidden="true" />
@@ -220,15 +253,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.Orchestrator" Collapsed="true">
-    <Position X="6.25" Y="1" Width="1.5" />
-    <AssociationLine Name="DatabaseService" Type="Database.DatabaseService" FixedFromPoint="true" FixedToPoint="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <AssociationLine Name="DatabaseService" Type="Database.DatabaseService" FixedToPoint="true">
       <Path>
-        <Point X="7.75" Y="1.313" />
-        <Point X="9.094" Y="1.313" />
-        <Point X="9.094" Y="1.75" />
+        <Point X="4.875" Y="1.062" />
+        <Point X="4.875" Y="1.5" />
       </Path>
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.06" Y="0.633" />
+      <MemberNameLabel ManuallyPlaced="true" ManuallySized="true">
+        <Position X="0.12" Y="0.058" Height="0.182" Width="1.223" />
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
@@ -240,7 +272,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.DatabaseService">
-    <Position X="8.75" Y="1.75" Width="1.5" />
+    <Position X="4.75" Y="1.5" Width="1.5" />
     <Members>
       <Method Name="DatabaseService" Hidden="true" />
       <Method Name="Get" Hidden="true" />
@@ -249,6 +281,13 @@
       <Method Name="GetTransactionManager" Hidden="true" />
       <Method Name="StartInternal" Hidden="true" />
     </Members>
+    <AssociationLine Name="Database" Type="Database.Database" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="4.75" Y="2.062" />
+        <Point X="4.125" Y="2.062" />
+        <Point X="4.125" Y="2.5" />
+      </Path>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAQAAAAFAAAAJAAAAAAAAEAAAAAAAAAAAAIAAAAAA=</HashCode>
       <FileName>Orchestration\Service\DatabaseService\DatabaseService.cs</FileName>
@@ -258,15 +297,17 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.LogService" Collapsed="true">
-    <Position X="10.5" Y="1.75" Width="1.5" />
+    <Position X="6.5" Y="1.5" Width="1.5" />
     <AssociationLine Name="LogManager" Type="Database.LogManagerTraditional" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="11.25" Y="2.441" />
-        <Point X="11.25" Y="3.75" />
-        <Point X="13.213" Y="3.75" />
-        <Point X="13.213" Y="8" />
-        <Point X="9" Y="8" />
+        <Point X="7.812" Y="2.191" />
+        <Point X="7.812" Y="3.944" />
+        <Point X="9.5" Y="3.944" />
+        <Point X="9.5" Y="7.25" />
       </Path>
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.06" Y="0.11" />
+      </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAJAAAAAAAAAgAAAAAAAAAAAIAAgAAA=</HashCode>
@@ -277,14 +318,14 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="Database.Service" Collapsed="true">
-    <Position X="10.5" Y="0.5" Width="1.5" />
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EIAAQAAAAHAQgAJAAhAAAAAQgRAAAAAQIAAQIAAABAA=</HashCode>
+      <HashCode>EIAAQAAAAHAQgAJAAgAAAAAQgRAAAAAQIAAQIAAABAA=</HashCode>
       <FileName>Orchestration\Service\Service.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.StorageService">
-    <Position X="12.25" Y="1.75" Width="2" />
+    <Position X="8.25" Y="1.5" Width="2" />
     <Members>
       <Method Name="Get" Hidden="true" />
       <Method Name="GetStorageManager" Hidden="true" />
@@ -292,11 +333,11 @@
       <Method Name="StartInternal" Hidden="true" />
       <Method Name="StorageService" Hidden="true" />
     </Members>
-    <AssociationLine Name="StorageManager" Type="Database.StorageManagerTraditional" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="StorageManager" Type="Database.StorageManagerTraditional" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
       <Path>
-        <Point X="13.812" Y="3.434" />
-        <Point X="13.812" Y="8.812" />
-        <Point X="3.5" Y="8.812" />
+        <Point X="10" Y="3.184" />
+        <Point X="10" Y="9.25" />
+        <Point X="5.25" Y="9.25" />
       </Path>
     </AssociationLine>
     <TypeIdentifier>
@@ -306,6 +347,26 @@
     <ShowAsAssociation>
       <Property Name="StorageManager" />
     </ShowAsAssociation>
+  </Class>
+  <Class Name="Database.DatabaseHyperscale" Collapsed="true">
+    <Position X="3.25" Y="4" Width="1.75" />
+    <InheritanceLine Type="Database.Database" FixedToPoint="true">
+      <Path>
+        <Point X="3.5" Y="3.603" />
+        <Point X="3.5" Y="4" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\DatabaseHyperscale.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Database.DatabaseTraditional" Collapsed="true">
+    <Position X="5.25" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Database\DatabaseTraditional.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
