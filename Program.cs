@@ -9,7 +9,7 @@ namespace Database
     {
         static void Main(string[] args)
         {
-            if (args.Count() == 0)
+            if (args.Length == 0)
             {
                 Console.Title = "DatabaseClient";
                 Utility.SetShouldTrace();
