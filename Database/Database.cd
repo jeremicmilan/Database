@@ -131,9 +131,7 @@
     <InheritanceLine Type="Database.StorageManager" FixedToPoint="true">
       <Path>
         <Point X="3.875" Y="6.93" />
-        <Point X="3.875" Y="7.096" />
-        <Point X="3.5" Y="7.096" />
-        <Point X="3.5" Y="7.25" />
+        <Point X="3.875" Y="7.25" />
       </Path>
     </InheritanceLine>
     <TypeIdentifier>
