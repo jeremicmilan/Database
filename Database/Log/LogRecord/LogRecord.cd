@@ -59,14 +59,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogRecordTableRowDelete" Collapsed="true">
-    <Position X="1" Y="7" Width="2.25" />
+    <Position X="4" Y="7" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>Database\Log\LogRecord\LogRecordTableRowDelete.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Database.LogRecordTableRowInsert" Collapsed="true">
-    <Position X="4" Y="7" Width="2" />
+    <Position X="1.25" Y="7" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>Database\Log\LogRecord\LogRecordTableRowInsert.cs</FileName>
