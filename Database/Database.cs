@@ -80,7 +80,7 @@ namespace Database
 
         private const string TransactionStatementPart = " TRANSACTION";
         private const string TransactionStatementBegin = "BEGIN" + TransactionStatementPart;
-        private const string TransactionStatementEnd = "END" + TransactionStatementPart;
+        private const string TransactionStatementCommit = "COMMIT" + TransactionStatementPart;
 
         public DatabaseServiceResponseResultQuery ProcessQuery(string query)
         {
@@ -195,9 +195,9 @@ namespace Database
                     TransactionManager.BeginTransaction();
                     break;
 
-                case TransactionStatementEnd:
-                    TransactionManager.EndTransaction();
-                    Utility.LogOperationEnd("Transaction ended.");
+                case TransactionStatementCommit:
+                    TransactionManager.CommitTransaction();
+                    Utility.LogOperationEnd("Transaction committed.");
                     break;
 
                 default:

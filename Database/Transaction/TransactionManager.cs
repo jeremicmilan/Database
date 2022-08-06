@@ -30,7 +30,7 @@ namespace Database
             }
         }
 
-        public void EndTransaction(bool redo = false)
+        public void CommitTransaction(bool redo = false)
         {
             if (!IsTransactionActive)
             {
@@ -41,7 +41,7 @@ namespace Database
 
             if (!redo)
             {
-                LogRecord logRecord = new LogRecordTransactionEnd();
+                LogRecord logRecord = new LogRecordTransactionCommit();
                 Database.LogManager.PersistLogRecord(logRecord);
             }
         }

@@ -5,4 +5,4 @@
 5,TransactionBegin
 6,TableRowInsert,first,4
 7,Undo,6,TableRowInsert,first,4
-8,TransactionEnd
+8,TransactionCommit

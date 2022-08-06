@@ -5,10 +5,10 @@
 5,Checkpoint,False
 6,TransactionBegin
 7,TableRowInsert,first,4
-8,TransactionEnd
+8,TransactionCommit
 9,TableRowInsert,first,5
 10,TransactionBegin
 11,TableRowInsert,first,6
 12,Undo,11,TableRowInsert,first,6
-13,TransactionEnd
+13,TransactionCommit
 14,Checkpoint,False

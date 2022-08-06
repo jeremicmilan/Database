@@ -78,7 +78,7 @@ namespace Database
             // Complete the transaction so we can open a new one later.
             // Also, this would be signal on the recovery not to undo this part of the log again.
             //
-            Database.Get().TransactionManager.EndTransaction();
+            Database.Get().TransactionManager.CommitTransaction();
         }
 
         private List<LogRecordTable> GetLogToBeUndone()
