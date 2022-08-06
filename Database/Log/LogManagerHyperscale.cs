@@ -7,7 +7,7 @@
             LogRecords.AddRange(new LogServiceRequestGetLog().Send().LogRecords);
         }
 
-        public override void PersistLogRecordInternal(LogRecord logRecord)
+        public override void PersistLogRecord(LogRecord logRecord)
         {
             new LogServiceRequestPersistLogRecord(logRecord).Send();
         }

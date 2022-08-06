@@ -42,7 +42,7 @@ namespace Database
             if (logRecord == null)
             {
                 logRecord = new LogRecordTableRowInsert(TableName, value);
-                LogManager.Get().PersistLogRecord(logRecord);
+                LogManager.Get().ProcessLogRecord(logRecord);
             }
 
             UpdateLogSequenceNumberMax(logRecord);
@@ -66,7 +66,7 @@ namespace Database
             if (logRecord == null)
             {
                 logRecord = new LogRecordTableRowDelete(TableName, value);
-                LogManager.Get().PersistLogRecord(logRecord);
+                LogManager.Get().ProcessLogRecord(logRecord);
             }
 
             UpdateLogSequenceNumberMax(logRecord);

@@ -20,10 +20,18 @@ namespace Database
             // We could improve here by reading only the log section needed for recovery.
             // However, this would mean we should probably dabble log truncation, which is currently out of scope.
             //
-            ReadEntireLog(); 
+            ReadEntireLog();
 
+            // Redo phase
+            //
             RedoLog();
-            UndoLog();
+
+            // Undo phase - rolling back the transaction will trigger log undo if necessary.
+            //
+            if (Database.Get().TransactionManager.IsTransactionActive)
+            {
+                Database.Get().TransactionManager.RollbackTransaction();
+            }
         }
 
         private void RedoLog()
@@ -42,12 +50,8 @@ namespace Database
             }
         }
 
-        private void UndoLog()
+        public void UndoLog()
         {
-            if (!Database.Get().TransactionManager.IsTransactionActive)
-            {
-                return;
-            }
 
             List<LogRecordTable> logRecordsToBeUndone = GetLogToBeUndone();
             List<LogRecordUndo> logRecordsUndone = GetUndoneLog();
@@ -71,14 +75,9 @@ namespace Database
             foreach (LogRecordTable logRecord in logRecordsToBeUndone)
             {
                 LogRecordUndo logRecordUndo = new LogRecordUndo(logRecord);
-                PersistLogRecord(logRecordUndo);
+                ProcessLogRecord(logRecordUndo);
                 logRecordUndo.Redo();
             }
-
-            // Rollback the transaction so we can open a new one later.
-            // Also, this would be signal on the recovery not to undo this part of the log again.
-            //
-            Database.Get().TransactionManager.RollbackTransaction();
         }
 
         private List<LogRecordTable> GetLogToBeUndone()
@@ -110,15 +109,16 @@ namespace Database
             return LogRecords.Skip(indexBeginTransaction).ToList();
         }
 
-        public void PersistLogRecord(LogRecord logRecord)
+        public void ProcessLogRecord(LogRecord logRecord)
         {
             if (Service.Get().ServiceConfiguration.LoggingEnabled())
             {
-                PersistLogRecordInternal(logRecord);
+                PersistLogRecord(logRecord);
+                LogRecords.Add(logRecord);
             }
         }
 
-        public abstract void PersistLogRecordInternal(LogRecord logRecord);
+        public abstract void PersistLogRecord(LogRecord logRecord);
 
         public override string ToString()
         {

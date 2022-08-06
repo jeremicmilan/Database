@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Database
 {
@@ -26,7 +28,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionBegin();
-                Database.LogManager.PersistLogRecord(logRecord);
+                Database.LogManager.ProcessLogRecord(logRecord);
             }
         }
 
@@ -42,7 +44,7 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionCommit();
-                Database.LogManager.PersistLogRecord(logRecord);
+                Database.LogManager.ProcessLogRecord(logRecord);
             }
         }
 
@@ -57,8 +59,10 @@ namespace Database
 
             if (!redo)
             {
+                Database.LogManager.UndoLog();
+
                 LogRecord logRecord = new LogRecordTransactionRollback();
-                Database.LogManager.PersistLogRecord(logRecord);
+                Database.LogManager.ProcessLogRecord(logRecord);
             }
         }
     }

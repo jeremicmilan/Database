@@ -45,7 +45,7 @@ namespace Database
         private void Checkpoint()
         {
             LogRecordCheckpoint logRecordCheckpoint = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
-            LogManager.PersistLogRecord(logRecordCheckpoint);
+            LogManager.ProcessLogRecord(logRecordCheckpoint);
             StorageManager.Checkpoint(logRecordCheckpoint.LogSequenceNumber);
         }
 

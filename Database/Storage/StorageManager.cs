@@ -29,7 +29,7 @@ namespace Database
             if (logRecordTableCreate == null)
             {
                 logRecordTableCreate = new LogRecordTableCreate(tableName);
-                LogManager.Get().PersistLogRecord(logRecordTableCreate);
+                LogManager.Get().ProcessLogRecord(logRecordTableCreate);
             }
 
             table.UpdateLogSequenceNumberMax(logRecordTableCreate);

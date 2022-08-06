@@ -43,7 +43,7 @@ namespace Database
             }
         }
 
-        public override void PersistLogRecordInternal(LogRecord logRecord)
+        public override void PersistLogRecord(LogRecord logRecord)
         {
             Utility.LogOperationBegin("Writing log record to disk: " + logRecord);
 

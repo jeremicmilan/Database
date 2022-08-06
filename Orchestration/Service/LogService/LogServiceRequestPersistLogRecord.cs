@@ -16,9 +16,7 @@
         {
             Utility.LogServiceRequestBegin("Persisting log record: " + LogRecord);
 
-            LogManager logManager = LogService.Get().LogManager;
-            logManager.LogRecords.Add(LogRecord);
-            logManager.PersistLogRecord(LogRecord);
+            LogService.Get().LogManager.ProcessLogRecord(LogRecord);
 
             Utility.LogServiceRequestEnd("Persisted log record: " + LogRecord);
 
