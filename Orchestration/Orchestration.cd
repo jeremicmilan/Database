@@ -21,7 +21,6 @@
       <Property Name="StorageManager" Hidden="true" />
       <Property Name="TransactionManager" Hidden="true" />
       <Field Name="TransactionStatementBegin" Hidden="true" />
-      <Field Name="TransactionStatementEnd" Hidden="true" />
       <Field Name="TransactionStatementPart" Hidden="true" />
       <Field Name="ValuesStatementPart" Hidden="true" />
     </Members>
@@ -33,7 +32,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAQAAAAEGggAgBEoAIoAIAAAAAACAEAAAAAAACggEA=</HashCode>
+      <HashCode>AAAQAAAAEGggAgBEoAIoAIAAAAAACAEAAAAAiACggEA=</HashCode>
       <FileName>Database\Database.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -42,14 +41,6 @@
   </Class>
   <Class Name="Database.DatabaseHyperscale" Collapsed="true">
     <Position X="2.75" Y="5.5" Width="1.75" />
-    <InheritanceLine Type="Database.Database" ManuallyRouted="true" FixedToPoint="true">
-      <Path>
-        <Point X="1.25" Y="5.062" />
-        <Point X="1.25" Y="5.349" />
-        <Point X="3.5" Y="5.349" />
-        <Point X="3.5" Y="5.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Database\DatabaseHyperscale.cs</FileName>
@@ -57,14 +48,6 @@
   </Class>
   <Class Name="Database.DatabaseTraditional" Collapsed="true">
     <Position X="0.5" Y="5.5" Width="1.75" />
-    <InheritanceLine Type="Database.Database" ManuallyRouted="true" FixedToPoint="true">
-      <Path>
-        <Point X="1.25" Y="5.062" />
-        <Point X="1.25" Y="5.338" />
-        <Point X="1.25" Y="5.338" />
-        <Point X="1.25" Y="5.5" />
-      </Path>
-    </InheritanceLine>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>Database\DatabaseTraditional.cs</FileName>

@@ -160,7 +160,6 @@
   <Class Name="Database.LogServiceRequestPersistLogRecord">
     <Position X="8.75" Y="11.75" Width="2.75" />
     <Members>
-      <Method Name="LogServiceRequestPersistLogRecord" Hidden="true" />
       <Method Name="Process" Hidden="true" />
     </Members>
     <InheritanceLine Type="Database.LogServiceRequest&lt;TLogServiceResponseResult&gt;" ManuallyRouted="true" FixedFromPoint="true">
