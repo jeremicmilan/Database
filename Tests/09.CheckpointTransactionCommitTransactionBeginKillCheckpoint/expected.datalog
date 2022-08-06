@@ -10,5 +10,5 @@
 10,TransactionBegin
 11,TableRowInsert,first,6
 12,Undo,11,TableRowInsert,first,6
-13,TransactionCommit
+13,TransactionRollback
 14,Checkpoint,False

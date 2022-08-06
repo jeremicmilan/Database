@@ -6,4 +6,4 @@
 6,TableRowInsert,first,4
 7,Checkpoint,True
 8,Undo,6,TableRowInsert,first,4
-9,TransactionCommit
+9,TransactionRollback

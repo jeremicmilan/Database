@@ -34,7 +34,7 @@ namespace Database
         {
             if (!IsTransactionActive)
             {
-                throw new Exception("There is no transaction to end");
+                throw new Exception("There is no transaction to commit.");
             }
 
             IsTransactionActive = false;
@@ -42,6 +42,22 @@ namespace Database
             if (!redo)
             {
                 LogRecord logRecord = new LogRecordTransactionCommit();
+                Database.LogManager.PersistLogRecord(logRecord);
+            }
+        }
+
+        public void RollbackTransaction(bool redo = false)
+        {
+            if (!IsTransactionActive)
+            {
+                throw new Exception("There is no transaction to rollback.");
+            }
+
+            IsTransactionActive = false;
+
+            if (!redo)
+            {
+                LogRecord logRecord = new LogRecordTransactionRollback();
                 Database.LogManager.PersistLogRecord(logRecord);
             }
         }

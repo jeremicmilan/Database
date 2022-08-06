@@ -81,6 +81,7 @@ namespace Database
         private const string TransactionStatementPart = " TRANSACTION";
         private const string TransactionStatementBegin = "BEGIN" + TransactionStatementPart;
         private const string TransactionStatementCommit = "COMMIT" + TransactionStatementPart;
+        private const string TransactionStatementRollback = "ROLLBACK" + TransactionStatementPart;
 
         public DatabaseServiceResponseResultQuery ProcessQuery(string query)
         {
@@ -198,6 +199,11 @@ namespace Database
                 case TransactionStatementCommit:
                     TransactionManager.CommitTransaction();
                     Utility.LogOperationEnd("Transaction committed.");
+                    break;
+
+                case TransactionStatementRollback:
+                    TransactionManager.RollbackTransaction();
+                    Utility.LogOperationEnd("Transaction rolled back.");
                     break;
 
                 default:
