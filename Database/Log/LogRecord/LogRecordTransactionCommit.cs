@@ -5,7 +5,7 @@
         public LogRecordTransactionCommit()
         { }
 
-        public LogRecordTransactionCommit(int logSequenceNumber, string[] parameters)
+        public LogRecordTransactionCommit(int logSequenceNumber, string[] _)
             : base(logSequenceNumber)
         { }
 

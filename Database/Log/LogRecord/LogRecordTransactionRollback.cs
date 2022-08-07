@@ -5,7 +5,7 @@
         public LogRecordTransactionRollback()
         { }
 
-        public LogRecordTransactionRollback(int logSequenceNumber, string[] parameters)
+        public LogRecordTransactionRollback(int logSequenceNumber, string[] _)
             : base(logSequenceNumber)
         { }
 
