@@ -19,7 +19,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>1403</value>
+        <value>1413</value>
       </counter>
       <counter>
         <item-type type-id="property" type="Property" />
@@ -74,6 +74,16 @@
         <description />
         <color>#00000000</color>
         <working-schedule uid="ws-b732e8119f6b4b65950bdb4b3ea74410" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-950b357db38d4865996bb106c56a9479" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
       </person>
       <person id="">
         <first-name>Milan</first-name>
@@ -1954,8 +1964,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="083f80e2176c4f2bb58741a51232e0c1" to="0fc38fed838646c7b9f5d4d28923ccf9" derived="false">
-                <start-role id="umlar-fe8bef77-e9fa-43bc-9cf7-b6fa700957cd" name="" navigability="" association-type="aggregation" visibility="private" />
-                <end-role id="umlar-58329d94-9a93-41d5-a708-ddac44407ac0" name="" navigability="" association-type="association" visibility="private" />
+                <start-role id="umlar-66f6dcc3-8a10-434e-883d-01d557f5bdf9" name="" navigability="" association-type="composition" visibility="private" />
+                <end-role id="umlar-c5e1e999-e334-4cf8-8496-82a4cbc0c244" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="0963f0d7bd6e48088f4bb2a2dbc81021" cid="REL001" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="d6a27f7bb91340949512a49e92f4f92e" to="5ba5c5ebd2584ab78c0652ef0ab633a8" visibility="package">
@@ -1964,8 +1974,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="d6a27f7bb91340949512a49e92f4f92e" to="5ba5c5ebd2584ab78c0652ef0ab633a8" derived="false">
-                <start-role id="umlar-172953bf-b79a-4549-819f-45309553b94b" name="" navigability="" association-type="aggregation" visibility="private" />
-                <end-role id="umlar-d19f52a1-3262-427d-b2df-cc1897c2714d" name="" navigability="" association-type="association" visibility="private" />
+                <start-role id="umlar-3e8e2bfc-dd43-4969-acdc-0a57fba2c135" name="" navigability="" association-type="composition" visibility="private" />
+                <end-role id="umlar-2646174d-d791-4cfe-9c7f-0a4ee7c9b6f5" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="d16bb12e85eb48b6ad7016606ba43899" cid="REL002" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="0448abd669f84a4ca8bfb499a2a231f2" to="d4e7babc76924c40bebc97f476c3911c" visibility="package">
@@ -1974,8 +1984,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="0448abd669f84a4ca8bfb499a2a231f2" to="d4e7babc76924c40bebc97f476c3911c" derived="false">
-                <start-role id="umlar-9e1d9080-b778-491a-ac3a-80a2fe83889a" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="a956ecad0722d4b41887b3ff45aca629b967" />
-                <end-role id="umlar-b8376ccc-d731-4bb3-b699-780ba21bd29c" name="" navigability="" association-type="association" visibility="private" />
+                <start-role id="umlar-ecb0de09-9c3d-4717-9acd-5f2d52e5bbae" name="" navigability="" association-type="composition" visibility="private" attribute-ref="a956ecad0722d4b41887b3ff45aca629b967" />
+                <end-role id="umlar-ffb57047-0ec3-4d65-ab5f-15119ea190a7" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="711b9b0166fb4fc385d29f41644e13e9" cid="GNR006" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="7bc7bd2f4cb54071a733f351abb7d2d9" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
@@ -2018,6 +2028,7 @@
                 <tagged-value id="tv463a236aa094497dbc3c6d04b8628a13" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
                 <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
                 <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
                 <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
@@ -2087,8 +2098,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="d4e7babc76924c40bebc97f476c3911c" to="0448abd669f84a4ca8bfb499a2a231f2" derived="false">
-                <start-role id="umlar-a931743f-1d13-4ab2-860c-a9d3466c1520" name="" navigability="" association-type="aggregation" visibility="private" />
-                <end-role id="umlar-99d31d2a-126d-4859-bb19-d26b32d939f1" name="" navigability="" association-type="association" visibility="private" />
+                <start-role id="umlar-a17d14a6-effc-4fd0-826e-9fcf8b2fae10" name="" navigability="" association-type="composition" visibility="private" />
+                <end-role id="umlar-03b24185-856b-4392-845e-bf8eb726f66d" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="95e6c27cff9c4a17b91a4aabfab9ef42" cid="PROP005" type="property" name="KeepServicesUp" style-class="" owner="03b8b160d5d7494f8a5b86222d0213ab" creation-date="08/13/2022 19:41:06" visibility="private">
@@ -2136,6 +2147,8 @@
               <owned-items>
                 <owned-item ref="0fd3849412bd4e9b9450c779b8d6bb49" />
                 <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
+                <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
+                <owned-item ref="0fd3849412bd4e9b9450c779b8d6bb49" />
                 <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
                 <owned-item ref="0fd3849412bd4e9b9450c779b8d6bb49" />
                 <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
@@ -2271,6 +2284,7 @@
                 <owned-item ref="a0fcc4043e364041bca4102b12ac105d" />
                 <owned-item ref="a0fcc4043e364041bca4102b12ac105d" />
                 <owned-item ref="a0fcc4043e364041bca4102b12ac105d" />
+                <owned-item ref="a0fcc4043e364041bca4102b12ac105d" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -2341,6 +2355,8 @@
               <owned-items>
                 <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
                 <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
                 <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
                 <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
                 <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
@@ -2444,6 +2460,20 @@
               </tagged-values>
               <style class="Flat Light White" />
             </item>
+            <item id="62ace6b175504de2af41f990b7d89d5d" cid="C003" type="class" name="DatabaseServiceTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv39aaae031e714fb3ad09019ad1a6ff07" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv8be3bf36726949b8b9765c992b298191" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseServiceTraditional" />
+                <tagged-value id="tva77a34ad6c354e11b3f29a58d96d7aac" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv81803d56bdc4473e8b0779983ccfaf5c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseServiceTraditional.cs" />
+                <tagged-value id="tvcedaaebbe13c43cb8805b521a3ef2b6c" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv39b5271c756347f29379d2926ccb1dee" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="56" />
+                <tagged-value id="tvc023f20405fb4228b2ec2395205074ae" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="612" />
+                <tagged-value id="tv0735f57b85ee4b7d8e34e094643afbf0" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="676" />
+                <tagged-value id="tve7921ff4a7334232bfbd77bc43270379" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
             <item id="f567370117e74b00bc3b66c8e360f864" cid="PROP007" type="property" name="Services" style-class="" owner="03b8b160d5d7494f8a5b86222d0213ab" creation-date="08/13/2022 19:41:06" visibility="protected">
               <tagged-values>
                 <tagged-value id="tv74eaacf23e954406a45644acdeca91fe" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Services" />
@@ -2458,20 +2488,6 @@
               <feature />
               <structural-feature type="List&lt;Service&gt;" type-id="List&lt;Service&gt;" />
               <property default-value="new List&lt;Service&gt;()" />
-            </item>
-            <item id="62ace6b175504de2af41f990b7d89d5d" cid="C003" type="class" name="DatabaseServiceTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
-              <tagged-values>
-                <tagged-value id="tv39aaae031e714fb3ad09019ad1a6ff07" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv8be3bf36726949b8b9765c992b298191" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseServiceTraditional" />
-                <tagged-value id="tva77a34ad6c354e11b3f29a58d96d7aac" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv81803d56bdc4473e8b0779983ccfaf5c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseServiceTraditional.cs" />
-                <tagged-value id="tvcedaaebbe13c43cb8805b521a3ef2b6c" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv39b5271c756347f29379d2926ccb1dee" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="56" />
-                <tagged-value id="tvc023f20405fb4228b2ec2395205074ae" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="612" />
-                <tagged-value id="tv0735f57b85ee4b7d8e34e094643afbf0" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="676" />
-                <tagged-value id="tve7921ff4a7334232bfbd77bc43270379" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
-              </tagged-values>
-              <style class="Flat Light White" />
             </item>
             <item id="6df6489b48f444ab8e65db37e59d77dc" cid="PROP010" type="property" name="ServiceType" style-class="" owner="5ba5c5ebd2584ab78c0652ef0ab633a8" creation-date="08/13/2022 19:41:06" visibility="public">
               <stereotypes>
@@ -2514,8 +2530,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="03b8b160d5d7494f8a5b86222d0213ab" to="0448abd669f84a4ca8bfb499a2a231f2" derived="false">
-                <start-role id="umlar-5f813dd6-9ca8-480c-8155-2cb2ee6051c1" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="aa531f32be0e94900a51d0bad4db9ea96995" />
-                <end-role id="umlar-5ea98b74-9ea8-450f-a7c6-bd138355608f" name="" navigability="" association-type="association" visibility="private" />
+                <start-role id="umlar-c204123a-3ff8-410a-9bd8-8ae5bb91f7a6" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="aa531f32be0e94900a51d0bad4db9ea96995" />
+                <end-role id="umlar-45e1da98-e6f7-405c-978a-17938ceac166" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="51b6f7037779403993acb01551740d74" cid="REL010" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="083f80e2176c4f2bb58741a51232e0c1" to="7bc7bd2f4cb54071a733f351abb7d2d9" visibility="package">
@@ -2524,15 +2540,9 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="083f80e2176c4f2bb58741a51232e0c1" to="7bc7bd2f4cb54071a733f351abb7d2d9" derived="false">
-                <start-role id="umlar-606f4e5e-7cba-41ca-bf70-0a3125a245ec" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="a0e35100805ce4987815e3552f8dbbcc3995" />
-                <end-role id="umlar-d75ecdbd-38ba-4144-af48-686e86a637b0" name="" navigability="" association-type="association" visibility="undefined" />
+                <start-role id="umlar-d6c79296-abaf-469f-a485-546a9d35a33e" name="" navigability="" association-type="composition" visibility="private" attribute-ref="a0e35100805ce4987815e3552f8dbbcc3995" />
+                <end-role id="umlar-48a6407e-eb53-45b0-8847-be5ceae0fe1d" name="" navigability="" association-type="association" visibility="undefined" />
               </relation>
-            </item>
-            <item id="cf5b8fb9fe054a4783b8515b1aea88df" cid="GNR007" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="8e9eec1193d0405fb9dab3b3b57a04ca" to="03b8b160d5d7494f8a5b86222d0213ab" visibility="undefined">
-              <tagged-values>
-                <tagged-value id="tv62e0d808cfc548bfba9feb990e106482" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
-              </tagged-values>
-              <style class="Flat Light White" />
             </item>
             <item id="7bc7bd2f4cb54071a733f351abb7d2d9" cid="C006" type="class" name="LogService" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
               <tagged-values>
@@ -2545,6 +2555,12 @@
                 <tagged-value id="tve45111281034430d94f85a79cdd652ba" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="1131" />
                 <tagged-value id="tvb74e8406ae2047e49678412d4b147817" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1197" />
                 <tagged-value id="tv6e3185f1546648fea1d1668b40abdb2d" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="cf5b8fb9fe054a4783b8515b1aea88df" cid="GNR007" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="8e9eec1193d0405fb9dab3b3b57a04ca" to="03b8b160d5d7494f8a5b86222d0213ab" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv62e0d808cfc548bfba9feb990e106482" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
               <style class="Flat Light White" />
             </item>
@@ -2561,6 +2577,9 @@
                 <tagged-value id="tvc39eba368f724e10b1366befa887271f" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/19/2022 13:40:13" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="95e6c27cff9c4a17b91a4aabfab9ef42" />
+                <owned-item ref="b3968c804ff54f6892d63d5c675c8b82" />
+                <owned-item ref="f567370117e74b00bc3b66c8e360f864" />
                 <owned-item ref="95e6c27cff9c4a17b91a4aabfab9ef42" />
                 <owned-item ref="b3968c804ff54f6892d63d5c675c8b82" />
                 <owned-item ref="f567370117e74b00bc3b66c8e360f864" />
@@ -2618,9 +2637,11 @@
               <tagged-value id="tvb545d93ba87b4111a06fe221d7e3470d" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
             </tagged-values>
             <abstract-items>
-              <item id="4c7c761c849d47819f8827fd05809822" cid="C014" type="class" name="Class1" style-class="" change-tracking-state="added" creator="" creation-date="08/13/2022 22:17:34" />
+              <item id="4c7c761c849d47819f8827fd05809822" cid="C014" type="class" name="Class1" style-class="" change-tracking-state="added" creator="" creation-date="08/13/2022 22:17:34" visibility="undefined" />
               <item id="c0df81667c654960b4f7423c54b10b25" cid="REL016" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 19:48:06" from="03b8b160d5d7494f8a5b86222d0213ab" to="d6a27f7bb91340949512a49e92f4f92e" visibility="package">
                 <owned-items>
+                  <owned-item ref="94dd279a656b41839274bff5e6f8b188" />
+                  <owned-item ref="58b8ccba210e4b6780ad2da3e578e662" />
                   <owned-item ref="94dd279a656b41839274bff5e6f8b188" />
                   <owned-item ref="58b8ccba210e4b6780ad2da3e578e662" />
                   <owned-item ref="94dd279a656b41839274bff5e6f8b188" />
@@ -2630,8 +2651,8 @@
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="03b8b160d5d7494f8a5b86222d0213ab" to="d6a27f7bb91340949512a49e92f4f92e" derived="false">
-                  <start-role id="umlar-819ac9dc-6374-4ac6-a2b3-876537722bbc" name="" navigability="" association-type="composition" visibility="private" property-ref="94dd279a656b41839274bff5e6f8b188" />
-                  <end-role id="umlar-d5b6b405-8cd2-490b-8242-1f47df3f2c8f" name="" navigability="" association-type="association" visibility="private" property-ref="58b8ccba210e4b6780ad2da3e578e662" />
+                  <start-role id="umlar-0d6ee6c6-e87a-4df8-bbb9-62add773ef58" name="" navigability="" association-type="composition" visibility="private" property-ref="94dd279a656b41839274bff5e6f8b188" />
+                  <end-role id="umlar-ed5e8445-d6bb-48a0-ac12-8a879cde472f" name="" navigability="" association-type="association" visibility="private" property-ref="58b8ccba210e4b6780ad2da3e578e662" />
                 </relation>
               </item>
             </abstract-items>
@@ -2885,7 +2906,7 @@
           </item>
         </layer>
       </diagram>
-      <diagram type="uml-class" id="p8721ccd2b5184c3e86c0fd2de996e0aa_906687181" name="ClassDiagram2" order-index="3" uid="" auto-routed-paths="false" default-line-style="default">
+      <diagram type="uml-class" id="p8721ccd2b5184c3e86c0fd2de996e0aa_906687181" name="ClassDiagram2" order-index="3" uid="" name-style="" auto-routed-paths="false" default-line-style="default">
         <style>
           <background-color index="1" color="#FFFFFFFF" />
           <background-color index="2" color="#FFFFFFFF" />
