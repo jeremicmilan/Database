@@ -63,6 +63,17 @@ namespace Database
             Utility.LogOperationEnd("Undone log record {0}", ToString());
         }
 
+        public bool IsAlreadyApplied(int logSequenceNumberMax)
+        {
+            bool isLogAlreadyApplied = LogSequenceNumber <= logSequenceNumberMax;
+            if (isLogAlreadyApplied)
+            {
+                Utility.LogOperationSkip("Skipping apply of log record: " + ToString());
+            }
+
+            return isLogAlreadyApplied;
+        }
+
         protected void CheckParameterLength(string[] parameters, int expectedParameterCount)
         {
             if (parameters.Length != expectedParameterCount)

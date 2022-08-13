@@ -44,7 +44,7 @@ namespace Database
         //
         private void Checkpoint()
         {
-            LogRecordCheckpoint logRecordCheckpoint = new LogRecordCheckpoint(TransactionManager.IsTransactionActive);
+            LogRecordCheckpoint logRecordCheckpoint = new(TransactionManager.IsTransactionActive);
             LogManager.ProcessLogRecord(logRecordCheckpoint);
             StorageManager.Checkpoint(logRecordCheckpoint.LogSequenceNumber);
         }
@@ -53,9 +53,66 @@ namespace Database
 
         #region Table Operations
 
+        public readonly List<Table> CachedTables = new();
+
+        private Table GetTableFromCache(string tableName)
+        {
+            return CachedTables.Where(table => table.TableName == tableName).FirstOrDefault();
+        }
+
+        public Table CreateTable(string tableName, LogRecordPageCreate logRecordPageCreate = null)
+        {
+            Table table = GetTable(tableName);
+            if (table != null)
+            {
+                if (logRecordPageCreate != null && logRecordPageCreate.IsAlreadyApplied(table.LogSequenceNumberMax))
+                {
+                    return table;
+                }
+                else
+                {
+                    throw new Exception(string.Format("Table with name {0} already exists.", tableName));
+                }
+            }
+
+            Page page = Page.CreateAndProcess(tableName);
+            table = new Table(tableName, new List<Page> { page });
+            AddTableToCache(table);
+
+            return table;
+        }
+
+        private void AddTableToCache(Table table)
+        {
+            if (GetTableFromCache(table.TableName) != null)
+            {
+                throw new Exception(string.Format("Cannot add table {0} to cache, as it already exists.", table.TableName));
+            }
+
+            CachedTables.Add(table);
+        }
+
+        public Table GetTable(string tableName)
+        {
+            Table table = GetTableFromCache(tableName);
+            if (table != null)
+            {
+                return table;
+            }
+
+            List<Page> pages = StorageManager.GetPagesForTable(tableName);
+            if (pages.Any())
+            {
+                table = new Table(tableName, pages);
+                AddTableToCache(table);
+            }
+
+            return table;
+        }
+
         public Table GetExistingTable(string tableName)
         {
-            Table table = StorageManager.GetTable(tableName);
+            Table table = GetTable(tableName);
             if (table == null)
             {
                 throw new Exception(string.Format("Table with name {0} does not exists.", tableName));
@@ -103,7 +160,7 @@ namespace Database
                         throw new Exception("Invalid table name.");
                     }
 
-                    StorageManager.CreateTable(tableName);
+                    CreateTable(tableName);
 
                     Utility.LogOperationEnd("Created table: " + tableName);
                     break;
@@ -226,7 +283,7 @@ namespace Database
             return (table, Table.ParseValues(valuesPart, emptySupported));
         }
 
-        private string ParseOutValues(string partWithValues)
+        private static string ParseOutValues(string partWithValues)
         {
             if (!partWithValues.StartsWith(ValuesStatementPart))
             {
@@ -236,10 +293,10 @@ namespace Database
             return partWithValues[ValuesStatementPart.Length..].Trim();
         }
 
-        private (List<int>, List<int>) CompareTableValues(Table table, List<int> values)
+        private static (List<int>, List<int>) CompareTableValues(Table table, List<int> values)
         {
-            List<int> extraElementsInTable = new List<int>();
-            List<int> extraElementsInValues = new List<int>(values);
+            List<int> extraElementsInTable = new();
+            List<int> extraElementsInValues = new(values);
 
             foreach (int tableValue in table.Values)
             {

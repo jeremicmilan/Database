@@ -1,7 +1,23 @@
-﻿namespace Database
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace Database
 {
     public class StorageManagerHyperscale : StorageManager
     {
+        protected override List<Page> CachedPages
+        {
+            get
+            {
+                return Database.Get().CachedTables.SelectMany(table => table.Pages).ToList();
+            }
+            set
+            {
+                throw new Exception("CachedPages are readonly in StorageManagerHyperscale");
+            }
+        }
+
         public override void Checkpoint(int logSequenceNumber)
         {
             // We do not need to do anything here, as all of that will be handled on the storage service side automatically.
@@ -15,12 +31,29 @@
             new StorageServiceRequestCheckpoint(logSequenceNumber).Send();
         }
 
-        protected override Table GetTableFromPersistentStorage(string tableName)
+        private static int LogSequenceNumberMax => Database.Get().LogManager.LogSequenceNumberMax;
+
+        public override Page GetPage(int pageId)
         {
-            return new StorageServiceRequestGetTable(tableName, Database.Get().LogManager.LogSequenceNumberMax).Send().Table;
+            return GetPageFromCache(pageId)
+                ?? new StorageServiceRequestGetPage(pageId, LogSequenceNumberMax).Send().Page;
         }
 
-        public override void MarkTableAsDirty(Table table)
+        public override List<Page> GetPagesForTable(string tableName)
+        {
+            return new StorageServiceRequestGetPages(tableName, LogSequenceNumberMax).Send().Pages;
+        }
+
+        public override void AddPageToCache(Page page)
+        {
+            Table table = Database.Get().GetTable(page.TableName);
+            if (table == null || !table.Pages.Any(p => p.PageId == page.PageId))
+            {
+                throw new Exception("The table with all the pages should have already been created.");
+            }
+        }
+
+        public override void MarkPageAsDirty(Page page)
         {
             // In Hyperscale, nothing needs to be done here as storage service is the one responsible for persisting the data.
             // and whenever the database service process needs a page that it is not in memory anymore, it will get it from

@@ -41,7 +41,7 @@ namespace Database
                 .Send().LogRecords;
             foreach (LogRecord logRecord in logRecords)
             {
-                if (logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)) ||
+                if (logRecord.GetType().IsSubclassOf(typeof(LogRecordPage)) ||
                     logRecord is LogRecordUndo)
                 {
                     logRecord.Redo();

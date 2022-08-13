@@ -1,4 +1,4 @@
-1,TableCreate,testtable
-2,TableRowInsert,testtable,1
-3,TableRowInsert,testtable,2
-4,TableRowInsert,testtable,3
+1,PageCreate,1,testtable
+2,PageRowInsert,1,testtable,1
+3,PageRowInsert,1,testtable,2
+4,PageRowInsert,1,testtable,3

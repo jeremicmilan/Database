@@ -53,16 +53,16 @@ namespace Database
         public void UndoLog()
         {
 
-            List<LogRecordTable> logRecordsToBeUndone = GetLogToBeUndone();
+            List<LogRecordPage> logRecordsToBeUndone = GetLogToBeUndone();
             List<LogRecordUndo> logRecordsUndone = GetUndoneLog();
 
             // Do not undo log records we have undone on the previous recovery.
             //
             foreach (LogRecordUndo logRecordUndo in logRecordsUndone)
             {
-                LogRecordTable logRecordToBeUndone = logRecordsToBeUndone.First();
+                LogRecordPage logRecordToBeUndone = logRecordsToBeUndone.First();
 
-                if (!logRecordUndo.LogRecordTable.Equals(logRecordToBeUndone))
+                if (!logRecordUndo.LogRecordPage.Equals(logRecordToBeUndone))
                 {
                     throw new Exception("We did not undo properly the last time around.");
                 }
@@ -72,7 +72,7 @@ namespace Database
 
             // Undo log.
             //
-            foreach (LogRecordTable logRecord in logRecordsToBeUndone)
+            foreach (LogRecordPage logRecord in logRecordsToBeUndone)
             {
                 LogRecordUndo logRecordUndo = new LogRecordUndo(logRecord);
                 ProcessLogRecord(logRecordUndo);
@@ -80,12 +80,12 @@ namespace Database
             }
         }
 
-        private List<LogRecordTable> GetLogToBeUndone()
+        private List<LogRecordPage> GetLogToBeUndone()
         {
             return GetLogAfterLastBeginTransaction()
                 .TakeWhile(logRecord => !(logRecord is LogRecordUndo))
-                .Where(logRecord => logRecord.GetType().IsSubclassOf(typeof(LogRecordTable)))
-                .Select(logRecord => (LogRecordTable)logRecord)
+                .Where(logRecord => logRecord.GetType().IsSubclassOf(typeof(LogRecordPage)))
+                .Select(logRecord => (LogRecordPage)logRecord)
                 .Reverse()
                 .ToList();
         }
