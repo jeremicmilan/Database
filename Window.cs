@@ -8,51 +8,59 @@ namespace Database
         public static void SnapLeft()
         {
             Rect rect = GetWorkAreaRect();
-            rect.Right /= 2;
-            MoveWindow(rect);
+            rect.Right = (rect.Left + rect.Right) / 2;
+            MoveWindowTwice(rect);
         }
 
         public static void SnapTopLeft()
         {
             Rect rect = GetWorkAreaRect();
-            rect.Right /= 2;
-            rect.Bottom /= 2;
-            MoveWindow(rect);
+            rect.Right = (rect.Left + rect.Right) / 2;
+            rect.Bottom = (rect.Top + rect.Bottom) / 2;
+            MoveWindowTwice(rect);
         }
 
         public static void SnapRight()
         {
             Rect rect = GetWorkAreaRect();
-            rect.Left = rect.Right / 2;
-            MoveWindow(rect);
+            rect.Left = (rect.Left + rect.Right) / 2;
+            MoveWindowTwice(rect);
         }
 
         public static void SnapTopRight()
         {
             Rect rect = GetWorkAreaRect();
-            rect.Left = rect.Right / 2;
-            rect.Bottom /= 2;
-            MoveWindow(rect);
+            rect.Left = (rect.Left + rect.Right) / 2;
+            rect.Bottom = (rect.Top + rect.Bottom) / 2;
+            MoveWindowTwice(rect);
         }
 
         public static void SnapBottomLeft()
         {
             Rect rect = GetWorkAreaRect();
-            rect.Right /= 2;
-            rect.Top = rect.Bottom / 2;
-            MoveWindow(rect);
+            rect.Right = (rect.Left + rect.Right) / 2;
+            rect.Top = (rect.Top + rect.Bottom) / 2;
+            MoveWindowTwice(rect);
         }
 
         public static void SnapBottomRight()
         {
             Rect rect = GetWorkAreaRect();
-            rect.Left = rect.Right / 2;
-            rect.Top = rect.Bottom / 2;
-            MoveWindow(rect);
+            rect.Left = (rect.Left + rect.Right) / 2;
+            rect.Top = (rect.Top + rect.Bottom) / 2;
+            MoveWindowTwice(rect);
         }
 
         [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
         public static extern IntPtr FindWindowByCaption(IntPtr zeroOnly, string lpWindowName);
+
+        private static void MoveWindowTwice(Rect rect)
+        {
+            // When there are two screens, the first move will be done under the scaling of the monitor the window was originaly on.
+            //
+            MoveWindow(rect);
+            MoveWindow(rect);
+        }
 
         private static void MoveWindow(Rect rect)
         {
@@ -79,12 +87,12 @@ namespace Database
             EnumDisplayMonitors(IntPtr.Zero, IntPtr.Zero, MonitorEnumCallBack, IntPtr.Zero);
 
             Rect rect = monitorInfoEx.WorkArea;
-            if (rect.Right > 3000)
+            if (rect.Width > 3000)
             {
                 // For ultra wide monitors work area should be only on the left side of the screen,
                 //   where right side is reserved for the Visual Studio instance.
                 //
-                rect.Right /= 2;
+                rect.Right = (rect.Left + rect.Right) / 2;
             }
 
             return rect;
