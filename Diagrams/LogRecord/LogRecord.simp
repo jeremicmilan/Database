@@ -14,7 +14,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>795</value>
+        <value>836</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -51,6 +51,16 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-54bbe1406a6f43a4b84ca7214f1d5b1f" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
       </person>
     </persons>
     <teams />
@@ -73,8 +83,8 @@
         <type id="Class:083ab2e52fc643c1992670a77abc41d8" tid="" name="LogRecord" description="" class-ref="083ab2e52fc643c1992670a77abc41d8" />
         <type id="CSharp.string" tid="string" name="string" description="" nullable="true" />
         <type id="CSharp.bool" tid="boolean" name="bool" description="" />
-        <type id="CSharp.int" tid="s-integer32" name="int" description="" />
         <type id="Class:ca8e1958b1bb4bb69e35943511b7e22d" tid="" name="LogRecordPage" description="" class-ref="ca8e1958b1bb4bb69e35943511b7e22d" />
+        <type id="CSharp.int" tid="s-integer32" name="int" description="" />
       </types>
     </custom-types>
   </types>
@@ -255,8 +265,8 @@
                 <tagged-value id="tvb6cf65ec57864eb095e9f8cc2ac6af89" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
               <relation from="3809914ff54f485ea17196e1326abdc1" to="ca8e1958b1bb4bb69e35943511b7e22d" derived="false">
-                <start-role id="umlar-9e09ac53-e38d-400d-844c-cbf80c6fcff0" name="" navigability="" association-type="composition" visibility="private" />
-                <end-role id="umlar-a4e2b480-bea0-48dd-aefb-38eb2480b1ed" name="" navigability="" association-type="association" visibility="private" />
+                <start-role id="umlar-2e9d43cd-a729-40a8-ac10-95d7d1305523" name="" navigability="" association-type="composition" visibility="private" />
+                <end-role id="umlar-d683504c-7cc7-4e2a-ac17-b905e20328d9" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="6cddc68ba3f54c3a9086b62567262a9c" cid="C010" type="class" name="LogRecordCheckpoint" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
@@ -272,6 +282,7 @@
                 <tagged-value id="tv1cd6e2d499b045f8aae9e510d5a9f5f6" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 07:04:53" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
                 <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
                 <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
               </owned-items>
@@ -371,6 +382,7 @@
               <owned-items>
                 <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
                 <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
+                <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
               </owned-items>
               <attributes>
                 <attribute id="ac3fab5e4b40f48439c569ce86ee29291573" cid="PROP001" name="LogRecordPage" creation-date="08/13/2022 14:28:37" property-ref="24a74c45599d4d67b3ef8831486ab47e" />
@@ -435,6 +447,7 @@
                 <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
                 <owned-item ref="21820d27eb0b4f0097008674a8e1a8ed" />
                 <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
+                <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
               </owned-items>
               <attributes>
                 <attribute id="a081e43ba7b9946b6a7bb5ce64592cb7c574" cid="PROP002" name="PageId" creation-date="08/13/2022 14:28:37" property-ref="5360018cf46f4aab9238654e1556d33d" />
@@ -475,6 +488,7 @@
                 <tagged-value id="tvbb8a1083bf214472b573f33636bb5fcb" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 14:20:23" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
                 <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
                 <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
               </owned-items>
@@ -591,7 +605,7 @@
             </item>
           </abstract-items>
           <sub-models />
-          <diagram type="uml-class" id="p1198366ab60c463696885c8fc46787cf_762029861" name="LogRecord" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="191,-111">
+          <diagram type="uml-class" id="p1198366ab60c463696885c8fc46787cf_762029861" name="LogRecord" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="77,-175">
             <style>
               <background-color index="1" color="#FFFFFFFF" />
               <background-color index="2" color="#FFFFFFFF" />
@@ -627,7 +641,7 @@
                 <class />
               </item>
               <item id="45c430e696a142abbbb475a61e0c1234" iid="4b655bece6894b52ae433f5ca1b13b61" creation-date="08/13/2022 14:28:37" order-index="3" type="entity">
-                <layout ax="1280" ay="530" awidth="238" aheight="41" x="1280" y="530" width="341" height="116" />
+                <layout ax="1010" ay="610" awidth="238" aheight="41" x="1010" y="610" width="341" height="116" />
                 <classifier />
                 <class />
               </item>
@@ -670,9 +684,9 @@
                 <class />
               </item>
               <item id="d58d3b9cade643c18f431c76e6defbe9" iid="b4727caba84c4835a12414bdc3c2de5a" creation-date="08/13/2022 14:28:37" order-index="10" type="relation">
-                <layout line-style="perpendicular" lock-to-fields="false" auto-path="" x1="1399" y1="530" x2="898" y2="441" start-border-pos="0.125" end-border-pos="0.625" name-position="0,20">
+                <layout line-style="perpendicular" start-auto-side="false" lock-start-point="true" lock-to-fields="false" auto-path="" x1="1010" y1="630" x2="898" y2="441" start-border-pos="0.878048777580261" end-border-pos="0.625" start-local-pos="20" name-position="0,20">
                   <points>
-                    <point x="1399" y="530" />
+                    <point x="1010" y="630" />
                     <point x="898" y="441" />
                   </points>
                 </layout>
@@ -698,7 +712,7 @@
                 <class />
               </item>
               <item id="2f5f6dda80dd41dcaa82e8d036943e2a" iid="61f1c51b02fe4fdd95c5bd6492edb4ba" creation-date="08/13/2022 14:28:37" order-index="14" type="entity">
-                <layout ax="1030" ay="530" awidth="234" aheight="41" x="1030" y="530" width="338" height="116" />
+                <layout ax="1010" ay="550" awidth="234" aheight="41" x="1010" y="550" width="338" height="116" />
                 <classifier />
                 <class />
               </item>
@@ -731,9 +745,9 @@
                 <class />
               </item>
               <item id="2c39c2afe95340abb16b42b88b73d402" iid="e6dc2360701f455595ed3383f9c4504e" creation-date="08/13/2022 14:28:37" order-index="19" type="relation">
-                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="898" y1="530" x2="898" y2="441" start-border-pos="0.123853214085102" end-border-pos="0.625" end-local-pos="88" name-position="0,20">
+                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1010" y1="510" x2="898" y2="441" start-border-pos="0.875" end-border-pos="0.625" end-local-pos="88" name-position="0,20">
                   <points>
-                    <point x="898" y="530" />
+                    <point x="1010" y="510" />
                     <point x="898" y="441" />
                   </points>
                 </layout>
@@ -749,14 +763,14 @@
                 <relation from="6657136a47ae42c89e96de4798ee647d" from-iid="4b015600f0964217a48d89203c2cc247" to="ab0b5cfed1f440ddbc75afe44ad8f57c" to-iid="d3ee0126af9843fe8cd15e97f2406b27" />
               </item>
               <item id="d47a98bd8a8c478a82d2638fc40e3ba3" iid="2aa9407a4c2f4eb6a41f981886e2e434" creation-date="08/13/2022 14:28:37" order-index="21" type="entity">
-                <layout ax="790" ay="530" awidth="218" aheight="41" x="790" y="530" width="324" height="116" />
+                <layout ax="1010" ay="490" awidth="218" aheight="41" x="1010" y="490" width="324" height="116" />
                 <classifier />
                 <class />
               </item>
               <item id="bf37898f54194dc29cfaaacb2d1e9852" iid="7bc404ff4c3a42bca894e5c56bbcd076" creation-date="08/13/2022 14:28:37" order-index="22" type="relation">
-                <layout line-style="perpendicular" lock-to-fields="false" auto-path="" x1="1147" y1="530" x2="898" y2="441" start-border-pos="0.125" end-border-pos="0.625" name-position="0,20">
+                <layout line-style="perpendicular" start-auto-side="false" lock-start-point="true" lock-to-fields="false" auto-path="" x1="1010" y1="570" x2="898" y2="441" start-border-pos="0.878048777580261" end-border-pos="0.625" start-local-pos="20" name-position="0,20">
                   <points>
-                    <point x="1147" y="530" />
+                    <point x="1010" y="570" />
                     <point x="898" y="441" />
                   </points>
                 </layout>
