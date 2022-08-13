@@ -117,22 +117,6 @@ namespace Database
             StorageManager.Get().MarkPageAsDirty(this);
         }
 
-        public bool IsLogAlreadyApplied(int? logSequenceNumber)
-        {
-            if (logSequenceNumber == null)
-            {
-                return false;
-            }
-
-            bool isLogAlreadyApplied = logSequenceNumber <= LogSequenceNumberMax;
-            if (isLogAlreadyApplied)
-            {
-                Utility.LogOperationSkip("Skipping apply of log sequence number: " + logSequenceNumber);
-            }
-
-            return isLogAlreadyApplied;
-        }
-
         public override string ToString()
         {
             return PageId +
