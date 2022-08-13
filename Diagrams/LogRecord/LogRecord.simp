@@ -14,7 +14,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>851</value>
+        <value>880</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -629,7 +629,7 @@
             </item>
           </abstract-items>
           <sub-models />
-          <diagram type="uml-class" id="p1198366ab60c463696885c8fc46787cf_762029861" name="LogRecord" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="77,-175">
+          <diagram type="uml-class" id="p1198366ab60c463696885c8fc46787cf_762029861" name="LogRecord" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="-7,-263">
             <style>
               <background-color index="1" color="#FFFFFFFF" />
               <background-color index="2" color="#FFFFFFFF" />
@@ -665,7 +665,7 @@
                 <class />
               </item>
               <item id="45c430e696a142abbbb475a61e0c1234" iid="4b655bece6894b52ae433f5ca1b13b61" creation-date="08/13/2022 14:28:37" order-index="3" type="entity">
-                <layout ax="1010" ay="610" awidth="238" aheight="41" x="1010" y="610" width="341" height="116" />
+                <layout ax="1010" ay="610" awidth="240" aheight="41" x="1010" y="610" width="240" height="116" rotation-center="-1,0" />
                 <classifier />
                 <class />
               </item>
@@ -698,7 +698,7 @@
                 <class />
               </item>
               <item id="6cddc68ba3f54c3a9086b62567262a9c" iid="1a8ccee9b4de49c29da0ae749a77c265" creation-date="08/13/2022 14:28:37" order-index="8" type="entity">
-                <layout ax="1010" ay="400" awidth="237" aheight="60" x="1010" y="400" width="240" height="60" rotation-center="55,74.5" />
+                <layout ax="1010" ay="400" awidth="240" aheight="60" x="1010" y="400" width="240" height="60" rotation-center="53.5,74.5" />
                 <classifier />
                 <class />
               </item>
@@ -717,9 +717,9 @@
                 <relation from="45c430e696a142abbbb475a61e0c1234" from-iid="4b655bece6894b52ae433f5ca1b13b61" to="3edef9f6b4e0483f92e560737598fb0a" to-iid="8d449211f0b44a9d8935f86dff43ba81" />
               </item>
               <item id="65ed68e2267144188fb0380ae5eec649" iid="8f0e3283b88e4f08998efba54ceb5628" creation-date="08/13/2022 14:28:37" order-index="11" type="relation">
-                <layout line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1128" y1="400" x2="753" y2="326" start-border-pos="0.124472573399544" end-border-pos="0.624273255813953" start-local-pos="118" end-local-pos="173" name-position="0,20">
+                <layout line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1129" y1="400" x2="753" y2="326" start-border-pos="0.124472573399544" end-border-pos="0.624273255813953" start-local-pos="118" end-local-pos="173" name-position="0,20">
                   <points>
-                    <point x="1128" y="400" />
+                    <point x="1129" y="400" />
                     <point x="753" y="326" />
                   </points>
                 </layout>
@@ -736,7 +736,7 @@
                 <class />
               </item>
               <item id="2f5f6dda80dd41dcaa82e8d036943e2a" iid="61f1c51b02fe4fdd95c5bd6492edb4ba" creation-date="08/13/2022 14:28:37" order-index="14" type="entity">
-                <layout ax="1010" ay="550" awidth="234" aheight="41" x="1010" y="550" width="338" height="116" />
+                <layout ax="1010" ay="550" awidth="240" aheight="41" x="1010" y="550" width="240" height="116" rotation-center="-3,0" />
                 <classifier />
                 <class />
               </item>
@@ -787,7 +787,7 @@
                 <relation from="6657136a47ae42c89e96de4798ee647d" from-iid="4b015600f0964217a48d89203c2cc247" to="ab0b5cfed1f440ddbc75afe44ad8f57c" to-iid="d3ee0126af9843fe8cd15e97f2406b27" />
               </item>
               <item id="d47a98bd8a8c478a82d2638fc40e3ba3" iid="2aa9407a4c2f4eb6a41f981886e2e434" creation-date="08/13/2022 14:28:37" order-index="21" type="entity">
-                <layout ax="1010" ay="490" awidth="218" aheight="41" x="1010" y="490" width="324" height="116" />
+                <layout ax="1010" ay="490" awidth="240" aheight="41" x="1010" y="490" width="240" height="116" rotation-center="-11,0" />
                 <classifier />
                 <class />
               </item>
