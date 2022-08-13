@@ -14,7 +14,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>836</value>
+        <value>851</value>
       </counter>
     </entity-ids>
     <diagrams>
@@ -125,7 +125,7 @@
             <tagged-value id="tv3c10e301d83d42f282ba5f87354d821a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
           </tagged-values>
           <abstract-items>
-            <item id="925e6ac0c003497d933212032ada2a1b" cid="C005" type="class" name="LogRecordPageCreate" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="925e6ac0c003497d933212032ada2a1b" cid="C005" type="class" name="LogRecordPageCreate" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tv76adfd5d2c724349abcf65fecd6b3fde" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tvfacb0777988b4bb3bd547b992d95f4a1" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageCreate" />
@@ -137,11 +137,13 @@
                 <tagged-value id="tvb26a1be5da704cb8af5274e3390aad0a" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="640" />
                 <tagged-value id="tv5b55183b5a884169b05f3b3c577b79a9" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 16:32:35" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="a7eeef8e1f2b4905b0e102bff4280b88" cid="GNR007" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="8eb7fa1481ff49d596511798221a623b" to="ab0b5cfed1f440ddbc75afe44ad8f57c" visibility="undefined">
+            <item id="a7eeef8e1f2b4905b0e102bff4280b88" cid="GNR007" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="8eb7fa1481ff49d596511798221a623b" to="ab0b5cfed1f440ddbc75afe44ad8f57c" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tvc061e8abf3934019812d5582666becd8" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
             <item id="b4b2ff52b2614c3ca546db8aec4abe38" cid="PROP006" type="property" name="LogSequenceNumber" style-class="" owner="083ab2e52fc643c1992670a77abc41d8" creation-date="08/13/2022 14:28:37" visibility="public">
               <stereotypes>
@@ -164,7 +166,7 @@
               <structural-feature type="int" type-id="CSharp.int" />
               <property />
             </item>
-            <item id="8eb7fa1481ff49d596511798221a623b" cid="C007" type="class" name="LogRecordPageRowDelete" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="8eb7fa1481ff49d596511798221a623b" cid="C007" type="class" name="LogRecordPageRowDelete" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tvb87ef050d83b430287dd3abe793c824b" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv6c04faf2738e4815a3d42ef831d56fc4" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageRowDelete" />
@@ -176,11 +178,13 @@
                 <tagged-value id="tvf97ee3d579994c8db9055a035cca42de" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="770" />
                 <tagged-value id="tvcbd504706ccf43b493b340c9ccf06cbf" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 11:42:57" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="3165ebc4e50a4a70bad8c9a0b29045b2" cid="GNR001" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="3edef9f6b4e0483f92e560737598fb0a" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+            <item id="3165ebc4e50a4a70bad8c9a0b29045b2" cid="GNR001" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="3edef9f6b4e0483f92e560737598fb0a" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tv0cfb493791164bb996e7052aee454352" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
             <item id="300bd8d661de4f59b0cfcf011717ad3d" cid="PROP004" type="property" name="IsTransactionActive" style-class="" owner="6cddc68ba3f54c3a9086b62567262a9c" creation-date="08/13/2022 14:28:37" visibility="public">
               <stereotypes>
@@ -203,7 +207,7 @@
               <structural-feature type="bool" type-id="CSharp.bool" />
               <property />
             </item>
-            <item id="3edef9f6b4e0483f92e560737598fb0a" cid="C001" type="class" name="LogRecordTransaction" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+            <item id="3edef9f6b4e0483f92e560737598fb0a" cid="C001" type="class" name="LogRecordTransaction" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
               <tagged-values>
                 <tagged-value id="tvc3d26c4d31604913809518c9dad3ce8d" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv445c78b98de84036bb4ce827cb7199c2" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransaction" />
@@ -215,6 +219,7 @@
                 <tagged-value id="tv9de2a134c6354497b84a0fe89c131cc4" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="275" />
                 <tagged-value id="tvdcf35a131cc04f438b8d0a0982cf6d79" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/28/2022 10:58:37" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
             <item id="24a74c45599d4d67b3ef8831486ab47e" cid="PROP001" type="property" name="LogRecordPage" style-class="" owner="3809914ff54f485ea17196e1326abdc1" creation-date="08/13/2022 14:28:37" visibility="public">
               <stereotypes>
@@ -237,17 +242,19 @@
               <structural-feature type="LogRecordPage" type-id="Class:ca8e1958b1bb4bb69e35943511b7e22d" />
               <property />
             </item>
-            <item id="5427c088ef6a4c94bcd03a587495ddd5" cid="GNR006" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="6657136a47ae42c89e96de4798ee647d" to="ab0b5cfed1f440ddbc75afe44ad8f57c" visibility="undefined">
+            <item id="5427c088ef6a4c94bcd03a587495ddd5" cid="GNR006" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="6657136a47ae42c89e96de4798ee647d" to="ab0b5cfed1f440ddbc75afe44ad8f57c" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tvd9d9b724fafe47039e8c6642bf6886fd" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="d58d3b9cade643c18f431c76e6defbe9" cid="GNR004" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="45c430e696a142abbbb475a61e0c1234" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
+            <item id="d58d3b9cade643c18f431c76e6defbe9" cid="GNR004" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="45c430e696a142abbbb475a61e0c1234" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tvda476d05b91648d08f23edd0f6c0bc6f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="45c430e696a142abbbb475a61e0c1234" cid="C004" type="class" name="LogRecordTransactionRollback" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="45c430e696a142abbbb475a61e0c1234" cid="C004" type="class" name="LogRecordTransactionRollback" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tv933af6fc778141d9918320fe905dc5d8" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv4afd245048b040c0a57564683b76ac6f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransactionRollback" />
@@ -259,17 +266,19 @@
                 <tagged-value id="tvde97256acd634f0da93c6e510c8411f4" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="450" />
                 <tagged-value id="tv832c293459664358aeafd683c0c92ff8" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:09:25" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="439353b2e7d744848b06d3ac30e25ad5" cid="REL002" type="relationship" name="" style-class="" creation-date="08/13/2022 14:28:37" from="3809914ff54f485ea17196e1326abdc1" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="package">
+            <item id="439353b2e7d744848b06d3ac30e25ad5" cid="REL002" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="3809914ff54f485ea17196e1326abdc1" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="package">
               <tagged-values>
                 <tagged-value id="tvb6cf65ec57864eb095e9f8cc2ac6af89" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
               <relation from="3809914ff54f485ea17196e1326abdc1" to="ca8e1958b1bb4bb69e35943511b7e22d" derived="false">
                 <start-role id="umlar-2e9d43cd-a729-40a8-ac10-95d7d1305523" name="" navigability="" association-type="composition" visibility="private" />
                 <end-role id="umlar-d683504c-7cc7-4e2a-ac17-b905e20328d9" name="" navigability="" association-type="association" visibility="private" />
               </relation>
             </item>
-            <item id="6cddc68ba3f54c3a9086b62567262a9c" cid="C010" type="class" name="LogRecordCheckpoint" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="6cddc68ba3f54c3a9086b62567262a9c" cid="C010" type="class" name="LogRecordCheckpoint" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tvbb36a54774ba4d288b2451d22293d2e3" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv9911712fcee74ffcac7306c889190f36" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordCheckpoint" />
@@ -286,11 +295,12 @@
                 <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
                 <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
               </owned-items>
+              <style class="Flat Light White" />
               <attributes>
                 <attribute id="a12a71c6d014e452a81fc9c3cbabfc863574" cid="PROP004" name="IsTransactionActive" creation-date="08/13/2022 14:28:37" property-ref="300bd8d661de4f59b0cfcf011717ad3d" />
               </attributes>
             </item>
-            <item id="6657136a47ae42c89e96de4798ee647d" cid="C006" type="class" name="LogRecordPageRowInsert" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="6657136a47ae42c89e96de4798ee647d" cid="C006" type="class" name="LogRecordPageRowInsert" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tv0b3b37307619479d9b52312a13b9707a" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tvea2eefc03c02489797fe4d7e8eb3a217" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageRowInsert" />
@@ -302,8 +312,9 @@
                 <tagged-value id="tvbb2215fd3be6499eb45610f6c302ad34" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="772" />
                 <tagged-value id="tv036042ec5e60423b9e0cbb18283c2b9f" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 11:43:09" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="d47a98bd8a8c478a82d2638fc40e3ba3" cid="C002" type="class" name="LogRecordTransactionBegin" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="d47a98bd8a8c478a82d2638fc40e3ba3" cid="C002" type="class" name="LogRecordTransactionBegin" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tv60114a5acbb84344bf7a12b8033a2653" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv12d5fc8510a249e2be9965f4ddf8b9cf" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransactionBegin" />
@@ -315,13 +326,15 @@
                 <tagged-value id="tvbaf3149d127f44ff815e51058eff5961" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="448" />
                 <tagged-value id="tvcfdbdc07439d425db772f392c03f83fc" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 11:56:44" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="a401b94da15f4bbfbe48c392dcad07a8" cid="GNR008" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="3809914ff54f485ea17196e1326abdc1" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+            <item id="a401b94da15f4bbfbe48c392dcad07a8" cid="GNR008" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="3809914ff54f485ea17196e1326abdc1" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tv58744ff34b0e489cbf36482d4573e375" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="ab0b5cfed1f440ddbc75afe44ad8f57c" cid="C011" type="class" name="LogRecordPageOperation" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+            <item id="ab0b5cfed1f440ddbc75afe44ad8f57c" cid="C011" type="class" name="LogRecordPageOperation" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
               <tagged-values>
                 <tagged-value id="tva89d835fd3eb4c82a0ca80a8cb1a7d58" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv64ff5a54682a4f9a8ddb76fb965813bc" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageOperation" />
@@ -336,6 +349,7 @@
               <owned-items>
                 <owned-item ref="b7348e6b17f143a69a625506eaad77fb" />
               </owned-items>
+              <style class="Flat Light White" />
               <attributes>
                 <attribute id="a1ad181dc25864b98a5e91ae8d4f80dc3575" cid="PROP005" name="Value" creation-date="08/13/2022 14:28:37" property-ref="b7348e6b17f143a69a625506eaad77fb" />
               </attributes>
@@ -367,7 +381,7 @@
                 </operation>
               </operations>
             </item>
-            <item id="3809914ff54f485ea17196e1326abdc1" cid="C008" type="class" name="LogRecordUndo" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="3809914ff54f485ea17196e1326abdc1" cid="C008" type="class" name="LogRecordUndo" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tvf6b32636e7ad43fb9a230e153a994b75" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tvea45dd07082f48a2ac83a7fefeb6b3fc" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordUndo" />
@@ -384,26 +398,30 @@
                 <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
                 <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
               </owned-items>
+              <style class="Flat Light White" />
               <attributes>
                 <attribute id="ac3fab5e4b40f48439c569ce86ee29291573" cid="PROP001" name="LogRecordPage" creation-date="08/13/2022 14:28:37" property-ref="24a74c45599d4d67b3ef8831486ab47e" />
               </attributes>
             </item>
-            <item id="bf37898f54194dc29cfaaacb2d1e9852" cid="GNR003" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="2f5f6dda80dd41dcaa82e8d036943e2a" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
+            <item id="bf37898f54194dc29cfaaacb2d1e9852" cid="GNR003" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="2f5f6dda80dd41dcaa82e8d036943e2a" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tvc798bfac2abe46ef9e839ae765db02a8" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="0d8c7f2f63124d9ca17aed838f7bf15a" cid="GNR005" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="undefined">
+            <item id="0d8c7f2f63124d9ca17aed838f7bf15a" cid="GNR005" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tve5a3ddc505ee41cfb49f53c9f35188c1" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="4686f6f1f05a4339b2e9cdee8a41b746" cid="GNR011" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="ab0b5cfed1f440ddbc75afe44ad8f57c" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="undefined">
+            <item id="4686f6f1f05a4339b2e9cdee8a41b746" cid="GNR011" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="ab0b5cfed1f440ddbc75afe44ad8f57c" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tvabdf368f934648cb9e6ccc87235e6446" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="2f5f6dda80dd41dcaa82e8d036943e2a" cid="C003" type="class" name="LogRecordTransactionCommit" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+            <item id="2f5f6dda80dd41dcaa82e8d036943e2a" cid="C003" type="class" name="LogRecordTransactionCommit" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
                 <tagged-value id="tva9c68456cb75411d9f5e056c9b1b2591" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tve4069d1a7bd94979bc66e86adca48d14" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransactionCommit" />
@@ -415,6 +433,7 @@
                 <tagged-value id="tv85567aae852b4b73ba11bb04de81aed0" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="442" />
                 <tagged-value id="tvda3e77a2fe9d400fb1638f777f06a986" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:09:30" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
             <item id="5360018cf46f4aab9238654e1556d33d" cid="PROP002" type="property" name="PageId" style-class="" owner="ca8e1958b1bb4bb69e35943511b7e22d" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
@@ -431,7 +450,7 @@
               <structural-feature type="int" type-id="CSharp.int" />
               <property />
             </item>
-            <item id="ca8e1958b1bb4bb69e35943511b7e22d" cid="C009" type="class" name="LogRecordPage" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+            <item id="ca8e1958b1bb4bb69e35943511b7e22d" cid="C009" type="class" name="LogRecordPage" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
               <tagged-values>
                 <tagged-value id="tv2981a82aa3614cdcaf34886131249f8d" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv110be9ece839464da40224be1b035d1d" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPage" />
@@ -449,6 +468,7 @@
                 <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
                 <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
               </owned-items>
+              <style class="Flat Light White" />
               <attributes>
                 <attribute id="a081e43ba7b9946b6a7bb5ce64592cb7c574" cid="PROP002" name="PageId" creation-date="08/13/2022 14:28:37" property-ref="5360018cf46f4aab9238654e1556d33d" />
                 <attribute id="a66831adae51946718b1c33bae7862230574" cid="PROP003" name="TableName" creation-date="08/13/2022 14:28:37" property-ref="21820d27eb0b4f0097008674a8e1a8ed" />
@@ -475,7 +495,7 @@
               <structural-feature type="int" type-id="CSharp.int" />
               <property />
             </item>
-            <item id="083ab2e52fc643c1992670a77abc41d8" cid="C012" type="class" name="LogRecord" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+            <item id="083ab2e52fc643c1992670a77abc41d8" cid="C012" type="class" name="LogRecord" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
               <tagged-values>
                 <tagged-value id="tvba45ce7a1929441295e7c86fb1f69b54" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
                 <tagged-value id="tv57b52e58961340c4b151019f219e6c74" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecord" />
@@ -492,6 +512,7 @@
                 <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
                 <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
               </owned-items>
+              <style class="Flat Light White" />
               <attributes>
                 <attribute id="a55f324607f454ffba68df8393a850321575" cid="PROP006" name="LogSequenceNumber" creation-date="08/13/2022 14:28:37" property-ref="b4b2ff52b2614c3ca546db8aec4abe38" />
               </attributes>
@@ -573,15 +594,17 @@
                 </operation>
               </operations>
             </item>
-            <item id="65ed68e2267144188fb0380ae5eec649" cid="GNR010" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="6cddc68ba3f54c3a9086b62567262a9c" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+            <item id="65ed68e2267144188fb0380ae5eec649" cid="GNR010" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="6cddc68ba3f54c3a9086b62567262a9c" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tv8714a8662fa446ed95e88f858e57431a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
-            <item id="2c39c2afe95340abb16b42b88b73d402" cid="GNR002" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="d47a98bd8a8c478a82d2638fc40e3ba3" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
+            <item id="2c39c2afe95340abb16b42b88b73d402" cid="GNR002" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="d47a98bd8a8c478a82d2638fc40e3ba3" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tv43a9c6666db549b392edcece20c9c2cd" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
             <item id="21820d27eb0b4f0097008674a8e1a8ed" cid="PROP003" type="property" name="TableName" style-class="" owner="ca8e1958b1bb4bb69e35943511b7e22d" creation-date="08/13/2022 14:28:37" visibility="public">
               <tagged-values>
@@ -598,10 +621,11 @@
               <structural-feature type="string" type-id="CSharp.string" />
               <property />
             </item>
-            <item id="33c1bb169ea0432699b58e45558c01f9" cid="GNR009" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="ca8e1958b1bb4bb69e35943511b7e22d" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+            <item id="33c1bb169ea0432699b58e45558c01f9" cid="GNR009" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 14:28:37" from="ca8e1958b1bb4bb69e35943511b7e22d" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
               <tagged-values>
                 <tagged-value id="tv9e944549b4be4cc6927e1390a9aac0a7" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
+              <style class="Flat Light White" />
             </item>
           </abstract-items>
           <sub-models />
