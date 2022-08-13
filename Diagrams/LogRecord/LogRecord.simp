@@ -1,0 +1,816 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<sim-project version="13.40" multi-file="no" uid="simp8bd68932c89940b1955e519c4c6830d9">
+  <meta>
+    <name>LogRecord</name>
+    <authors>Milan Jeremić</authors>
+    <description />
+  </meta>
+  <counters models="2">
+    <entity-names />
+    <entity-ids>
+      <counter>
+        <item-type type-id="package" type="Package" />
+        <value>2</value>
+      </counter>
+      <counter>
+        <item-type type-id="group" type="Group" />
+        <value>795</value>
+      </counter>
+    </entity-ids>
+    <diagrams>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlPackageDiagram</type>
+        <value>1</value>
+      </counter>
+      <counter>
+        <type>SoftwareIdeasModeler.Core.Diagrams.UmlDiagrams.UmlClassDiagram</type>
+        <value>1</value>
+      </counter>
+    </diagrams>
+    <fields />
+  </counters>
+  <alias-groups />
+  <management uid="md-ef2504fddca7468bbe0be440c9ca659f" name="" task-id-sequence="0">
+    <working-schedule uid="ws-d1e92b8b74774213ad878d7a62435f0e" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+    <persons>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+        <working-schedule uid="ws-281702bbbfd54a3285e3f55ec972d38a" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
+      </person>
+    </persons>
+    <teams />
+    <sprints />
+    <projects />
+    <modules />
+    <tasks />
+    <to-dos />
+  </management>
+  <glossary id="glsr-4e3e8a4b60be4c30a122eebabbbb67b3" />
+  <types default="UML">
+    <type-sets>
+      <type-set file="UmlTypes.xml" />
+    </type-sets>
+    <custom-types>
+      <parameters />
+      <types>
+        <type id="Page" tid="" name="Page" description="" />
+        <type id="LogRecordUndo" tid="" name="LogRecordUndo" description="" />
+        <type id="Class:083ab2e52fc643c1992670a77abc41d8" tid="" name="LogRecord" description="" class-ref="083ab2e52fc643c1992670a77abc41d8" />
+        <type id="CSharp.string" tid="string" name="string" description="" nullable="true" />
+        <type id="CSharp.bool" tid="boolean" name="bool" description="" />
+        <type id="CSharp.int" tid="s-integer32" name="int" description="" />
+        <type id="Class:ca8e1958b1bb4bb69e35943511b7e22d" tid="" name="LogRecordPage" description="" class-ref="ca8e1958b1bb4bb69e35943511b7e22d" />
+      </types>
+    </custom-types>
+  </types>
+  <items />
+  <models>
+    <model id="p2bc9027312ac423a96036b4b6c5a302a_454811335" name="Model1" namespace="" order-index="1">
+      <meta>
+        <authors>
+          <author> </author>
+        </authors>
+        <description />
+        <creation-date>08/13/2022 14:28:19</creation-date>
+        <change-date>01/01/0001 00:00:00</change-date>
+        <revision-count>0</revision-count>
+        <version />
+      </meta>
+      <abstract-items>
+        <item id="d45ed04a3d9846dc816b9d328fa36b5d" cid="PKG001" type="package" name="Database" style-class="" creator="" creation-date="08/13/2022 14:28:37" visibility="undefined">
+          <tagged-values>
+            <tagged-value id="tvef5c78aead8a465db07a250a10346869" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+            <tagged-value id="tv90872da9f6154c60943c3eaaf78e92d9" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
+          </tagged-values>
+        </item>
+      </abstract-items>
+      <sub-models>
+        <model id="p582f32e424174b5ea0629ab4a6af4b3b_248523283" name="Database" namespace="Database" order-index="2">
+          <meta>
+            <authors>
+              <author> </author>
+            </authors>
+            <description />
+            <creation-date>08/13/2022 14:28:37</creation-date>
+            <change-date>01/01/0001 00:00:00</change-date>
+            <revision-count>0</revision-count>
+            <version />
+          </meta>
+          <tagged-values>
+            <tagged-value id="tv3c10e301d83d42f282ba5f87354d821a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
+          </tagged-values>
+          <abstract-items>
+            <item id="925e6ac0c003497d933212032ada2a1b" cid="C005" type="class" name="LogRecordPageCreate" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv76adfd5d2c724349abcf65fecd6b3fde" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tvfacb0777988b4bb3bd547b992d95f4a1" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageCreate" />
+                <tagged-value id="tvfd408bb8e85d407288cdc54a8e791e51" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv0aac7fff4e9b4106a6ff05f503923951" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageCreate.cs" />
+                <tagged-value id="tva5452caa1a374ed5b839b2634aa9dbc8" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv22d90b80c8dd401fb5a1e5a8a12a60a8" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tvfc3988e568cf4456ad27d7e839c5a3f3" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="605" />
+                <tagged-value id="tvb26a1be5da704cb8af5274e3390aad0a" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="640" />
+                <tagged-value id="tv5b55183b5a884169b05f3b3c577b79a9" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 16:32:35" />
+              </tagged-values>
+            </item>
+            <item id="a7eeef8e1f2b4905b0e102bff4280b88" cid="GNR007" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="8eb7fa1481ff49d596511798221a623b" to="ab0b5cfed1f440ddbc75afe44ad8f57c" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tvc061e8abf3934019812d5582666becd8" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="b4b2ff52b2614c3ca546db8aec4abe38" cid="PROP006" type="property" name="LogSequenceNumber" style-class="" owner="083ab2e52fc643c1992670a77abc41d8" creation-date="08/13/2022 14:28:37" visibility="public">
+              <stereotypes>
+                <stereotype name="property" />
+              </stereotypes>
+              <tagged-values>
+                <tagged-value id="tvec59baab4e9c4d4eaf5366c91ca1f8ff" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogSequenceNumber" />
+                <tagged-value id="tv5ae89b51bdcd4913af56854ebb8cf3cd" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvb49f2284b1fe40458a319136d6a33bd1" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecord.cs" />
+                <tagged-value id="tv59eeefca641e4e96b328128107191d07" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv0b8da94df81d4bf48b638a84745e3b29" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="112" />
+                <tagged-value id="tva14b9c16373341b08f11fd6525a21f9b" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="42" />
+                <tagged-value id="tvb708368079e046af92bb186bdeecf2e3" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="3187" />
+                <tagged-value id="tvb1c872f499cb447998a42a9018fd3cfd" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 14:20:23" />
+              </tagged-values>
+              <stereotype-instances>
+                <stereotype id="b4b2ff52b2614c3ca546db8aec4abe38_property_c" type="property" ref="" />
+              </stereotype-instances>
+              <feature />
+              <structural-feature type="int" type-id="CSharp.int" />
+              <property />
+            </item>
+            <item id="8eb7fa1481ff49d596511798221a623b" cid="C007" type="class" name="LogRecordPageRowDelete" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tvb87ef050d83b430287dd3abe793c824b" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv6c04faf2738e4815a3d42ef831d56fc4" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageRowDelete" />
+                <tagged-value id="tv8fef35657c2645afa1a3f115428d9f3a" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvcbd773e12d9e464382a0e171b3f3ea92" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageRowDelete.cs" />
+                <tagged-value id="tv67551e2f78184872a5d6f5bb74945a14" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv823a445b1ab94c6e911a940bf4c8a244" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv6d4a130aa0bd4b15982a1d0247e2d25b" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="735" />
+                <tagged-value id="tvf97ee3d579994c8db9055a035cca42de" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="770" />
+                <tagged-value id="tvcbd504706ccf43b493b340c9ccf06cbf" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 11:42:57" />
+              </tagged-values>
+            </item>
+            <item id="3165ebc4e50a4a70bad8c9a0b29045b2" cid="GNR001" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="3edef9f6b4e0483f92e560737598fb0a" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv0cfb493791164bb996e7052aee454352" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="300bd8d661de4f59b0cfcf011717ad3d" cid="PROP004" type="property" name="IsTransactionActive" style-class="" owner="6cddc68ba3f54c3a9086b62567262a9c" creation-date="08/13/2022 14:28:37" visibility="public">
+              <stereotypes>
+                <stereotype name="property" />
+              </stereotypes>
+              <tagged-values>
+                <tagged-value id="tvf592c59e335a4c5fa22d08d7964492d6" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="IsTransactionActive" />
+                <tagged-value id="tv136dbc09c9094b5a888e6565a61abe87" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv98cfdbba072c45ac96444468f488eb4b" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordCheckpoint.cs" />
+                <tagged-value id="tvdb72bf7d8c8c4898b91d1717a7aaf7c0" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv381b522d704947b8bf583b9809ef0043" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="105" />
+                <tagged-value id="tv48d168f74ab441ada4af0261e2690061" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="45" />
+                <tagged-value id="tv9ea0023be3604a96b2070b8938b56760" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1248" />
+                <tagged-value id="tv73f94d99df614dbf9c97d2a6445d30c0" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 07:04:53" />
+              </tagged-values>
+              <stereotype-instances>
+                <stereotype id="300bd8d661de4f59b0cfcf011717ad3d_property_c" type="property" ref="" />
+              </stereotype-instances>
+              <feature />
+              <structural-feature type="bool" type-id="CSharp.bool" />
+              <property />
+            </item>
+            <item id="3edef9f6b4e0483f92e560737598fb0a" cid="C001" type="class" name="LogRecordTransaction" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+              <tagged-values>
+                <tagged-value id="tvc3d26c4d31604913809518c9dad3ce8d" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv445c78b98de84036bb4ce827cb7199c2" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransaction" />
+                <tagged-value id="tvb53fb1c07e994bfd88f240cf7843a8bc" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv81ff60f9148c4a6a8994fa26c0f4c68b" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordTransaction.cs" />
+                <tagged-value id="tvd70c298ca7794119916aa82149bab99d" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv8a13edc61e0847c78102da955d1a177a" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tva8eb542b76ea4d6497abce59ab76802b" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="240" />
+                <tagged-value id="tv9de2a134c6354497b84a0fe89c131cc4" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="275" />
+                <tagged-value id="tvdcf35a131cc04f438b8d0a0982cf6d79" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/28/2022 10:58:37" />
+              </tagged-values>
+            </item>
+            <item id="24a74c45599d4d67b3ef8831486ab47e" cid="PROP001" type="property" name="LogRecordPage" style-class="" owner="3809914ff54f485ea17196e1326abdc1" creation-date="08/13/2022 14:28:37" visibility="public">
+              <stereotypes>
+                <stereotype name="property" />
+              </stereotypes>
+              <tagged-values>
+                <tagged-value id="tva698bd6588ba44089618ad69baad059f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPage" />
+                <tagged-value id="tvf2a090fe6eff4b049a890e93468ec2f9" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv4ec35e4563dc470e9a832bf434820d95" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordUndo.cs" />
+                <tagged-value id="tv522d309481514ab9884e218fe9b32f69" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvd9d48a24be754f0484e4836b28ec34df" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="99" />
+                <tagged-value id="tv0af4cd9925fb442d8176a280d500a1b3" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="48" />
+                <tagged-value id="tve10918c25a5242628467f46fd861f011" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="799" />
+                <tagged-value id="tv1553b3fb4c3849a085b7fe0d0309f6ee" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 15:52:25" />
+              </tagged-values>
+              <stereotype-instances>
+                <stereotype id="24a74c45599d4d67b3ef8831486ab47e_property_c" type="property" ref="" />
+              </stereotype-instances>
+              <feature />
+              <structural-feature type="LogRecordPage" type-id="Class:ca8e1958b1bb4bb69e35943511b7e22d" />
+              <property />
+            </item>
+            <item id="5427c088ef6a4c94bcd03a587495ddd5" cid="GNR006" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="6657136a47ae42c89e96de4798ee647d" to="ab0b5cfed1f440ddbc75afe44ad8f57c" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tvd9d9b724fafe47039e8c6642bf6886fd" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="d58d3b9cade643c18f431c76e6defbe9" cid="GNR004" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="45c430e696a142abbbb475a61e0c1234" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tvda476d05b91648d08f23edd0f6c0bc6f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="45c430e696a142abbbb475a61e0c1234" cid="C004" type="class" name="LogRecordTransactionRollback" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv933af6fc778141d9918320fe905dc5d8" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv4afd245048b040c0a57564683b76ac6f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransactionRollback" />
+                <tagged-value id="tv3edf6b22a68c4fe0b8ab8ec54b954e7d" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv419decb9a8dd4ae28e15f0730132da26" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordTransactionRollback.cs" />
+                <tagged-value id="tv9740b3aa61aa45d9a4705d3b05125f1e" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv67f5b79ad0cd4df69abdd50b49527a76" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv133c78036f3d47d2820382d4ac0f0f3a" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="415" />
+                <tagged-value id="tvde97256acd634f0da93c6e510c8411f4" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="450" />
+                <tagged-value id="tv832c293459664358aeafd683c0c92ff8" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:09:25" />
+              </tagged-values>
+            </item>
+            <item id="439353b2e7d744848b06d3ac30e25ad5" cid="REL002" type="relationship" name="" style-class="" creation-date="08/13/2022 14:28:37" from="3809914ff54f485ea17196e1326abdc1" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="package">
+              <tagged-values>
+                <tagged-value id="tvb6cf65ec57864eb095e9f8cc2ac6af89" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <relation from="3809914ff54f485ea17196e1326abdc1" to="ca8e1958b1bb4bb69e35943511b7e22d" derived="false">
+                <start-role id="umlar-9e09ac53-e38d-400d-844c-cbf80c6fcff0" name="" navigability="" association-type="composition" visibility="private" />
+                <end-role id="umlar-a4e2b480-bea0-48dd-aefb-38eb2480b1ed" name="" navigability="" association-type="association" visibility="private" />
+              </relation>
+            </item>
+            <item id="6cddc68ba3f54c3a9086b62567262a9c" cid="C010" type="class" name="LogRecordCheckpoint" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tvbb36a54774ba4d288b2451d22293d2e3" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv9911712fcee74ffcac7306c889190f36" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordCheckpoint" />
+                <tagged-value id="tv184c0ffdedc84e1d8972167cc84db9e0" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvf36074bdf4af4eedaf7ab5544ce82943" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordCheckpoint.cs" />
+                <tagged-value id="tvb20cfae7b42f43dc8ba34c8b2cd6cfc2" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv229135a7d783496b90abaa8124db40ae" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="44" />
+                <tagged-value id="tvd1d314f81ce04a97a071fe9ba803518b" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="1196" />
+                <tagged-value id="tv64073785096d4a2da9ea98d422f0ebb8" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1248" />
+                <tagged-value id="tv1cd6e2d499b045f8aae9e510d5a9f5f6" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 07:04:53" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
+                <owned-item ref="300bd8d661de4f59b0cfcf011717ad3d" />
+              </owned-items>
+              <attributes>
+                <attribute id="a12a71c6d014e452a81fc9c3cbabfc863574" cid="PROP004" name="IsTransactionActive" creation-date="08/13/2022 14:28:37" property-ref="300bd8d661de4f59b0cfcf011717ad3d" />
+              </attributes>
+            </item>
+            <item id="6657136a47ae42c89e96de4798ee647d" cid="C006" type="class" name="LogRecordPageRowInsert" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv0b3b37307619479d9b52312a13b9707a" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tvea2eefc03c02489797fe4d7e8eb3a217" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageRowInsert" />
+                <tagged-value id="tv6825519b44994e3297de4b183ee8e511" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv70bcc5effa814f3ea132196ba097511f" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageRowInsert.cs" />
+                <tagged-value id="tv5f58627b9dfb4feea56d8eaabadfd9f9" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv863354752f4149c99c7acebcf36fa83a" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv1b0e9e70c8fb4941bc9cddc76d1da98e" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="737" />
+                <tagged-value id="tvbb2215fd3be6499eb45610f6c302ad34" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="772" />
+                <tagged-value id="tv036042ec5e60423b9e0cbb18283c2b9f" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 11:43:09" />
+              </tagged-values>
+            </item>
+            <item id="d47a98bd8a8c478a82d2638fc40e3ba3" cid="C002" type="class" name="LogRecordTransactionBegin" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv60114a5acbb84344bf7a12b8033a2653" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv12d5fc8510a249e2be9965f4ddf8b9cf" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransactionBegin" />
+                <tagged-value id="tvb8209cc5f1bb4a6abe3d6b0764d3e734" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv4b8657257cf9497cbbe464b91d9b4b80" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordTransactionBegin.cs" />
+                <tagged-value id="tv2734b2cb5f9844c5ad8478022a9b7f8c" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv050d6754b7c445d7a4e4a52af4dab581" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv9cb61c82b8124a6e8f4201f00bc310cf" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="413" />
+                <tagged-value id="tvbaf3149d127f44ff815e51058eff5961" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="448" />
+                <tagged-value id="tvcfdbdc07439d425db772f392c03f83fc" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 11:56:44" />
+              </tagged-values>
+            </item>
+            <item id="a401b94da15f4bbfbe48c392dcad07a8" cid="GNR008" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="3809914ff54f485ea17196e1326abdc1" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv58744ff34b0e489cbf36482d4573e375" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="ab0b5cfed1f440ddbc75afe44ad8f57c" cid="C011" type="class" name="LogRecordPageOperation" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+              <tagged-values>
+                <tagged-value id="tva89d835fd3eb4c82a0ca80a8cb1a7d58" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv64ff5a54682a4f9a8ddb76fb965813bc" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPageOperation" />
+                <tagged-value id="tvd0a36cd4e0684414acb2ccd05fa79f84" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvd842e9654ba347cfad7ee5f57d9101df" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageRowOperation.cs" />
+                <tagged-value id="tv38045208e8b94e7d872ef3b6a669f48e" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvad390cc4104a40748b9e7b5cca727a56" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="44" />
+                <tagged-value id="tv89ab67617baf40c3bcf7eb4eacb0e281" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="1614" />
+                <tagged-value id="tv16e33c91b15241d4904ff0148a4c0277" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1666" />
+                <tagged-value id="tv4a222dfb2b4b490391f8e1af9d7ed8ac" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 07:08:34" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="b7348e6b17f143a69a625506eaad77fb" />
+              </owned-items>
+              <attributes>
+                <attribute id="a1ad181dc25864b98a5e91ae8d4f80dc3575" cid="PROP005" name="Value" creation-date="08/13/2022 14:28:37" property-ref="b7348e6b17f143a69a625506eaad77fb" />
+              </attributes>
+              <operations>
+                <operation id="o0d420b31c3d541599e0ba882f94d4276575" cid="OP042" name="RedoPageOperation" creation-date="08/13/2022 14:28:37" type="" type-id="" visibility="protected" abstract="true">
+                  <parameters>
+                    <parameter id="pba20aa624af24881a2c713282593e972" name="page" type="Page" type-id="Page" />
+                  </parameters>
+                  <tagged-values>
+                    <tagged-value id="tvaa93d4b0a8a94f5a85181b38c892787c" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="RedoPageOperation" />
+                    <tagged-value id="tv8b1e0609e5c44298bcd1e5639cb7feec" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageRowOperation.cs" />
+                    <tagged-value id="tv282b4e376cac42adbeca31db9c3c28e5" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tvff774a9d77414411886f40e7019fe564" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="791" />
+                    <tagged-value id="tvd9c2d88a4f6943d2b10a6a2f732715cc" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="53" />
+                  </tagged-values>
+                </operation>
+                <operation id="o88deeb8eceeb4430be6136006f8158a0575" cid="OP044" name="UndoPageOperation" creation-date="08/13/2022 14:28:37" type="" type-id="" visibility="protected" abstract="true">
+                  <parameters>
+                    <parameter id="pc2316b739321439f84b31c519b0a3576" name="logRecordUndo" type="LogRecordUndo" type-id="LogRecordUndo" />
+                    <parameter id="p309509ac7f264d168471f5c85d6b38db" name="page" type="Page" type-id="Page" />
+                  </parameters>
+                  <tagged-values>
+                    <tagged-value id="tvfdbaca08f25b46f8ab3fc472d1dac88d" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="UndoPageOperation" />
+                    <tagged-value id="tvd35336b8c6a64a768a9908e7ded73fce" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageRowOperation.cs" />
+                    <tagged-value id="tv4b500a530714460c8edb311a433d85b3" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tvfb7f583b4eea49d7896f75b2305f6227" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1013" />
+                    <tagged-value id="tvafd7dbdb55af483690423d36af3291db" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="82" />
+                  </tagged-values>
+                </operation>
+              </operations>
+            </item>
+            <item id="3809914ff54f485ea17196e1326abdc1" cid="C008" type="class" name="LogRecordUndo" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tvf6b32636e7ad43fb9a230e153a994b75" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tvea45dd07082f48a2ac83a7fefeb6b3fc" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordUndo" />
+                <tagged-value id="tv97f6a9ea3bc3487b81f5fb65922b72f6" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv71cdad324ae540588ded45c6d2d156cb" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordUndo.cs" />
+                <tagged-value id="tv7fda5ac6c8394c85a602d9a7b7788b2f" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvc904c9b2a9ff4361b103e30caa220663" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="44" />
+                <tagged-value id="tv0ac3cb8be76d437f9d4b38000f955e94" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="747" />
+                <tagged-value id="tv27e2e5cc4c074a17ad5a1858d44d52bc" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="799" />
+                <tagged-value id="tv5a42b5f39cf240ac9dc601d27b81d8c1" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 15:52:25" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
+                <owned-item ref="24a74c45599d4d67b3ef8831486ab47e" />
+              </owned-items>
+              <attributes>
+                <attribute id="ac3fab5e4b40f48439c569ce86ee29291573" cid="PROP001" name="LogRecordPage" creation-date="08/13/2022 14:28:37" property-ref="24a74c45599d4d67b3ef8831486ab47e" />
+              </attributes>
+            </item>
+            <item id="bf37898f54194dc29cfaaacb2d1e9852" cid="GNR003" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="2f5f6dda80dd41dcaa82e8d036943e2a" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tvc798bfac2abe46ef9e839ae765db02a8" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="0d8c7f2f63124d9ca17aed838f7bf15a" cid="GNR005" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tve5a3ddc505ee41cfb49f53c9f35188c1" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="4686f6f1f05a4339b2e9cdee8a41b746" cid="GNR011" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="ab0b5cfed1f440ddbc75afe44ad8f57c" to="ca8e1958b1bb4bb69e35943511b7e22d" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tvabdf368f934648cb9e6ccc87235e6446" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="2f5f6dda80dd41dcaa82e8d036943e2a" cid="C003" type="class" name="LogRecordTransactionCommit" style-class="" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tva9c68456cb75411d9f5e056c9b1b2591" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tve4069d1a7bd94979bc66e86adca48d14" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordTransactionCommit" />
+                <tagged-value id="tvc14726fdf244487aa06c3536f34c74e1" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvb2b922c416f3452587b811d9865bc14a" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordTransactionCommit.cs" />
+                <tagged-value id="tvc2e8056a6ed44a90b3534cfc8daf1b68" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvb897b6891bc2455b893f579a25df7417" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tvb86f01c3604e458ba00eb3f77990e6a9" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="407" />
+                <tagged-value id="tv85567aae852b4b73ba11bb04de81aed0" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="442" />
+                <tagged-value id="tvda3e77a2fe9d400fb1638f777f06a986" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:09:30" />
+              </tagged-values>
+            </item>
+            <item id="5360018cf46f4aab9238654e1556d33d" cid="PROP002" type="property" name="PageId" style-class="" owner="ca8e1958b1bb4bb69e35943511b7e22d" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv9787776f3e0f42f09c4ec1ff5ae3da24" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="PageId" />
+                <tagged-value id="tva54bea7b5faa411f881add6f95c83e12" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv33ab848f8f814c39864dded5257298a1" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPage.cs" />
+                <tagged-value id="tvfe54f103d89b4d8da94100b62613a2d9" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv11bbd2facb2a4fe39de24def9af3637c" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="91" />
+                <tagged-value id="tv2420d2cb6ded43b0b10e619f4ed30248" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="18" />
+                <tagged-value id="tv88d6b2f8545c4595ab316dae7067c722" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="951" />
+                <tagged-value id="tv6ca85bbf77b5413b899ff5dfb72f404a" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:00:36" />
+              </tagged-values>
+              <feature />
+              <structural-feature type="int" type-id="CSharp.int" />
+              <property />
+            </item>
+            <item id="ca8e1958b1bb4bb69e35943511b7e22d" cid="C009" type="class" name="LogRecordPage" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+              <tagged-values>
+                <tagged-value id="tv2981a82aa3614cdcaf34886131249f8d" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv110be9ece839464da40224be1b035d1d" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecordPage" />
+                <tagged-value id="tv0c1fca2885a744318cddd5643b27226b" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tv324103ce40a7453f9ee0800ce568a656" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPage.cs" />
+                <tagged-value id="tvf0f61a9f0ab04e13a0b64cfd24228bc4" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvc4a891d5420d4699894479fe5a8f723f" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tvf90e24f372544ee1bc74c0961962d9b0" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="916" />
+                <tagged-value id="tvdde3002908424fc08829eca6fc0e681d" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="951" />
+                <tagged-value id="tvde45cec78c314dfc981eb2a32f556563" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:00:36" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
+                <owned-item ref="21820d27eb0b4f0097008674a8e1a8ed" />
+                <owned-item ref="5360018cf46f4aab9238654e1556d33d" />
+              </owned-items>
+              <attributes>
+                <attribute id="a081e43ba7b9946b6a7bb5ce64592cb7c574" cid="PROP002" name="PageId" creation-date="08/13/2022 14:28:37" property-ref="5360018cf46f4aab9238654e1556d33d" />
+                <attribute id="a66831adae51946718b1c33bae7862230574" cid="PROP003" name="TableName" creation-date="08/13/2022 14:28:37" property-ref="21820d27eb0b4f0097008674a8e1a8ed" />
+              </attributes>
+            </item>
+            <item id="b7348e6b17f143a69a625506eaad77fb" cid="PROP005" type="property" name="Value" style-class="" owner="ab0b5cfed1f440ddbc75afe44ad8f57c" creation-date="08/13/2022 14:28:37" visibility="public">
+              <stereotypes>
+                <stereotype name="property" />
+              </stereotypes>
+              <tagged-values>
+                <tagged-value id="tv264dc28230fd425a967c6e3405ea4f48" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Value" />
+                <tagged-value id="tv3e386a19ff6f49ec95a66afbe32f712d" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tva2cf65d804d041e4ba9680ee3dcc984c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPageRowOperation.cs" />
+                <tagged-value id="tv9fe6883a3bcf482aabfa98b4235f5085" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv9dcab92158af4bb5a002d168eb491c8d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="121" />
+                <tagged-value id="tv6fb26f6af31c4c5ab3ac0c80381c80e9" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="30" />
+                <tagged-value id="tv2a427e2610b241aeba0158cdae084c32" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1666" />
+                <tagged-value id="tv1d5274ac21ad4a6a925bb9e9d302016c" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 07:08:34" />
+              </tagged-values>
+              <stereotype-instances>
+                <stereotype id="b7348e6b17f143a69a625506eaad77fb_property_c" type="property" ref="" />
+              </stereotype-instances>
+              <feature />
+              <structural-feature type="int" type-id="CSharp.int" />
+              <property />
+            </item>
+            <item id="083ab2e52fc643c1992670a77abc41d8" cid="C012" type="class" name="LogRecord" style-class="" creation-date="08/13/2022 14:28:37" visibility="public" is-abstract="true">
+              <tagged-values>
+                <tagged-value id="tvba45ce7a1929441295e7c86fb1f69b54" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv57b52e58961340c4b151019f219e6c74" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogRecord" />
+                <tagged-value id="tvc2f8f96ff1534c65a2151d0c71496d1b" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvb5253d71742c43ec96146ba9f0a41c59" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecord.cs" />
+                <tagged-value id="tv2e662d73f1134ee3924449168d728f73" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvd0fac674d2484d31aab070d69f76e777" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="64" />
+                <tagged-value id="tv02216c79a7c147a787c1c92cfe88ac4a" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="3115" />
+                <tagged-value id="tvb6c4a99780054f189db3d572f104094e" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="3187" />
+                <tagged-value id="tvbb8a1083bf214472b573f33636bb5fcb" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/12/2022 14:20:23" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
+                <owned-item ref="b4b2ff52b2614c3ca546db8aec4abe38" />
+              </owned-items>
+              <attributes>
+                <attribute id="a55f324607f454ffba68df8393a850321575" cid="PROP006" name="LogSequenceNumber" creation-date="08/13/2022 14:28:37" property-ref="b4b2ff52b2614c3ca546db8aec4abe38" />
+              </attributes>
+              <operations>
+                <operation id="of5159cdeec2d47d291776deae3efa5fc575" cid="OP048" name="ParseLogRecord" creation-date="08/13/2022 14:28:37" type="LogRecord" type-id="Class:083ab2e52fc643c1992670a77abc41d8" visibility="public" static="true">
+                  <parameters>
+                    <parameter id="p0ae7b649f8a44230a649cf7276d05434" name="logRecordText" type="string" type-id="CSharp.string" />
+                  </parameters>
+                  <tagged-values>
+                    <tagged-value id="tvc43d917765dc4abe8a700fd20f08f637" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="ParseLogRecord" />
+                    <tagged-value id="tvbd43efdbd95f4fcaa102e5ec4ab98fe4" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecord.cs" />
+                    <tagged-value id="tv3c44c863faef493ebbbb486dd15e051e" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tv22322b4f52fa40cb91a16f7fa176e8d4" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="682" />
+                    <tagged-value id="tvd361a356cf1a494585c9421a6e97e389" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="172" />
+                  </tagged-values>
+                  <source-codes>
+                    <source-code language="CSharp">
+            return InterpretLogRecord(logRecordText.Split(LogRecordParameterDelimiter));
+        </source-code>
+                  </source-codes>
+                </operation>
+                <operation id="o4afe580511c74e24a398b2a469049dde576" cid="OP051" name="Redo" creation-date="08/13/2022 14:28:37" type="" type-id="" visibility="public">
+                  <tagged-values>
+                    <tagged-value id="tvf752b0bf9fb14b939649e4265e716380" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Redo" />
+                    <tagged-value id="tv842ac64fa8f1480bbecc55c8d51dbd6e" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecord.cs" />
+                    <tagged-value id="tvb9a335a26c464070b23513b827e5e288" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tvb4cf5135b4f34c00a1677653e5504b78" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1675" />
+                    <tagged-value id="tvcfb9851729ab43b9b409c8128e2d990d" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="222" />
+                  </tagged-values>
+                  <source-codes>
+                    <source-code language="CSharp">
+            Utility.LogOperationBegin("Redoing log record {0}", ToString());
+            RedoInternal();
+            Utility.LogOperationEnd("Redone log record {0}", ToString());
+        </source-code>
+                  </source-codes>
+                </operation>
+                <operation id="oc4347d23914f4ae6b81fc016c7eba4f3576" cid="OP052" name="Undo" creation-date="08/13/2022 14:28:37" type="" type-id="" visibility="public">
+                  <parameters>
+                    <parameter id="p41e1e919f46a4101b6e255400a56ed10" name="logRecordUndo" type="LogRecordUndo" type-id="LogRecordUndo" />
+                  </parameters>
+                  <tagged-values>
+                    <tagged-value id="tv9e3958f30e994595929a5a597ad90777" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Undo" />
+                    <tagged-value id="tvedb90446110b4407a257f18c2c52e0c8" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecord.cs" />
+                    <tagged-value id="tvc36b1b45f29946e9a23ddf68d96af107" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tv427878572c674eea84c18a15fd2f449e" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="2041" />
+                    <tagged-value id="tve38ca28913ef4654a98d950a4d9a00c5" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="262" />
+                  </tagged-values>
+                  <source-codes>
+                    <source-code language="CSharp">
+            Utility.LogOperationBegin("Undoing log record {0}", ToString());
+            UndoInternal(logRecordUndo);
+            Utility.LogOperationEnd("Undone log record {0}", ToString());
+        </source-code>
+                  </source-codes>
+                </operation>
+                <operation id="o2e82be83d95e4e8ab081d93846164998576" cid="OP053" name="IsAlreadyApplied" creation-date="08/13/2022 14:28:37" type="bool" type-id="CSharp.bool" visibility="public">
+                  <parameters>
+                    <parameter id="p51d95daa180d4c688130a46dd4808694" name="logSequenceNumberMax" type="int" type-id="CSharp.int" />
+                  </parameters>
+                  <tagged-values>
+                    <tagged-value id="tv8dd179a0a346467fa1190aedc10df017" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="IsAlreadyApplied" />
+                    <tagged-value id="tva073dee562314107b24ad1143ab4c92e" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecord.cs" />
+                    <tagged-value id="tvaf40db3557644662b09915eda194d824" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tvaf3c363cfe5c44779e782a7dc99f2aa5" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="2315" />
+                    <tagged-value id="tv4a376e8660c441f0add97d9cb53e18ad" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="360" />
+                  </tagged-values>
+                  <source-codes>
+                    <source-code language="CSharp">
+            bool isLogAlreadyApplied = LogSequenceNumber &lt;= logSequenceNumberMax;
+            if (isLogAlreadyApplied)
+            {
+                Utility.LogOperationSkip("Skipping apply of log record: " + ToString());
+            }
+
+            return isLogAlreadyApplied;
+        </source-code>
+                  </source-codes>
+                </operation>
+              </operations>
+            </item>
+            <item id="65ed68e2267144188fb0380ae5eec649" cid="GNR010" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="6cddc68ba3f54c3a9086b62567262a9c" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv8714a8662fa446ed95e88f858e57431a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="2c39c2afe95340abb16b42b88b73d402" cid="GNR002" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="d47a98bd8a8c478a82d2638fc40e3ba3" to="3edef9f6b4e0483f92e560737598fb0a" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv43a9c6666db549b392edcece20c9c2cd" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+            <item id="21820d27eb0b4f0097008674a8e1a8ed" cid="PROP003" type="property" name="TableName" style-class="" owner="ca8e1958b1bb4bb69e35943511b7e22d" creation-date="08/13/2022 14:28:37" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv3302c54ff2c64f6cb5e60d6787b5b259" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="TableName" />
+                <tagged-value id="tv07359932c91a49ec9a3d153b402d0b29" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="p2bc9027312ac423a96036b4b6c5a302a_454811335" />
+                <tagged-value id="tvf7519dc76e774cf08e3ae57679eb76bb" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Log\LogRecord\LogRecordPage.cs" />
+                <tagged-value id="tva08398fea84945c881fc0bdeff335903" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv25952740fdc1414e8b1c3735563d5867" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="121" />
+                <tagged-value id="tv677e471db084422891e679285b2f27a1" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="24" />
+                <tagged-value id="tv7f0f6b92c0e7403cb46230d9177e2d98" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="951" />
+                <tagged-value id="tv3667f53dc95447c5972b8b8a6fb06a29" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/07/2022 21:00:36" />
+              </tagged-values>
+              <feature />
+              <structural-feature type="string" type-id="CSharp.string" />
+              <property />
+            </item>
+            <item id="33c1bb169ea0432699b58e45558c01f9" cid="GNR009" type="generalization" name="" style-class="" creation-date="08/13/2022 14:28:37" from="ca8e1958b1bb4bb69e35943511b7e22d" to="083ab2e52fc643c1992670a77abc41d8" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv9e944549b4be4cc6927e1390a9aac0a7" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+            </item>
+          </abstract-items>
+          <sub-models />
+          <diagram type="uml-class" id="p1198366ab60c463696885c8fc46787cf_762029861" name="LogRecord" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="191,-111">
+            <style>
+              <background-color index="1" color="#FFFFFFFF" />
+              <background-color index="2" color="#FFFFFFFF" />
+              <background-type type="vertical-linear" />
+            </style>
+            <meta>
+              <authors>
+                <author> </author>
+              </authors>
+              <description />
+              <creation-date>08/13/2022 14:28:37</creation-date>
+              <change-date>08/13/2022 14:50:04</change-date>
+              <revision-count>0</revision-count>
+              <version />
+            </meta>
+            <tagged-values>
+              <tagged-value id="tv64d6642435d1411187d89f796340a107" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
+            </tagged-values>
+            <abstract-items />
+            <layer id="fa669b5b63fc4a989661a7d616b8884c" name="Default" visible="true" enabled="true" locked="false">
+              <item id="a401b94da15f4bbfbe48c392dcad07a8" iid="d35ef65cd2004e17942f229331599c24" creation-date="08/13/2022 14:28:37" order-index="0" type="relation">
+                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="601" y1="400" x2="753" y2="326" start-border-pos="0.125" end-border-pos="0.624273255813953" end-local-pos="173" name-position="0,20">
+                  <points>
+                    <point x="601" y="400" />
+                    <point x="753" y="326" />
+                  </points>
+                </layout>
+                <relation from="3809914ff54f485ea17196e1326abdc1" from-iid="fc3a7ec1e1344f7f83232fe203ae71ff" to="083ab2e52fc643c1992670a77abc41d8" to-iid="20503205d95b473a93cef7c542689847" />
+              </item>
+              <item id="ab0b5cfed1f440ddbc75afe44ad8f57c" iid="d3ee0126af9843fe8cd15e97f2406b27" creation-date="08/13/2022 14:28:37" order-index="2" type="entity">
+                <layout ax="410" ay="530" awidth="356" aheight="116" x="410" y="530" width="240" height="110" rotation-center="-1,9" />
+                <classifier />
+                <class />
+              </item>
+              <item id="45c430e696a142abbbb475a61e0c1234" iid="4b655bece6894b52ae433f5ca1b13b61" creation-date="08/13/2022 14:28:37" order-index="3" type="entity">
+                <layout ax="1280" ay="530" awidth="238" aheight="41" x="1280" y="530" width="341" height="116" />
+                <classifier />
+                <class />
+              </item>
+              <item id="0d8c7f2f63124d9ca17aed838f7bf15a" iid="b2ff38581d404ab3a32c56377c700bb0" creation-date="08/13/2022 14:28:37" order-index="4" type="relation">
+                <layout line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="285" y1="530" x2="285" y2="479" start-border-pos="0.0928571447730064" end-border-pos="0.625" start-local-pos="65" end-local-pos="65" name-position="0,20">
+                  <points>
+                    <point x="285" y="530" />
+                    <point x="285" y="479" />
+                  </points>
+                </layout>
+                <relation to="ca8e1958b1bb4bb69e35943511b7e22d" to-iid="a635daccaf75414e974f5d761dc760da" />
+              </item>
+              <item id="3809914ff54f485ea17196e1326abdc1" iid="fc3a7ec1e1344f7f83232fe203ae71ff" show-fields="true" creation-date="08/13/2022 14:28:37" order-index="5" type="entity">
+                <layout ax="460" ay="400" awidth="282" aheight="60" x="460" y="400" width="310" height="60" rotation-center="17.5,56" />
+                <classifier />
+                <class />
+              </item>
+              <item id="3165ebc4e50a4a70bad8c9a0b29045b2" iid="492ebabd786441b781eef174bcc4d897" creation-date="08/13/2022 14:28:37" order-index="6" type="relation">
+                <layout line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="898" y1="400" x2="753" y2="326" start-border-pos="0.125" end-border-pos="0.624273255813953" start-local-pos="88" end-local-pos="173" name-position="0,20">
+                  <points>
+                    <point x="898" y="400" />
+                    <point x="753" y="326" />
+                  </points>
+                </layout>
+                <relation from="3edef9f6b4e0483f92e560737598fb0a" from-iid="8d449211f0b44a9d8935f86dff43ba81" to="083ab2e52fc643c1992670a77abc41d8" to-iid="20503205d95b473a93cef7c542689847" />
+              </item>
+              <item id="ca8e1958b1bb4bb69e35943511b7e22d" iid="a635daccaf75414e974f5d761dc760da" creation-date="08/13/2022 14:28:37" order-index="7" type="entity">
+                <layout ax="220" ay="400" awidth="130" aheight="79" x="220" y="400" width="140" height="80" rotation-center="96.5,46" />
+                <classifier />
+                <class />
+              </item>
+              <item id="6cddc68ba3f54c3a9086b62567262a9c" iid="1a8ccee9b4de49c29da0ae749a77c265" creation-date="08/13/2022 14:28:37" order-index="8" type="entity">
+                <layout ax="1010" ay="400" awidth="237" aheight="60" x="1010" y="400" width="240" height="60" rotation-center="55,74.5" />
+                <classifier />
+                <class />
+              </item>
+              <item id="925e6ac0c003497d933212032ada2a1b" iid="a6a47b2b6f254dd098b0217a9298b784" creation-date="08/13/2022 14:28:37" order-index="9" type="entity">
+                <layout ax="220" ay="530" awidth="175" aheight="41" x="220" y="530" width="330" height="133" rotation-center="13.5,10" />
+                <classifier />
+                <class />
+              </item>
+              <item id="d58d3b9cade643c18f431c76e6defbe9" iid="b4727caba84c4835a12414bdc3c2de5a" creation-date="08/13/2022 14:28:37" order-index="10" type="relation">
+                <layout line-style="perpendicular" lock-to-fields="false" auto-path="" x1="1399" y1="530" x2="898" y2="441" start-border-pos="0.125" end-border-pos="0.625" name-position="0,20">
+                  <points>
+                    <point x="1399" y="530" />
+                    <point x="898" y="441" />
+                  </points>
+                </layout>
+                <relation from="45c430e696a142abbbb475a61e0c1234" from-iid="4b655bece6894b52ae433f5ca1b13b61" to="3edef9f6b4e0483f92e560737598fb0a" to-iid="8d449211f0b44a9d8935f86dff43ba81" />
+              </item>
+              <item id="65ed68e2267144188fb0380ae5eec649" iid="8f0e3283b88e4f08998efba54ceb5628" creation-date="08/13/2022 14:28:37" order-index="11" type="relation">
+                <layout line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1128" y1="400" x2="753" y2="326" start-border-pos="0.124472573399544" end-border-pos="0.624273255813953" start-local-pos="118" end-local-pos="173" name-position="0,20">
+                  <points>
+                    <point x="1128" y="400" />
+                    <point x="753" y="326" />
+                  </points>
+                </layout>
+                <relation from="6cddc68ba3f54c3a9086b62567262a9c" from-iid="1a8ccee9b4de49c29da0ae749a77c265" to="083ab2e52fc643c1992670a77abc41d8" to-iid="20503205d95b473a93cef7c542689847" />
+              </item>
+              <item id="3edef9f6b4e0483f92e560737598fb0a" iid="8d449211f0b44a9d8935f86dff43ba81" creation-date="08/13/2022 14:28:37" order-index="12" type="entity">
+                <layout ax="810" ay="400" awidth="176" aheight="41" x="810" y="400" width="180" height="40" rotation-center="84.5,28.5" />
+                <classifier />
+                <class />
+              </item>
+              <item id="8eb7fa1481ff49d596511798221a623b" iid="dde2f15ce7ac4ad1a236737c3e86609e" creation-date="08/13/2022 14:28:37" order-index="13" type="entity">
+                <layout ax="600" ay="700" awidth="207" aheight="41" x="600" y="700" width="200" height="40" rotation-center="3.5,0.5" />
+                <classifier />
+                <class />
+              </item>
+              <item id="2f5f6dda80dd41dcaa82e8d036943e2a" iid="61f1c51b02fe4fdd95c5bd6492edb4ba" creation-date="08/13/2022 14:28:37" order-index="14" type="entity">
+                <layout ax="1030" ay="530" awidth="234" aheight="41" x="1030" y="530" width="338" height="116" />
+                <classifier />
+                <class />
+              </item>
+              <item id="083ab2e52fc643c1992670a77abc41d8" iid="20503205d95b473a93cef7c542689847" creation-date="08/13/2022 14:28:37" order-index="15" type="entity">
+                <layout ax="580" ay="190" awidth="344" aheight="136" x="580" y="190" width="345" height="136" rotation-center="0,-83" />
+                <classifier />
+                <class />
+              </item>
+              <item id="33c1bb169ea0432699b58e45558c01f9" iid="7158ba01c6df48a0a85f01c086b47611" creation-date="08/13/2022 14:28:37" order-index="16" type="relation">
+                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="285" y1="400" x2="752" y2="326" start-border-pos="0.125" end-border-pos="0.625" end-local-pos="172" name-position="0,20">
+                  <points>
+                    <point x="285" y="400" />
+                    <point x="752" y="326" />
+                  </points>
+                </layout>
+                <relation from="ca8e1958b1bb4bb69e35943511b7e22d" from-iid="a635daccaf75414e974f5d761dc760da" to="083ab2e52fc643c1992670a77abc41d8" to-iid="20503205d95b473a93cef7c542689847" />
+              </item>
+              <item id="439353b2e7d744848b06d3ac30e25ad5" iid="46c6d7d6b7b44f35b73802883477af3d" creation-date="08/13/2022 14:28:37" order-index="17" type="relation">
+                <layout start-role-position="25,15" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="460" y1="440" x2="350" y2="440" start-border-pos="0.833333333333333" end-border-pos="0.376582278481013" start-local-pos="40" end-local-pos="40" name-position="0,20">
+                  <points>
+                    <point x="460" y="440" />
+                    <point x="350" y="440" />
+                  </points>
+                </layout>
+                <relation from="3809914ff54f485ea17196e1326abdc1" from-iid="fc3a7ec1e1344f7f83232fe203ae71ff" to="ca8e1958b1bb4bb69e35943511b7e22d" to-iid="a635daccaf75414e974f5d761dc760da" />
+              </item>
+              <item id="6657136a47ae42c89e96de4798ee647d" iid="4b015600f0964217a48d89203c2cc247" creation-date="08/13/2022 14:28:37" order-index="18" type="entity">
+                <layout ax="380" ay="700" awidth="202" aheight="41" x="380" y="700" width="190" height="40" rotation-center="6,0.5" />
+                <classifier />
+                <class />
+              </item>
+              <item id="2c39c2afe95340abb16b42b88b73d402" iid="e6dc2360701f455595ed3383f9c4504e" creation-date="08/13/2022 14:28:37" order-index="19" type="relation">
+                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="898" y1="530" x2="898" y2="441" start-border-pos="0.123853214085102" end-border-pos="0.625" end-local-pos="88" name-position="0,20">
+                  <points>
+                    <point x="898" y="530" />
+                    <point x="898" y="441" />
+                  </points>
+                </layout>
+                <relation from="d47a98bd8a8c478a82d2638fc40e3ba3" from-iid="2aa9407a4c2f4eb6a41f981886e2e434" to="3edef9f6b4e0483f92e560737598fb0a" to-iid="8d449211f0b44a9d8935f86dff43ba81" />
+              </item>
+              <item id="5427c088ef6a4c94bcd03a587495ddd5" iid="a1b008a9fd82452594378623ba574bd4" creation-date="08/13/2022 14:28:37" order-index="20" type="relation">
+                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="481" y1="700" x2="589" y2="646" start-border-pos="0.125" end-border-pos="0.624297752808989" end-local-pos="179" name-position="0,20">
+                  <points>
+                    <point x="481" y="700" />
+                    <point x="589" y="646" />
+                  </points>
+                </layout>
+                <relation from="6657136a47ae42c89e96de4798ee647d" from-iid="4b015600f0964217a48d89203c2cc247" to="ab0b5cfed1f440ddbc75afe44ad8f57c" to-iid="d3ee0126af9843fe8cd15e97f2406b27" />
+              </item>
+              <item id="d47a98bd8a8c478a82d2638fc40e3ba3" iid="2aa9407a4c2f4eb6a41f981886e2e434" creation-date="08/13/2022 14:28:37" order-index="21" type="entity">
+                <layout ax="790" ay="530" awidth="218" aheight="41" x="790" y="530" width="324" height="116" />
+                <classifier />
+                <class />
+              </item>
+              <item id="bf37898f54194dc29cfaaacb2d1e9852" iid="7bc404ff4c3a42bca894e5c56bbcd076" creation-date="08/13/2022 14:28:37" order-index="22" type="relation">
+                <layout line-style="perpendicular" lock-to-fields="false" auto-path="" x1="1147" y1="530" x2="898" y2="441" start-border-pos="0.125" end-border-pos="0.625" name-position="0,20">
+                  <points>
+                    <point x="1147" y="530" />
+                    <point x="898" y="441" />
+                  </points>
+                </layout>
+                <relation from="2f5f6dda80dd41dcaa82e8d036943e2a" from-iid="61f1c51b02fe4fdd95c5bd6492edb4ba" to="3edef9f6b4e0483f92e560737598fb0a" to-iid="8d449211f0b44a9d8935f86dff43ba81" />
+              </item>
+              <item id="4686f6f1f05a4339b2e9cdee8a41b746" iid="4392e9fb70684e82a55e4ba4b8d27297" creation-date="08/13/2022 14:28:37" order-index="23" type="relation">
+                <layout line-style="perpendicular" lock-to-fields="false" auto-path="" x1="588" y1="530" x2="285" y2="479" start-border-pos="0.125" end-border-pos="0.625" name-position="0,20">
+                  <points>
+                    <point x="588" y="530" />
+                    <point x="285" y="479" />
+                  </points>
+                </layout>
+                <relation from="ab0b5cfed1f440ddbc75afe44ad8f57c" from-iid="d3ee0126af9843fe8cd15e97f2406b27" to="ca8e1958b1bb4bb69e35943511b7e22d" to-iid="a635daccaf75414e974f5d761dc760da" />
+              </item>
+              <item id="a7eeef8e1f2b4905b0e102bff4280b88" iid="c6eba9b6facd4d648339a0993e36ec06" creation-date="08/13/2022 14:28:37" order-index="24" type="relation">
+                <layout line-style="perpendicular" lock-end-point="true" lock-to-fields="false" auto-path="" x1="704" y1="700" x2="589" y2="646" start-border-pos="0.125" end-border-pos="0.624297752808989" end-local-pos="179" name-position="0,20">
+                  <points>
+                    <point x="704" y="700" />
+                    <point x="589" y="646" />
+                  </points>
+                </layout>
+                <relation from="8eb7fa1481ff49d596511798221a623b" from-iid="dde2f15ce7ac4ad1a236737c3e86609e" to="ab0b5cfed1f440ddbc75afe44ad8f57c" to-iid="d3ee0126af9843fe8cd15e97f2406b27" />
+              </item>
+            </layer>
+          </diagram>
+        </model>
+      </sub-models>
+      <diagram type="uml-package" id="p22a102bc7b534d888d807b10e31e5437_245694467" name="Packages" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="">
+        <style>
+          <background-color index="1" color="#FFFFFFFF" />
+          <background-color index="2" color="#FFFFFFFF" />
+          <background-type type="vertical-linear" />
+        </style>
+        <meta>
+          <authors>
+            <author> </author>
+          </authors>
+          <description />
+          <creation-date>08/13/2022 14:28:37</creation-date>
+          <change-date>08/13/2022 14:28:37</change-date>
+          <revision-count>0</revision-count>
+          <version />
+        </meta>
+        <tagged-values>
+          <tagged-value id="tv3cc702d9c7484febbacecbb3977e21a2" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+        </tagged-values>
+        <abstract-items />
+        <layer id="99b2ff7b136b49a586be0783f66a218e" name="Default" visible="true" enabled="true" locked="false">
+          <item id="d45ed04a3d9846dc816b9d328fa36b5d" iid="ca48f5895e6c4a03b3275c54970593f1" creation-date="08/13/2022 14:28:37" order-index="0" type="entity">
+            <layout ax="0" ay="0" awidth="102" aheight="56" x="0" y="0" width="102" height="56" expanded="0,0,102,56" collapsed="0,0,0,0" />
+            <package name-in-body="false" />
+          </item>
+        </layer>
+      </diagram>
+    </model>
+  </models>
+</sim-project>
