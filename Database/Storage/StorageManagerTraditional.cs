@@ -42,7 +42,7 @@ namespace Database
             {
                 if (DirtyPages.Contains(page))
                 {
-                    page.WriteToFile(DataFilePath);
+                    WritePageToFile(page);
                     DirtyPages.Remove(page);
                 }
             }
@@ -59,7 +59,7 @@ namespace Database
                 if (File.Exists(DataFilePath))
                 {
                     page = File.ReadAllLines(DataFilePath)
-                        .Select(line => Page.Parse(line))
+                        .Select(line => ParsePage(line))
                         .Where(page => page.PageId == pageId)
                         .FirstOrDefault();
                     if (page != null)
@@ -118,7 +118,7 @@ namespace Database
                     // Windows APIs (eliminating all buffering and make sure it is persisted at the end of write - currently that's not the case).
                     //
                     pages = File.ReadAllLines(DataFilePath)
-                        .Select(line => Page.Parse(line))
+                        .Select(line => ParsePage(line))
                         .Where(page => page.TableName == tableName)
                         .ToList();
                     if (pages != null)
@@ -147,6 +147,45 @@ namespace Database
             {
                 AddPageToCache(page);
             }
+        }
+
+        // Note that we are currently using a suboptimal implementation of writing to file. In reality,
+        // pages should be of a fixed size (8KB for example) making random access writes in database files optimal.
+        // However, in our implementation we are reading the whole file and only changing the desired page
+        // which is a line in the database file.
+        //
+        private void WritePageToFile(Page page)
+        {
+            Utility.LogOperationBegin("Writing page to disk: " + ToString());
+
+            Utility.FileCreateIfNeeded(DataFilePath);
+
+            string pageString = page.ToString();
+            string[] lines = Utility.FileReadAllLines(DataFilePath);
+
+            int index = Array.FindIndex(lines, (line) => ParsePage(line).PageId == page.PageId);
+            if (index == -1)
+            {
+                lines = lines.Append(pageString).ToArray();
+            }
+            else
+            {
+                lines[index] = pageString;
+            }
+
+            Utility.FileWriteAllLines(DataFilePath, lines);
+
+            Utility.LogOperationBegin("Written page to disk: " + ToString());
+        }
+
+        private Page ParsePage(string pageString)
+        {
+            string[] tableStringParts = pageString.Split(":");
+            int pageId = int.Parse(tableStringParts[0]);
+            string tableName = tableStringParts[1];
+            string valuesString = tableStringParts[2];
+            int logSequenceNumberMax = int.Parse(tableStringParts[3]);
+            return new Page(tableName, pageId, Table.ParseValues(valuesString), logSequenceNumberMax);
         }
     }
 }

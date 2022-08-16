@@ -45,7 +45,7 @@ namespace Database
             LogSequenceNumberMax = logRecordPageCreate.LogSequenceNumber;
         }
 
-        private Page(string tableName, int pageId, List<int> values, int logSequenceNumberMax)
+        public Page(string tableName, int pageId, List<int> values, int logSequenceNumberMax)
         {
             TableName = tableName;
             PageId = pageId;
@@ -123,45 +123,6 @@ namespace Database
                 ":" + TableName +
                 ":" + (Values.Any() ? string.Join(",", Values) : Empty) +
                 ":" + LogSequenceNumberMax;
-        }
-
-        public static Page Parse(string pageString)
-        {
-            string[] tableStringParts = pageString.Split(":");
-            int pageId = int.Parse(tableStringParts[0]);
-            string tableName = tableStringParts[1];
-            string valuesString = tableStringParts[2];
-            int logSequenceNumberMax = int.Parse(tableStringParts[3]);
-            return new Page(tableName, pageId, Table.ParseValues(valuesString), logSequenceNumberMax);
-        }
-
-        // Note that we are currently using a suboptimal implementation of writing to file. In reality,
-        // pages should be of a fixed size (8KB for example) making random access writes in database files optimal.
-        // However, in our implementation we are reading the whole file and only changing the desired page
-        // which is a line in the database file.
-        //
-        public void WriteToFile(string filePath)
-        {
-            Utility.LogOperationBegin("Writing page to disk: " + ToString());
-
-            Utility.FileCreateIfNeeded(filePath);
-
-            string pageString = ToString();
-            string[] lines = Utility.FileReadAllLines(filePath);
-
-            int index = Array.FindIndex(lines, (line) => Parse(line).PageId == PageId);
-            if (index == -1)
-            {
-                lines = lines.Append(pageString).ToArray();
-            }
-            else
-            {
-                lines[index] = pageString;
-            }
-
-            Utility.FileWriteAllLines(filePath, lines);
-
-            Utility.LogOperationBegin("Written page to disk: " + ToString());
         }
     }
 }
