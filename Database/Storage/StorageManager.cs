@@ -6,7 +6,25 @@ namespace Database
 {
     public abstract class StorageManager
     {
-        protected abstract List<Page> CachedPages { get; set; }
+        protected List<Page> CachedPages { get; set; } = new();
+
+        public void AddPageToCache(Page page)
+        {
+            if (CachedPages.Contains(page))
+            {
+                throw new Exception(string.Format("Page {0} already exists in the storage manager cache.", page.ToString()));
+            }
+
+            CachedPages.Add(page);
+        }
+
+        private void AddPagesToCache(List<Page> pages)
+        {
+            foreach (Page page in pages)
+            {
+                AddPageToCache(page);
+            }
+        }
 
         protected Page GetPageFromCache(int pageId)
         {
@@ -32,14 +50,61 @@ namespace Database
 
         public static StorageManager Get() => Service.Get().GetStorageManager();
 
-        public abstract Page GetPage(int pageId);
+        public Page GetPage(int pageId)
+        {
+            Page page = GetPageFromCache(pageId);
 
-        public abstract List<Page> GetPagesForTable(string tableName);
+            if (page == null)
+            {
+                page = GetPageFromPersistedStorage(pageId);
+                AddPageToCache(page);
+            }
 
-        public abstract void AddPageToCache(Page page);
+            return page;
+        }
+
+        protected abstract Page GetPageFromPersistedStorage(int pageId);
+
+        public List<Page> GetPagesForTable(string tableName)
+        {
+            Utility.LogOperationBegin(String.Format("Reading pages for table {0} from cache.", tableName));
+
+            List<Page> pages = GetPagesForTableFromCache(tableName);
+            if (pages != null && pages.Any())
+            {
+                Utility.LogOperationEnd(String.Format("Read pages for table {0} from cache.", tableName));
+                foreach (Page page in pages)
+                {
+                    Utility.LogOperationEnd(page.ToString());
+                }
+
+                return pages;
+            }
+            else
+            {
+                Utility.LogOperationEnd(String.Format("Pages for table {0} not found in cache.", tableName));
+
+                pages = GetPagesForTableFromPersistedStorage(tableName);
+                AddPagesToCache(pages);
+            }
+
+            return pages ?? new List<Page>();
+        }
+
+        protected abstract List<Page> GetPagesForTableFromPersistedStorage(string tableName);
 
         public abstract void Checkpoint(int logSequenceNumber);
 
-        public abstract void MarkPageAsDirty(Page page);
+        public void MarkPageAsDirty(Page page)
+        {
+            MarkPageAsDirtyInternal(page);
+
+            if (GetPageFromCache(page.PageId) == null)
+            {
+                AddPageToCache(page);
+            }
+        }
+
+        protected abstract void MarkPageAsDirtyInternal(Page page);
     }
 }
