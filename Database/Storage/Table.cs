@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace Database
 {
@@ -8,7 +9,7 @@ namespace Database
     {
         public string TableName { get; set; }
 
-        public List<Page> Pages { get; private set; }
+        public List<Page> Pages { get; set; }
 
         public IReadOnlyList<int> Values => Pages.SelectMany(page => page.Values).ToList().AsReadOnly();
         public int LogSequenceNumberMax => Pages.Max(page => page.LogSequenceNumberMax);
