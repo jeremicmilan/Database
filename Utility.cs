@@ -122,8 +122,7 @@ namespace Database
             TestEnd,
         }
 
-        private static readonly Dictionary<LogMessageType, ConsoleColor> LogMessageColorMap =
-            new Dictionary<LogMessageType, ConsoleColor>()
+        private static readonly Dictionary<LogMessageType, ConsoleColor> LogMessageColorMap = new()
         {
             { LogMessageType.Failure,           ConsoleColor.Red            },
             { LogMessageType.RequestBegin,      ConsoleColor.DarkCyan       },
@@ -171,7 +170,7 @@ namespace Database
 
         private static bool TraceLoadingDone = false;
         private static bool ShouldTrace = false;
-        private static readonly object LogMessageLock = new object();
+        private static readonly object LogMessageLock = new();
         private static void LogMessage(LogMessageType logMessageType, string message, params object[] parameters)
         {
             lock (LogMessageLock)
@@ -302,6 +301,6 @@ namespace Database
             return (T)JsonConvert.DeserializeObject(json, JsonSerializerSettings);
         }
 
-        public static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings() { TypeNameHandling = TypeNameHandling.All };
+        public static readonly JsonSerializerSettings JsonSerializerSettings = new() { TypeNameHandling = TypeNameHandling.All };
     }
 }
