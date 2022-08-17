@@ -108,7 +108,7 @@ namespace Database
         //
         private void WritePageToFile(Page page)
         {
-            Utility.LogOperationBegin("Writing page to disk: " + ToString());
+            Utility.LogOperationBegin("Writing page to disk: " + page.ToString());
 
             Utility.FileCreateIfNeeded(DataFilePath);
 
@@ -127,7 +127,7 @@ namespace Database
 
             Utility.FileWriteAllLines(DataFilePath, lines);
 
-            Utility.LogOperationBegin("Written page to disk: " + ToString());
+            Utility.LogOperationBegin("Written page to disk: " + page.ToString());
         }
 
         private Page ParsePage(string pageString)
