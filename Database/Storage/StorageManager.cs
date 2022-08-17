@@ -57,7 +57,11 @@ namespace Database
             if (page == null)
             {
                 page = GetPageFromPersistedStorage(pageId);
-                AddPageToCache(page);
+
+                if (GetPageFromCache(pageId) == null)
+                {
+                    AddPageToCache(page);
+                }
             }
 
             return page;
