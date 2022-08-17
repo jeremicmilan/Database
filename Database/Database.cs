@@ -152,9 +152,8 @@ namespace Database
             switch (query.Trim())
             {
                 case string s when s.StartsWith(CreateTableStatement):
-                    Utility.LogOperationBegin("Creating table: " + tableName);
-
                     tableName = query[CreateTableStatement.Length..].Trim();
+                    Utility.LogOperationBegin("Creating table: " + tableName);
                     if (!tableName.All(char.IsLower))
                     {
                         throw new Exception("Invalid table name.");
