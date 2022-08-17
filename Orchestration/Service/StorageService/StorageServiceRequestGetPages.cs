@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Database
 {
@@ -29,7 +30,7 @@ namespace Database
 
             List<Page> pages = storageService.StorageManager.GetPagesForTable(TableName);
 
-            if (pages != null)
+            if (pages != null && pages.Any())
             {
                 Utility.LogServiceRequestEnd("Returning pages:");
                 foreach (Page page in pages)
