@@ -27,7 +27,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>4197</value>
+        <value>4204</value>
       </counter>
       <counter>
         <item-type type-id="relationship" type="Association" />
@@ -137,6 +137,16 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-35e67a9dcb8d43a7bb77a34a1288f03d" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
       </person>
     </persons>
     <teams />
@@ -184,8 +194,8 @@
         <type id="Class:3b46e13747a244199442cc7eb6efbaeb" tid="" name="LogServiceResponseResult" description="" class-ref="3b46e13747a244199442cc7eb6efbaeb" />
         <type id="Class:bd08e5ac6bc246baac091a3b689bd6f9" tid="" name="LogServiceRequest" description="" class-ref="bd08e5ac6bc246baac091a3b689bd6f9" />
         <type id="ServiceResponseResult" tid="" name="ServiceResponseResult" description="" />
-        <type id="Class:ef142206ca3640209508a988d09c1257" tid="" name="ServiceResponse" description="" class-ref="ef142206ca3640209508a988d09c1257" />
         <type id="TServiceResponseResult" tid="" name="TServiceResponseResult" description="" />
+        <type id="Class:ef142206ca3640209508a988d09c1257" tid="" name="ServiceResponse" description="" class-ref="ef142206ca3640209508a988d09c1257" />
         <type id="Exception" tid="" name="Exception" description="" />
       </types>
     </custom-types>
@@ -1875,7 +1885,7 @@
     <item id="a869e6f071424372a9f7c43c3d0f717c" cid="PROP031" type="property" name="" style-class="" owner="d7caed5eb070492b89914844557a8b02" creator="" creation-date="08/15/2022 20:14:40" visibility="undefined">
       <feature />
       <structural-feature type="" type-id="" />
-      <property />
+      <property aggregation="shared" />
     </item>
     <item id="36c2697f9aff44158cd78817139103cd" cid="PROP032" type="property" name="" style-class="" owner="d7caed5eb070492b89914844557a8b02" creator="" creation-date="08/15/2022 20:14:40" visibility="undefined">
       <feature />
@@ -2160,6 +2170,7 @@
                 <owned-item ref="be1069edcca54d52a8ff3e5b580bd7cc" />
                 <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
                 <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
+                <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -2241,6 +2252,7 @@
                 <tagged-value id="tv243298bd72ad462f9bcc18338c966051" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/27/2022 03:49:12" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
                 <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
                 <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
                 <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
@@ -2831,6 +2843,7 @@
                 <owned-item ref="9ffaf37fd2f04d95b016822e5f3dbf04" />
                 <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
                 <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
+                <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -2850,6 +2863,7 @@
                 <tagged-value id="tvabe1dbe2d7ba49c6b6b1ad56f83ef687" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/26/2022 03:02:17" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
                 <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
                 <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
                 <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
@@ -2876,6 +2890,8 @@
                 <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
+                <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
+                <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
                 <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
@@ -3084,6 +3100,7 @@
                 <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
                 <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
                 <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
+                <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -3112,6 +3129,7 @@
                 <owned-item ref="4622621ece0a4c5a884b448f58068230" />
                 <owned-item ref="4622621ece0a4c5a884b448f58068230" />
                 <owned-item ref="4622621ece0a4c5a884b448f58068230" />
+                <owned-item ref="4622621ece0a4c5a884b448f58068230" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -3123,7 +3141,7 @@
             </item>
           </abstract-items>
           <sub-models />
-          <diagram type="uml-class" id="p4642c99440de4ac48534b0a5eef62427_966430968" name="Communication" order-index="1" uid="" name-style="" auto-routed-paths="true" default-line-style="default" namespace="Database" view-location="48,-265" zoom="0.7">
+          <diagram type="uml-class" id="p4642c99440de4ac48534b0a5eef62427_966430968" name="Communication" order-index="1" uid="" name-style="" auto-routed-paths="true" default-line-style="default" namespace="Database" view-location="0,-189" zoom="0.7">
             <style>
               <background-color index="1" color="#FFFFFFFF" />
               <background-color index="2" color="#FFFFFFFF" />
@@ -3143,29 +3161,10 @@
               <tagged-value id="tv24e30b16b5394da184c1a60a8742cf05" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
             </tagged-values>
             <abstract-items>
-              <item id="ba7a550ebe8249ccb0958f61e1c693cd" cid="DEP001" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="b98817add95b48a1b19bda478103e0f0" to="bb8dac6ff40644ca98bad1b0dd10da53" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="809c68e3594c48fb924c11ca75933750" cid="GNR014" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:11:03" from="ef35ba41cb7b42329e10086635752206" to="0a5194c35c1941fa9522eb7a2c6f0d6f" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="5661fdcd66db494185bb8c369acef05e" cid="GNR015" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:12:30" from="b98817add95b48a1b19bda478103e0f0" to="ef35ba41cb7b42329e10086635752206" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="bdaee53af1f24c22ac91a6f7c12d2f74" cid="GNR018" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:30:29" from="1ba9689b161c4a0da5cedda57037a37f" to="68f2360aebe84980ad03f899f1130206" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="216976e6514542d4b6ed30513a8434ff" cid="GNR021" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:44:32" from="049e5df03b234876ad6f7775e6fbd2a5" to="bd08e5ac6bc246baac091a3b689bd6f9" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="di30785cf1806a438488e4db84c144738a1587" cid="DEP009" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="bd08e5ac6bc246baac091a3b689bd6f9" to="3b46e13747a244199442cc7eb6efbaeb" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="dia02a592b54914ce999c7d188eef84eca8320" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="1ba9689b161c4a0da5cedda57037a37f" to="f52fc07417f346378d179e37e7c7413f" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="d7caed5eb070492b89914844557a8b02" cid="REL015" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:14:40" to="3a2af1617f11409f806b8a8b9aaa0a2f" visibility="package">
+              <item id="d7caed5eb070492b89914844557a8b02" cid="REL015" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:14:40" from="3114369d3fc54e71be572a558d6c38a4" to="3a2af1617f11409f806b8a8b9aaa0a2f" visibility="package">
                 <owned-items>
+                  <owned-item ref="a869e6f071424372a9f7c43c3d0f717c" />
+                  <owned-item ref="36c2697f9aff44158cd78817139103cd" />
                   <owned-item ref="a869e6f071424372a9f7c43c3d0f717c" />
                   <owned-item ref="36c2697f9aff44158cd78817139103cd" />
                   <owned-item ref="a869e6f071424372a9f7c43c3d0f717c" />
@@ -3173,44 +3172,65 @@
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="3114369d3fc54e71be572a558d6c38a4" to="3a2af1617f11409f806b8a8b9aaa0a2f" derived="false">
-                  <start-role id="umlar-f0ae5e21-ccd9-476a-b941-2c517c5a0f33" name="" navigability="" association-type="association" visibility="undefined" property-ref="a869e6f071424372a9f7c43c3d0f717c" />
-                  <end-role id="umlar-8668a5c1-0cc4-4307-a2e9-11226ca14435" name="" navigability="yes" association-type="association" visibility="undefined" property-ref="36c2697f9aff44158cd78817139103cd" />
+                  <start-role id="umlar-7839e233-a36c-4977-894f-039a266ce677" name="" navigability="" association-type="association" visibility="undefined" property-ref="a869e6f071424372a9f7c43c3d0f717c" />
+                  <end-role id="umlar-79edd684-f690-49a1-93d1-9d39e7351511" name="" navigability="yes" association-type="association" visibility="undefined" property-ref="36c2697f9aff44158cd78817139103cd" />
                 </relation>
               </item>
-              <item id="di20f8fec1b19f4c9fa937d38ced1998ee5583" cid="DEP003" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="2232bfa8b31f454b9580ae5b5f0db4ba" to="0c902d984a204a9789983a030b5eac83" visibility="package">
+              <item id="037a27a22dec4e37adadcb5328229059" cid="GNR020" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:32:40" from="7b6091a1af744c35a1df6b3fa9aa60fc" to="68f2360aebe84980ad03f899f1130206" visibility="package">
                 <style class="Flat Light White" />
               </item>
               <item id="339d58ab09e2405fa27e30a5812947fd" cid="GNR022" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:45:48" from="7e5702db21d34a1487a9544f10c0ad1b" to="bd08e5ac6bc246baac091a3b689bd6f9" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="787b28a2d5f14b38900986f6f0582206" cid="GNR017" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:25:47" from="bd08e5ac6bc246baac091a3b689bd6f9" to="0a5194c35c1941fa9522eb7a2c6f0d6f" visibility="package">
+              <item id="809c68e3594c48fb924c11ca75933750" cid="GNR014" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:11:03" from="ef35ba41cb7b42329e10086635752206" to="0a5194c35c1941fa9522eb7a2c6f0d6f" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="dif9d16af0a8e645d894352ac5796daf019525" cid="DEP008" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="68f2360aebe84980ad03f899f1130206" to="6eb026ec8a214fbca874d0e9fe99d920" visibility="package">
+              <item id="216976e6514542d4b6ed30513a8434ff" cid="GNR021" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:44:32" from="049e5df03b234876ad6f7775e6fbd2a5" to="bd08e5ac6bc246baac091a3b689bd6f9" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="dic0e9246f351643e2b5d3529853d377072967" cid="DEP006" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="0a5194c35c1941fa9522eb7a2c6f0d6f" to="3a2af1617f11409f806b8a8b9aaa0a2f" visibility="package">
+              <item id="di20f8fec1b19f4c9fa937d38ced1998ee5583" cid="DEP003" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="2232bfa8b31f454b9580ae5b5f0db4ba" to="0c902d984a204a9789983a030b5eac83" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="037a27a22dec4e37adadcb5328229059" cid="GNR020" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:32:40" from="7b6091a1af744c35a1df6b3fa9aa60fc" to="68f2360aebe84980ad03f899f1130206" visibility="package">
+              <item id="c2a1d1db7659412593df1f8ba2ff23e0" cid="GNR019" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:31:22" from="2232bfa8b31f454b9580ae5b5f0db4ba" to="68f2360aebe84980ad03f899f1130206" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="di696548a2059340359847d721751f8d975398" cid="DEP004" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="049e5df03b234876ad6f7775e6fbd2a5" to="c47e322fde4b4f9d9460a07abb78330f" visibility="package">
+              <item id="di30785cf1806a438488e4db84c144738a1587" cid="DEP009" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="bd08e5ac6bc246baac091a3b689bd6f9" to="3b46e13747a244199442cc7eb6efbaeb" visibility="package">
                 <style class="Flat Light White" />
               </item>
               <item id="5296008b9dd44459881e88bf8c9b9204" cid="C027" type="class" name="Class3" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 22:12:20" visibility="undefined">
                 <style class="Flat Light White" />
               </item>
+              <item id="di0d229817498242e38057da613895e69f5507" cid="DEP005" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" visibility="package">
+                <style class="Flat Light White" />
+              </item>
               <item id="di14b3e989ab88463badf53b535d3861318160" cid="DEP007" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="ef35ba41cb7b42329e10086635752206" to="9d3af06e7d214d7c9bad5b0a8142b8b9" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="di0d229817498242e38057da613895e69f5507" cid="DEP005" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" visibility="package">
+              <item id="dic0e9246f351643e2b5d3529853d377072967" cid="DEP006" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="0a5194c35c1941fa9522eb7a2c6f0d6f" to="3a2af1617f11409f806b8a8b9aaa0a2f" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="5661fdcd66db494185bb8c369acef05e" cid="GNR015" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:12:30" from="b98817add95b48a1b19bda478103e0f0" to="ef35ba41cb7b42329e10086635752206" visibility="package">
                 <style class="Flat Light White" />
               </item>
               <item id="08cdfefa5da9409b88f8379532687926" cid="GNR016" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:24:48" from="68f2360aebe84980ad03f899f1130206" to="0a5194c35c1941fa9522eb7a2c6f0d6f" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="c2a1d1db7659412593df1f8ba2ff23e0" cid="GNR019" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:31:22" from="2232bfa8b31f454b9580ae5b5f0db4ba" to="68f2360aebe84980ad03f899f1130206" visibility="package">
+              <item id="ba7a550ebe8249ccb0958f61e1c693cd" cid="DEP001" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="b98817add95b48a1b19bda478103e0f0" to="bb8dac6ff40644ca98bad1b0dd10da53" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="dif9d16af0a8e645d894352ac5796daf019525" cid="DEP008" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="68f2360aebe84980ad03f899f1130206" to="6eb026ec8a214fbca874d0e9fe99d920" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="bdaee53af1f24c22ac91a6f7c12d2f74" cid="GNR018" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:30:29" from="1ba9689b161c4a0da5cedda57037a37f" to="68f2360aebe84980ad03f899f1130206" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="dia02a592b54914ce999c7d188eef84eca8320" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="1ba9689b161c4a0da5cedda57037a37f" to="f52fc07417f346378d179e37e7c7413f" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="787b28a2d5f14b38900986f6f0582206" cid="GNR017" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:25:47" from="bd08e5ac6bc246baac091a3b689bd6f9" to="0a5194c35c1941fa9522eb7a2c6f0d6f" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="di696548a2059340359847d721751f8d975398" cid="DEP004" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="049e5df03b234876ad6f7775e6fbd2a5" to="c47e322fde4b4f9d9460a07abb78330f" visibility="package">
                 <style class="Flat Light White" />
               </item>
             </abstract-items>
