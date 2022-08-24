@@ -23,7 +23,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>8198</value>
+        <value>8205</value>
       </counter>
       <counter>
         <item-type type-id="class" type="Class" />
@@ -109,6 +109,16 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-f861c86e407e4d9f935e6251e86fe1bc" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
       </person>
     </persons>
     <teams />
@@ -126,45 +136,45 @@
     <custom-types>
       <parameters />
       <types>
-        <type id="List__" tid="" name="List" description="" base-ref="List_" />
-        <type id="Class:74998b3525cd4b58ae6ddb08f085294a" tid="" name="DatabaseTraditional" description="" class-ref="74998b3525cd4b58ae6ddb08f085294a" />
-        <type id="List___" tid="" name="List" description="" base-ref="List__" />
-        <type id="Class:d036e600f35d428fb23b9bca0c79d7d4" tid="" name="StorageManagerTraditional" description="" class-ref="d036e600f35d428fb23b9bca0c79d7d4" />
-        <type id="Class:f57e6abb3637425f9aacdf3b3cd1d0aa" tid="" name="LogManagerTraditional" description="" class-ref="f57e6abb3637425f9aacdf3b3cd1d0aa" />
-        <type id="Class:e32a3774a8a64a4c80cb88e79a4ad131" tid="" name="Orchestrator" description="" class-ref="e32a3774a8a64a4c80cb88e79a4ad131" />
-        <type id="CancellationTokenSource" tid="" name="CancellationTokenSource" description="" />
-        <type id="Class:08d9d902015a4846942b57090ac6f337" tid="" name="LogManager" description="" class-ref="08d9d902015a4846942b57090ac6f337" />
-        <type id="List_" tid="" name="List" description="" base-ref="List" />
-        <type id="Class:a39ede8f45e34d40a0c4f2399b505275" tid="" name="TransactionManager" description="" class-ref="a39ede8f45e34d40a0c4f2399b505275" />
-        <type id="Class:b87eb5c1f11d4bf2a6b0b609073da149" tid="" name="Table" description="" class-ref="b87eb5c1f11d4bf2a6b0b609073da149" />
-        <type id="List&lt;LogRecordPage&gt;" tid="" name="List&lt;LogRecordPage&gt;" description="" />
-        <type id="Class:af5d479e0c204225947d8033c6574007" tid="" name="StorageService" description="" class-ref="af5d479e0c204225947d8033c6574007" />
         <type id="IReadOnlyList&lt;int&gt;" tid="" name="IReadOnlyList&lt;int&gt;" description="" />
-        <type id="List&lt;LogRecord&gt;" tid="" name="List&lt;LogRecord&gt;" description="" />
-        <type id="Class:527906a0e9044c44bdfd17e3493f7426" tid="" name="Page" description="" class-ref="527906a0e9044c44bdfd17e3493f7426" />
-        <type id="List&lt;Table&gt;" tid="" name="List&lt;Table&gt;" description="" />
-        <type id="Class:d6f8b56e133f4ff8884adf3c01e29e21" tid="" name="LogService" description="" class-ref="d6f8b56e133f4ff8884adf3c01e29e21" />
-        <type id="HashSet&lt;Page&gt;" tid="" name="HashSet&lt;Page&gt;" description="" />
-        <type id="LogRecordUndo" tid="" name="LogRecordUndo" description="" />
-        <type id="List&lt;Page&gt;" tid="" name="List&lt;Page&gt;" description="" />
-        <type id="Class:29bb113b84a946e182edd5c27b3e3282" tid="" name="Service" description="" class-ref="29bb113b84a946e182edd5c27b3e3282" />
-        <type id="Class:772c194d288047de8b557f728f449d91" tid="" name="Database" description="" class-ref="772c194d288047de8b557f728f449d91" />
-        <type id="List&lt;int&gt;" tid="" name="List&lt;int&gt;" description="" />
         <type id="Class:634b24b358024c809c36c59e023548c8" tid="" name="StorageManager" description="" class-ref="634b24b358024c809c36c59e023548c8" />
-        <type id="CSharp.int" tid="s-integer32" name="int" description="" />
-        <type id="Class:7d367976a6c944b8a01b47418f9b4204" tid="" name="DatabaseService" description="" class-ref="7d367976a6c944b8a01b47418f9b4204" />
-        <type id="Process" tid="" name="Process" description="" />
-        <type id="CSharp.bool" tid="boolean" name="bool" description="" />
-        <type id="List" tid="" name="List" description="" />
-        <type id="Class:873e42905324420ab82fee1fa04e535a" tid="" name="DatabaseHyperscale" description="" class-ref="873e42905324420ab82fee1fa04e535a" />
-        <type id="Dictionary&lt;Tuple&lt;Type, Type&gt;, string&gt;" tid="" name="Dictionary&lt;Tuple&lt;Type, Type&gt;, string&gt;" description="" />
-        <type id="ServiceConfiguration" tid="" name="ServiceConfiguration" description="" />
         <type id="Class:b4bb850b7ef34c659f855816962a327a" tid="" name="LogRecord" description="" class-ref="b4bb850b7ef34c659f855816962a327a" />
-        <type id="DatabaseServiceResponseResultQuery" tid="" name="DatabaseServiceResponseResultQuery" description="" />
-        <type id="List&lt;Service&gt;" tid="" name="List&lt;Service&gt;" description="" />
-        <type id="Class:b26115f3cb4544f5aa29e7ac27f23083" tid="" name="DatabaseClient" description="" class-ref="b26115f3cb4544f5aa29e7ac27f23083" />
+        <type id="HashSet&lt;Page&gt;" tid="" name="HashSet&lt;Page&gt;" description="" />
+        <type id="List&lt;Table&gt;" tid="" name="List&lt;Table&gt;" description="" />
+        <type id="Class:7d367976a6c944b8a01b47418f9b4204" tid="" name="DatabaseService" description="" class-ref="7d367976a6c944b8a01b47418f9b4204" />
+        <type id="List&lt;LogRecordPage&gt;" tid="" name="List&lt;LogRecordPage&gt;" description="" />
+        <type id="Class:08d9d902015a4846942b57090ac6f337" tid="" name="LogManager" description="" class-ref="08d9d902015a4846942b57090ac6f337" />
         <type id="CSharp.string" tid="string" name="string" description="" nullable="true" />
+        <type id="Process" tid="" name="Process" description="" />
+        <type id="List&lt;Page&gt;" tid="" name="List&lt;Page&gt;" description="" />
+        <type id="List&lt;LogRecord&gt;" tid="" name="List&lt;LogRecord&gt;" description="" />
+        <type id="Class:d6f8b56e133f4ff8884adf3c01e29e21" tid="" name="LogService" description="" class-ref="d6f8b56e133f4ff8884adf3c01e29e21" />
+        <type id="Class:873e42905324420ab82fee1fa04e535a" tid="" name="DatabaseHyperscale" description="" class-ref="873e42905324420ab82fee1fa04e535a" />
         <type id="List&lt;LogRecordUndo&gt;" tid="" name="List&lt;LogRecordUndo&gt;" description="" />
+        <type id="DatabaseServiceResponseResultQuery" tid="" name="DatabaseServiceResponseResultQuery" description="" />
+        <type id="Class:b26115f3cb4544f5aa29e7ac27f23083" tid="" name="DatabaseClient" description="" class-ref="b26115f3cb4544f5aa29e7ac27f23083" />
+        <type id="List&lt;int&gt;" tid="" name="List&lt;int&gt;" description="" />
+        <type id="Class:e32a3774a8a64a4c80cb88e79a4ad131" tid="" name="Orchestrator" description="" class-ref="e32a3774a8a64a4c80cb88e79a4ad131" />
+        <type id="List_" tid="" name="List" description="" base-ref="List" />
+        <type id="Class:af5d479e0c204225947d8033c6574007" tid="" name="StorageService" description="" class-ref="af5d479e0c204225947d8033c6574007" />
+        <type id="ServiceConfiguration" tid="" name="ServiceConfiguration" description="" />
+        <type id="Class:d036e600f35d428fb23b9bca0c79d7d4" tid="" name="StorageManagerTraditional" description="" class-ref="d036e600f35d428fb23b9bca0c79d7d4" />
+        <type id="Class:527906a0e9044c44bdfd17e3493f7426" tid="" name="Page" description="" class-ref="527906a0e9044c44bdfd17e3493f7426" />
+        <type id="Class:a39ede8f45e34d40a0c4f2399b505275" tid="" name="TransactionManager" description="" class-ref="a39ede8f45e34d40a0c4f2399b505275" />
+        <type id="LogRecordUndo" tid="" name="LogRecordUndo" description="" />
+        <type id="Class:b87eb5c1f11d4bf2a6b0b609073da149" tid="" name="Table" description="" class-ref="b87eb5c1f11d4bf2a6b0b609073da149" />
+        <type id="Dictionary&lt;Tuple&lt;Type, Type&gt;, string&gt;" tid="" name="Dictionary&lt;Tuple&lt;Type, Type&gt;, string&gt;" description="" />
+        <type id="CancellationTokenSource" tid="" name="CancellationTokenSource" description="" />
+        <type id="Class:29bb113b84a946e182edd5c27b3e3282" tid="" name="Service" description="" class-ref="29bb113b84a946e182edd5c27b3e3282" />
+        <type id="Class:74998b3525cd4b58ae6ddb08f085294a" tid="" name="DatabaseTraditional" description="" class-ref="74998b3525cd4b58ae6ddb08f085294a" />
+        <type id="Class:f57e6abb3637425f9aacdf3b3cd1d0aa" tid="" name="LogManagerTraditional" description="" class-ref="f57e6abb3637425f9aacdf3b3cd1d0aa" />
+        <type id="Class:772c194d288047de8b557f728f449d91" tid="" name="Database" description="" class-ref="772c194d288047de8b557f728f449d91" />
+        <type id="List" tid="" name="List" description="" />
+        <type id="List___" tid="" name="List" description="" base-ref="List__" />
+        <type id="CSharp.bool" tid="boolean" name="bool" description="" />
+        <type id="List&lt;Service&gt;" tid="" name="List&lt;Service&gt;" description="" />
+        <type id="CSharp.int" tid="s-integer32" name="int" description="" />
+        <type id="List__" tid="" name="List" description="" base-ref="List_" />
       </types>
     </custom-types>
   </types>
@@ -1855,6 +1865,49 @@
       <structural-feature type="DatabaseClient" type-id="Class:b26115f3cb4544f5aa29e7ac27f23083" />
       <property />
     </item>
+    <item id="4bd32d513ece40e0a6fa7906943967cb" cid="PROP031" type="property" name="CachedPages" style-class="" owner="634b24b358024c809c36c59e023548c8" creation-date="08/13/2022 22:28:15" visibility="protected">
+      <stereotypes>
+        <stereotype name="property" />
+      </stereotypes>
+      <tagged-values>
+        <tagged-value id="tv60f07f49bcd24e548d5b71c5923314ae" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="CachedPages" />
+        <tagged-value id="tvaf590ed6682a435683c07583289a2748" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pd813f025eb704e7693e36c31e2c70ef9_484365280" />
+        <tagged-value id="tv3e80647f831b4021a4be0aafc00f41eb" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
+        <tagged-value id="tvcb9686de689045b196af1011d47588a6" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+        <tagged-value id="tve61004bf5efd456ea82fd024f54c5715" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="152" />
+        <tagged-value id="tvddc3212910d94d189d7923bfe81212ce" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="55" />
+        <tagged-value id="tv9444df0a67bb4bc9a6e236560b7810fb" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1452" />
+        <tagged-value id="tv549879b46a564856bbc6d85217f47d6d" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 07:08:17" />
+      </tagged-values>
+      <stereotype-instances>
+        <stereotype id="4bd32d513ece40e0a6fa7906943967cb_property_c" type="property" ref="" />
+      </stereotype-instances>
+      <style style-name="Default" shadow-type="smooth" shadow-offset="2,2" shadow-visible="true" shadow-color="#3A555555" shadow-radius="8" wrap-name-text="true" wrap-other-text="true" padding="2" margin="1" glow-color="#FFFFFFFF" accuracy="0.9">
+        <text-style type="name" use-defaults="false" color="#FF555555" font="Segoe UI;11.25;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+        <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+        <text-style type="text" use-defaults="false" color="#FF555555" font="Segoe UI;9.75;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
+        <text-style type="tagged-value" use-defaults="false" color="#FF555555" font="Segoe UI;9.75;" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+        <text-style type="stereotype" use-defaults="false" color="#FF555555" font="Segoe UI;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+        <background type="solid" colors="#FFF2F2F2,#FFF2F2F2" />
+        <border color="#FF555555" width="2" dash-style="Solid" />
+        <label-connector color="#80000000" width="1" dash-style="Dash" />
+        <alternate-styles>
+          <alternate-style style-name="Alternate" shadow-type="smooth" shadow-offset="2,2" shadow-visible="true" shadow-color="#322A2A2A" shadow-radius="8" wrap-name-text="true" wrap-other-text="true" padding="2" margin="1" glow-color="#FFFFFFFF" accuracy="0.9">
+            <text-style type="name" use-defaults="false" color="#FFE9E9E9" font="Segoe UI;11.25;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+            <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+            <text-style type="text" use-defaults="false" color="#FFE9E9E9" font="Segoe UI;9.75;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
+            <text-style type="tagged-value" use-defaults="false" color="#FFE9E9E9" font="Segoe UI;9.75;" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+            <text-style type="stereotype" use-defaults="false" color="#FFE9E9E9" font="Segoe UI;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
+            <background type="solid" colors="#FF203D85,#FF203D85" />
+            <border color="#FF203D85" width="2" dash-style="Solid" />
+            <label-connector color="#80000000" width="1" dash-style="Dash" />
+          </alternate-style>
+        </alternate-styles>
+      </style>
+      <feature />
+      <structural-feature type="List&lt;Page&gt;" type-id="List&lt;Page&gt;" />
+      <property abstract="true" />
+    </item>
     <item id="f0e100aa88ff475495ec2346c19323e9" cid="PROP001" type="property" name="" style-class="" owner="6787a34ebb0f41d697bc2e57eba7b007" creator="" creation-date="08/13/2022 23:07:42" visibility="undefined">
       <feature />
       <structural-feature type="LogManager" type-id="Class:08d9d902015a4846942b57090ac6f337" />
@@ -1961,7 +2014,7 @@
         <tagged-value id="tv84fe8e78701647eba4a8df4179c4f2b4" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="6180" />
         <tagged-value id="tv3bef2f6b15be410aac6bc8b2382e0655" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 09:12:55" />
       </tagged-values>
-      <style style-name="Default" shadow-type="smooth" shadow-offset="2,2" shadow-visible="true" shadow-color="#3A555555" shadow-radius="8" wrap-name-text="true" wrap-other-text="true" padding="2" margin="1" glow-color="#FFFFFFFF" accuracy="0.9">
+      <style style-name="Custom Style" shadow-type="smooth" shadow-offset="2,2" shadow-visible="true" shadow-color="#3A555555" shadow-radius="8" wrap-name-text="true" wrap-other-text="true" padding="2" margin="1" glow-color="#FFFFFFFF" accuracy="0.9">
         <text-style type="name" use-defaults="false" color="#FF555555" font="Segoe UI;11.25;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
         <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
         <text-style type="text" use-defaults="false" color="#FF555555" font="Segoe UI;9.75;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -1985,7 +2038,7 @@
       </style>
       <feature />
       <structural-feature read-only="true" type="HashSet&lt;Page&gt;" type-id="HashSet&lt;Page&gt;" />
-      <property default-value="new()" />
+      <property />
     </item>
     <item id="a8b70a4f29c448d98cc4f531567a968c" cid="PROP015" type="property" name="" style-class="" owner="0dfe6909ed52491789cb16ceaaf3c518" creator="" creation-date="08/15/2022 22:22:41" visibility="undefined">
       <feature />
@@ -2009,7 +2062,7 @@
       <stereotype-instances>
         <stereotype id="01eace2c12a64506890806f1d95ffc2d_property_c" type="property" ref="" />
       </stereotype-instances>
-      <style style-name="Default" shadow-type="smooth" shadow-offset="2,2" shadow-visible="true" shadow-color="#3A555555" shadow-radius="8" wrap-name-text="true" wrap-other-text="true" padding="2" margin="1" glow-color="#FFFFFFFF" accuracy="0.9">
+      <style style-name="Custom Style" shadow-type="smooth" shadow-offset="2,2" shadow-visible="true" shadow-color="#3A555555" shadow-radius="8" wrap-name-text="true" wrap-other-text="true" padding="2" margin="1" glow-color="#FFFFFFFF" accuracy="0.9">
         <text-style type="name" use-defaults="false" color="#FF555555" font="Segoe UI;11.25;B" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
         <text-style type="part-header" use-defaults="false" color="#FF1E1E1E" font="Verdana;9;I" horizontal-alignment="center" vertical-alignment="center" shadow="false" />
         <text-style type="text" use-defaults="false" color="#FF555555" font="Segoe UI;9.75;" horizontal-alignment="left" vertical-alignment="center" shadow="false" />
@@ -2235,27 +2288,6 @@
                 </source-codes>
               </property>
             </item>
-            <item id="4bd32d513ece40e0a6fa7906943967cb" cid="PROP031" type="property" name="CachedPages" style-class="" owner="634b24b358024c809c36c59e023548c8" creation-date="08/13/2022 22:28:15" visibility="protected">
-              <stereotypes>
-                <stereotype name="property" />
-              </stereotypes>
-              <tagged-values>
-                <tagged-value id="tv60f07f49bcd24e548d5b71c5923314ae" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="CachedPages" />
-                <tagged-value id="tvaf590ed6682a435683c07583289a2748" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pd813f025eb704e7693e36c31e2c70ef9_484365280" />
-                <tagged-value id="tv3e80647f831b4021a4be0aafc00f41eb" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
-                <tagged-value id="tvcb9686de689045b196af1011d47588a6" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tve61004bf5efd456ea82fd024f54c5715" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="152" />
-                <tagged-value id="tvddc3212910d94d189d7923bfe81212ce" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="55" />
-                <tagged-value id="tv9444df0a67bb4bc9a6e236560b7810fb" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1452" />
-                <tagged-value id="tv549879b46a564856bbc6d85217f47d6d" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 07:08:17" />
-              </tagged-values>
-              <stereotype-instances>
-                <stereotype id="4bd32d513ece40e0a6fa7906943967cb_property_c" type="property" ref="" />
-              </stereotype-instances>
-              <feature />
-              <structural-feature type="Page" type-id="Class:527906a0e9044c44bdfd17e3493f7426" />
-              <property abstract="true" />
-            </item>
             <item id="b4bb850b7ef34c659f855816962a327a" cid="C014" type="class" name="LogRecord" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" visibility="public" is-abstract="true">
               <tagged-values>
                 <tagged-value id="tvf1232d67640542bf8b738306abf8b4d0" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
@@ -2363,17 +2395,18 @@
             </item>
             <item id="634b24b358024c809c36c59e023548c8" cid="C016" type="class" name="StorageManager" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" visibility="public" is-abstract="true">
               <tagged-values>
-                <tagged-value id="tva884cbaa6c5a40708049c51d9811f60a" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tvc3a1568d3864488990ffc191ea7f1279" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="StorageManager" />
-                <tagged-value id="tvbe53522f52e34cba9cf741b49539205f" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pd813f025eb704e7693e36c31e2c70ef9_484365280" />
-                <tagged-value id="tv878555cb7cd841288622b9807375b356" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
-                <tagged-value id="tva6af12d4961b49ebb42431dd8f27c11c" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv3c212204a7aa4294a64dd1baa6a965d7" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="99" />
-                <tagged-value id="tv223978b8f67a4d6686a867df07fc535d" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="1345" />
-                <tagged-value id="tv1a441225778942b8b5238056b82e95bc" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1452" />
-                <tagged-value id="tv30fcb232aa064189b364190a44c99d4c" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 07:08:17" />
+                <tagged-value id="tv5eb04ec4aae64e8d82a1fbf497f7eb19" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tva5b5025bebe04785a25f42cdeba74a28" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="StorageManager" />
+                <tagged-value id="tv8019ee7860194c64a105b135ae6cd29f" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pd813f025eb704e7693e36c31e2c70ef9_484365280" />
+                <tagged-value id="tv99ee4e7a75724443b5e3aa119140b072" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
+                <tagged-value id="tvab4233aea58541678ada8b1e6d2e7273" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv70d8abbc53b2435b96dd65755fd2b591" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="99" />
+                <tagged-value id="tv304ee6170c1b422ca7e4f2e35dfac24d" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="1345" />
+                <tagged-value id="tv535ec12ccd8049acab172befdcf0f4cd" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="1452" />
+                <tagged-value id="tvcd37855e59624334aa264cb602da6e25" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 07:08:17" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="4bd32d513ece40e0a6fa7906943967cb" />
                 <owned-item ref="4bd32d513ece40e0a6fa7906943967cb" />
                 <owned-item ref="4bd32d513ece40e0a6fa7906943967cb" />
               </owned-items>
@@ -2387,11 +2420,11 @@
                     <parameter id="p5d7c325e4c48476a8d2378da7569fe40" name="pageId" type="int" type-id="CSharp.int" />
                   </parameters>
                   <tagged-values>
-                    <tagged-value id="tva4fc1615e6f24fa7b6dfd74eaa2d3ea5" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="GetPage" />
-                    <tagged-value id="tv939fe4b2a18344e39a7d0c787452f87c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
-                    <tagged-value id="tv286231a57f374feaa2a80a1c623f5f96" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                    <tagged-value id="tv9b1a8b335ea646ecb50d28f273522363" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1136" />
-                    <tagged-value id="tv1c42eee37ff9496cb9d0846b526c5206" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="41" />
+                    <tagged-value id="tv06bec4b84ef64ead9790cc95dd0ff7ee" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="GetPage" />
+                    <tagged-value id="tvd4636d2e1a624e91967c5869466c35c3" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
+                    <tagged-value id="tvf52c85b0eadd4b4cae403b4a3adb7c71" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tve417890773cf4572953aca33e49350a9" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1136" />
+                    <tagged-value id="tv6ff709af3af743ad83aae04c658483aa" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="41" />
                   </tagged-values>
                 </operation>
                 <operation id="of091bbf3608c4eb785ee19cbe121ab3b751" cid="OP073" name="GetPagesForTable" creation-date="08/13/2022 22:28:15" type="List&lt;Page&gt;" type-id="List&lt;Page&gt;" visibility="public" abstract="true">
@@ -2399,11 +2432,11 @@
                     <parameter id="p44a41a64ea8e450b90f0304a04936f9f" name="tableName" type="string" type-id="CSharp.string" />
                   </parameters>
                   <tagged-values>
-                    <tagged-value id="tv8ee654439fe642f0a257c9b595d68b6b" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="GetPagesForTable" />
-                    <tagged-value id="tv0406a2f6b0a442869fbff172bde0ee4a" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
-                    <tagged-value id="tv8006c9ab60c24fba923c893f305ee978" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                    <tagged-value id="tvdf419a4d3aff4c418dc163ea3169a33a" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1189" />
-                    <tagged-value id="tvf5964805c870480c96a277cd21772113" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="62" />
+                    <tagged-value id="tv657838e6e54b4084a038531538703f7c" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="GetPagesForTable" />
+                    <tagged-value id="tv8c0b22d024fa44ef98a74fbee6a2cc2d" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
+                    <tagged-value id="tvf8d84d02a24740c3b24669c3c12d3ced" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tv7a279cac69974d21a2df903b5ada6f70" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1189" />
+                    <tagged-value id="tv8b62389e281d48c1b6f5134beae931e7" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="62" />
                   </tagged-values>
                 </operation>
                 <operation id="o74a2bdf3794b4d6da7812f3a0eab67a7751" cid="OP075" name="Checkpoint" creation-date="08/13/2022 22:28:15" type="" type-id="" visibility="public" abstract="true">
@@ -2411,14 +2444,17 @@
                     <parameter id="p32f5da458def48a0bebd5b2b47c9fc2a" name="logSequenceNumber" type="int" type-id="CSharp.int" />
                   </parameters>
                   <tagged-values>
-                    <tagged-value id="tv600ba020565b47c6b795febda2be68c6" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Checkpoint" />
-                    <tagged-value id="tv6b906553eb7445d3bb3a0043a9132352" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
-                    <tagged-value id="tv7629da8e05d749e9a3e618c74d98a749" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                    <tagged-value id="tvc208c956a3db49db8fa435c3a7922251" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1322" />
-                    <tagged-value id="tv88c04700d475436d9c62208bd0883d58" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="55" />
+                    <tagged-value id="tv1e1c8ca456a9459889ff25449dc6ca5a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Checkpoint" />
+                    <tagged-value id="tv4544bcb0229e46fcba96bfa7c6e8a293" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManager.cs" />
+                    <tagged-value id="tva7c2632708104bc8bdbed87a0d351d91" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tv679f085e74b54facab1a6a49db80a386" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="1322" />
+                    <tagged-value id="tvc11d57fe6f174d75a896a6d115196b66" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="55" />
                   </tagged-values>
                 </operation>
               </operations>
+              <source-codes>
+                <source-code language="ActionScript" />
+              </source-codes>
             </item>
             <item id="20f4917b5f764b0490927817cbd2118b" cid="REL014" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" from="d6f8b56e133f4ff8884adf3c01e29e21" to="f57e6abb3637425f9aacdf3b3cd1d0aa" visibility="package">
               <tagged-values>
@@ -2426,8 +2462,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="d6f8b56e133f4ff8884adf3c01e29e21" to="f57e6abb3637425f9aacdf3b3cd1d0aa" derived="false">
-                <start-role id="umlar-2997c4c6-42c7-4776-a1dd-62f46665ec0b" name="" navigability="" association-type="association" visibility="private" attribute-ref="a0369180e89ba4309a3428d3fa792aada745" />
-                <end-role id="umlar-1ff084f6-95e4-499e-a8ca-010bbda00aff" name="" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-2b11f536-5f49-403a-b5e1-b1d7914dd8db" name="" navigability="" association-type="association" visibility="private" attribute-ref="a0369180e89ba4309a3428d3fa792aada745" />
+                <end-role id="umlar-22cf06f4-6feb-479d-9bd3-d30bc6b2dbab" name="" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="8df5989535914a9993aa71ee4cc7c5ff" cid="REL004" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" from="772c194d288047de8b557f728f449d91" to="b87eb5c1f11d4bf2a6b0b609073da149" visibility="package">
@@ -2436,8 +2472,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="772c194d288047de8b557f728f449d91" to="b87eb5c1f11d4bf2a6b0b609073da149" derived="false">
-                <start-role id="umlar-17835509-ec41-4979-89a7-c357bf4eacbb" name="" navigability="" association-type="composition" visibility="private" attribute-ref="a0fab7f888d3e4f9db484a385f1ad9fc6756" />
-                <end-role id="umlar-652309df-c8e8-456b-85a5-0445bf4801b3" name="" multiplicity="0..*" navigability="yes" association-type="association" visibility="private" attribute-ref="aa9515addc70e4455a2195c60fac708ba747" />
+                <start-role id="umlar-53b958ac-3d9b-4edc-844b-126b81b0b777" name="" navigability="" association-type="composition" visibility="private" attribute-ref="a0fab7f888d3e4f9db484a385f1ad9fc6756" />
+                <end-role id="umlar-1a4b8772-659d-4c0b-9fde-6490d9ac4ff6" name="" multiplicity="0..*" navigability="yes" association-type="association" visibility="private" attribute-ref="aa9515addc70e4455a2195c60fac708ba747" />
               </relation>
             </item>
             <item id="b87eb5c1f11d4bf2a6b0b609073da149" cid="C012" type="class" name="Table" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" visibility="public">
@@ -2686,8 +2722,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="d036e600f35d428fb23b9bca0c79d7d4" to="527906a0e9044c44bdfd17e3493f7426" derived="false">
-                <start-role id="umlar-a04e0475-fd36-47c7-91c8-b9e4ee951164" name="" navigability="" association-type="association" visibility="private" attribute-ref="a3b1c773bf1dd4de5a728d8dbfa40d0f1731" />
-                <end-role id="umlar-e4daa2ae-54f1-4ea0-ada3-07192896c4b4" name="" multiplicity="0..*" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-ac1e8f9d-f756-44c9-bf46-96312a506034" name="" navigability="" association-type="association" visibility="private" attribute-ref="a3b1c773bf1dd4de5a728d8dbfa40d0f1731" />
+                <end-role id="umlar-4e657bb2-8980-4301-a76b-8c8b7013740f" name="" multiplicity="0..*" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="08d9d902015a4846942b57090ac6f337" cid="C013" type="class" name="LogManager" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" visibility="public" is-abstract="true">
@@ -2705,6 +2741,8 @@
               <owned-items>
                 <owned-item ref="d12cbdf532bd4c9c9a374b0eb3a71b05" />
                 <owned-item ref="efc940a8e71246d091ebd3b4021ef674" />
+                <owned-item ref="efc940a8e71246d091ebd3b4021ef674" />
+                <owned-item ref="d12cbdf532bd4c9c9a374b0eb3a71b05" />
                 <owned-item ref="efc940a8e71246d091ebd3b4021ef674" />
                 <owned-item ref="d12cbdf532bd4c9c9a374b0eb3a71b05" />
               </owned-items>
@@ -2849,8 +2887,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="634b24b358024c809c36c59e023548c8" to="527906a0e9044c44bdfd17e3493f7426" derived="false">
-                <start-role id="umlar-1617aa8e-8950-410a-9518-a2573e6f0e0b" name="" navigability="" association-type="association" visibility="private" attribute-ref="a85b86ebcccd2490b843bb8d5b7361a11751" />
-                <end-role id="umlar-8124ac4f-07b4-4892-b071-44e0328bdeb3" name="" multiplicity="0..*" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-a5f186c6-9357-4a10-a35b-8b5183550178" name="" navigability="" association-type="association" visibility="private" attribute-ref="a85b86ebcccd2490b843bb8d5b7361a11751" />
+                <end-role id="umlar-cf018544-d8ce-4f40-a666-346b5adb3f35" name="" multiplicity="0..*" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="791c3229a64742cb9181ae66941bad1a" cid="GNR005" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" from="7d367976a6c944b8a01b47418f9b4204" to="29bb113b84a946e182edd5c27b3e3282" visibility="undefined">
@@ -2886,6 +2924,7 @@
                 <tagged-value id="tv7e0df2bc80c1447fad74d538d4cdd2bb" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 06:18:33" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="1798eb34295c4717b3c3f44df8b93df9" />
                 <owned-item ref="1798eb34295c4717b3c3f44df8b93df9" />
                 <owned-item ref="1798eb34295c4717b3c3f44df8b93df9" />
               </owned-items>
@@ -2972,6 +3011,8 @@
                 <owned-item ref="754c29eb0219448ca0b46b824f88d041" />
                 <owned-item ref="382a796424e34bf0b542f785e3df23af" />
                 <owned-item ref="df7ac2f30a7e49a18fb92b5b8acb0345" />
+                <owned-item ref="382a796424e34bf0b542f785e3df23af" />
+                <owned-item ref="754c29eb0219448ca0b46b824f88d041" />
                 <owned-item ref="382a796424e34bf0b542f785e3df23af" />
                 <owned-item ref="754c29eb0219448ca0b46b824f88d041" />
               </owned-items>
@@ -3219,17 +3260,19 @@
             </item>
             <item id="d036e600f35d428fb23b9bca0c79d7d4" cid="C002" type="class" name="StorageManagerTraditional" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" visibility="public">
               <tagged-values>
-                <tagged-value id="tv36b77869c5fa4acb97ab8e6ff8905a21" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv5bf111369fd94cffa0fe59c83e57d7c6" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="StorageManagerTraditional" />
-                <tagged-value id="tv510dba965c8b4b9aa9f003447ca63382" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pd813f025eb704e7693e36c31e2c70ef9_484365280" />
-                <tagged-value id="tvc743cca964f44b0d95f90174e0ce3ea7" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManagerTraditional.cs" />
-                <tagged-value id="tv8f89d7f5ebf345a1824040e105c26f91" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tvd2bba4535a134f01aeca6cfdec3eaf47" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="117" />
-                <tagged-value id="tva651331425a84ffc9498d771f012a743" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="6049" />
-                <tagged-value id="tve3e9b1f74d1c4198aa6b1e14cc357f8e" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="6180" />
-                <tagged-value id="tvd890d818f9a746faa79156128ef56aaa" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 09:12:55" />
+                <tagged-value id="tvf4fc23e59c21400086f70d04cd58b7bd" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tvac727e3d63e545db9214432e9740ee78" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="StorageManagerTraditional" />
+                <tagged-value id="tv2846807e412f4f1dbbbd06bc9adaf455" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pd813f025eb704e7693e36c31e2c70ef9_484365280" />
+                <tagged-value id="tvfe7ccceaac724f13b0bb7237ad98e62c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManagerTraditional.cs" />
+                <tagged-value id="tve6ddbe27e8934092865e950d594da767" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv3fa3c54967ee4b05b8e8bbfd4520f5d0" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="117" />
+                <tagged-value id="tv525bc8562d7f472193a2d5b8aea569b2" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="6049" />
+                <tagged-value id="tv38d6fcc6b1ed4e009e582a334551b955" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="6180" />
+                <tagged-value id="tv126a2b9b7d764cd991e5346a597f8933" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 09:12:55" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="92e231e77f1043948725ebad85c61e84" />
+                <owned-item ref="01eace2c12a64506890806f1d95ffc2d" />
                 <owned-item ref="92e231e77f1043948725ebad85c61e84" />
                 <owned-item ref="01eace2c12a64506890806f1d95ffc2d" />
               </owned-items>
@@ -3244,11 +3287,11 @@
                     <parameter id="pae4484ae394d46b2b69d392c212035f9" name="page" type="Page" type-id="Class:527906a0e9044c44bdfd17e3493f7426" />
                   </parameters>
                   <tagged-values>
-                    <tagged-value id="tvf353272d362b46c7b732d304a4386c3f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="MarkPageAsDirty" />
-                    <tagged-value id="tv30cbb05bed564304a11ba1f9a87dd584" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManagerTraditional.cs" />
-                    <tagged-value id="tv3eaeba7c0d314eeda6c05b8aeeeeccec" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                    <tagged-value id="tv4340f5a2bcdd482ca31d4eb37ebfceb9" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="5928" />
-                    <tagged-value id="tv52bc86f055014298b571346bf081b2a8" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="231" />
+                    <tagged-value id="tv4bb9a01fa2c64fa2b50beb00b00ccaeb" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="MarkPageAsDirty" />
+                    <tagged-value id="tv0891cfa75eec415892813166917dc031" name="SourceCodePath" type="text" multiple="false" hidden="true" value="F:\OneDrive\Documents\Education\Faks\MasterRad\Code\Database\Database\Storage\StorageManagerTraditional.cs" />
+                    <tagged-value id="tvd4f6889993cc4a4eb50bd8b0ef0275f1" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tv0ced53ba06db4ba192d4ad7149f351e8" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="5928" />
+                    <tagged-value id="tv1545e523693f4b73b26a87ff4d80d086" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="231" />
                   </tagged-values>
                   <source-codes>
                     <source-code language="CSharp">
@@ -3277,8 +3320,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="7d367976a6c944b8a01b47418f9b4204" to="772c194d288047de8b557f728f449d91" derived="false">
-                <start-role id="umlar-3ecc70b0-54ff-4bf4-8e0a-f853543f566d" name="" navigability="" association-type="composition" visibility="private" attribute-ref="a899450240f04482c9b37f9b7abc0c137756" />
-                <end-role id="umlar-98a17953-172c-435f-b3a5-90f8214c689c" name="" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-02a0615d-2b18-40a6-a649-7f16e74f5e8d" name="" navigability="" association-type="composition" visibility="private" attribute-ref="a899450240f04482c9b37f9b7abc0c137756" />
+                <end-role id="umlar-ee4af0db-b242-464a-aca1-57363ba34742" name="" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="8e88a75999c6400382fec7430d33409b" cid="GNR001" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" from="d036e600f35d428fb23b9bca0c79d7d4" to="634b24b358024c809c36c59e023548c8" visibility="undefined">
@@ -3328,6 +3371,7 @@
               </tagged-values>
               <owned-items>
                 <owned-item ref="cf7c9b9125f540f19435913f26ca2679" />
+                <owned-item ref="84a80316efd948c28e41c1bde987edd7" />
                 <owned-item ref="84a80316efd948c28e41c1bde987edd7" />
                 <owned-item ref="84a80316efd948c28e41c1bde987edd7" />
               </owned-items>
@@ -3493,8 +3537,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="772c194d288047de8b557f728f449d91" to="08d9d902015a4846942b57090ac6f337" derived="false">
-                <start-role id="umlar-e8b6004f-16d3-45c2-a25b-13ae3d13ff06" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="a58aa78e207244bef8687745b7ed62d74754" />
-                <end-role id="umlar-7a2e27fb-9dd8-40d4-9df9-28b5da1a503c" name="" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-1d8f53af-9862-416c-83d0-5742d67cf075" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="a58aa78e207244bef8687745b7ed62d74754" />
+                <end-role id="umlar-d3ee11f8-559e-4c96-a24f-43157d8f5013" name="" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="d51eb08ead2a4ea29282ccc6ee9a3ea9" cid="GNR006" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" from="af5d479e0c204225947d8033c6574007" to="29bb113b84a946e182edd5c27b3e3282" visibility="undefined">
@@ -3690,6 +3734,7 @@
               <owned-items>
                 <owned-item ref="32e309b153db4be493f69bfc2a874143" />
                 <owned-item ref="32e309b153db4be493f69bfc2a874143" />
+                <owned-item ref="32e309b153db4be493f69bfc2a874143" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -3790,8 +3835,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="772c194d288047de8b557f728f449d91" to="634b24b358024c809c36c59e023548c8" derived="false">
-                <start-role id="umlar-85dfee0a-38b0-40a6-b365-a103bf64ee8d" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="a32b03df165d74140b9fafe74d8b3e185754" />
-                <end-role id="umlar-2f5539a5-a089-4807-94e6-b02f10dbea05" name="" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-3d36ed02-4bc1-4345-8739-56d9c791fc73" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="a32b03df165d74140b9fafe74d8b3e185754" />
+                <end-role id="umlar-7bc966f7-9152-49da-bc03-ce08e2335468" name="" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="21d877e1523041699d45a25cbe94242a" cid="REL012" type="relationship" name="" style-class="Flat Light White" creation-date="08/13/2022 22:28:15" from="af5d479e0c204225947d8033c6574007" to="d036e600f35d428fb23b9bca0c79d7d4" visibility="package">
@@ -3800,8 +3845,8 @@
               </tagged-values>
               <style class="Flat Light White" />
               <relation from="af5d479e0c204225947d8033c6574007" to="d036e600f35d428fb23b9bca0c79d7d4" derived="false">
-                <start-role id="umlar-847e0802-7008-44f5-9049-775d73ea4cb6" name="" navigability="" association-type="association" visibility="private" attribute-ref="a1018b9c9075d4dd98dd93e4736ca51b3745" />
-                <end-role id="umlar-110047d0-6be1-49e7-a63a-593085654989" name="" navigability="yes" association-type="association" visibility="private" />
+                <start-role id="umlar-b08ab818-aebd-4b49-b79a-a6456595c3c4" name="" navigability="" association-type="association" visibility="private" attribute-ref="a1018b9c9075d4dd98dd93e4736ca51b3745" />
+                <end-role id="umlar-30e5d306-ff39-464d-9eb4-3ee05d75329b" name="" navigability="yes" association-type="association" visibility="private" />
               </relation>
             </item>
             <item id="8170b18d0f9c4daa9cf31e49b5662c3b" cid="PROP036" type="property" name="ValueCountMax" style-class="" owner="527906a0e9044c44bdfd17e3493f7426" creation-date="08/13/2022 22:28:15" visibility="private">
@@ -3821,7 +3866,7 @@
             </item>
           </abstract-items>
           <sub-models />
-          <diagram type="uml-class" id="peef4a2b744b1432dbd34c8b020f1b433_587442174" name="Database" order-index="1" uid="" name-style="" auto-routed-paths="true" default-line-style="default" namespace="Database" view-location="-139,-299">
+          <diagram type="uml-class" id="peef4a2b744b1432dbd34c8b020f1b433_587442174" name="Database" order-index="1" uid="" name-style="" auto-routed-paths="true" default-line-style="default" namespace="Database" view-location="-139,-290">
             <style>
               <background-color index="1" color="#FFFFFFFF" />
               <background-color index="2" color="#FFFFFFFF" />
@@ -3845,10 +3890,14 @@
                 <style class="Flat Light White" />
               </item>
               <item id="di2e8db8bbf807484e88986b0d612a1fc66770" cid="REL008" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 22:22:41" from="e32a3774a8a64a4c80cb88e79a4ad131" to="7d367976a6c944b8a01b47418f9b4204" visibility="package">
+                <owned-items>
+                  <owned-item ref="di8cb4e908d4c3482e916932af081f3c655298" />
+                  <owned-item ref="di1867b3fb4b0547acaa96c293a504da8a5298" />
+                </owned-items>
                 <style class="Flat Light White" />
                 <relation from="e32a3774a8a64a4c80cb88e79a4ad131" to="7d367976a6c944b8a01b47418f9b4204" derived="false">
-                  <start-role id="umlar-ca3b36db-d46a-4827-b148-4d514739c5b0" name="" navigability="" association-type="association" visibility="private" property-ref="di1867b3fb4b0547acaa96c293a504da8a5298" />
-                  <end-role id="umlar-01ff40fd-aaf7-43e0-af2a-c1af4cb55d48" name="" navigability="yes" association-type="association" visibility="private" property-ref="di8cb4e908d4c3482e916932af081f3c655298" />
+                  <start-role id="umlar-7ed582f6-353a-4ad0-abeb-595e0c843643" name="" navigability="" association-type="association" visibility="private" property-ref="di1867b3fb4b0547acaa96c293a504da8a5298" />
+                  <end-role id="umlar-94acd5bf-5e5e-4387-a497-428e4d063f1d" name="" navigability="yes" association-type="association" visibility="private" property-ref="di8cb4e908d4c3482e916932af081f3c655298" />
                 </relation>
               </item>
               <item id="dic70ebebe2b274fbca9a29245a73578692044" cid="DEP004" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 23:07:01" from="74998b3525cd4b58ae6ddb08f085294a" to="f57e6abb3637425f9aacdf3b3cd1d0aa" visibility="package">
@@ -3865,11 +3914,13 @@
                   <owned-item ref="9561aa79416040f490c26574e2a9d3de" />
                   <owned-item ref="62053c018edc4931a8538342a7c60909" />
                   <owned-item ref="9561aa79416040f490c26574e2a9d3de" />
+                  <owned-item ref="62053c018edc4931a8538342a7c60909" />
+                  <owned-item ref="9561aa79416040f490c26574e2a9d3de" />
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="b87eb5c1f11d4bf2a6b0b609073da149" to="527906a0e9044c44bdfd17e3493f7426" derived="false">
-                  <start-role id="umlar-38f523ec-93a2-4e7f-a94f-d97fa5c8f571" name="" navigability="" association-type="aggregation" visibility="private" property-ref="62053c018edc4931a8538342a7c60909" />
-                  <end-role id="umlar-bcce68ec-4d58-493f-bb7e-0fcfd21db36d" name="" navigability="yes" association-type="association" visibility="private" attribute-ref="a7382b26d13d64b20aca715e265fcb2ff752" property-ref="9561aa79416040f490c26574e2a9d3de" />
+                  <start-role id="umlar-56dc7203-aa5d-4a29-b3a6-4e052301bd64" name="" navigability="" association-type="aggregation" visibility="private" property-ref="62053c018edc4931a8538342a7c60909" />
+                  <end-role id="umlar-76c7f6e3-7b3c-415e-8c69-27fd729c7fcc" name="" navigability="yes" association-type="association" visibility="private" attribute-ref="a7382b26d13d64b20aca715e265fcb2ff752" property-ref="9561aa79416040f490c26574e2a9d3de" />
                 </relation>
               </item>
               <item id="di8cb4e908d4c3482e916932af081f3c655298" cid="PROP024" type="property" name="" style-class="" owner="di2e8db8bbf807484e88986b0d612a1fc66770" creator="" creation-date="08/15/2022 22:22:41" visibility="undefined">
@@ -3878,10 +3929,14 @@
                 <property />
               </item>
               <item id="dia6ca782fb7f2416088d89fb9d9ac697d9176" cid="REL009" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 22:22:41" from="772c194d288047de8b557f728f449d91" to="a39ede8f45e34d40a0c4f2399b505275" visibility="package">
+                <owned-items>
+                  <owned-item ref="di92db7a9c56794354a0babaebc9516baa9176" />
+                  <owned-item ref="di71c79dcf95d540f7979c7cdec61a0a839176" />
+                </owned-items>
                 <style class="Flat Light White" />
                 <relation from="772c194d288047de8b557f728f449d91" to="a39ede8f45e34d40a0c4f2399b505275" derived="false">
-                  <start-role id="umlar-ca3b36db-d46a-4827-b148-4d514739c5b0" name="" navigability="" association-type="association" visibility="private" attribute-ref="a58aa78e207244bef8687745b7ed62d74754" property-ref="di71c79dcf95d540f7979c7cdec61a0a839176" />
-                  <end-role id="umlar-01ff40fd-aaf7-43e0-af2a-c1af4cb55d48" name="" navigability="yes" association-type="association" visibility="private" property-ref="di92db7a9c56794354a0babaebc9516baa9176" />
+                  <start-role id="umlar-89a7de8e-6392-47b9-9a41-4ca2af40dfbc" name="" navigability="" association-type="association" visibility="private" attribute-ref="a58aa78e207244bef8687745b7ed62d74754" property-ref="di71c79dcf95d540f7979c7cdec61a0a839176" />
+                  <end-role id="umlar-ab3ef2fc-a973-49dd-b5a5-86fa6c885b0c" name="" navigability="yes" association-type="association" visibility="private" property-ref="di92db7a9c56794354a0babaebc9516baa9176" />
                 </relation>
               </item>
               <item id="di1867b3fb4b0547acaa96c293a504da8a5298" cid="PROP020" type="property" name="" style-class="" owner="di2e8db8bbf807484e88986b0d612a1fc66770" creator="" creation-date="08/15/2022 22:22:41" visibility="undefined">
@@ -3893,11 +3948,13 @@
                 <owned-items>
                   <owned-item ref="5e547feacc4341959e310ba0ad622402" />
                   <owned-item ref="a8b70a4f29c448d98cc4f531567a968c" />
+                  <owned-item ref="5e547feacc4341959e310ba0ad622402" />
+                  <owned-item ref="a8b70a4f29c448d98cc4f531567a968c" />
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="b26115f3cb4544f5aa29e7ac27f23083" to="e32a3774a8a64a4c80cb88e79a4ad131" derived="false">
-                  <start-role id="umlar-ca3b36db-d46a-4827-b148-4d514739c5b0" name="" navigability="" association-type="association" visibility="private" property-ref="5e547feacc4341959e310ba0ad622402" />
-                  <end-role id="umlar-01ff40fd-aaf7-43e0-af2a-c1af4cb55d48" name="" navigability="yes" association-type="association" visibility="private" property-ref="a8b70a4f29c448d98cc4f531567a968c" />
+                  <start-role id="umlar-fbce3867-b9b2-4e57-87d8-434e24890156" name="" navigability="" association-type="association" visibility="private" property-ref="5e547feacc4341959e310ba0ad622402" />
+                  <end-role id="umlar-2ea4e12d-1c38-4b86-a024-f8acbb8b994e" name="" navigability="yes" association-type="association" visibility="private" property-ref="a8b70a4f29c448d98cc4f531567a968c" />
                 </relation>
               </item>
               <item id="di71c79dcf95d540f7979c7cdec61a0a839176" cid="PROP025" type="property" name="" style-class="" owner="dia6ca782fb7f2416088d89fb9d9ac697d9176" creator="" creation-date="08/15/2022 22:22:41" visibility="undefined">
@@ -3905,8 +3962,13 @@
                 <structural-feature type="Database" type-id="Class:772c194d288047de8b557f728f449d91" />
                 <property aggregation="composite" />
               </item>
+              <item id="f87f913d194f44309785fd646be4decb" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 23:07:01" from="74998b3525cd4b58ae6ddb08f085294a" to="d036e600f35d428fb23b9bca0c79d7d4" visibility="package">
+                <style class="Flat Light White" />
+              </item>
               <item id="6787a34ebb0f41d697bc2e57eba7b007" cid="REL001" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 23:07:42" from="08d9d902015a4846942b57090ac6f337" to="b4bb850b7ef34c659f855816962a327a" visibility="package">
                 <owned-items>
+                  <owned-item ref="f0e100aa88ff475495ec2346c19323e9" />
+                  <owned-item ref="0b6bdbfe721a4489ad367ab8e1374df7" />
                   <owned-item ref="f0e100aa88ff475495ec2346c19323e9" />
                   <owned-item ref="0b6bdbfe721a4489ad367ab8e1374df7" />
                   <owned-item ref="f0e100aa88ff475495ec2346c19323e9" />
@@ -3914,12 +3976,9 @@
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="08d9d902015a4846942b57090ac6f337" to="b4bb850b7ef34c659f855816962a327a" derived="false">
-                  <start-role id="umlar-995a4f3d-3c4e-4db1-b671-d97c31c94f0f" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="ad2500f9b4f60499e82fa31f86b081cad748" property-ref="f0e100aa88ff475495ec2346c19323e9" />
-                  <end-role id="umlar-26d131be-9552-44b6-acc0-f42a8f15b832" name="" navigability="yes" association-type="association" visibility="private" attribute-ref="acade28126aa440d8b82ce7254d615d37749" property-ref="0b6bdbfe721a4489ad367ab8e1374df7" />
+                  <start-role id="umlar-9cf27d4d-ca3c-41df-80a2-4685d9233b91" name="" navigability="" association-type="aggregation" visibility="private" attribute-ref="ad2500f9b4f60499e82fa31f86b081cad748" property-ref="f0e100aa88ff475495ec2346c19323e9" />
+                  <end-role id="umlar-e144884f-57e4-4811-b06f-26803f265b3f" name="" navigability="yes" association-type="association" visibility="private" attribute-ref="acade28126aa440d8b82ce7254d615d37749" property-ref="0b6bdbfe721a4489ad367ab8e1374df7" />
                 </relation>
-              </item>
-              <item id="f87f913d194f44309785fd646be4decb" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 23:07:01" from="74998b3525cd4b58ae6ddb08f085294a" to="d036e600f35d428fb23b9bca0c79d7d4" visibility="package">
-                <style class="Flat Light White" />
               </item>
               <item id="9df42bdd37444d43bfd5d97979e0aaf2" cid="DEP001" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 22:45:22" from="a39ede8f45e34d40a0c4f2399b505275" to="08d9d902015a4846942b57090ac6f337" visibility="package">
                 <style class="Flat Light White" />
