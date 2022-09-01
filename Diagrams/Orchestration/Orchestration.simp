@@ -19,7 +19,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>2451</value>
+        <value>2558</value>
       </counter>
       <counter>
         <item-type type-id="property" type="Property" />
@@ -141,6 +141,16 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-7c9fe99d18b84e6aa60db2ccfec1e729" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
       </person>
     </persons>
     <teams />
@@ -180,8 +190,8 @@
         <type id="Class:0fc38fed838646c7b9f5d4d28923ccf9" tid="" name="StorageService" description="" class-ref="0fc38fed838646c7b9f5d4d28923ccf9" />
         <type id="List&lt;Service&gt;" tid="" name="List&lt;Service&gt;" description="" />
         <type id="Class:7bc7bd2f4cb54071a733f351abb7d2d9" tid="" name="LogService" description="" class-ref="7bc7bd2f4cb54071a733f351abb7d2d9" />
-        <type id="Class:d4e7babc76924c40bebc97f476c3911c" tid="" name="Database" description="" class-ref="d4e7babc76924c40bebc97f476c3911c" />
         <type id="CSharp.int" tid="s-integer32" name="int" description="" />
+        <type id="Class:d4e7babc76924c40bebc97f476c3911c" tid="" name="Database" description="" class-ref="d4e7babc76924c40bebc97f476c3911c" />
         <type id="StorageManager" tid="" name="StorageManager" description="" />
         <type id="Class:0448abd669f84a4ca8bfb499a2a231f2" tid="" name="DatabaseService" description="" class-ref="0448abd669f84a4ca8bfb499a2a231f2" />
       </types>
@@ -1912,9 +1922,9 @@
       <structural-feature type="StorageService" type-id="Class:0fc38fed838646c7b9f5d4d28923ccf9" />
       <property />
     </item>
-    <item id="de883f579c1440c2a60e5523aaa58417" cid="PROP040" type="property" name="1..3" style-class="" owner="06891dba08324c10990f2c1da2914541" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+    <item id="de883f579c1440c2a60e5523aaa58417" cid="PROP040" type="property" name="" style-class="" owner="06891dba08324c10990f2c1da2914541" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
       <feature />
-      <structural-feature type="Service" type-id="Class:d6a27f7bb91340949512a49e92f4f92e" />
+      <structural-feature multiplicity="1..3" type="Service" type-id="Class:d6a27f7bb91340949512a49e92f4f92e" />
       <property />
     </item>
     <item id="6061e95ee6ef4eeb9cc6dce33d2064b1" cid="PROP039" type="property" name="" style-class="" owner="06891dba08324c10990f2c1da2914541" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
@@ -1977,12 +1987,12 @@
     </item>
     <item id="d8639236a48642c6aebc9d819fffd525" cid="PROP046" type="property" name="" style-class="" owner="9dc12f01800c450c8dd83e82dfdc5014" creator="" creation-date="08/15/2022 20:27:12" visibility="undefined">
       <feature />
-      <structural-feature type="Database" type-id="Class:d4e7babc76924c40bebc97f476c3911c" />
+      <structural-feature multiplicity="1" type="Database" type-id="Class:d4e7babc76924c40bebc97f476c3911c" />
       <property />
     </item>
     <item id="ee36d8acfd6b4952a7f2c953a9611ac6" cid="PROP044" type="property" name="" style-class="" owner="76c87dfd978a4a51be173ae7e2d9c796" creator="" creation-date="08/15/2022 20:26:11" visibility="undefined">
       <feature />
-      <structural-feature type="ServiceConfiguration" type-id="Class:5ba5c5ebd2584ab78c0652ef0ab633a8" />
+      <structural-feature multiplicity="1" type="ServiceConfiguration" type-id="Class:5ba5c5ebd2584ab78c0652ef0ab633a8" />
       <property />
     </item>
   </items>
@@ -2022,38 +2032,136 @@
             <tagged-value id="tvc6b87ba2097e40ccae1fff5601a13b55" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
           </tagged-values>
           <abstract-items>
-            <item id="b3968c804ff54f6892d63d5c675c8b82" cid="PROP006" type="property" name="DatabaseService" style-class="" owner="03b8b160d5d7494f8a5b86222d0213ab" creation-date="08/13/2022 19:41:06" visibility="public">
+            <item id="2c8eb028262149948bc61ed109e39e33" cid="GNR004" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="900902cc7bd44d828c8d5f90cc1ce32a" to="0448abd669f84a4ca8bfb499a2a231f2" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv6982d97aebe4460f9c20dd96f263659a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="711b9b0166fb4fc385d29f41644e13e9" cid="GNR006" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="7bc7bd2f4cb54071a733f351abb7d2d9" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv7d36b585abb14cddbee0c7170625e9bc" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="28ea8ccd7dca4a40916dbc37fab36d4a" cid="PROP001" type="property" name="Database" style-class="" owner="0448abd669f84a4ca8bfb499a2a231f2" creation-date="08/13/2022 19:41:06" visibility="public">
               <stereotypes>
                 <stereotype name="property" />
               </stereotypes>
               <tagged-values>
-                <tagged-value id="tv16107d130d324d0cae9302f660de66da" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseService" />
-                <tagged-value id="tv443c951164e446669b30aa55870a2797" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv2f3964a1148347e8a9025d29d732b3f2" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Orchestrator.cs" />
-                <tagged-value id="tvfac02b1f64ff4437ad2a7ee2bf6fa9db" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv32eb0fc210784ddeb46bd613ddf021dc" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="287" />
-                <tagged-value id="tv572831e6f9e44218a367906c45d58b7a" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="72" />
-                <tagged-value id="tv57f5c8a524a54b078c589bb0a25646fa" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="3537" />
-                <tagged-value id="tve3193f9f8e92462485ee86b0cf5c0aac" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/19/2022 13:40:13" />
+                <tagged-value id="tv5a831b5d3aa7463d8ba3378c14a5caea" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
+                <tagged-value id="tv358f67e762ed4041913fee2772ae8817" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv3e0111d172524343b6df97cc233786b8" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseService.cs" />
+                <tagged-value id="tvdfc0a339ae1d4e158256da4071a20a74" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv7d7f313a11764502ac93b1fd7383c166" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="91" />
+                <tagged-value id="tv77b39fe820334df29a11177e1bdaa6ff" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="46" />
+                <tagged-value id="tv3bed631e9d8941548f9c0c5fddb5b26c" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="935" />
+                <tagged-value id="tvd4e0c592055143ce87f84ecff7748414" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <stereotype-instances>
-                <stereotype id="b3968c804ff54f6892d63d5c675c8b82_property_c" type="property" ref="" />
+                <stereotype id="28ea8ccd7dca4a40916dbc37fab36d4a_property_c" type="property" ref="" />
               </stereotype-instances>
               <feature />
-              <structural-feature type="DatabaseService" type-id="Class:0448abd669f84a4ca8bfb499a2a231f2" />
-              <property>
-                <source-codes>
-                  <source-code language="" uid="scs-27c6d5ec-eb6e-4f0b-94e3-a2d9f303054c">
-                    <script name="Get">GetService&lt;DatabaseService&gt;();</script>
-                  </source-code>
-                </source-codes>
-              </property>
+              <structural-feature type="Database" type-id="Class:d4e7babc76924c40bebc97f476c3911c" />
+              <property />
             </item>
-            <item id="a08949d9f3734aa6bbd3e0a223479878" cid="GNR005" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="0fc38fed838646c7b9f5d4d28923ccf9" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
+            <item id="0448abd669f84a4ca8bfb499a2a231f2" cid="C001" type="class" name="DatabaseService" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public" is-abstract="true">
               <tagged-values>
-                <tagged-value id="tv98cad2ccef6c4ccea3c9d33f420c0b27" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+                <tagged-value id="tv4b983d49f7034cd7871c49b146b48dd6" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tvdfe1e4da2ba64f29bcfd6917e7d4893f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseService" />
+                <tagged-value id="tv4bce7e882445432bb84e27650c0b1b6f" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tvde816d5958ba488a8c88b3c0f4f326dd" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseService.cs" />
+                <tagged-value id="tvd75e8e18a9664870a9c6f37ba99dc7fc" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv5d87a2755d9344f399d54fe5f101d7c6" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv5b5ba7eeae58469a8c1d4dcb6b5885e1" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="900" />
+                <tagged-value id="tva0d8e777d94548ca81cf8e10b97543bf" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="935" />
+                <tagged-value id="tv463a236aa094497dbc3c6d04b8628a13" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+              </owned-items>
+              <style class="Flat Light White" />
+              <attributes>
+                <attribute id="a956ecad0722d4b41887b3ff45aca629b967" cid="PROP001" name="Database" creation-date="08/13/2022 19:41:06" property-ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
+              </attributes>
+              <operations>
+                <operation id="of0f65e93a2e64e0292398e8a2a3775fa977" cid="OP003" name="CreateDatabase" creation-date="08/13/2022 19:41:06" type="Database" type-id="Class:d4e7babc76924c40bebc97f476c3911c" visibility="public" abstract="true">
+                  <parameters>
+                    <parameter id="pb8bd7eb65f48458fabe02fc95c192b74" name="serviceConfiguration" type="ServiceConfiguration" type-id="Class:5ba5c5ebd2584ab78c0652ef0ab633a8" />
+                  </parameters>
+                  <tagged-values>
+                    <tagged-value id="tv417956832b9e4b4ab84751b6ba6dbbf9" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="CreateDatabase" />
+                    <tagged-value id="tv8619446807c1412e926df12dcff40352" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseService.cs" />
+                    <tagged-value id="tv3f9f1e7608c14596bff00cad115fbd59" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                    <tagged-value id="tv592a305ca0da48eb88367da8f681069d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="671" />
+                    <tagged-value id="tv69796ee841014e57b6653dd5659ee37f" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="83" />
+                  </tagged-values>
+                </operation>
+              </operations>
+            </item>
+            <item id="5ba5c5ebd2584ab78c0652ef0ab633a8" cid="C010" type="class" name="ServiceConfiguration" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv68701829d1694912a9cd87a03e7678c2" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv10aec5c4abe840d78fbe061f3a790bd8" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="ServiceConfiguration" />
+                <tagged-value id="tv10583f88d1e845a1ae9dc47eb1f6a681" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv9a47a8dae16f49948ede2c56330359c9" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\ServiceConfiguration.cs" />
+                <tagged-value id="tva85414ca759848bc8ae04ff9cbcb72a2" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv02f575c495eb421d8fa79ce02407e04b" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv1c2e326fd96742f5a24475b1d40cab40" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="818" />
+                <tagged-value id="tv52a43a7477f64be4a05758b428b8f8ac" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="853" />
+                <tagged-value id="tvdea075e8f3c14449a8c8a68d887402f9" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="6df6489b48f444ab8e65db37e59d77dc" />
+                <owned-item ref="8204f95f33df4b5dbfd590251e6d29d2" />
+                <owned-item ref="132c948b66b14230a9808c856886216d" />
+                <owned-item ref="4fe6bf9f44ec4aa798d8abae18828d54" />
+                <owned-item ref="8204f95f33df4b5dbfd590251e6d29d2" />
+                <owned-item ref="4fe6bf9f44ec4aa798d8abae18828d54" />
+              </owned-items>
+              <style class="Flat Light White" />
+              <attributes>
+                <attribute id="a9830ede12d8d442eb6b275eb053b9947995" cid="PROP010" name="ServiceType" creation-date="08/13/2022 19:41:06" property-ref="6df6489b48f444ab8e65db37e59d77dc" />
+                <attribute id="ae712908d719f4bc2aff4aa1cf84fae8e995" cid="PROP011" name="LogFilePath" creation-date="08/13/2022 19:41:06" property-ref="8204f95f33df4b5dbfd590251e6d29d2" />
+                <attribute id="a262422482e48494e9e30f080cbd3368e995" cid="PROP012" name="DataFilePath" creation-date="08/13/2022 19:41:06" property-ref="132c948b66b14230a9808c856886216d" />
+                <attribute id="a514efb8ca3334a20bb8669463bbb8d3a995" cid="PROP013" name="LoggingDisabled" creation-date="08/13/2022 19:41:06" property-ref="4fe6bf9f44ec4aa798d8abae18828d54" />
+              </attributes>
+            </item>
+            <item id="8e9eec1193d0405fb9dab3b3b57a04ca" cid="C008" type="class" name="OrchestratorTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+              <tagged-values>
+                <tagged-value id="tvbfb4cb98c779479a8e277b6e1585e66c" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv6eefaee7dfea46f19497d9bc34258612" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="OrchestratorTraditional" />
+                <tagged-value id="tv439bade1ba3e473a8a0e3e5e4a2b65e5" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv342d5c96e0384b05ae05af5a73946be6" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\OrchestratorTraditional.cs" />
+                <tagged-value id="tv66532761003f4ed38de28b4014c165cb" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv7e54b02e122945749574e5e03aac470b" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="81" />
+                <tagged-value id="tv3c5bca13e6494fc4bfaf5e4345b5e522" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="599" />
+                <tagged-value id="tv8a489786f3ca46c89d110b01156e61fb" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="688" />
+                <tagged-value id="tv546dd798acac475582bc9e9dd7a822bf" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <style class="Flat Light White" />
+            </item>
+            <item id="7c2b7aa68f3b4bf6b6201079723074bf" cid="PROP016" type="property" name="Process" style-class="" owner="d6a27f7bb91340949512a49e92f4f92e" creation-date="08/13/2022 19:41:06" visibility="protected">
+              <tagged-values>
+                <tagged-value id="tvc6e900d222ab4ae088e05eb3eb67224e" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Process" />
+                <tagged-value id="tvc016104e09964e2b91573d391b45fa19" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv0408341b921e4f1ea065198595966c8f" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\Service.cs" />
+                <tagged-value id="tv27bb806287b14954842586ef7a11c512" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv28e43ec983444975ba03d22725248b3a" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="462" />
+                <tagged-value id="tv92d18e88c00c417e9e4760903849d4d2" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="33" />
+                <tagged-value id="tv8b092559d0944368bb7607c611409f3e" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="7417" />
+                <tagged-value id="tvf83a7af301f346b58098ff5c08107e8f" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 05:57:03" />
+              </tagged-values>
+              <feature />
+              <structural-feature type="Process" type-id="Process" />
+              <property />
             </item>
             <item id="083f80e2176c4f2bb58741a51232e0c1" cid="C009" type="class" name="OrchestratorHyperscale" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
               <tagged-values>
@@ -2070,6 +2178,8 @@
               <owned-items>
                 <owned-item ref="0fd3849412bd4e9b9450c779b8d6bb49" />
                 <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
+                <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
+                <owned-item ref="0fd3849412bd4e9b9450c779b8d6bb49" />
                 <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
                 <owned-item ref="0fd3849412bd4e9b9450c779b8d6bb49" />
                 <owned-item ref="13f5cfffe4d641b2979c23ced3a63dd5" />
@@ -2124,118 +2234,11 @@
                 <source-code language="ActionScript" />
               </source-codes>
             </item>
-            <item id="8e9eec1193d0405fb9dab3b3b57a04ca" cid="C008" type="class" name="OrchestratorTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+            <item id="2c4b860c3401438c836c8090d1f0beb6" cid="GNR003" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="62ace6b175504de2af41f990b7d89d5d" to="0448abd669f84a4ca8bfb499a2a231f2" visibility="undefined">
               <tagged-values>
-                <tagged-value id="tvbfb4cb98c779479a8e277b6e1585e66c" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv6eefaee7dfea46f19497d9bc34258612" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="OrchestratorTraditional" />
-                <tagged-value id="tv439bade1ba3e473a8a0e3e5e4a2b65e5" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv342d5c96e0384b05ae05af5a73946be6" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\OrchestratorTraditional.cs" />
-                <tagged-value id="tv66532761003f4ed38de28b4014c165cb" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv7e54b02e122945749574e5e03aac470b" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="81" />
-                <tagged-value id="tv3c5bca13e6494fc4bfaf5e4345b5e522" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="599" />
-                <tagged-value id="tv8a489786f3ca46c89d110b01156e61fb" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="688" />
-                <tagged-value id="tv546dd798acac475582bc9e9dd7a822bf" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+                <tagged-value id="tvc07a0930eca24bce93830a7d640c8728" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
               <style class="Flat Light White" />
-            </item>
-            <item id="0fc38fed838646c7b9f5d4d28923ccf9" cid="C005" type="class" name="StorageService" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
-              <tagged-values>
-                <tagged-value id="tv2d755615cd86401aa4b0113abb4e14f9" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv61cf478df4024a968e3e4f4b7b19ea2a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="StorageService" />
-                <tagged-value id="tv1773ec77fb0348b1ad13704742735a48" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv2b2dea4c317a49319d2b827c40e5a907" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\StorageService\StorageService.cs" />
-                <tagged-value id="tv6c806c3f92c7403fad88ebcece52adb5" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tvc69391140e7a4689af1671f210f0e895" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="106" />
-                <tagged-value id="tv08b274fad49e4b598d8599841f572d51" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="2360" />
-                <tagged-value id="tvb66e04b1162845968ad8f8e07ace43be" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="2476" />
-                <tagged-value id="tv2c7e6b0904904fdeb0a4c745ed3de3fd" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 09:25:17" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="7871b9a8f84c45a38f1839875d5ae2dd" cid="C002" type="class" name="DatabaseTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
-              <tagged-values>
-                <tagged-value id="tv1a837051142f4f52b379b07bacef97ba" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv4c8f422ea1bb4716b5a6b3933faa1047" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseTraditional" />
-                <tagged-value id="tv8523932be58a4fc5bfed6148d15922fe" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tvb4ad65f775d64ec08bb00b67bf9b81dd" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Database\DatabaseTraditional.cs" />
-                <tagged-value id="tvd63f4c20c4d84e338453ff43ee4c50c2" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tvcdedcb3cae26482692e4b3a7527dc0c7" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
-                <tagged-value id="tv85eed17c345f4dbd84ec94a78e9b46d2" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="620" />
-                <tagged-value id="tv9e253cbd0c0f4fe5a6b660da85f8b532" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="655" />
-                <tagged-value id="tv4ca92dca1239474da75ee15b692fbb63" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/21/2022 07:38:31" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="d6a27f7bb91340949512a49e92f4f92e" cid="C011" type="class" name="Service" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public" is-abstract="true">
-              <tagged-values>
-                <tagged-value id="tv74fc830c1bb14f42adcbf0441295e497" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv154c13bfe87a4d3eb9d85fc37867fbf3" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Service" />
-                <tagged-value id="tvd43c9a3a73aa4a6cb0f106f1b7d7b29b" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv2d5fafeff1264371a602642708649f1c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\Service.cs" />
-                <tagged-value id="tvb55db83e91e74c1a8f424c70725a7bee" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tvc5b005ba6a2d4f7d8bb0d1d8d6f285b4" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="193" />
-                <tagged-value id="tv1e2e9eecf9ed445abe63e9eda5498696" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="7214" />
-                <tagged-value id="tvead3d520e8874d15bfe57c6017be2939" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="7417" />
-                <tagged-value id="tv11dab58e07454fa892347487eaa483ac" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 05:57:03" />
-              </tagged-values>
-              <owned-items>
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-              </owned-items>
-              <style class="Flat Light White" />
-              <attributes>
-                <attribute id="a61c35593ba47482aa89e0bcb4933badb995" cid="PROP014" name="ServiceConfiguration" creation-date="08/13/2022 19:41:06" property-ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
-                <attribute id="a10b9d6fa693b40b0bd7818c485ff810c995" cid="PROP016" name="Process" creation-date="08/13/2022 19:41:06" property-ref="7c2b7aa68f3b4bf6b6201079723074bf" />
-              </attributes>
-              <operations>
-                <operation id="o272075d739c44fbcb751f0d791805958849" cid="OP004" name="Start" creation-date="08/13/2022 20:10:59" type="" type-id="" visibility="public" />
-                <operation id="obab23e60ecff48c3a59289274ef0f258588" cid="OP005" name="Stop" creation-date="08/13/2022 20:11:10" type="" type-id="" visibility="public" />
-              </operations>
-            </item>
-            <item id="711b9b0166fb4fc385d29f41644e13e9" cid="GNR006" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="7bc7bd2f4cb54071a733f351abb7d2d9" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
-              <tagged-values>
-                <tagged-value id="tv7d36b585abb14cddbee0c7170625e9bc" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="ceb7dc44b22440efb3f4819e492e35fe" cid="GNR001" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="0448abd669f84a4ca8bfb499a2a231f2" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
-              <tagged-values>
-                <tagged-value id="tv0b5b3fd1adc340438538a2db8ffcf3c5" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="8204f95f33df4b5dbfd590251e6d29d2" cid="PROP011" type="property" name="LogFilePath" style-class="" owner="5ba5c5ebd2584ab78c0652ef0ab633a8" creation-date="08/13/2022 19:41:06" visibility="public">
-              <stereotypes>
-                <stereotype name="property" />
-              </stereotypes>
-              <tagged-values>
-                <tagged-value id="tv486898bc3441469e9e66dc142a656386" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogFilePath" />
-                <tagged-value id="tv518b01752088492795159aeb065470b5" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tvfe0c11fec62e4880aacc8ef4957574c8" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\ServiceConfiguration.cs" />
-                <tagged-value id="tv03f6276abe4b4ef99919cd34a925d9c6" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv7f4d4fd715ad4194b11be0b4728c2585" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="128" />
-                <tagged-value id="tv85fe3b0e2d104e1fb4445ae87a7f347e" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="39" />
-                <tagged-value id="tvdac69998344a4dfe989b08a8404e2759" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="853" />
-                <tagged-value id="tvd7b288002eae46a9b1a4faabbce1af85" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
-              </tagged-values>
-              <stereotype-instances>
-                <stereotype id="8204f95f33df4b5dbfd590251e6d29d2_property_c" type="property" ref="" />
-              </stereotype-instances>
-              <feature />
-              <structural-feature type="string" type-id="CSharp.string" />
-              <property />
             </item>
             <item id="4fe6bf9f44ec4aa798d8abae18828d54" cid="PROP013" type="property" name="LoggingDisabled" style-class="" owner="5ba5c5ebd2584ab78c0652ef0ab633a8" creation-date="08/13/2022 19:41:06" visibility="public">
               <stereotypes>
@@ -2258,73 +2261,32 @@
               <structural-feature type="bool?" type-id="bool?" />
               <property />
             </item>
-            <item id="5ba5c5ebd2584ab78c0652ef0ab633a8" cid="C010" type="class" name="ServiceConfiguration" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+            <item id="c04998f9eeda4b3e823e7527eeb2f8a9" cid="PROP014" type="property" name="ServiceConfiguration" style-class="" owner="d6a27f7bb91340949512a49e92f4f92e" creation-date="08/13/2022 19:41:06" visibility="public">
+              <stereotypes>
+                <stereotype name="property" />
+              </stereotypes>
               <tagged-values>
-                <tagged-value id="tv68701829d1694912a9cd87a03e7678c2" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv10aec5c4abe840d78fbe061f3a790bd8" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="ServiceConfiguration" />
-                <tagged-value id="tv10583f88d1e845a1ae9dc47eb1f6a681" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv9a47a8dae16f49948ede2c56330359c9" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\ServiceConfiguration.cs" />
-                <tagged-value id="tva85414ca759848bc8ae04ff9cbcb72a2" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv02f575c495eb421d8fa79ce02407e04b" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
-                <tagged-value id="tv1c2e326fd96742f5a24475b1d40cab40" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="818" />
-                <tagged-value id="tv52a43a7477f64be4a05758b428b8f8ac" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="853" />
-                <tagged-value id="tvdea075e8f3c14449a8c8a68d887402f9" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+                <tagged-value id="tv7f92bf5aae6e4fd1949cb0e4039bb73f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="ServiceConfiguration" />
+                <tagged-value id="tv16076192fd544906a932bcff5d274b19" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv552b1642a6ea4ab2a3818f5daabe6046" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\Service.cs" />
+                <tagged-value id="tvaed3892dc7f843dfad92cde6a63b6fe1" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tva80fc87346ed49859147f247004839f9" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="239" />
+                <tagged-value id="tvd356d4698c3140a7a71799d787e09426" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="70" />
+                <tagged-value id="tvcc57652563634a43bd019f3f9c2e6f92" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="7417" />
+                <tagged-value id="tv7df6e1b52fee4683af897bce51ebacbc" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 05:57:03" />
               </tagged-values>
-              <owned-items>
-                <owned-item ref="6df6489b48f444ab8e65db37e59d77dc" />
-                <owned-item ref="8204f95f33df4b5dbfd590251e6d29d2" />
-                <owned-item ref="132c948b66b14230a9808c856886216d" />
-                <owned-item ref="4fe6bf9f44ec4aa798d8abae18828d54" />
-                <owned-item ref="8204f95f33df4b5dbfd590251e6d29d2" />
-                <owned-item ref="4fe6bf9f44ec4aa798d8abae18828d54" />
-              </owned-items>
-              <style class="Flat Light White" />
-              <attributes>
-                <attribute id="a9830ede12d8d442eb6b275eb053b9947995" cid="PROP010" name="ServiceType" creation-date="08/13/2022 19:41:06" property-ref="6df6489b48f444ab8e65db37e59d77dc" />
-                <attribute id="ae712908d719f4bc2aff4aa1cf84fae8e995" cid="PROP011" name="LogFilePath" creation-date="08/13/2022 19:41:06" property-ref="8204f95f33df4b5dbfd590251e6d29d2" />
-                <attribute id="a262422482e48494e9e30f080cbd3368e995" cid="PROP012" name="DataFilePath" creation-date="08/13/2022 19:41:06" property-ref="132c948b66b14230a9808c856886216d" />
-                <attribute id="a514efb8ca3334a20bb8669463bbb8d3a995" cid="PROP013" name="LoggingDisabled" creation-date="08/13/2022 19:41:06" property-ref="4fe6bf9f44ec4aa798d8abae18828d54" />
-              </attributes>
+              <stereotype-instances>
+                <stereotype id="c04998f9eeda4b3e823e7527eeb2f8a9_property_c" type="property" ref="" />
+              </stereotype-instances>
+              <feature />
+              <structural-feature type="ServiceConfiguration" type-id="Class:5ba5c5ebd2584ab78c0652ef0ab633a8" />
+              <property />
             </item>
-            <item id="0448abd669f84a4ca8bfb499a2a231f2" cid="C001" type="class" name="DatabaseService" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public" is-abstract="true">
+            <item id="a08949d9f3734aa6bbd3e0a223479878" cid="GNR005" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="0fc38fed838646c7b9f5d4d28923ccf9" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
               <tagged-values>
-                <tagged-value id="tv4b983d49f7034cd7871c49b146b48dd6" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tvdfe1e4da2ba64f29bcfd6917e7d4893f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseService" />
-                <tagged-value id="tv4bce7e882445432bb84e27650c0b1b6f" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tvde816d5958ba488a8c88b3c0f4f326dd" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseService.cs" />
-                <tagged-value id="tvd75e8e18a9664870a9c6f37ba99dc7fc" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv5d87a2755d9344f399d54fe5f101d7c6" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
-                <tagged-value id="tv5b5ba7eeae58469a8c1d4dcb6b5885e1" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="900" />
-                <tagged-value id="tva0d8e777d94548ca81cf8e10b97543bf" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="935" />
-                <tagged-value id="tv463a236aa094497dbc3c6d04b8628a13" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+                <tagged-value id="tv98cad2ccef6c4ccea3c9d33f420c0b27" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
-              <owned-items>
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-                <owned-item ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-              </owned-items>
               <style class="Flat Light White" />
-              <attributes>
-                <attribute id="a956ecad0722d4b41887b3ff45aca629b967" cid="PROP001" name="Database" creation-date="08/13/2022 19:41:06" property-ref="28ea8ccd7dca4a40916dbc37fab36d4a" />
-              </attributes>
-              <operations>
-                <operation id="of0f65e93a2e64e0292398e8a2a3775fa977" cid="OP003" name="CreateDatabase" creation-date="08/13/2022 19:41:06" type="Database" type-id="Class:d4e7babc76924c40bebc97f476c3911c" visibility="public" abstract="true">
-                  <parameters>
-                    <parameter id="pb8bd7eb65f48458fabe02fc95c192b74" name="serviceConfiguration" type="ServiceConfiguration" type-id="Class:5ba5c5ebd2584ab78c0652ef0ab633a8" />
-                  </parameters>
-                  <tagged-values>
-                    <tagged-value id="tv417956832b9e4b4ab84751b6ba6dbbf9" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="CreateDatabase" />
-                    <tagged-value id="tv8619446807c1412e926df12dcff40352" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseService.cs" />
-                    <tagged-value id="tv3f9f1e7608c14596bff00cad115fbd59" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                    <tagged-value id="tv592a305ca0da48eb88367da8f681069d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="671" />
-                    <tagged-value id="tv69796ee841014e57b6653dd5659ee37f" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="83" />
-                  </tagged-values>
-                </operation>
-              </operations>
             </item>
             <item id="d4e7babc76924c40bebc97f476c3911c" cid="C013" type="class" name="Database" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public" is-abstract="true">
               <tagged-values>
@@ -2356,26 +2318,131 @@
                 </operation>
               </operations>
             </item>
-            <item id="c04998f9eeda4b3e823e7527eeb2f8a9" cid="PROP014" type="property" name="ServiceConfiguration" style-class="" owner="d6a27f7bb91340949512a49e92f4f92e" creation-date="08/13/2022 19:41:06" visibility="public">
+            <item id="72257fd272ec433e84187082f61cd86f" cid="GNR008" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="083f80e2176c4f2bb58741a51232e0c1" to="03b8b160d5d7494f8a5b86222d0213ab" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv658ab2c74c5b4e799139068c3ce7670f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="21ff31b0bbdf49ae8c21d3047279f62e" cid="GNR009" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="32d7a784f3c04f28ae6e7d31e2f62d79" to="d4e7babc76924c40bebc97f476c3911c" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tve71f266ce130468f92675c4d5d812dd6" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="8204f95f33df4b5dbfd590251e6d29d2" cid="PROP011" type="property" name="LogFilePath" style-class="" owner="5ba5c5ebd2584ab78c0652ef0ab633a8" creation-date="08/13/2022 19:41:06" visibility="public">
               <stereotypes>
                 <stereotype name="property" />
               </stereotypes>
               <tagged-values>
-                <tagged-value id="tv7f92bf5aae6e4fd1949cb0e4039bb73f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="ServiceConfiguration" />
-                <tagged-value id="tv16076192fd544906a932bcff5d274b19" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv552b1642a6ea4ab2a3818f5daabe6046" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\Service.cs" />
-                <tagged-value id="tvaed3892dc7f843dfad92cde6a63b6fe1" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tva80fc87346ed49859147f247004839f9" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="239" />
-                <tagged-value id="tvd356d4698c3140a7a71799d787e09426" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="70" />
-                <tagged-value id="tvcc57652563634a43bd019f3f9c2e6f92" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="7417" />
-                <tagged-value id="tv7df6e1b52fee4683af897bce51ebacbc" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 05:57:03" />
+                <tagged-value id="tv486898bc3441469e9e66dc142a656386" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="LogFilePath" />
+                <tagged-value id="tv518b01752088492795159aeb065470b5" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tvfe0c11fec62e4880aacc8ef4957574c8" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\ServiceConfiguration.cs" />
+                <tagged-value id="tv03f6276abe4b4ef99919cd34a925d9c6" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv7f4d4fd715ad4194b11be0b4728c2585" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="128" />
+                <tagged-value id="tv85fe3b0e2d104e1fb4445ae87a7f347e" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="39" />
+                <tagged-value id="tvdac69998344a4dfe989b08a8404e2759" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="853" />
+                <tagged-value id="tvd7b288002eae46a9b1a4faabbce1af85" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <stereotype-instances>
-                <stereotype id="c04998f9eeda4b3e823e7527eeb2f8a9_property_c" type="property" ref="" />
+                <stereotype id="8204f95f33df4b5dbfd590251e6d29d2_property_c" type="property" ref="" />
               </stereotype-instances>
               <feature />
-              <structural-feature type="ServiceConfiguration" type-id="Class:5ba5c5ebd2584ab78c0652ef0ab633a8" />
+              <structural-feature type="string" type-id="CSharp.string" />
               <property />
+            </item>
+            <item id="d6a27f7bb91340949512a49e92f4f92e" cid="C011" type="class" name="Service" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public" is-abstract="true">
+              <tagged-values>
+                <tagged-value id="tv74fc830c1bb14f42adcbf0441295e497" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv154c13bfe87a4d3eb9d85fc37867fbf3" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Service" />
+                <tagged-value id="tvd43c9a3a73aa4a6cb0f106f1b7d7b29b" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv2d5fafeff1264371a602642708649f1c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\Service.cs" />
+                <tagged-value id="tvb55db83e91e74c1a8f424c70725a7bee" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvc5b005ba6a2d4f7d8bb0d1d8d6f285b4" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="193" />
+                <tagged-value id="tv1e2e9eecf9ed445abe63e9eda5498696" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="7214" />
+                <tagged-value id="tvead3d520e8874d15bfe57c6017be2939" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="7417" />
+                <tagged-value id="tv11dab58e07454fa892347487eaa483ac" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 05:57:03" />
+              </tagged-values>
+              <owned-items>
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <owned-item ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+                <owned-item ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+              </owned-items>
+              <style class="Flat Light White" />
+              <attributes>
+                <attribute id="a61c35593ba47482aa89e0bcb4933badb995" cid="PROP014" name="ServiceConfiguration" creation-date="08/13/2022 19:41:06" property-ref="c04998f9eeda4b3e823e7527eeb2f8a9" />
+                <attribute id="a10b9d6fa693b40b0bd7818c485ff810c995" cid="PROP016" name="Process" creation-date="08/13/2022 19:41:06" property-ref="7c2b7aa68f3b4bf6b6201079723074bf" />
+              </attributes>
+              <operations>
+                <operation id="o272075d739c44fbcb751f0d791805958849" cid="OP004" name="Start" creation-date="08/13/2022 20:10:59" type="" type-id="" visibility="public" />
+                <operation id="obab23e60ecff48c3a59289274ef0f258588" cid="OP005" name="Stop" creation-date="08/13/2022 20:11:10" type="" type-id="" visibility="public" />
+              </operations>
+            </item>
+            <item id="ceb7dc44b22440efb3f4819e492e35fe" cid="GNR001" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="0448abd669f84a4ca8bfb499a2a231f2" to="d6a27f7bb91340949512a49e92f4f92e" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv0b5b3fd1adc340438538a2db8ffcf3c5" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="0fc38fed838646c7b9f5d4d28923ccf9" cid="C005" type="class" name="StorageService" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+              <tagged-values>
+                <tagged-value id="tv2d755615cd86401aa4b0113abb4e14f9" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv61cf478df4024a968e3e4f4b7b19ea2a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="StorageService" />
+                <tagged-value id="tv1773ec77fb0348b1ad13704742735a48" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv2b2dea4c317a49319d2b827c40e5a907" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\StorageService\StorageService.cs" />
+                <tagged-value id="tv6c806c3f92c7403fad88ebcece52adb5" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvc69391140e7a4689af1671f210f0e895" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="106" />
+                <tagged-value id="tv08b274fad49e4b598d8599841f572d51" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="2360" />
+                <tagged-value id="tvb66e04b1162845968ad8f8e07ace43be" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="2476" />
+                <tagged-value id="tv2c7e6b0904904fdeb0a4c745ed3de3fd" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="08/13/2022 09:25:17" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="e6665f843e404fc28445a604b5c5f06e" cid="GNR002" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="7871b9a8f84c45a38f1839875d5ae2dd" to="d4e7babc76924c40bebc97f476c3911c" visibility="undefined">
+              <tagged-values>
+                <tagged-value id="tv8930c3e7c9014aa5841a77e9096ab15b" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+              </tagged-values>
+              <style class="Flat Light White" />
+            </item>
+            <item id="b3968c804ff54f6892d63d5c675c8b82" cid="PROP006" type="property" name="DatabaseService" style-class="" owner="03b8b160d5d7494f8a5b86222d0213ab" creation-date="08/13/2022 19:41:06" visibility="public">
+              <stereotypes>
+                <stereotype name="property" />
+              </stereotypes>
+              <tagged-values>
+                <tagged-value id="tv16107d130d324d0cae9302f660de66da" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseService" />
+                <tagged-value id="tv443c951164e446669b30aa55870a2797" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv2f3964a1148347e8a9025d29d732b3f2" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Orchestrator.cs" />
+                <tagged-value id="tvfac02b1f64ff4437ad2a7ee2bf6fa9db" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv32eb0fc210784ddeb46bd613ddf021dc" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="287" />
+                <tagged-value id="tv572831e6f9e44218a367906c45d58b7a" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="72" />
+                <tagged-value id="tv57f5c8a524a54b078c589bb0a25646fa" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="3537" />
+                <tagged-value id="tve3193f9f8e92462485ee86b0cf5c0aac" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/19/2022 13:40:13" />
+              </tagged-values>
+              <stereotype-instances>
+                <stereotype id="b3968c804ff54f6892d63d5c675c8b82_property_c" type="property" ref="" />
+              </stereotype-instances>
+              <feature />
+              <structural-feature type="DatabaseService" type-id="Class:0448abd669f84a4ca8bfb499a2a231f2" />
+              <property>
+                <source-codes>
+                  <source-code language="" uid="scs-27c6d5ec-eb6e-4f0b-94e3-a2d9f303054c">
+                    <script name="Get">GetService&lt;DatabaseService&gt;();</script>
+                  </source-code>
+                </source-codes>
+              </property>
             </item>
             <item id="132c948b66b14230a9808c856886216d" cid="PROP012" type="property" name="DataFilePath" style-class="" owner="5ba5c5ebd2584ab78c0652ef0ab633a8" creation-date="08/13/2022 19:41:06" visibility="public">
               <stereotypes>
@@ -2398,17 +2465,48 @@
               <structural-feature type="string" type-id="CSharp.string" />
               <property />
             </item>
-            <item id="e6665f843e404fc28445a604b5c5f06e" cid="GNR002" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="7871b9a8f84c45a38f1839875d5ae2dd" to="d4e7babc76924c40bebc97f476c3911c" visibility="undefined">
+            <item id="7871b9a8f84c45a38f1839875d5ae2dd" cid="C002" type="class" name="DatabaseTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
               <tagged-values>
-                <tagged-value id="tv8930c3e7c9014aa5841a77e9096ab15b" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+                <tagged-value id="tv1a837051142f4f52b379b07bacef97ba" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv4c8f422ea1bb4716b5a6b3933faa1047" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseTraditional" />
+                <tagged-value id="tv8523932be58a4fc5bfed6148d15922fe" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tvb4ad65f775d64ec08bb00b67bf9b81dd" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Database\DatabaseTraditional.cs" />
+                <tagged-value id="tvd63f4c20c4d84e338453ff43ee4c50c2" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tvcdedcb3cae26482692e4b3a7527dc0c7" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tv85eed17c345f4dbd84ec94a78e9b46d2" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="620" />
+                <tagged-value id="tv9e253cbd0c0f4fe5a6b660da85f8b532" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="655" />
+                <tagged-value id="tv4ca92dca1239474da75ee15b692fbb63" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/21/2022 07:38:31" />
               </tagged-values>
               <style class="Flat Light White" />
             </item>
-            <item id="2c8eb028262149948bc61ed109e39e33" cid="GNR004" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="900902cc7bd44d828c8d5f90cc1ce32a" to="0448abd669f84a4ca8bfb499a2a231f2" visibility="undefined">
+            <item id="62ace6b175504de2af41f990b7d89d5d" cid="C003" type="class" name="DatabaseServiceTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
               <tagged-values>
-                <tagged-value id="tv6982d97aebe4460f9c20dd96f263659a" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+                <tagged-value id="tv39aaae031e714fb3ad09019ad1a6ff07" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv8be3bf36726949b8b9765c992b298191" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseServiceTraditional" />
+                <tagged-value id="tva77a34ad6c354e11b3f29a58d96d7aac" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv81803d56bdc4473e8b0779983ccfaf5c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseServiceTraditional.cs" />
+                <tagged-value id="tvcedaaebbe13c43cb8805b521a3ef2b6c" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv39b5271c756347f29379d2926ccb1dee" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="56" />
+                <tagged-value id="tvc023f20405fb4228b2ec2395205074ae" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="612" />
+                <tagged-value id="tv0735f57b85ee4b7d8e34e094643afbf0" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="676" />
+                <tagged-value id="tve7921ff4a7334232bfbd77bc43270379" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <style class="Flat Light White" />
+            </item>
+            <item id="f567370117e74b00bc3b66c8e360f864" cid="PROP007" type="property" name="Services" style-class="" owner="03b8b160d5d7494f8a5b86222d0213ab" creation-date="08/13/2022 19:41:06" visibility="protected">
+              <tagged-values>
+                <tagged-value id="tv74eaacf23e954406a45644acdeca91fe" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Services" />
+                <tagged-value id="tv883658b218f1407385f1d8481f75f2a0" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv76f66ab67b1f4cc68701ffc75d045479" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Orchestrator.cs" />
+                <tagged-value id="tv5b69067c9a974396aafd9d2113f4bf80" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tveb47aab2dc444390a64521387720b63d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="371" />
+                <tagged-value id="tvbddc4ea404e44eff958afb147c3adca0" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="55" />
+                <tagged-value id="tv2b1d0dea00a3438ab43c14ecc3ae7f68" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="3537" />
+                <tagged-value id="tvce384f60153548a4a47735efdcf55203" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/19/2022 13:40:13" />
+              </tagged-values>
+              <feature />
+              <structural-feature type="List" type-id="List" />
+              <property />
             </item>
             <item id="6df6489b48f444ab8e65db37e59d77dc" cid="PROP010" type="property" name="ServiceType" style-class="" owner="5ba5c5ebd2584ab78c0652ef0ab633a8" creation-date="08/13/2022 19:41:06" visibility="public">
               <stereotypes>
@@ -2431,78 +2529,17 @@
               <structural-feature type="string" type-id="CSharp.string" />
               <property />
             </item>
-            <item id="72257fd272ec433e84187082f61cd86f" cid="GNR008" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="083f80e2176c4f2bb58741a51232e0c1" to="03b8b160d5d7494f8a5b86222d0213ab" visibility="undefined">
+            <item id="32d7a784f3c04f28ae6e7d31e2f62d79" cid="C012" type="class" name="DatabaseHyperscale" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
               <tagged-values>
-                <tagged-value id="tv658ab2c74c5b4e799139068c3ce7670f" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="cf5b8fb9fe054a4783b8515b1aea88df" cid="GNR007" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="8e9eec1193d0405fb9dab3b3b57a04ca" to="03b8b160d5d7494f8a5b86222d0213ab" visibility="undefined">
-              <tagged-values>
-                <tagged-value id="tv62e0d808cfc548bfba9feb990e106482" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="f567370117e74b00bc3b66c8e360f864" cid="PROP007" type="property" name="Services" style-class="" owner="03b8b160d5d7494f8a5b86222d0213ab" creation-date="08/13/2022 19:41:06" visibility="protected">
-              <tagged-values>
-                <tagged-value id="tv74eaacf23e954406a45644acdeca91fe" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Services" />
-                <tagged-value id="tv883658b218f1407385f1d8481f75f2a0" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv76f66ab67b1f4cc68701ffc75d045479" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Orchestrator.cs" />
-                <tagged-value id="tv5b69067c9a974396aafd9d2113f4bf80" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tveb47aab2dc444390a64521387720b63d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="371" />
-                <tagged-value id="tvbddc4ea404e44eff958afb147c3adca0" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="55" />
-                <tagged-value id="tv2b1d0dea00a3438ab43c14ecc3ae7f68" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="3537" />
-                <tagged-value id="tvce384f60153548a4a47735efdcf55203" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/19/2022 13:40:13" />
-              </tagged-values>
-              <feature />
-              <structural-feature type="List" type-id="List" />
-              <property />
-            </item>
-            <item id="21ff31b0bbdf49ae8c21d3047279f62e" cid="GNR009" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="32d7a784f3c04f28ae6e7d31e2f62d79" to="d4e7babc76924c40bebc97f476c3911c" visibility="undefined">
-              <tagged-values>
-                <tagged-value id="tve71f266ce130468f92675c4d5d812dd6" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="28ea8ccd7dca4a40916dbc37fab36d4a" cid="PROP001" type="property" name="Database" style-class="" owner="0448abd669f84a4ca8bfb499a2a231f2" creation-date="08/13/2022 19:41:06" visibility="public">
-              <stereotypes>
-                <stereotype name="property" />
-              </stereotypes>
-              <tagged-values>
-                <tagged-value id="tv5a831b5d3aa7463d8ba3378c14a5caea" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
-                <tagged-value id="tv358f67e762ed4041913fee2772ae8817" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv3e0111d172524343b6df97cc233786b8" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseService.cs" />
-                <tagged-value id="tvdfc0a339ae1d4e158256da4071a20a74" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv7d7f313a11764502ac93b1fd7383c166" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="91" />
-                <tagged-value id="tv77b39fe820334df29a11177e1bdaa6ff" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="46" />
-                <tagged-value id="tv3bed631e9d8941548f9c0c5fddb5b26c" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="935" />
-                <tagged-value id="tvd4e0c592055143ce87f84ecff7748414" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
-              </tagged-values>
-              <stereotype-instances>
-                <stereotype id="28ea8ccd7dca4a40916dbc37fab36d4a_property_c" type="property" ref="" />
-              </stereotype-instances>
-              <feature />
-              <structural-feature type="Database" type-id="Class:d4e7babc76924c40bebc97f476c3911c" />
-              <property />
-            </item>
-            <item id="7c2b7aa68f3b4bf6b6201079723074bf" cid="PROP016" type="property" name="Process" style-class="" owner="d6a27f7bb91340949512a49e92f4f92e" creation-date="08/13/2022 19:41:06" visibility="protected">
-              <tagged-values>
-                <tagged-value id="tvc6e900d222ab4ae088e05eb3eb67224e" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Process" />
-                <tagged-value id="tvc016104e09964e2b91573d391b45fa19" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv0408341b921e4f1ea065198595966c8f" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\Service.cs" />
-                <tagged-value id="tv27bb806287b14954842586ef7a11c512" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv28e43ec983444975ba03d22725248b3a" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="462" />
-                <tagged-value id="tv92d18e88c00c417e9e4760903849d4d2" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="33" />
-                <tagged-value id="tv8b092559d0944368bb7607c611409f3e" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="7417" />
-                <tagged-value id="tvf83a7af301f346b58098ff5c08107e8f" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/23/2022 05:57:03" />
-              </tagged-values>
-              <feature />
-              <structural-feature type="Process" type-id="Process" />
-              <property />
-            </item>
-            <item id="2c4b860c3401438c836c8090d1f0beb6" cid="GNR003" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="62ace6b175504de2af41f990b7d89d5d" to="0448abd669f84a4ca8bfb499a2a231f2" visibility="undefined">
-              <tagged-values>
-                <tagged-value id="tvc07a0930eca24bce93830a7d640c8728" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
+                <tagged-value id="tvb463bd86f7a2458f8317d35ac69eede6" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv387a0be3768542b4958f16e51ae545b7" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseHyperscale" />
+                <tagged-value id="tvdd8cc3e2f0fb444eb8fe1ce9f8dc5414" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv8a1c69376c92470c93267383645fd5de" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Database\DatabaseHyperscale.cs" />
+                <tagged-value id="tv1bea930fdd36460697c6e2556a827474" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv7d38078b719a4cd5be62c4618340ab4e" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
+                <tagged-value id="tvb15f648b952b4352a84082f0e1addd8a" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="459" />
+                <tagged-value id="tv438124a2c1e841e98bcd74a759d76017" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="494" />
+                <tagged-value id="tv5722451bdd17446b908b4b184be7f38b" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <style class="Flat Light White" />
             </item>
@@ -2520,31 +2557,9 @@
               </tagged-values>
               <style class="Flat Light White" />
             </item>
-            <item id="900902cc7bd44d828c8d5f90cc1ce32a" cid="C004" type="class" name="DatabaseServiceHyperscale" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+            <item id="cf5b8fb9fe054a4783b8515b1aea88df" cid="GNR007" type="generalization" name="" style-class="Flat Light White" creation-date="08/13/2022 19:41:07" from="8e9eec1193d0405fb9dab3b3b57a04ca" to="03b8b160d5d7494f8a5b86222d0213ab" visibility="undefined">
               <tagged-values>
-                <tagged-value id="tv17abd3a6c3d24336b1a6b8ad8e2c825f" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv7935455ab3fa485b81d126c6a79b4439" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseServiceHyperscale" />
-                <tagged-value id="tvb8675a471bcd45c0ba3728e245e71b94" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv3bc64bbd808c466a8385c05cb2da5a68" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseServiceHyperScale.cs" />
-                <tagged-value id="tv2497a33fb9bb4c87a119d9129a741302" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv7d4fcd9a89a04adbbeeb98da1f86721d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="56" />
-                <tagged-value id="tvb10b1c3bd3654f38afff732dfdf6aac8" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="489" />
-                <tagged-value id="tva02d44c6c1504bb1a48ec77a0be2040c" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="553" />
-                <tagged-value id="tv2178551fa49145e2aeb68e2424c863ba" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
-              </tagged-values>
-              <style class="Flat Light White" />
-            </item>
-            <item id="32d7a784f3c04f28ae6e7d31e2f62d79" cid="C012" type="class" name="DatabaseHyperscale" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
-              <tagged-values>
-                <tagged-value id="tvb463bd86f7a2458f8317d35ac69eede6" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv387a0be3768542b4958f16e51ae545b7" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseHyperscale" />
-                <tagged-value id="tvdd8cc3e2f0fb444eb8fe1ce9f8dc5414" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv8a1c69376c92470c93267383645fd5de" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Database\DatabaseHyperscale.cs" />
-                <tagged-value id="tv1bea930fdd36460697c6e2556a827474" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv7d38078b719a4cd5be62c4618340ab4e" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="27" />
-                <tagged-value id="tvb15f648b952b4352a84082f0e1addd8a" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="459" />
-                <tagged-value id="tv438124a2c1e841e98bcd74a759d76017" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="494" />
-                <tagged-value id="tv5722451bdd17446b908b4b184be7f38b" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+                <tagged-value id="tv62e0d808cfc548bfba9feb990e106482" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="" />
               </tagged-values>
               <style class="Flat Light White" />
             </item>
@@ -2561,6 +2576,8 @@
                 <tagged-value id="tvc39eba368f724e10b1366befa887271f" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="07/19/2022 13:40:13" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="b3968c804ff54f6892d63d5c675c8b82" />
+                <owned-item ref="f567370117e74b00bc3b66c8e360f864" />
                 <owned-item ref="b3968c804ff54f6892d63d5c675c8b82" />
                 <owned-item ref="f567370117e74b00bc3b66c8e360f864" />
                 <owned-item ref="b3968c804ff54f6892d63d5c675c8b82" />
@@ -2603,23 +2620,23 @@
                 <operation id="o2b403bd002dd447db69939091a8ea88c647" cid="OP006" name="KillDatabaseService" creation-date="08/15/2022 19:33:07" type="" type-id="" visibility="public" />
               </operations>
             </item>
-            <item id="62ace6b175504de2af41f990b7d89d5d" cid="C003" type="class" name="DatabaseServiceTraditional" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
+            <item id="900902cc7bd44d828c8d5f90cc1ce32a" cid="C004" type="class" name="DatabaseServiceHyperscale" style-class="Flat Light White" creation-date="08/13/2022 19:41:06" visibility="public">
               <tagged-values>
-                <tagged-value id="tv39aaae031e714fb3ad09019ad1a6ff07" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
-                <tagged-value id="tv8be3bf36726949b8b9765c992b298191" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseServiceTraditional" />
-                <tagged-value id="tva77a34ad6c354e11b3f29a58d96d7aac" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
-                <tagged-value id="tv81803d56bdc4473e8b0779983ccfaf5c" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseServiceTraditional.cs" />
-                <tagged-value id="tvcedaaebbe13c43cb8805b521a3ef2b6c" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
-                <tagged-value id="tv39b5271c756347f29379d2926ccb1dee" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="56" />
-                <tagged-value id="tvc023f20405fb4228b2ec2395205074ae" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="612" />
-                <tagged-value id="tv0735f57b85ee4b7d8e34e094643afbf0" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="676" />
-                <tagged-value id="tve7921ff4a7334232bfbd77bc43270379" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
+                <tagged-value id="tv17abd3a6c3d24336b1a6b8ad8e2c825f" name="namespace" type="text" multiple="false" hidden="false" value="Database" />
+                <tagged-value id="tv7935455ab3fa485b81d126c6a79b4439" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="DatabaseServiceHyperscale" />
+                <tagged-value id="tvb8675a471bcd45c0ba3728e245e71b94" name="SourceCodeGroup" type="reference" multiple="false" hidden="true" ref="pb9042e97fa6d4e7d968870e84cb8f9ed_734681596" />
+                <tagged-value id="tv3bc64bbd808c466a8385c05cb2da5a68" name="SourceCodePath" type="text" multiple="false" hidden="true" value="C:\Users\milan\source\repos\jeremicmilan\Database\Orchestration\Service\DatabaseService\DatabaseServiceHyperScale.cs" />
+                <tagged-value id="tv2497a33fb9bb4c87a119d9129a741302" name="SourceCodeLanguage" type="text" multiple="false" hidden="true" value="CSharp" />
+                <tagged-value id="tv7d4fcd9a89a04adbbeeb98da1f86721d" name="SourceCodePosition" type="text" multiple="false" hidden="true" value="56" />
+                <tagged-value id="tvb10b1c3bd3654f38afff732dfdf6aac8" name="SourceCodeLength" type="text" multiple="false" hidden="true" value="489" />
+                <tagged-value id="tva02d44c6c1504bb1a48ec77a0be2040c" name="SourceCodeFileSize" type="text" multiple="false" hidden="true" value="553" />
+                <tagged-value id="tv2178551fa49145e2aeb68e2424c863ba" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/30/2022 08:49:28" />
               </tagged-values>
               <style class="Flat Light White" />
             </item>
           </abstract-items>
           <sub-models />
-          <diagram type="uml-class" id="p7949acc91fc448bab498a862ccf20fbe_990986236" name="Orchestration" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="-502,-78">
+          <diagram type="uml-class" id="p7949acc91fc448bab498a862ccf20fbe_990986236" name="Orchestration" order-index="1" uid="" name-style="" auto-routed-paths="false" default-line-style="default" namespace="Database" view-location="-528,-253">
             <style>
               <background-color index="1" color="#FFFFFFFF" />
               <background-color index="2" color="#FFFFFFFF" />
@@ -2639,90 +2656,23 @@
               <tagged-value id="tvb545d93ba87b4111a06fe221d7e3470d" name="ReverseEngineered" type="text" multiple="false" hidden="true" value="Database" />
             </tagged-values>
             <abstract-items>
+              <item id="54d918713fd9480399b9853b7a0e6550" cid="DEP004" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:24:56" from="62ace6b175504de2af41f990b7d89d5d" to="7871b9a8f84c45a38f1839875d5ae2dd" visibility="package">
+                <style class="Flat Light White" />
+              </item>
               <item id="06891dba08324c10990f2c1da2914541" cid="REL017" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="03b8b160d5d7494f8a5b86222d0213ab" to="d6a27f7bb91340949512a49e92f4f92e" visibility="package">
                 <owned-items>
                   <owned-item ref="6061e95ee6ef4eeb9cc6dce33d2064b1" />
                   <owned-item ref="de883f579c1440c2a60e5523aaa58417" />
                   <owned-item ref="de883f579c1440c2a60e5523aaa58417" />
                   <owned-item ref="6061e95ee6ef4eeb9cc6dce33d2064b1" />
+                  <owned-item ref="de883f579c1440c2a60e5523aaa58417" />
+                  <owned-item ref="6061e95ee6ef4eeb9cc6dce33d2064b1" />
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="03b8b160d5d7494f8a5b86222d0213ab" to="d6a27f7bb91340949512a49e92f4f92e" derived="false">
-                  <start-role id="umlar-5f9c8db9-b8a3-4a4d-bf27-2724105b5e0e" name="" navigability="" association-type="association" visibility="private" property-ref="6061e95ee6ef4eeb9cc6dce33d2064b1" />
-                  <end-role id="umlar-b20cbbe6-2585-41ff-a6d6-0f1311e6bcd2" name="" navigability="yes" association-type="association" visibility="private" property-ref="de883f579c1440c2a60e5523aaa58417" />
+                  <start-role id="umlar-d84f8d1c-ef90-43f5-a85d-e37b60e8cb66" name="" navigability="" association-type="association" visibility="private" property-ref="6061e95ee6ef4eeb9cc6dce33d2064b1" />
+                  <end-role id="umlar-7a43fe5d-2ac7-429d-85e9-be798d5fbe62" name="" navigability="yes" association-type="association" visibility="private" property-ref="de883f579c1440c2a60e5523aaa58417" />
                 </relation>
-              </item>
-              <item id="dia50c331469fb4810b5c5f2b6a9cb0b2a1247" cid="PROP054" type="property" name="" style-class="" owner="di29168d256a394896b94a31089b891e431247" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
-                <feature />
-                <structural-feature type="DatabaseService" type-id="Class:0448abd669f84a4ca8bfb499a2a231f2" />
-                <property />
-              </item>
-              <item id="di4cce96613e4c4cbea76bdd7e6969b7e91247" cid="PROP053" type="property" name="" style-class="" owner="di29168d256a394896b94a31089b891e431247" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
-                <feature />
-                <structural-feature type="Orchestrator" type-id="Class:03b8b160d5d7494f8a5b86222d0213ab" />
-                <property />
-              </item>
-              <item id="di29168d256a394896b94a31089b891e431247" cid="REL024" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="03b8b160d5d7494f8a5b86222d0213ab" to="0448abd669f84a4ca8bfb499a2a231f2" visibility="package">
-                <owned-items>
-                  <owned-item ref="dia50c331469fb4810b5c5f2b6a9cb0b2a1247" />
-                  <owned-item ref="di4cce96613e4c4cbea76bdd7e6969b7e91247" />
-                </owned-items>
-                <style class="Flat Light White" />
-                <relation from="03b8b160d5d7494f8a5b86222d0213ab" to="0448abd669f84a4ca8bfb499a2a231f2" derived="false">
-                  <start-role id="umlar-6361677e-bc84-4e8a-a9cd-b0cbef5a7fc9" name="" navigability="" association-type="association" visibility="private" attribute-ref="aa531f32be0e94900a51d0bad4db9ea96995" property-ref="di4cce96613e4c4cbea76bdd7e6969b7e91247" />
-                  <end-role id="umlar-1bf0b150-78a1-4dca-9bcb-26305a8cd5a8" name="" navigability="yes" association-type="association" visibility="private" property-ref="dia50c331469fb4810b5c5f2b6a9cb0b2a1247" />
-                </relation>
-              </item>
-              <item id="d5660280b1734e2fbd9bb4fdf1602784" cid="DEP003" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:23:08" from="900902cc7bd44d828c8d5f90cc1ce32a" to="32d7a784f3c04f28ae6e7d31e2f62d79" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="83da1105e87d49bcb1bdeec9b7958eba" cid="DEP001" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:17:07" from="083f80e2176c4f2bb58741a51232e0c1" to="900902cc7bd44d828c8d5f90cc1ce32a" visibility="package">
-                <style class="Flat Light White" />
-              </item>
-              <item id="diadba93c458a445858cb0715edda7be6e2769" cid="PROP050" type="property" name="" style-class="" owner="did68f02c603b54e28b801768c0e3785f12769" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
-                <feature />
-                <structural-feature type="StorageService" type-id="Class:0fc38fed838646c7b9f5d4d28923ccf9" />
-                <property />
-              </item>
-              <item id="di529010c506f944c887999ef8edbbbce37221" cid="REL021" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="083f80e2176c4f2bb58741a51232e0c1" to="7bc7bd2f4cb54071a733f351abb7d2d9" visibility="package">
-                <owned-items>
-                  <owned-item ref="did93ec51bbab648bfb4176f8bffd0fd4e5749" />
-                  <owned-item ref="diee664fc81e644d5d8d0a6e63a70c17775749" />
-                </owned-items>
-                <style class="Flat Light White" />
-                <relation from="083f80e2176c4f2bb58741a51232e0c1" to="7bc7bd2f4cb54071a733f351abb7d2d9" derived="false">
-                  <start-role id="umlar-12f48867-b159-4a78-a48d-7aae6a81a765" name="" navigability="" association-type="association" visibility="private" property-ref="did93ec51bbab648bfb4176f8bffd0fd4e5749" />
-                  <end-role id="umlar-0129947a-5361-48c0-8aef-e5010e6cfece" name="" navigability="yes" association-type="association" visibility="private" property-ref="diee664fc81e644d5d8d0a6e63a70c17775749" />
-                </relation>
-              </item>
-              <item id="did93ec51bbab648bfb4176f8bffd0fd4e5749" cid="PROP047" type="property" name="" style-class="" owner="di529010c506f944c887999ef8edbbbce37221" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
-                <feature />
-                <structural-feature type="OrchestratorHyperscale" type-id="Class:083f80e2176c4f2bb58741a51232e0c1" />
-                <property />
-              </item>
-              <item id="did68f02c603b54e28b801768c0e3785f12769" cid="REL022" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="083f80e2176c4f2bb58741a51232e0c1" to="0fc38fed838646c7b9f5d4d28923ccf9" visibility="package">
-                <owned-items>
-                  <owned-item ref="diadba93c458a445858cb0715edda7be6e2769" />
-                  <owned-item ref="di5fb59a835c4448789790a2a306f73e272769" />
-                </owned-items>
-                <style class="Flat Light White" />
-                <relation from="083f80e2176c4f2bb58741a51232e0c1" to="0fc38fed838646c7b9f5d4d28923ccf9" derived="false">
-                  <start-role id="umlar-4d3e22b5-6cf9-4e93-a03a-876f915ce7f9" name="" navigability="" association-type="association" visibility="private" property-ref="di5fb59a835c4448789790a2a306f73e272769" />
-                  <end-role id="umlar-b4e664d3-521d-48e1-97da-c71c11e83e15" name="" navigability="yes" association-type="association" visibility="private" property-ref="diadba93c458a445858cb0715edda7be6e2769" />
-                </relation>
-              </item>
-              <item id="diee664fc81e644d5d8d0a6e63a70c17775749" cid="PROP048" type="property" name="" style-class="" owner="di529010c506f944c887999ef8edbbbce37221" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
-                <feature />
-                <structural-feature type="LogService" type-id="Class:7bc7bd2f4cb54071a733f351abb7d2d9" />
-                <property />
-              </item>
-              <item id="di5fb59a835c4448789790a2a306f73e272769" cid="PROP049" type="property" name="" style-class="" owner="did68f02c603b54e28b801768c0e3785f12769" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
-                <feature />
-                <structural-feature type="OrchestratorHyperscale" type-id="Class:083f80e2176c4f2bb58741a51232e0c1" />
-                <property />
-              </item>
-              <item id="2e6b9fbf0dcb4780adc0dae3b97282e0" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:17:56" from="8e9eec1193d0405fb9dab3b3b57a04ca" to="62ace6b175504de2af41f990b7d89d5d" visibility="package">
-                <style class="Flat Light White" />
               </item>
               <item id="76c87dfd978a4a51be173ae7e2d9c796" cid="REL019" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:26:11" from="d6a27f7bb91340949512a49e92f4f92e" to="5ba5c5ebd2584ab78c0652ef0ab633a8" visibility="package">
                 <owned-items>
@@ -2730,11 +2680,13 @@
                   <owned-item ref="ee36d8acfd6b4952a7f2c953a9611ac6" />
                   <owned-item ref="704e3e966226455a81d699178e3fb094" />
                   <owned-item ref="ee36d8acfd6b4952a7f2c953a9611ac6" />
+                  <owned-item ref="704e3e966226455a81d699178e3fb094" />
+                  <owned-item ref="ee36d8acfd6b4952a7f2c953a9611ac6" />
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="d6a27f7bb91340949512a49e92f4f92e" to="5ba5c5ebd2584ab78c0652ef0ab633a8" derived="false">
-                  <start-role id="umlar-3bd5eb11-2aff-4c12-a8dc-740541103ad5" name="" navigability="" association-type="association" visibility="private" attribute-ref="a61c35593ba47482aa89e0bcb4933badb995" property-ref="704e3e966226455a81d699178e3fb094" />
-                  <end-role id="umlar-632d5d3b-8a9d-4899-85d0-480a8d77a591" name="" navigability="yes" association-type="association" visibility="private" property-ref="ee36d8acfd6b4952a7f2c953a9611ac6" />
+                  <start-role id="umlar-f385cce0-df86-4b2c-af4f-542616eae928" name="" navigability="" association-type="association" visibility="private" attribute-ref="a61c35593ba47482aa89e0bcb4933badb995" property-ref="704e3e966226455a81d699178e3fb094" />
+                  <end-role id="umlar-94abd1bc-463f-494d-aa6f-902f892674e7" name="" navigability="yes" association-type="association" visibility="private" property-ref="ee36d8acfd6b4952a7f2c953a9611ac6" />
                 </relation>
               </item>
               <item id="9dc12f01800c450c8dd83e82dfdc5014" cid="REL020" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:27:12" from="0448abd669f84a4ca8bfb499a2a231f2" to="d4e7babc76924c40bebc97f476c3911c" visibility="package">
@@ -2743,15 +2695,88 @@
                   <owned-item ref="d8639236a48642c6aebc9d819fffd525" />
                   <owned-item ref="643ed1d1c1714a86a2ef5483c0c9b899" />
                   <owned-item ref="d8639236a48642c6aebc9d819fffd525" />
+                  <owned-item ref="643ed1d1c1714a86a2ef5483c0c9b899" />
+                  <owned-item ref="d8639236a48642c6aebc9d819fffd525" />
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="0448abd669f84a4ca8bfb499a2a231f2" to="d4e7babc76924c40bebc97f476c3911c" derived="false">
-                  <start-role id="umlar-dc3a02fb-d99a-43ea-9f6f-6572b379b598" name="" navigability="" association-type="association" visibility="private" attribute-ref="a956ecad0722d4b41887b3ff45aca629b967" property-ref="643ed1d1c1714a86a2ef5483c0c9b899" />
-                  <end-role id="umlar-688d98c7-84e3-4bfa-bcbd-da69eef15ebe" name="" navigability="yes" association-type="association" visibility="private" attribute-ref="a956ecad0722d4b41887b3ff45aca629b967" property-ref="d8639236a48642c6aebc9d819fffd525" />
+                  <start-role id="umlar-2cc0c61a-a3af-401f-9226-269058ad07d6" name="" navigability="" association-type="association" visibility="private" attribute-ref="a956ecad0722d4b41887b3ff45aca629b967" property-ref="643ed1d1c1714a86a2ef5483c0c9b899" />
+                  <end-role id="umlar-0f6d3538-3998-435c-b559-15254233c810" name="" navigability="yes" association-type="association" visibility="private" attribute-ref="a956ecad0722d4b41887b3ff45aca629b967" property-ref="d8639236a48642c6aebc9d819fffd525" />
                 </relation>
               </item>
-              <item id="54d918713fd9480399b9853b7a0e6550" cid="DEP004" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:24:56" from="62ace6b175504de2af41f990b7d89d5d" to="7871b9a8f84c45a38f1839875d5ae2dd" visibility="package">
+              <item id="di4cce96613e4c4cbea76bdd7e6969b7e91247" cid="PROP053" type="property" name="" style-class="" owner="di29168d256a394896b94a31089b891e431247" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+                <feature />
+                <structural-feature type="Orchestrator" type-id="Class:03b8b160d5d7494f8a5b86222d0213ab" />
+                <property />
+              </item>
+              <item id="d5660280b1734e2fbd9bb4fdf1602784" cid="DEP003" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:23:08" from="900902cc7bd44d828c8d5f90cc1ce32a" to="32d7a784f3c04f28ae6e7d31e2f62d79" visibility="package">
                 <style class="Flat Light White" />
+              </item>
+              <item id="did68f02c603b54e28b801768c0e3785f12769" cid="REL022" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="083f80e2176c4f2bb58741a51232e0c1" to="0fc38fed838646c7b9f5d4d28923ccf9" visibility="package">
+                <owned-items>
+                  <owned-item ref="diadba93c458a445858cb0715edda7be6e2769" />
+                  <owned-item ref="di5fb59a835c4448789790a2a306f73e272769" />
+                </owned-items>
+                <style class="Flat Light White" />
+                <relation from="083f80e2176c4f2bb58741a51232e0c1" to="0fc38fed838646c7b9f5d4d28923ccf9" derived="false">
+                  <start-role id="umlar-a795b5f8-d152-4fc3-ae86-547b2b12b61d" name="" navigability="" association-type="association" visibility="private" property-ref="di5fb59a835c4448789790a2a306f73e272769" />
+                  <end-role id="umlar-ec1eb2a0-7053-431f-b5ac-f0bc322af54b" name="" navigability="yes" association-type="association" visibility="private" property-ref="diadba93c458a445858cb0715edda7be6e2769" />
+                </relation>
+              </item>
+              <item id="di29168d256a394896b94a31089b891e431247" cid="REL024" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="03b8b160d5d7494f8a5b86222d0213ab" to="0448abd669f84a4ca8bfb499a2a231f2" visibility="package">
+                <owned-items>
+                  <owned-item ref="dia50c331469fb4810b5c5f2b6a9cb0b2a1247" />
+                  <owned-item ref="di4cce96613e4c4cbea76bdd7e6969b7e91247" />
+                  <owned-item ref="di4cce96613e4c4cbea76bdd7e6969b7e91247" />
+                </owned-items>
+                <style class="Flat Light White" />
+                <relation from="03b8b160d5d7494f8a5b86222d0213ab" to="0448abd669f84a4ca8bfb499a2a231f2" derived="false">
+                  <start-role id="umlar-66f4cabe-3f26-4b5b-af2c-fd954619e40f" name="" navigability="" association-type="association" visibility="private" attribute-ref="aa531f32be0e94900a51d0bad4db9ea96995" property-ref="di4cce96613e4c4cbea76bdd7e6969b7e91247" />
+                  <end-role id="umlar-90d674cc-b107-414f-a531-ab41880e4076" name="" navigability="yes" association-type="association" visibility="private" property-ref="dia50c331469fb4810b5c5f2b6a9cb0b2a1247" />
+                </relation>
+              </item>
+              <item id="dia50c331469fb4810b5c5f2b6a9cb0b2a1247" cid="PROP054" type="property" name="" style-class="" owner="di29168d256a394896b94a31089b891e431247" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+                <feature />
+                <structural-feature multiplicity="1" type="DatabaseService" type-id="Class:0448abd669f84a4ca8bfb499a2a231f2" />
+                <property />
+              </item>
+              <item id="2e6b9fbf0dcb4780adc0dae3b97282e0" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:17:56" from="8e9eec1193d0405fb9dab3b3b57a04ca" to="62ace6b175504de2af41f990b7d89d5d" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="did93ec51bbab648bfb4176f8bffd0fd4e5749" cid="PROP047" type="property" name="" style-class="" owner="di529010c506f944c887999ef8edbbbce37221" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+                <feature />
+                <structural-feature type="OrchestratorHyperscale" type-id="Class:083f80e2176c4f2bb58741a51232e0c1" />
+                <property />
+              </item>
+              <item id="diadba93c458a445858cb0715edda7be6e2769" cid="PROP050" type="property" name="" style-class="" owner="did68f02c603b54e28b801768c0e3785f12769" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+                <feature />
+                <structural-feature multiplicity="1" type="StorageService" type-id="Class:0fc38fed838646c7b9f5d4d28923ccf9" />
+                <property />
+              </item>
+              <item id="di5fb59a835c4448789790a2a306f73e272769" cid="PROP049" type="property" name="" style-class="" owner="did68f02c603b54e28b801768c0e3785f12769" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+                <feature />
+                <structural-feature type="OrchestratorHyperscale" type-id="Class:083f80e2176c4f2bb58741a51232e0c1" />
+                <property />
+              </item>
+              <item id="83da1105e87d49bcb1bdeec9b7958eba" cid="DEP001" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/16/2022 19:17:07" from="083f80e2176c4f2bb58741a51232e0c1" to="900902cc7bd44d828c8d5f90cc1ce32a" visibility="package">
+                <style class="Flat Light White" />
+              </item>
+              <item id="di529010c506f944c887999ef8edbbbce37221" cid="REL021" type="relationship" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:23:58" from="083f80e2176c4f2bb58741a51232e0c1" to="7bc7bd2f4cb54071a733f351abb7d2d9" visibility="package">
+                <owned-items>
+                  <owned-item ref="did93ec51bbab648bfb4176f8bffd0fd4e5749" />
+                  <owned-item ref="diee664fc81e644d5d8d0a6e63a70c17775749" />
+                  <owned-item ref="did93ec51bbab648bfb4176f8bffd0fd4e5749" />
+                </owned-items>
+                <style class="Flat Light White" />
+                <relation from="083f80e2176c4f2bb58741a51232e0c1" to="7bc7bd2f4cb54071a733f351abb7d2d9" derived="false">
+                  <start-role id="umlar-9a873a0b-f7e7-4817-a63a-ff883c519218" name="" navigability="" association-type="association" visibility="private" property-ref="did93ec51bbab648bfb4176f8bffd0fd4e5749" />
+                  <end-role id="umlar-c2769b7c-a67e-4db7-b431-8d6e8bfd1ece" name="" navigability="yes" association-type="association" visibility="private" property-ref="diee664fc81e644d5d8d0a6e63a70c17775749" />
+                </relation>
+              </item>
+              <item id="diee664fc81e644d5d8d0a6e63a70c17775749" cid="PROP048" type="property" name="" style-class="" owner="di529010c506f944c887999ef8edbbbce37221" creator="" creation-date="08/15/2022 20:23:58" visibility="undefined">
+                <feature />
+                <structural-feature multiplicity="1" type="LogService" type-id="Class:7bc7bd2f4cb54071a733f351abb7d2d9" />
+                <property />
               </item>
             </abstract-items>
             <layer id="564828742f824fe9be2730d074318bbb" name="Default" visible="true" enabled="true" locked="false">
@@ -2904,7 +2929,7 @@
                 <class />
               </item>
               <item id="06891dba08324c10990f2c1da2914541" iid="656822d53c0a4aabb7efcd15d37672df" creation-date="08/15/2022 20:23:58" order-index="38" type="relation">
-                <layout start-role-position="25,15" end-role-position="30,10" end-role-width="40" start-multiplicity-position="25,-15" end-multiplicity-position="90,20" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="-169" y1="140" x2="290" y2="120" start-border-pos="0.336206898093224" end-border-pos="0.978632479906082" start-local-pos="60" end-local-pos="10" name-position="0,20">
+                <layout start-role-position="25,15" end-role-position="30,10" end-role-width="40" start-multiplicity-position="19,10" end-multiplicity-position="30,10" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="-169" y1="140" x2="290" y2="120" start-border-pos="0.336206898093224" end-border-pos="0.978632479906082" start-local-pos="60" end-local-pos="10" name-position="0,20">
                   <points>
                     <point x="-169" y="140" />
                     <point x="-130" y="140" />
@@ -2923,16 +2948,16 @@
                 <relation from="d6a27f7bb91340949512a49e92f4f92e" from-iid="fba1c113e62440469e8c21de423a8b54" from-field="a61c35593ba47482aa89e0bcb4933badb995" to="5ba5c5ebd2584ab78c0652ef0ab633a8" to-iid="b7b4daf49fd440eead83e0cd4a0aadfd" />
               </item>
               <item id="di529010c506f944c887999ef8edbbbce37221" iid="b337b83dd1974bc59cd91ff9af31133e" creation-date="08/15/2022 20:23:58" order-index="38" type="relation">
-                <layout start-role-position="25,15" end-role-position="30,10" end-role-width="40" start-multiplicity-position="25,-15" end-multiplicity-position="90,20" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="12" y1="378" x2="271" y2="331" start-border-pos="0.373931623995304" end-border-pos="0.623684212565422" start-local-pos="58" end-local-pos="48" name-position="0,20">
+                <layout start-role-position="28,12" end-role-position="30,10" end-role-width="40" start-multiplicity-position="18,12" end-multiplicity-position="19,-19" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="12" y1="380" x2="271" y2="331" start-border-pos="0.378205128205128" end-border-pos="0.622500002384186" start-local-pos="58" end-local-pos="48" name-position="0,20" name-width="50">
                   <points>
-                    <point x="12" y="378" />
+                    <point x="12" y="380" />
                     <point x="271" y="331" />
                   </points>
                 </layout>
                 <relation from="083f80e2176c4f2bb58741a51232e0c1" from-iid="4a24572ac8d34a6297839f4fd99dbd64" to="7bc7bd2f4cb54071a733f351abb7d2d9" to-iid="00b1dda2e3b94559b3ccb3af6bb620ae" />
               </item>
               <item id="did68f02c603b54e28b801768c0e3785f12769" iid="b0e502dea61f49a3add20136be8824d8" creation-date="08/15/2022 20:23:58" order-index="38" type="relation">
-                <layout start-role-position="25,15" end-role-position="30,10" end-role-width="40" start-multiplicity-position="25,-15" end-multiplicity-position="90,20" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="12" y1="360" x2="100" y2="331" start-border-pos="0.335470087826252" end-border-pos="0.625" start-local-pos="40" end-local-pos="62" name-position="0,20">
+                <layout start-role-position="28,20" end-role-position="30,10" end-role-width="40" start-multiplicity-position="18,-10" end-multiplicity-position="19,-20" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="12" y1="360" x2="100" y2="331" start-border-pos="0.335470087826252" end-border-pos="0.625" start-local-pos="40" end-local-pos="62" name-position="0,20">
                   <points>
                     <point x="12" y="360" />
                     <point x="100" y="331" />
@@ -2941,7 +2966,7 @@
                 <relation from="083f80e2176c4f2bb58741a51232e0c1" from-iid="4a24572ac8d34a6297839f4fd99dbd64" to="0fc38fed838646c7b9f5d4d28923ccf9" to-iid="7187818b6a0c4e139bac525751fb0c00" />
               </item>
               <item id="di29168d256a394896b94a31089b891e431247" iid="d3becdadb32947f781db52dc6be257a9" creation-date="08/15/2022 20:23:58" order-index="38" type="relation">
-                <layout start-role-position="25,15" end-role-position="30,10" end-role-width="40" start-multiplicity-position="25,-15" end-multiplicity-position="90,20" line-style="perpendicular" start-auto-side="false" end-auto-side="false" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="-169" y1="120" x2="660" y2="290" start-border-pos="0.307471264153719" end-border-pos="0.234899327158928" start-local-pos="40" end-local-pos="280" name-position="0,20">
+                <layout start-role-position="25,15" start-role-width="50" end-role-position="30,10" end-role-width="40" start-multiplicity-position="19,-10" end-multiplicity-position="20,-20" line-style="perpendicular" start-auto-side="false" end-auto-side="false" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="-169" y1="120" x2="660" y2="290" start-border-pos="0.307471264153719" end-border-pos="0.234899327158928" start-local-pos="40" end-local-pos="280" name-position="0,20">
                   <points>
                     <point x="-169" y="120" />
                     <point x="-150" y="90" />
@@ -2980,7 +3005,7 @@
                 <relation from="900902cc7bd44d828c8d5f90cc1ce32a" from-iid="adb5f277d213483abb54f949bf790e2f" to="32d7a784f3c04f28ae6e7d31e2f62d79" to-iid="51e928e24575445290eb6381dc35f3a9" />
               </item>
               <item id="9dc12f01800c450c8dd83e82dfdc5014" iid="be9d70a42e5f4582b74246e95ac0000e" creation-date="08/15/2022 20:27:12" order-index="40" type="relation">
-                <layout start-role-position="30,10" end-role-position="25,-15" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="perpendicular" lock-end-point="true" lock-to-fields="true" auto-path="" x1="380" y1="330" x2="193" y2="460" start-border-pos="0.895618556701031" end-border-pos="0.29166666790843" start-local-pos="40" end-local-pos="10" name-position="0,20">
+                <layout start-role-position="30,10" end-role-position="25,-15" start-multiplicity-position="20,20" end-multiplicity-position="25,15" line-style="perpendicular" lock-end-point="true" lock-to-fields="true" auto-path="" x1="380" y1="330" x2="193" y2="460" start-border-pos="0.895618556701031" end-border-pos="0.29166666790843" start-local-pos="40" end-local-pos="10" name-position="0,20">
                   <points>
                     <point x="380" y="330" />
                     <point x="340" y="410" />

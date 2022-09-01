@@ -27,7 +27,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>4204</value>
+        <value>4230</value>
       </counter>
       <counter>
         <item-type type-id="relationship" type="Association" />
@@ -147,6 +147,16 @@
         <phone-number />
         <description />
         <color>#00000000</color>
+        <working-schedule uid="ws-307161affccd45b0bdb86fcbe6e3174a" hours="8" monday="8" tuesday="8" wednesday="8" thursday="8" friday="8" saturday="0" sunday="0" />
+      </person>
+      <person id="">
+        <first-name>Milan</first-name>
+        <last-name>Jeremić</last-name>
+        <role />
+        <e-mail />
+        <phone-number />
+        <description />
+        <color>#00000000</color>
       </person>
     </persons>
     <teams />
@@ -194,8 +204,8 @@
         <type id="Class:3b46e13747a244199442cc7eb6efbaeb" tid="" name="LogServiceResponseResult" description="" class-ref="3b46e13747a244199442cc7eb6efbaeb" />
         <type id="Class:bd08e5ac6bc246baac091a3b689bd6f9" tid="" name="LogServiceRequest" description="" class-ref="bd08e5ac6bc246baac091a3b689bd6f9" />
         <type id="ServiceResponseResult" tid="" name="ServiceResponseResult" description="" />
-        <type id="TServiceResponseResult" tid="" name="TServiceResponseResult" description="" />
         <type id="Class:ef142206ca3640209508a988d09c1257" tid="" name="ServiceResponse" description="" class-ref="ef142206ca3640209508a988d09c1257" />
+        <type id="TServiceResponseResult" tid="" name="TServiceResponseResult" description="" />
         <type id="Exception" tid="" name="Exception" description="" />
       </types>
     </custom-types>
@@ -1889,7 +1899,7 @@
     </item>
     <item id="36c2697f9aff44158cd78817139103cd" cid="PROP032" type="property" name="" style-class="" owner="d7caed5eb070492b89914844557a8b02" creator="" creation-date="08/15/2022 20:14:40" visibility="undefined">
       <feature />
-      <structural-feature type="ServiceResponseResult" type-id="Class:3a2af1617f11409f806b8a8b9aaa0a2f" />
+      <structural-feature multiplicity="1" type="ServiceResponseResult" type-id="Class:3a2af1617f11409f806b8a8b9aaa0a2f" />
       <property />
     </item>
   </items>
@@ -2171,6 +2181,7 @@
                 <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
                 <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
                 <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
+                <owned-item ref="7c2a526c9c9f4713bfc23d005e2ceb9e" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -2252,6 +2263,7 @@
                 <tagged-value id="tv243298bd72ad462f9bcc18338c966051" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/27/2022 03:49:12" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
                 <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
                 <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
                 <owned-item ref="5f16c4976e6d444390c1bec45bbe8b69" />
@@ -2844,6 +2856,7 @@
                 <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
                 <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
                 <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
+                <owned-item ref="7b5aaa6a206b40e998ed0a8384d5c51f" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -2863,6 +2876,7 @@
                 <tagged-value id="tvabe1dbe2d7ba49c6b6b1ad56f83ef687" name="SourceCodeFileChangeDate" type="text" multiple="false" hidden="true" value="04/26/2022 03:02:17" />
               </tagged-values>
               <owned-items>
+                <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
                 <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
                 <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
                 <owned-item ref="50c9d9ab20d24b31a8934c2eea24a5a9" />
@@ -2890,6 +2904,8 @@
                 <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
+                <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
+                <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
                 <owned-item ref="84af40584c8c4a60aa5ba2f84d9f03a9" />
                 <owned-item ref="929b0908128148a399b0868cbcc8d45a" />
@@ -3101,6 +3117,7 @@
                 <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
                 <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
                 <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
+                <owned-item ref="e15d173f327448278dcbecbbb7ac4239" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -3130,6 +3147,7 @@
                 <owned-item ref="4622621ece0a4c5a884b448f58068230" />
                 <owned-item ref="4622621ece0a4c5a884b448f58068230" />
                 <owned-item ref="4622621ece0a4c5a884b448f58068230" />
+                <owned-item ref="4622621ece0a4c5a884b448f58068230" />
               </owned-items>
               <style class="Flat Light White" />
               <attributes>
@@ -3141,7 +3159,7 @@
             </item>
           </abstract-items>
           <sub-models />
-          <diagram type="uml-class" id="p4642c99440de4ac48534b0a5eef62427_966430968" name="Communication" order-index="1" uid="" name-style="" auto-routed-paths="true" default-line-style="default" namespace="Database" view-location="0,-189" zoom="0.7">
+          <diagram type="uml-class" id="p4642c99440de4ac48534b0a5eef62427_966430968" name="Communication" order-index="1" uid="" name-style="" auto-routed-paths="true" default-line-style="default" namespace="Database" view-location="180,-223" zoom="0.9">
             <style>
               <background-color index="1" color="#FFFFFFFF" />
               <background-color index="2" color="#FFFFFFFF" />
@@ -3169,11 +3187,13 @@
                   <owned-item ref="36c2697f9aff44158cd78817139103cd" />
                   <owned-item ref="a869e6f071424372a9f7c43c3d0f717c" />
                   <owned-item ref="36c2697f9aff44158cd78817139103cd" />
+                  <owned-item ref="a869e6f071424372a9f7c43c3d0f717c" />
+                  <owned-item ref="36c2697f9aff44158cd78817139103cd" />
                 </owned-items>
                 <style class="Flat Light White" />
                 <relation from="3114369d3fc54e71be572a558d6c38a4" to="3a2af1617f11409f806b8a8b9aaa0a2f" derived="false">
-                  <start-role id="umlar-7839e233-a36c-4977-894f-039a266ce677" name="" navigability="" association-type="association" visibility="undefined" property-ref="a869e6f071424372a9f7c43c3d0f717c" />
-                  <end-role id="umlar-79edd684-f690-49a1-93d1-9d39e7351511" name="" navigability="yes" association-type="association" visibility="undefined" property-ref="36c2697f9aff44158cd78817139103cd" />
+                  <start-role id="umlar-3f7fe88c-7a02-46c6-b7d8-270556775521" name="" navigability="" association-type="association" visibility="undefined" property-ref="a869e6f071424372a9f7c43c3d0f717c" />
+                  <end-role id="umlar-282f6d34-b960-48b0-aabb-db86d17099e0" name="" navigability="yes" association-type="association" visibility="undefined" property-ref="36c2697f9aff44158cd78817139103cd" />
                 </relation>
               </item>
               <item id="037a27a22dec4e37adadcb5328229059" cid="GNR020" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:32:40" from="7b6091a1af744c35a1df6b3fa9aa60fc" to="68f2360aebe84980ad03f899f1130206" visibility="package">
@@ -3218,10 +3238,10 @@
               <item id="ba7a550ebe8249ccb0958f61e1c693cd" cid="DEP001" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="b98817add95b48a1b19bda478103e0f0" to="bb8dac6ff40644ca98bad1b0dd10da53" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="dif9d16af0a8e645d894352ac5796daf019525" cid="DEP008" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="68f2360aebe84980ad03f899f1130206" to="6eb026ec8a214fbca874d0e9fe99d920" visibility="package">
+              <item id="bdaee53af1f24c22ac91a6f7c12d2f74" cid="GNR018" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:30:29" from="1ba9689b161c4a0da5cedda57037a37f" to="68f2360aebe84980ad03f899f1130206" visibility="package">
                 <style class="Flat Light White" />
               </item>
-              <item id="bdaee53af1f24c22ac91a6f7c12d2f74" cid="GNR018" type="generalization" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/13/2022 21:30:29" from="1ba9689b161c4a0da5cedda57037a37f" to="68f2360aebe84980ad03f899f1130206" visibility="package">
+              <item id="dif9d16af0a8e645d894352ac5796daf019525" cid="DEP008" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="68f2360aebe84980ad03f899f1130206" to="6eb026ec8a214fbca874d0e9fe99d920" visibility="package">
                 <style class="Flat Light White" />
               </item>
               <item id="dia02a592b54914ce999c7d188eef84eca8320" cid="DEP002" type="dependency" name="" style-class="Flat Light White" change-tracking-state="added" creator="" creation-date="08/15/2022 20:11:32" from="1ba9689b161c4a0da5cedda57037a37f" to="f52fc07417f346378d179e37e7c7413f" visibility="package">
@@ -3582,7 +3602,7 @@
                 <relation from="b98817add95b48a1b19bda478103e0f0" from-iid="035eedef5c5546f1b043e5cc9546b142" to="bb8dac6ff40644ca98bad1b0dd10da53" to-iid="ebaffab47eeb46ab832b87c6bd17819f" />
               </item>
               <item id="d7caed5eb070492b89914844557a8b02" iid="44e942c8a8f44b889961b4163615bbb2" creation-date="08/15/2022 20:14:40" order-index="72" type="relation">
-                <layout start-role-position="25,15" end-role-position="29,-20" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1050" y1="170" x2="531" y2="170" start-border-pos="0.829545453190804" end-border-pos="0.371951222419739" start-local-pos="60" end-local-pos="20" name-position="0,20">
+                <layout start-role-position="30,20" end-role-position="29,-20" start-multiplicity-position="25,-15" end-multiplicity-position="25,15" line-style="perpendicular" lock-start-point="true" lock-end-point="true" lock-to-fields="false" auto-path="" x1="1050" y1="170" x2="531" y2="170" start-border-pos="0.829545453190804" end-border-pos="0.371951222419739" start-local-pos="60" end-local-pos="20" name-position="0,20">
                   <points>
                     <point x="1050" y="170" />
                     <point x="531" y="170" />
