@@ -19,7 +19,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>2558</value>
+        <value>2563</value>
       </counter>
       <counter>
         <item-type type-id="property" type="Property" />
@@ -1935,7 +1935,7 @@
     <item id="704e3e966226455a81d699178e3fb094" cid="PROP043" type="property" name="" style-class="" owner="76c87dfd978a4a51be173ae7e2d9c796" creator="" creation-date="08/15/2022 20:26:11" visibility="undefined">
       <feature />
       <structural-feature type="Service" type-id="Class:d6a27f7bb91340949512a49e92f4f92e" />
-      <property aggregation="shared" />
+      <property aggregation="composite" />
     </item>
     <item id="643ed1d1c1714a86a2ef5483c0c9b899" cid="PROP045" type="property" name="" style-class="" owner="9dc12f01800c450c8dd83e82dfdc5014" creator="" creation-date="08/15/2022 20:27:12" visibility="undefined">
       <feature />

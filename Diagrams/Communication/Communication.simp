@@ -27,7 +27,7 @@
       </counter>
       <counter>
         <item-type type-id="group" type="Group" />
-        <value>4230</value>
+        <value>4236</value>
       </counter>
       <counter>
         <item-type type-id="relationship" type="Association" />
@@ -1895,7 +1895,7 @@
     <item id="a869e6f071424372a9f7c43c3d0f717c" cid="PROP031" type="property" name="" style-class="" owner="d7caed5eb070492b89914844557a8b02" creator="" creation-date="08/15/2022 20:14:40" visibility="undefined">
       <feature />
       <structural-feature type="" type-id="" />
-      <property aggregation="shared" />
+      <property aggregation="composite" />
     </item>
     <item id="36c2697f9aff44158cd78817139103cd" cid="PROP032" type="property" name="" style-class="" owner="d7caed5eb070492b89914844557a8b02" creator="" creation-date="08/15/2022 20:14:40" visibility="undefined">
       <feature />
