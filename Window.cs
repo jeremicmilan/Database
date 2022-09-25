@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 
 namespace Database
 {
@@ -64,7 +65,14 @@ namespace Database
 
         private static void MoveWindow(Rect rect)
         {
-            if (!MoveWindow(FindWindowByCaption(IntPtr.Zero, Console.Title),
+            IntPtr handle = IntPtr.Zero;
+            while (handle == IntPtr.Zero)
+            {
+                handle = FindWindowByCaption(IntPtr.Zero, Console.Title);
+                Thread.Sleep(10);
+            }
+
+            if (!MoveWindow(handle,
                 rect.Left, rect.Top,
                 rect.Width, rect.Height,
                 true))
